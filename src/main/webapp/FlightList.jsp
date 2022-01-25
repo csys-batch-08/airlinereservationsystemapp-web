@@ -1,6 +1,10 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.airlinereservationsystemapp.Models.Flight_list"%>
 <%@page import="java.util.List"%>
-<%@page import="com.airlinereservationsystemapp.Models.Flight_Seat_Availability"%> 
+<%@page import="com.airlinereservationsystemapp.Models.Flight_Seat_Availability"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,16 +68,16 @@ a:hover, a:active {
 
 
 
-<%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+<c:set var="loggedinadmin"     value="${LOGGED_IN_ADMIN}"/> 
 
-%>
+<c:set var="loggedinuser"    value="${LOGGED_IN_USER}"/>  
 
 
-	<%
-			if (loggedInAsAdmin != null) {
-			%>
+
+	    
+<c:if test ="${loggedinadmin!=null}">  
+ 
+			
 					<a href="UserServlet" class="btn btn-primary">List all User Details</a>
 					<a href="Addflight.jsp" class="btn btn-primary">Add Flight</a>
 			        
@@ -82,21 +86,17 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			         
 					
 			
-				<% }
+				</c:if>
 			
-									%>
    
 
     
 
-	<%
- 		List<Flight_list> flights = (List<Flight_list>)request.getAttribute("Flight_List");
+	<c:set var="flights" value="${Flight_List }" />  
 
-/* 		List<Flight_Seat_Availability> flights = (List<Flight_Seat_Availability>)request.getAttribute("Flight_List");
- */		
- if (flights != null) {
-		%>
-		
+	 
+ <c:if test="${flights!=null}">  
+ 
 		
 		  <table class="table">
 		
@@ -126,19 +126,17 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					
 					
 					
-					<%
-			if (loggedInAsAdmin != null) {
-			%>
-					<th scope= "col">UpdateFlight </th>
-				<%}
-				%>
-					<%
-			if (loggedInAsAdmin != null) {
-			%>
-					<th scope= "col">DeleteFlight </th>
-				<%}
-				%>
-					
+			 
+			 <c:if test ="${loggedinadmin!=null}">  
+			 
+			 					<th scope= "col">UpdateFlight </th>
+			 </c:if>
+			 
+			 
+			 			 <c:if test ="${loggedinadmin!=null}">  
+			 
+			 					<th scope= "col">DeleteFlight </th>
+			 </c:if>
 					
 				</tr>
 			</thead>
@@ -146,70 +144,47 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			<br>
 			
 			<tbody>
-				<%
-					int i = 0;
-					for (Flight_list flight : flights) {
-						i++;
-				%>
-				<tr>
-				
-					
-					<td><%=i%></td>
-					<td><%=flight.getFlight_id()%></td>
-					<td><%=flight.getFlight_name()%></td>
-					<td><%=flight.getSource()%></td>
-					<td><%=flight.getDestination()%></td>
-					
-					<td> <%=flight.getEconomy_class()%></td>
-					<td> <%=flight.getPremium_Economy_class()%></td>
-					<td> <%=flight.getBussiness_class()%></td>
-					<td> <%=flight.getArrival_Time()%></td>
-					<td> <%=flight.getDeparture_time()%></td>
-					<td> <%=flight.getEconomyseats()%></td>
-										<td> <%=flight.getPremiumseats()%></td>
-										<td> <%=flight.getBusinessseats()%></td>
-										<td> <%=flight.getArrivaltime()%></td>
-					                  	<td> <%=flight.getDepartureTime()%></td>
-					                  	<td> <%=flight.getFlightstatus()%></td>
-					                  	
-					                    
-					
-					
-					
-					
-					
-					
-					
-					
-						<%
-			if (loggedInAsAdmin != null) {
-			%>
-					<td><a href="Updateflight.jsp?flightId=<%=flight.getFlight_id() %>" class="btn btn-primary">UpdateFlight</a></td>
-				</tr>
-				<% }
-			
-									%>
-						<%
-			if (loggedInAsAdmin != null) {
-			%>
-					<td><a href="Deleteflight.jsp?flightId=<%=flight.getFlight_id() %>" class="btn btn-danger">
-					DeleteFlight</a></td>
-				</tr>
-				<% }
-			
+ 
+ 
+     <c:forEach items="${Flight_List}" var="flight" varStatus="status">
+ 
+ <tr>
+  		<td>${status.count}</td>		
+ 
+  	<td>${flight.getFlight_id()}</td>
+ 					 <td>${flight.getFlight_name()}</td>
+ 					  					 <td>${flight.getSource()}</td>
+ 					  					 <td>${flight.getDestination()}</td>
+ 					  					 <td>${flight.getEconomy_class()}</td>
+ 					  					 <td>${flight.getPremium_Economy_class()}</td>
+ 					  					 <td>${flight.getBussiness_class()}</td>
+ 					  					 <td><fmt:formatDate value="${flight.getArrival_Time()}" pattern="DD-MM-YYYY" />  </td>
+ 					  					 <td><fmt:formatDate value="${flight.getDeparture_time()}" pattern="DD-MM-YYYY"/></td>
+ 					  					 <td>${flight.getEconomyseats()}</td>
+ 					  					 <td>${flight.getPremiumseats()}</td>
+ 					  					 <td>${flight.getBusinessseats()}</td>
+ 					  					 <td>${flight.getArrivaltime()}</td>
+ 					  					 <td>${flight.getDepartureTime()}</td>
+ 					  					 <td>${flight.getFlightstatus()}</td>
+ 					  					 
+ 					  					 					<c:if test ="${loggedinadmin!=null}">  
+						<td><a href="Updateflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">UpdateFlight</a></td>
+			                                              </c:if>
+			                                              
+			                                              	 <c:if test ="${loggedinadmin!=null}">  
+						<td><a href="Deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td>
+			                                              </c:if>
+ 					  					 
+ 								 			 								</tr>
+ 								 			     </c:forEach>
+ 								 			     
+ 					  
+ 
 					
 					
-					%>
-					
-			
-			
-				<%
-				}
-				%>
-
-			</tbody>
+								</tbody>
 		</table>
-		<%} %>
+	</c:if>
 		
 </body>
 </html>

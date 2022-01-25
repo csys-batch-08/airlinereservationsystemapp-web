@@ -44,9 +44,6 @@ public class AddPassengerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		
-		 response.setContentType("text/html");
-	        PrintWriter out=response.getWriter();
-	        out.println("hello");
 	        
 	    try {
 			  String Flight_Id =request.getParameter("flightId");
@@ -136,11 +133,6 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 			//pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
 			
-			//response.getWriter().print("Data Registered");
-			out.println("<script type=\"text/javascript\">");
-			   out.println("alert('Ticket Booked Successfully');");
-			   out.println("location='AddPassenger.jsp';");
-			   out.println("</script>");
 			   
 			 
 			     RequestDispatcher requestDispatcher = request.getRequestDispatcher("PaymentDetails");

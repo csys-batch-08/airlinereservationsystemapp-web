@@ -1,14 +1,5 @@
 
 package com.airlinereservationsystemapp.DaoImpl;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-
-import com.airlinereservationsystemapp.Dao.FlightSearchInterface;
-import com.airlinereservationsystemapp.Models.Flight_list;
-
-import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -16,10 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder; 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TimeZone;
+
+import com.airlinereservationsystemapp.Dao.FlightSearchInterface;
+import com.airlinereservationsystemapp.Models.Flight_list; 
 
 public class FlightSearchDao implements FlightSearchInterface
 {
@@ -39,6 +34,7 @@ public class FlightSearchDao implements FlightSearchInterface
 		System.out.println("123");
 		while(rs.next())
 		{
+			System.out.println("Come fliyst value of flight");
 			int  flightId = rs.getInt("flight_id");
 			String airlines = rs.getString("flight_name");
 			String Source = rs.getString("source");
@@ -47,6 +43,8 @@ public class FlightSearchDao implements FlightSearchInterface
 			int premiumeconomyclass = rs.getInt("premium_Economy_class");
 			int businessClass = rs.getInt("Bussiness_class");
 			Date Arrival_Time = rs.getDate("arrival_date");
+			
+			System.out.println("Arrival_Time"+Arrival_Time);
 			Date Departure_Time = rs.getDate("flight_departure_date");
 			int economyseats = rs.getInt("ecomomy_seats");
 			int premiumseats = rs.getInt("premium_economy_Seats");
@@ -62,13 +60,8 @@ public class FlightSearchDao implements FlightSearchInterface
 			
 			String flightstatus = rs.getString("Flight_Status");
 
+System.out.println(flightstatus);
 
-
-
-
-			
-
-			
 			//Flight_list objFlight = new Flight_list();
 			Flight_list objFlight = new Flight_list(flightId, airlines, Source, destination, economyClass, premiumeconomyclass, businessClass, Arrival_Time, Departure_Time, economyseats, premiumseats, bussiness, dateStr,departured,flightstatus);
 

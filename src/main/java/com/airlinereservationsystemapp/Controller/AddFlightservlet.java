@@ -53,10 +53,7 @@ public class AddFlightservlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
-        
-        try 
+		try 
         {
 			String flightname = request.getParameter("Flightname");
 			String source = request.getParameter("source");           
@@ -90,7 +87,6 @@ public class AddFlightservlet extends HttpServlet {
 			response.sendRedirect("FlightSearch.jsp");				
 		} catch (Exception e) {
 			System.out.println(e);
-			response.getWriter().print("Invalid");
 
 		}
 
