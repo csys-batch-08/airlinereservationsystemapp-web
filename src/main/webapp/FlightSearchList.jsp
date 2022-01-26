@@ -116,7 +116,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			{%>
 					<td><a href="AddPassenger.jsp?flightId=<%=flight.getFlightId() %>&source=<%=flight.getSource()%>&destination=<%=flight.getDestination()%>
 					&Departure_Date=<%=flight.getDeparture_Date()%>&Economy_class=<%=flight.getEconomy_class()%>&Premium_Economy_class=<%=flight.getPremium_Economy_class()%>
-&Bussiness_class=<%=flight.getBussiness_class()%>" 
+&Bussiness_class=<%=flight.getBussiness_class()%>&Economyrate=<%=flight.getEconomy_rate()%>&Premiumrate=<%=flight.getPremium_Economy_rate()%>
+&Business=<%=flight.getBussiness_rate()%>" 
 					class="btn btn-primary">BOOK NOW</a></td>
 				</tr>
 				

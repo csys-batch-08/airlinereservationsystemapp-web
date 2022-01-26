@@ -3,6 +3,10 @@
         <%@page import="com.airlinereservationsystemapp.Models.Passenger_details"%>
     <%@page import="java.util.List"%>
             <%@page import="com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao"%>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+            
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
     
     
 <!DOCTYPE html>
@@ -37,11 +41,11 @@ a:hover, a:active {
 <a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
 
-<%  
+<%-- <%  
 		List<Passenger_details> objbookinglist = (List<Passenger_details>)request.getAttribute("Bookinglist");
  
 		%>
-		
+ --%>		
 		   		<table border="2" class="table">
 			<h1 align="centre"><b>Booking  List</b></h1>
 			<thead>
@@ -63,44 +67,31 @@ a:hover, a:active {
 					
 					</tr>
 			</thead>
-			<br>
-			<br>
-			
+<br>
 			<tbody>
-				<%
-					int i = 0;
-					for (Passenger_details objbook : objbookinglist) {
-						i++;
-				%>
+				     <c:forEach items="${Bookinglist}" var="booking" varStatus="status">
+				
 				<tr>
 				
 					
-					<td><%=i%></td>
-					<td class="table-success"><%=objbook.getPassenger_name()%></td>
-					<td><%=objbook.getClass_details()%></td>
-			  	<td><%=objbook.getMobile_number()%></td> 
-					
-					<td><%=objbook.getSource()%></td>
-					
-					<td> <%=objbook.getDestination()%></td>
-										<td class="table-danger"> <%=objbook.getFlight_id()%></td>
-															<td> <%=objbook.getArrival_date()%></td>
-					
-					<td> <%=objbook.getTicketNo()%></td>
-										
-					
-					<td class="table-active"> <%=objbook.getSeatno()%></td>
-										<td> <%=objbook.getStatus()%></td>
-					
-					<td> <%=objbook.getBookingdate()%></td>
-					
+ <td>${status.count}</td>		
+ 
+					<td class="table-success">${booking.getPassenger_name()}</td>
+					<td>${booking.getClass_details()}</td>
+					<td>${booking.getMobile_number()}</td>
+					<td>${booking.getSource()}</td>
+					<td>${booking.getDestination()}</td>
+					<td class="table-danger">${booking.getFlight_id()}</td>
+					<td>${booking.getArrival_date()}</td>
+					<td>${booking.getTicketNo()}</td>
+					<td class="table-active" >${booking.getSeatno()}</td>
+					<td>${booking.getStatus()}</td>					
+					<td>${booking.getBookingdate()}</td>
 					
 					
 			</tr>
+					</c:forEach>
 					
-					<%
-				}
-				%>
 					</tbody>
 		           </table>
 			

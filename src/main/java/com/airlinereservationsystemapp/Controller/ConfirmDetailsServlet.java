@@ -12,8 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
+import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
+import com.airlinereservationsystemapp.Models.Flight_list;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
 /**
@@ -45,6 +48,9 @@ public class ConfirmDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		
+		
 		try
 		{
 		  String Flight_Id =request.getParameter("flightId");
@@ -67,12 +73,12 @@ public class ConfirmDetailsServlet extends HttpServlet {
        System.out.println(noofpassengers);
        int noofpass = Integer.parseInt(noofpassengers);
        System.out.println(noofpass);
-       String economyseats = request.getParameter("Economyclass");
+       String economyseats = request.getParameter("Economy_class");
        int ecoseats = 0;
 		if 	(economyseats != null && economyseats != "") 
 		{
 			ecoseats = Integer.parseInt(economyseats);
-		System.out.println(ecoseats);
+		System.out.println(" "+""+""+ecoseats);
 		}
 
 	     
@@ -109,6 +115,24 @@ public class ConfirmDetailsServlet extends HttpServlet {
      
      RequestDispatcher requestDispatcher = request.getRequestDispatcher("ConfirmDetails.jsp");
 		requestDispatcher.forward(request, response);
+		
+		
+		FlightSearchDao flightDao = new FlightSearchDao();
+		Flight_list flight = flightDao.getRecordById(flightid);
+		int busrate =  flight.getBussiness_class();
+		int prerate =  flight.getPremium_Economy_class();
+        int ecorate =   flight.getEconomy_class();
+		
+		System.out.println("Rate For Premium"+prerate);
+		System.out.println("Rate For Economy"+ecorate);
+		System.out.println("Rate For Bussines"+busrate);
+		
+		request.setAttribute("Economy", ecorate);
+		request.setAttribute("Premium", prerate);
+		request.setAttribute("Bussiness", busrate);
+
+
+
 		
 		}
 		catch(Exception e)

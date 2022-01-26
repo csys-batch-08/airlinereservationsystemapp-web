@@ -4,6 +4,11 @@
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+      
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,12 +118,18 @@ a:hover, a:active {
   
 
 </style>
-<%
+<%-- <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>
-   
+ --%>
+ 
+ <c:set var="loggedinadmin"     value="${LOGGED_IN_ADMIN}"/> 
+
+<c:set var="loggedinuser"    value="${LOGGED_IN_USER}"/>  
+
+    
    	<main class="container-fluid">
 		<h3 align="center">Booking Details </h3>
 		<div align="center">
@@ -128,27 +139,26 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		
 		
    		<form action="ConfirmDetails" method="post">
-			<h1>Booking Details</h1>
+			<h1><b>Booking Details</b></h1>
 			<label for="flightId">Flight Id:</label> 
 			<input type="text"
 				name="flightId" id="flightId"style="position: relative; left: 65px; height: 23px; top: -1px; width: 229px"
-				 value="<%=request.getParameter("flightId")
-				%>"
+				value="${param.flightId}"  
 				readonly /> <br /> <br /> 
 				<label for="source">Source:</label> 
 			<input type="text"
 				name="source" id="source" style="position: relative; left: 70px; height: 24px; top: 1px; width: 230px"
-				value="<%=request.getParameter("source")%>"
+				value="${param.source}"
 				readonly /> <br /> <br /> 
 				<label for="destination">Destination:</label> 
 			<input type="text"
 				name="destination" id="destination"style="position: relative; left: 54px; height: 24px; top: 3px; width: 230px"
-				 value="<%=request.getParameter("destination")%>"
+				 value="${param.destination}"
 				readonly /> <br /> <br /> 
 				<label for="departuredate">Departure Date:</label> 
 			<input type="text"
 				name="departuredate" id="destination" style="position: relative; left: 41px; height: 24px; top: 2px; width: 230px"
-				value="<%=request.getParameter("Departure_Date")%>"
+				 value="${param.Departure_Date}"
 				readonly /> <br /> <br /> 
 				
 				
@@ -157,7 +167,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				
 			
 			<input type="hidden"
-				name="Economyclass" id="Economy" 
+				name="Economy_class" id="Economy" 
 				readonly /> 
 			
 			
@@ -175,21 +185,21 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				
 			<input type="hidden"
 				name="Economyclass" id="Economyclass" 
-				value="<%=request.getParameter("Economy_class")%>"
+				value="${param.Economy_class}"
 				readonly /> 
 			
 			
 				
 				<input type="hidden"
 				name="PremiumEconomyclass" id="PremiumEconomyclass" 
-				value="<%=request.getParameter("Premium_Economy_class")%>"
+				 value="${param.Premium_Economy_class}"
 				readonly  />  
 				
 								
 				
 				<input type="hidden"
 				name="Bussinessclass" id="Bussinessclass" 
-				value="<%=request.getParameter("Bussiness_class")%>"
+			 value="${param.Bussiness_class }"
 				readonly />  
 				
 				
@@ -207,126 +217,111 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				 				
 				 				>Coach:</label> 
 				  
-				  <%
+				  <c:set var="ecoseats" value="${param.Economy_class}"/>
+				    
+				      <fmt:parseNumber var="economy" type="number" integerOnly="true"  value="${ecoseats}" />  
+				  			
+				  				  <c:set var="preseats" value="${param.Premium_Economy_class}"/>
+				    
+				      <fmt:parseNumber var="premium" type="number" integerOnly="true"  value="${preseats}" />  
 				  
-				  String ecoseats = request.getParameter("Economy_class");
-				  System.out.println("bhxbvcxbbvbcvxbvcxbvbvbvcxbvbvbvcxbv"+ecoseats);
-				  int economy =  Integer.parseInt(ecoseats);
-				  System.out.println("djhhgjhdfjgdfgfgfdgjjgfjgfjfj"+economy);
-				  String pre = request.getParameter("Premium_Economy_class");
-				  int premium = Integer.parseInt(pre);
-				  System.out.println("dhfdhhgdfpremium"+premium);
-				  String bus = request.getParameter("Bussiness_class");
-				  int business = Integer.parseInt(bus);
-				  System.out.println("fdhghdfghdfhgfghfgfdfd"+business);
-
-				  %>
-				   <%
-				   if(economy==0)
-				   {%>
+				  	  <c:set var="busseats" value="${param.Bussiness_class}"/>
+				    
+				      <fmt:parseNumber var="bussiness" type="number" integerOnly="true"  value="${busseats}" />  
+				  
+				<c:choose>  
+				  
+				   <c:when test ="${economy==0}">  
+				  				
 				    	<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
                 
                 <option value="Bussiness">Business Class</option>
                 <option value="premium">Premium Economy</option>
               </select>
-				       
-				   <% }
-				   else if(premium==0)
-				   {%>
+				</c:when>       
+ <c:when test ="${premium==0}">
 					   	<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
                 
                 <option value="Bussiness">Business Class</option>
                 <option value="Economy">economy</option>
               </select>
-				   <% }
-				   else if(business==0)
-				   {%>
-					   	<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
-                
-                <option value="Economy">economy</option>
-                <option value="premium">Premium Economy</option>
-              </select>
-				   <% }
-				   else
-				   {%>
-					   <select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
-                
-                <option value="Bussiness">Business Class</option>
-                <option value="Economy">economy</option>
-                <option value="premium">Premium Economy</option>
-              </select>
-				   <% }
-				   %>
-<!-- 				<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
+</c:when>
+
+ <c:when test ="${bussiness==0}">
+ 
+ 	<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
+           <option value="Economy">economy</option>
+           <option value="premium">Premium Economy</option>
+           </select>
+</c:when>
+
+    <c:otherwise>  
+			   <select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px">
                 
                 <option value="Bussiness">Business Class</option>
                 <option value="Economy">economy</option>
                 <option value="premium">Premium Economy</option>
               </select>
- -->             
-			 <br>
-			 <%
-			 if(loggedInAsUser.equalsIgnoreCase("Guest") )
-			 {
-				 %>
-			
-			<label for="numberOfPassengers">Number of passengers:</label>
+          </c:otherwise>    
+              </c:choose>
+		 <br>
+		 <c:choose>
+		 
+		 
+		     <c:when test="${fn:containsIgnoreCase(loggedinuser,'Guest')}"> 
+		      
+		 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
 				name="numberOfPassengers"  min="1" max="8" pattern="[1-8]"
 				placeholder="Enter passengers count" oninput="calculation()" required autofocus /> </br>
 				
 			<br />
-			<%}
-			 
-			 else
-			 {%>
-				 			<label for="numberOfPassengers">Number of passengers:</label>
+		 
+		 </c:when>
+		 <c:otherwise>
+			  
+			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
 				name="numberOfPassengers"  min="1" max="8" pattern="[1-8]"
 				placeholder="Enter passengers count" oninput="calc()" required autofocus /> </br>
 				
 			<br />
-				 
-			<%  }
+		</c:otherwise>
+			 </c:choose>
 			
-			%>
-			 
-			<%
-			
-			String flightId = request.getParameter("flightId");
-			
-			int Flight_Id = Integer.parseInt(flightId);
-			FlightSearchDao flightDao = new FlightSearchDao();
-			Flight_list flight = flightDao.getRecordById(Flight_Id);
-			int businessClassRate = flight.getBussiness_class();
-			int economyClassRate = flight.getPremium_Economy_class();
-			int firstClassRate = flight.getEconomy_class();
-			
-			
-			
-			%>
-			
-		
+						
+		 <c:set var="eco" value="${param.Economyrate}" ></c:set>
+		 
+		 				      <fmt:parseNumber var="economy" value="${eco}" />  
+		 
+		 		 <c:set var="pre" value="${param.Premiumrate}" ></c:set>
+		 
+		 				      <fmt:parseNumber var="premium" value="${pre}" />  
+		 
+		 		 <c:set var="bus" value="${param.Business}" ></c:set>
+		 
+		 				      <fmt:parseNumber var="business" value="${bus}" />  
+		 
 			  
 					<label for="numberOfPassengers">Economy Price</label>
 			
 			<input type="text" id="firstClassPrice"style="position: relative; left: 41px; height: 25px; top: -1px; width: 230px" onkeyup="validlogin()"
 			
-				value="<%=firstClassRate%>" readonly /> <br /> <br /> 
+			 value="${economy}"  readonly /> <br /> <br /> 
 				
 					<label for="numberOfPassengers">  Premium Economy Price</label>
 				<input
 				type="text" id="economyClassPrice" style="position: relative; left: 13px; height: 25px; top: 3px; width: 230px"
 				
-				value="<%=economyClassRate%>"
+				value= "${premium}"
 				readonly /> <br /> <br /> 
 					<label for="numberOfPassengers">Business Class Price:</label>
 				<input type="text"
 				id="businessClassPrice"style="position: relative; left: 27px; height: 25px; top: 0px; width: 230px"
 				
-				 value="<%=businessClassRate%>" readonly />
+				 value="${business}" readonly />
 			<br /> <br /> 
 			
 			<label for="price">Price:</label> 
@@ -345,7 +340,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
        
 			</div>
 			
-			<p id="passresponse"></p>
 		</form>
 		</div>
 		</main>

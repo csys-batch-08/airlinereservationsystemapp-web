@@ -58,6 +58,8 @@ public class SearchFlightServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
         PrintWriter out=response.getWriter();
+
+        
        SourceDao objsearchflight = new SourceDao();
      
        	try

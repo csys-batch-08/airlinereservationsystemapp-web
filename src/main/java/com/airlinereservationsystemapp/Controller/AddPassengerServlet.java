@@ -2,6 +2,7 @@ package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
@@ -138,8 +139,9 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 			     RequestDispatcher requestDispatcher = request.getRequestDispatcher("PaymentDetails");
 					requestDispatcher.forward(request, response);
 
-				
-				
+				SimpleDateFormat sdf = new SimpleDateFormat("DD-MM-YYYY");
+					request.setAttribute("localDateTimeFormat", sdf);
+
 			//response.sendRedirect("Login.jsp");
 		} catch (Exception e) {
 			System.out.println("Hello error");
