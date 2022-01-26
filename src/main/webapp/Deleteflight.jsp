@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,7 @@ a:hover, a:active {
  
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
 			
-			<br /> <input type="number" name="Flight_id" value= "<%=request.getParameter("flightId")%>" readonly
+			<br /> <input type="number" name="Flight_id" value= "${param.flightId}" readonly
 				placeholder="FLIGHT_ID" required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				

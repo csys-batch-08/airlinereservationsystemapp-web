@@ -3,6 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,10 +100,14 @@ span.psw {
 
 </style>
 
-<%
+<%-- <%
 Passenger_details passengers  = (Passenger_details) request.getAttribute("Passenger_Deatils");
 		
 		%>
+ --%>		
+ 
+ <c:set  var="passengers" value="${Passenger_Deatils}" />
+		
 		<main class="container-fluid">
 		<h3 align="center">Confirm Details</h3>
 		<div align="center">
@@ -110,7 +118,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             <label for="username" style="position: relative; left: 20px; height: 25px; top: 4px; width: 230px"
             >PassengerName</label> 
 				<input type="text" name="username" id="username" style="position: relative; left: 29px; height: 25px; top: 5px; width: 210px"
-				value="<%=passengers.getPassenger_name()%>"readonly /> 
+				 value="${passengers.getPassenger_name()}"  readonly /> 
 				<br/>
 				<br>
 				<br>
@@ -122,7 +130,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="text"
 				name="coach" id="flightId"  style="position: relative; left: 38px; height: 25px; top: -6px; width: 210px"
-				value="<%=passengers.getClass_details()%>"
+			  value="${passengers.getClass_details()}"  
 				readonly /> <br /> <br /> 
 				
 				
@@ -131,7 +139,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="number"
 				name="MobileNumber" id="MobileNumber" style="position: relative; left: 32px; height: 25px; top: -6px; width: 210px"
-				value="<%=passengers.getMobile_number()%>"
+				  value="${passengers.getMobile_number()}" 
 				readonly /> <br /> <br /> 
 				
 				
@@ -140,7 +148,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="text"
 				name="source" id="flightId"style="position: relative; left: 61px; height: 25px; top: -6px; width: 210px"
-				 value="<%=passengers.getSource()%>"
+				  value="${passengers.getSource()}" 
 				readonly /> <br /> <br /> 
 				
 				
@@ -149,7 +157,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="text"
 				name="destination" id="flightId"style="position: relative; left: 47px; height: 25px; top: -6px; width: 210px"
-				 value="<%=passengers.getDestination()%>"
+				  value="${passengers.getDestination()}"
 				readonly /> <br /> <br /> 
 				
 				 <label for="bookingDate" style="position: relative; left: 38px; height: 25px; top: -6px; width: 230px"
@@ -157,7 +165,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="text"
 				name="bookingDate" id="flightId"style="position: relative; left: 44px; height: 25px; top: -6px; width: 210px"
-				 value="<%=passengers.getArrival_date()%>"
+				    value="${passengers.getArrival_date()}"
 				readonly /> <br /> <br /> 
 				
 				 <label for="numberOfPassengers" style="position: relative; left: 25px; height: 25px; top: -6px; width: 230px"
@@ -165,7 +173,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
             
 			<input type="text"
 				name="numberOfPassengers" id="flightId"style="position: relative; left: 34px; height: 25px; top: -6px; width: 210px"
-				 value="<%=passengers.getNoOfPassengers()%>"
+				  value="${passengers.getNoOfPassengers()}"
 				readonly /> <br /> <br /> 
 				
 				
@@ -173,35 +181,36 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
 				            >Flight Id</label>
 			<input type="text"
 				name="flightId" id="flightId" style="position: relative; left: 55px; height: 25px; top: -6px; width: 210px"
-				value="<%=passengers.getFlight_id()%>"
+				value="${passengers.getFlight_id()}"
 				readonly /> <br /> <br /> 
 				
 				<input type="hidden"
-				name="Economyclass" id="Economyclass" value="<%=passengers.getEconomyseat()%>"
+				name="Economyclass" id="Economyclass"  value="${passengers.getEconomyseat()}"
 				readonly /> 
 			
 			
 				
 				<input type="hidden"
-				name="PremiumEconomyclass" id="PremiumEconomyclass" value="<%=passengers.getPremiumeconomyseats()%>"
+				name="PremiumEconomyclass" id="PremiumEconomyclass" 
+				value="${passengers.getPremiumeconomyseats()}"
 				readonly  /> 
 				
 								
 				
 				<input type="hidden"
-				name="Bussinessclass" id="Bussinessclass" value="<%=passengers.getBusinessseats()%>"
+				name="Bussinessclass" id="Bussinessclass"  value="${passengers.getBusinessseats()}"
 				readonly />  
 				
 				<input type="hidden"
-				name="ticketno" id="ticketno" value="<%=passengers.getTicketNo()%>"
+				name="ticketno" id="ticketno"   value="${passengers.getTicketNo()}"
 				readonly /> 
 				
 			<input type="hidden"
-				name="amount" id="amount" value="<%=passengers.getAmount()%>"
+				name="amount" id="amount"  value="${passengers.getAmount()}"
 				readonly /> <br /> <br /> 
 				
 							<input type="hidden"
-				name="seatno" id="amount" value="<%=passengers.getSeatno()%>"
+				name="seatno" id="amount"  value="${passengers.getSeatno()}"
 				readonly /> <br /> 
 				
 								  <button type="submit">Submit</button>

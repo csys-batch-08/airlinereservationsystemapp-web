@@ -3,7 +3,10 @@ package com.airlinereservationsystemapp.Controller;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+
 import javax.servlet.RequestDispatcher;
 
 
@@ -18,7 +21,9 @@ import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightRegisterDao;
 import com.airlinereservationsystemapp.DaoImpl.LoginDao;
+import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Flight;
+import com.airlinereservationsystemapp.Models.Passenger_details;
 
 /**
  * Servlet implementation class Loginservlet
@@ -99,6 +104,13 @@ requestDispatcher.forward(request, response);
 			// TODO Auto-generated catch block
 		}
 			
+		 Passenger_detailsDao cancellist =  new Passenger_detailsDao();
+			LocalDate arrivaldte =  cancellist.getdate();
+
+			   System.out.println("Datehgdvhdzhdhfhzhfcxfhzfhxzhffchfdhfdhfdfhafdfdfhahfdfhfhhf"+arrivaldte);
+			   
+			   session.setAttribute("Arrivaldate", arrivaldte);
+
 	}
 
 }

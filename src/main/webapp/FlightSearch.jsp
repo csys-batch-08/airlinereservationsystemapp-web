@@ -3,6 +3,9 @@
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
@@ -62,22 +65,28 @@ button:hover {
   opacity: 0.8;
 }
 </style>
-<%
+<%-- <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>
+ --%>
+
+
+
  <jsp:include page="Header.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
  
         <div style="margin-left: 918px;margin-top: 30px">
-            <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
+        
+            <form   style="text-align: center; color: black; left:40px; width: 380px;" >
            
-              
+<!--            id="form" action="SearchFlight"   method="post"
+ -->              
               <input type="text"  
               id="fightsource" list="source" name="source" placeholder="Source" required>  
  <datalist id="source" >  
-   <%
+   <%-- <%
 				
 				FlightService flightService = new FlightService();
 				List<Source> Sourceinfo = flightService.getsource();
@@ -87,7 +96,17 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					%>
 					<option> <%=source.getSource()%> </option>
 			<%}
-%>
+%> --%>
+      
+      
+      <c:set var="source"  value="${Sourcelist}" />
+      
+           <c:forEach items="${Sourcelist}" var="source">
+      
+      <option>${source.getSource()}</option>
+      
+      </c:forEach>
+      
       
  </datalist>
     
@@ -95,17 +114,23 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
               id="fightdestination" list="destination" name="destination" placeholder="Destination"  required
 >  
  <datalist id="destination">  
-   <%
+   <%-- <%
 							 
 			
 				for (Source destination : Sourceinfo) {
 					%>
 					<option> <%=destination.getDestination()%> </option>
 			<%}
-%>
+%> --%>
+
+           <c:forEach items="${Sourcelist}" var="destination">
       
- </datalist>
-              <input  type="date" name="date" id  = "date" max="2022-10-26"  >
+      <option>${destination.getDestination()}</option>
+      
+      </c:forEach>
+      </datalist>
+
+                   <input  type="date" name="date" id  = "date" max="2022-10-26"  >
               
               
               <br><br>

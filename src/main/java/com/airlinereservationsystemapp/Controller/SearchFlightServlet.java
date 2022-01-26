@@ -28,7 +28,7 @@ import com.airlinereservationsystemapp.Models.Flight_list;
 /**
  * Servlet implementation class SearchFlight
  */
-@WebServlet("/SearchFlight")
+@WebServlet(  value = "/SearchFlight" , loadOnStartup = 2 )
 public class SearchFlightServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

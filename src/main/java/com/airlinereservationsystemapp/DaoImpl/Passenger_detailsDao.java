@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,10 +100,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 				long mobno  = rs.getLong(3);
 				String Source = rs.getString(4);
 				String destination = rs.getString(5);
-				//stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
-                 //LocalDate Bookingdate = rs.getDate(6).toLocalDate();
-				LocalDate Bookingdate = rs.getDate(6).toLocalDate();
-
+                LocalDate Bookingdate = rs.getDate(6).toLocalDate();
 				System.out.println(Bookingdate);
 				int flightid = rs.getInt(7);
 				int seatno = rs.getInt(8);
@@ -410,7 +409,16 @@ System.out.println(localDate2);
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
+	public  LocalDate getdate()
+	{
+        LocalDate lt = LocalDate.now();
+		return lt;
+	}
+	
+
 }
 
 	
