@@ -412,11 +412,6 @@ System.out.println(localDate2);
 
 
 	
-	public  LocalDate getdate()
-	{
-        LocalDate lt = LocalDate.now();
-		return lt;
-	}
 	
 
 }

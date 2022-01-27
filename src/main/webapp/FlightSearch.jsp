@@ -79,34 +79,21 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  
         <div style="margin-left: 918px;margin-top: 30px">
         
-            <form   style="text-align: center; color: black; left:40px; width: 380px;" >
-           
-<!--            id="form" action="SearchFlight"   method="post"
- -->              
+            <form  id="form" action="SearchFlight"   method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
+                     
               <input type="text"  
               id="fightsource" list="source" name="source" placeholder="Source" required>  
  <datalist id="source" >  
-   <%-- <%
-				
-				FlightService flightService = new FlightService();
-				List<Source> Sourceinfo = flightService.getsource();
-				
-				
-				for (Source source : Sourceinfo) {
-					%>
-					<option> <%=source.getSource()%> </option>
-			<%}
-%> --%>
+
+                        <c:forEach items="${Sourcelist}" var="source">
+          
+         <option>
+         
       
+                       ${source.getSource()}
       
-      <c:set var="source"  value="${Sourcelist}" />
-      
-           <c:forEach items="${Sourcelist}" var="source">
-      
-      <option>${source.getSource()}</option>
-      
-      </c:forEach>
-      
+      </option>
+            </c:forEach>
       
  </datalist>
     
@@ -114,18 +101,13 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
               id="fightdestination" list="destination" name="destination" placeholder="Destination"  required
 >  
  <datalist id="destination">  
-   <%-- <%
-							 
-			
-				for (Source destination : Sourceinfo) {
-					%>
-					<option> <%=destination.getDestination()%> </option>
-			<%}
-%> --%>
 
            <c:forEach items="${Sourcelist}" var="destination">
       
-      <option>${destination.getDestination()}</option>
+      <option>
+      ${destination.getDestination()}
+      
+      </option>
       
       </c:forEach>
       </datalist>
@@ -154,8 +136,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     </div>
     
                 <p id="searchresponse"></p>
-    
-    
+                
     
     <script>
     today();

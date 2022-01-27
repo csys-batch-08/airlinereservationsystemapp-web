@@ -104,12 +104,6 @@ requestDispatcher.forward(request, response);
 			// TODO Auto-generated catch block
 		}
 			
-		 Passenger_detailsDao cancellist =  new Passenger_detailsDao();
-			LocalDate arrivaldte =  cancellist.getdate();
-
-			   System.out.println("Datehgdvhdzhdhfhzhfcxfhzfhxzhffchfdhfdhfdfhafdfdfhahfdfhfhhf"+arrivaldte);
-			   
-			   session.setAttribute("Arrivaldate", arrivaldte);
 
 	}
 

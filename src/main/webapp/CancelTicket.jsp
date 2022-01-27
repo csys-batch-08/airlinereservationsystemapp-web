@@ -45,19 +45,6 @@ a:hover, a:active {
 
 
 
-<%-- <%  
-		List<Passenger_details> objcancellist = (List<Passenger_details>)request.getAttribute("CancelList");
-		%>
- --%>
-<%!
-private static Date getcurrentdate()
-{
-	java.util.Date today = new java.util.Date();
-	return new java.sql.Date(today.getTime());
-}
-%>
-		
- 
 		   		<table border="2" class="table">
 			<h1 align="center"><b>Flight List</b></h1>
 			<thead>
@@ -85,35 +72,11 @@ private static Date getcurrentdate()
 			<br>
 			
 			<tbody>
-				<%-- <%
-					int i = 0;
-					for (Passenger_details objcancel : objcancellist) {	
-						i++;
- %> --%>
+
       <c:forEach items="${CancelList}" var="cancel" varStatus="status">
  
 				<tr>
 				
-					
-					<%-- <td><%=i%></td>
-					<td><%=objcancel.getClass_details().toUpperCase()%></td>
-					<%System.out.println("class" +  objcancel.getClass_details());%>
-					<td><%=objcancel.getMobile_number()%></td>
-					
-					<td><%=objcancel.getSource()%></td>
-					
-					<td> <%=objcancel.getDestination()%></td>
-										<td> <%=objcancel.getFlight_id()%></td>
-															<td> <%=objcancel.getArrival_date()%></td>
-					
-					<td> <%=objcancel.getTicketNo()%></td>
-										
-					
-					<td class="success"> <%=objcancel.getSeatno()%></td>
-					<td class="danger"> <%=objcancel.getStatus()%></td>
-					<td> <%=objcancel.getBookingdate()%></td>
-					<td> <%=objcancel.getMode()%></td>
-					<td class="warning"> <%=objcancel.getAmount()%></td> --%>
 					
 					
   		<td>${status.count}</td>		
@@ -124,14 +87,17 @@ private static Date getcurrentdate()
 					
 					<td>${cancel.getDestination()}</td>
 					<td> ${cancel.getFlight_id()}</td>
-					<td> ${cancel.getArrival_date()}</td>
+					<fmt:parseDate value="${cancel.getArrival_date()}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+					<td><fmt:formatDate value="${macthDate}" pattern="DD-MM-YYYY"/>  </td>
 					
 					<td> ${cancel.getTicketNo()}</td>
 										
 					
 					<td class="success"> ${cancel.getSeatno()}</td>
 					<td class="danger"> ${cancel.getStatus()}</td>
-					<td>${cancel.getBookingdate()}</td>
+					<fmt:parseDate value="${cancel.getBookingdate()}" pattern="yyyy-MM-dd" var="bookingdate" type="date"/>
+					
+					<td><fmt:formatDate value="${bookingdate}"  pattern="DD-MM-YYYY" />    </td>
 					<td>${cancel.getMode()}</td>
 					<td class="warning">${cancel.getAmount()}</td> 
 					
@@ -141,44 +107,46 @@ private static Date getcurrentdate()
 					
 					
 					
-<%-- 					<%
-					LocalDate  date  = ${cancel.getArrival_date()};
-					Date local = java.sql.Date.valueOf(date);
-					String status =  objcancel.getStatus();
-					%> 
- --%>				
- 				<c:set var="date" value= "${cancel.getArrival_date()}"  />  
  
-  				<c:set var="arrives"  value="${Arrivaldate}"  />  
+
+             <c:set var="datevalue"  value="${Arrivaldate}"  />
+              <c:set var="curendd"  value="${Arrives}"  />
  
  					<c:set var="status" value="${cancel.getStatus() }" />  
- 					 					<c:set var="values" value= "${status}"/>  
+	 	<c:choose>
  	
-				<c:choose>
-				
-				<c:when test= "${date>arrives}">
-				<td>CANCELLED</td>
-				</c:when>
-				
-                <c:otherwise>
+ 	<c:when test="${datevalue<cancel.getArrival_date()}">
+ 	 	<c:choose>
+ 	 	
+ 	 	 	<c:when test= "${cancel.getStatus().equals('Cancelled')}">
+ 	<td>CANCELLED</td>
+ 	
+ 	</c:when>
+ 	<c:otherwise>
 
 	     		<td><a href="FlightCancellation.jsp?seatno=${cancel.getSeatno()}&Flightid=${cancel.getFlight_id()}&Departuredate=${cancel.getArrival_date()}
 	&Class=${cancel.getClass_details()}&Amount=${cancel.getAmount()}"
 		class="btn btn-primary" >CancelTicket</a></td>
-		</c:otherwise>		
+ 	</c:otherwise>
+ 	 	
+ 	 	</c:choose>
+ 	
 				
-					</c:choose>							
-						</tr>
-														</c:forEach>
+		</c:when>
+<c:otherwise>	
+
+<td>DEPARTED</td>
+
+
+</c:otherwise>					
+					</c:choose>
+					
+ 					</tr>																	</c:forEach>
 			
 			
 					</tbody>
 		           </table>
 		           
-		           
-					<p>hdsfgdsfgfgdfgsfgdsgdsdfgfdsfgdgf	<c:out value="${cancel}"></c:out></p>
-			<c:out value="${date}"></c:out>
-			
 </body>
 
 </html>

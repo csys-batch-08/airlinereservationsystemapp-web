@@ -1,5 +1,8 @@
 <%@page import="com.airlinereservationsystemapp.Models.Flight_Seat_Availability"%>
 <%@page import="java.util.List"%>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,18 +23,19 @@ table, td, th {
 <body>
 
 
-<%
+<%-- <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
-%>
+%> --%>
 
+<c:set var="loggedinuser"    value="${LOGGED_IN_USER}"/>  
 
+<c:set var="loggedinadmin"    value="${LOGGED_IN_ADMIN}"/>  
 
-	<%
-		List<Flight_Seat_Availability> flights = (List<Flight_Seat_Availability>)request.getAttribute("Flight_List");
-		if (flights != null) {
-		%>
+<c:set var="flights" value="${Flight_List}" />
+		
+		 <c:if test="${flights!= null}">
 		 
 		<a href="FlightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />
 
@@ -59,85 +63,71 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  	<th>Departure Time</th>
 					
 					
-										
+			<c:if test="${loggedinuser != null}">
 					
-					
-					<%
-			if (loggedInAsUser != null) {
-			%>
-					<th scope= "col">Book Ticket </th>
-				<%}
-				%>
+						<th scope= "col">Book Ticket </th>
+					</c:if>
 					
 					
 				</tr>
 			</thead>
-			<br>
-			<br>
-			
+</br>			
 			<tbody>
-				<%
-					int i = 0;
-					for (Flight_Seat_Availability flight : flights) {
-						i++;
-				%>
+			
+     <c:forEach items="${Flight_List}" var="plane" varStatus="status">
+				
 				<tr>
 				
-					
-					<td><%=i%></td>
-					<td><%=flight.getFlightId()%></td>
-					<td><%=flight.getFlightname()%></td>
-					<td><%=flight.getSource()%></td>
-					<td><%=flight.getDestination()%></td>
-					<td> <%=flight.getDeparture_Date()%></td>
-					
-					<td> <%=flight.getEconomy_class()%></td>
-					<td><%=flight.getPremium_Economy_class()%></td>
-					<td> <%=flight.getBussiness_class()%></td>
-					<td> <%=flight.getEconomy_rate()%></td>
-					<td> <%=flight.getPremium_Economy_rate()%></td>					
-					<td> <%=flight.getBussiness_rate()%></td>
-<%-- 				    <td> <%=flight.getArrivalTime()%></td>
- --%>					
- <td> <%=flight.getDepartureTime()%></td>
-										
-					<%
-			if (loggedInAsUser != null) 
-			{%>
-			 
-			 <%			
-			 if(flight.getEconomy_class()==0 && flight.getPremium_Economy_class()== 0 && flight.getBussiness_class()==0 )
-			{ %>
-			
-			    <td> NO TICKETS AVAILABLE </td>
-			   <% }
-			
-			else
-			{%>
-					<td><a href="AddPassenger.jsp?flightId=<%=flight.getFlightId() %>&source=<%=flight.getSource()%>&destination=<%=flight.getDestination()%>
-					&Departure_Date=<%=flight.getDeparture_Date()%>&Economy_class=<%=flight.getEconomy_class()%>&Premium_Economy_class=<%=flight.getPremium_Economy_class()%>
-&Bussiness_class=<%=flight.getBussiness_class()%>&Economyrate=<%=flight.getEconomy_rate()%>&Premiumrate=<%=flight.getPremium_Economy_rate()%>
-&Business=<%=flight.getBussiness_rate()%>" 
+ 
+   		<td>${status.count}</td>		
+ 
+  	<td>${plane.getFlightId()}</td>
+ 					 <td>${plane.getFlightname()}</td>
+ 					  					 <td>${plane.getSource()}</td>
+ 					  					 <td>${plane.getDestination()}</td>
+ 					  					 <fmt:parseDate value="${plane.getDeparture_Date()}" pattern="yyyy-MM-dd" var="departured" type="date"/>
+ 					  					 
+ 					  					 <td><fmt:formatDate value="${departured}" pattern="DD-MM-YYYY"   />    </td>
+ 					  					 <td>${plane.getEconomy_class()}</td>
+ 					  					 <td>${plane.getPremium_Economy_class()}</td>
+ 					  					 <td>${plane.getBussiness_class()}</td>
+ 					  					 <td>${plane.getEconomy_rate()}</td>
+ 					  					 <td>${plane.getPremium_Economy_rate()}</td>
+ 					  					 <td>${plane.getBussiness_rate()}</td>
+ 					  					 <td>${plane.getDepartureTime()}</td>
+ 
+ 
+ 
+ 
+ 
+ 							
+            <c:if test="${loggedinuser != null}">
+            
+            <c:if test="${flight.getEconomy_class()==0 && flight.getPremium_Economy_class()== 0 && flight.getBussiness_class()==0 }">
+            
+            			    <td> NO TICKETS AVAILABLE </td>
+             </c:if>
+            
+
+         <c:if test="${flight.getEconomy_class()!=0 && flight.getPremium_Economy_class()!= 0 && flight.getBussiness_class()!=0}">
+         
+                      <td><a href="AddPassenger.jsp?flightId=${flight.getFlightId()}&source=${flight.getSource()}&destination=${flight.getDestination()}
+					&Departure_Date=${flight.getDeparture_Date()}&Economy_class=${flight.getEconomy_class()}&Premium_Economy_class=${flight.getPremium_Economy_class()}
+&Bussiness_class=${flight.getBussiness_class()}&Economyrate=${flight.getEconomy_rate()}&Premiumrate=${flight.getPremium_Economy_rate()}
+&Business=${flight.getBussiness_rate()}" 
 					class="btn btn-primary">BOOK NOW</a></td>
-				</tr>
-				
-			<%}
-			 %>	 
-				
-					<% }
-					
-				
-					%> 
-	 <%}
-	 %>
-		 <%}
-	 %>		
-			
-					
+         
+        </c:if>
+           
+</c:if>
+
+
+</tr>
+</c:forEach>
  </tbody>
 </table>	
 		
-		
-		
+			
+		</c:if>
 </body>
 </html>

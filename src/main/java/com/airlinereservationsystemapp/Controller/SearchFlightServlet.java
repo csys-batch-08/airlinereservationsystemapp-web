@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
 import com.airlinereservationsystemapp.DaoImpl.LoginDao;
@@ -28,7 +29,7 @@ import com.airlinereservationsystemapp.Models.Flight_list;
 /**
  * Servlet implementation class SearchFlight
  */
-@WebServlet(  value = "/SearchFlight" , loadOnStartup = 2 )
+@WebServlet("/SearchFlight")
 public class SearchFlightServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -85,7 +86,7 @@ public class SearchFlightServlet extends HttpServlet {
 			//System.out.println(Destination);
 		
 			
-			
+			HttpSession session =  request.getSession();
 			
 			//List<Flight_Seat_Availability> objavailability = objsearchflight.ListSeat(Source, Destination);
 			List<Flight_Seat_Availability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
@@ -97,10 +98,17 @@ public class SearchFlightServlet extends HttpServlet {
 			requestDispatcher.forward(request, response);
 			
 			
+			
+
+
+
+
+			
 		}
 		catch(Exception e)
 		{
 			out.println(e.getMessage());
+			System.out.println(e);
 		}
 		
 	}

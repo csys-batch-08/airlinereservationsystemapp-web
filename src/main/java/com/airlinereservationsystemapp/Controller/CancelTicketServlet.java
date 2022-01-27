@@ -41,17 +41,24 @@ public class CancelTicketServlet extends HttpServlet {
 		Passenger_detailsDao cancellist = new Passenger_detailsDao();
 	       HttpSession session = request.getSession();
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+	       
 
 		List<Passenger_details> cancelinfo = cancellist.CancelTicket(loggedInAsUser);
 		System.out.println(cancelinfo);
 		
 		
-		request.setAttribute("CancelList", cancelinfo);
+		session.setAttribute("CancelList", cancelinfo);
+		
+		
+		
+		
+		
+		
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("CancelTicket.jsp");
 		requestDispatcher.forward(request, response);
 		
-				
-				// TODO Auto-generated method stub
+
 	}
 
 	/**

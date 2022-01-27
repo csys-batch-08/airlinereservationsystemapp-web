@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Passenger_details;
@@ -45,7 +46,7 @@ public class AddPassengerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		
-	        
+	        HttpSession session = request.getSession();
 	    try {
 			  String Flight_Id =request.getParameter("flightId");
 			  int flightid = Integer.parseInt(Flight_Id);
@@ -55,6 +56,8 @@ public class AddPassengerServlet extends HttpServlet {
 			String date = request.getParameter("bookingDate");
 			LocalDate local = LocalDate.parse(date);
 
+			System.out.println("hdsghsdghghdsghhhhhhhhhsghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"+local);
+			session.setAttribute("Date", local);
 
 			String Source = request.getParameter("source");
 			String Destination = request.getParameter("destination");
@@ -96,7 +99,6 @@ public class AddPassengerServlet extends HttpServlet {
 	     
 	     System.out.println(seatno);
 
-	     HttpSession session = request.getSession();
 	     session.setAttribute("logpass",noofpass);
 	     
 	     session.setAttribute("Economy", economyseats);

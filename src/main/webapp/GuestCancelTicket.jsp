@@ -5,6 +5,9 @@
             <%@ page import="java.time.LocalDate"%> 
                 <%@ page import="java.sql.Date"%>
                             <%@page import="com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao"%>
+                            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+                            
     
 <!DOCTYPE html>
 <html>

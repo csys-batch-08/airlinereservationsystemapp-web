@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
     
 <!DOCTYPE html>
 <html>
@@ -102,7 +104,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				
 				<div class="container"> 
 				    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter Username" name="username" value="<%=request.getParameter("username") %>"  required>
+    <input type="text" id="username" placeholder="Enter Username" name="username" value="${param.username}"required>
 <br></br>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>

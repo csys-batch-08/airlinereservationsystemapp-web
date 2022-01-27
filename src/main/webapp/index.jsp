@@ -18,16 +18,23 @@ body {
 <body>
 <!-- <marquee  ><i style="font-size: 35px">Welcome &nbsp&nbsp To &nbsp&nbsp Flight &nbsp&nbsp Reservation &nbsp&nbsp Booking</i></marquee>
  -->
+
+
+
+
  <h1 style="font-family: inherit;" align="center" >Adventure Awaits</h1>
 
-<!-- <h1 style="font-family:sans-serif;speak: normal;">Adventure Awaits</h1>
- -->
+
+
+
+
+
 
 <script>
 
  setTimeout(function(){
-    window.location.href = 'FlightSearch.jsp';
- }, 4000);
+    window.location.href = 'Sourcedestination';
+ }, 3000);
  
 
 </script>
