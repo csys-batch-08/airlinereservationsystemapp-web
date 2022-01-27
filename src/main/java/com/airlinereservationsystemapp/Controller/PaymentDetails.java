@@ -40,6 +40,11 @@ public class PaymentDetails extends HttpServlet {
 			int TicketNo = Integer.parseInt(ticketno);
 			String Amount = request.getParameter("amount");
 			int Price = Integer.parseInt(Amount);
+			
+			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Amount);
+			
+			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Price);
+
 		     
 			HttpSession session = request.getSession();
 			int pass = (int)session.getAttribute("logpass");
@@ -51,6 +56,20 @@ ArrayList<Integer> value = (ArrayList<Integer>)request.getAttribute("SeatValue")
 System.out.println("dkjcxhhccxggcxvcvcxvvcxvgsgdffghdsfgfgdfgdsfgdsgfsd"+value);
 
 session.setAttribute("Seatfield",value);
+
+String seatvaluefield =  value.toString();
+
+System.out.println("seatvaluefield     :"+seatvaluefield);
+
+
+String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
+
+str=str.replaceAll("\\s", "");
+
+System.out.println("Converted seat typr valuesssaasasa"+str); 
+
+session.setAttribute("Seatfield",str);
+
 
 
 			

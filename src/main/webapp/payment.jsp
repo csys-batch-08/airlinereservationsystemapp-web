@@ -5,6 +5,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         <%@page import="java.util.ArrayList"%>
+                                     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+                 
+        
             
 <!DOCTYPE html>
 <html>
@@ -152,7 +157,7 @@ width: 40%
 }
 
 </style>
-<%
+<%-- <%
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String role = (String)session.getAttribute("ROLE");
 String flightid=  (String)session.getAttribute("Flight_id");
@@ -171,7 +176,13 @@ String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
 str=str.replaceAll("\\s", "");
 System.out.println(str); 
 
-%>
+%> --%>
+<c:set value="${LOGGED_IN_USER}"  var="loguser" />
+<c:set value="${ROLE}"  var="role" />
+<c:set value="${Flight_id}"  var="flightid" />
+<c:set value="${Ticket_no}"  var="ticketno" />
+<c:set value="${Amont}"  var="amount" />
+<c:set value="${Seatfield}"  var="seatnumeric" />
 
 
 
@@ -193,20 +204,63 @@ System.out.println(str);
 				
 				
 				    <label for="flightid" ><b>Flight Id</b></label>
-    <input type="text" id="flightid" name="flightid" value ="<%=flightid%>"  readonly>
+    <input type="text" id="flightid" name="flightid" value ="${flightid}"  readonly>
 <br></br>
     <label for="ticketno"><b>Ticket No</b></label>
-    <input type="text"  name="ticketno" value="<%=ticketno%>" readonly>
+    <input type="text"  name="ticketno" value="${ticketno}" readonly>
 <br></br>
     <label for="amount"><b>Amount</b></label>
-    <input type="text"  name="Amount" value="<%=amount%>" readonly>
+    <input type="text"  name="Amount" value="${Amont}" readonly>
     <br></br>
     
         <label for="Seatno"><b>SEATNO</b></label>
-    <input type="text"  name="seatno" value="<%=str%>" readonly>
+    <input type="text"  name="seatno" value="${seatnumeric}" readonly>
     <br></br>
+        <c:choose>
+    <c:when test="${loguser.equals('Guest')}">
     
+    				      <label for="wallet""><b>Mode *</b></label>
     
+    <input type="radio"  name="yesCheck" 
+				value="Creditcard" required> 
+				<label for="card" >Credit Card</label> 
+				
+				<input type="radio"  name="yesCheck" value="Debitcard" required > 
+				<label for="card" >Debitcard</label> 
+				    <br>
+				    <br>
+				         		
+				        			<button type="Submit"  required 
+					>
+				SUBMIT	</button>
+   </c:when>
+   <c:otherwise>
+   
+   				      <label for="wallet"><b>Mode *</b></label>
+    
+    <input type="radio"  name="yesCheck" value="Creditcard" required				 > 
+				<label for="card" >Credit Card</label> 
+				
+				<input type="radio"  name="yesCheck"  value="Debitcard"  required > 
+				<label for="card" >Debitcard</label> 
+				
+                    				<input type="radio"  
+				name="yesCheck" value="Wallet"  required > 
+				<label
+				for="Wallet" >Wallet</label>
+				<br>
+				<br>
+							<button type="Submit"   
+					>
+				SUBMIT	</button>
+				
+   </c:otherwise> 
+    
+        
+	</c:choose>
+													
+    
+<%--     
 		<%
 			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
 			%>
@@ -253,7 +307,7 @@ System.out.println(str);
                     
 			<% }
 			
-			%>
+			%> --%>
 			
     		</form>
 				
@@ -287,5 +341,9 @@ System.out.println(str);
  
  </script>
  -->
+ 
+ 
+ 
+ 
 </body>
 </html>

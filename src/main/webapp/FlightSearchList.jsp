@@ -87,7 +87,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  					  					 <td>${plane.getDestination()}</td>
  					  					 <fmt:parseDate value="${plane.getDeparture_Date()}" pattern="yyyy-MM-dd" var="departured" type="date"/>
  					  					 
- 					  					 <td><fmt:formatDate value="${departured}" pattern="DD-MM-YYYY"   />    </td>
+ 					  					 <td><fmt:formatDate value="${departured}" pattern="dd-MM-yyyy"   />    </td>
  					  					 <td>${plane.getEconomy_class()}</td>
  					  					 <td>${plane.getPremium_Economy_class()}</td>
  					  					 <td>${plane.getBussiness_class()}</td>
@@ -103,18 +103,18 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  							
             <c:if test="${loggedinuser != null}">
             
-            <c:if test="${flight.getEconomy_class()==0 && flight.getPremium_Economy_class()== 0 && flight.getBussiness_class()==0 }">
+            <c:if test="${plane.getEconomy_class()==0 && plane.getPremium_Economy_class()== 0 && plane.getBussiness_class()==0 }">
             
             			    <td> NO TICKETS AVAILABLE </td>
              </c:if>
             
 
-         <c:if test="${flight.getEconomy_class()!=0 && flight.getPremium_Economy_class()!= 0 && flight.getBussiness_class()!=0}">
+         <c:if test="${plane.getEconomy_class()!=0 && plane.getPremium_Economy_class()!= 0 && plane.getBussiness_class()!=0}">
          
-                      <td><a href="AddPassenger.jsp?flightId=${flight.getFlightId()}&source=${flight.getSource()}&destination=${flight.getDestination()}
-					&Departure_Date=${flight.getDeparture_Date()}&Economy_class=${flight.getEconomy_class()}&Premium_Economy_class=${flight.getPremium_Economy_class()}
-&Bussiness_class=${flight.getBussiness_class()}&Economyrate=${flight.getEconomy_rate()}&Premiumrate=${flight.getPremium_Economy_rate()}
-&Business=${flight.getBussiness_rate()}" 
+                      <td><a href="AddPassenger.jsp?flightId=${plane.getFlightId()}&source=${plane.getSource()}&destination=${plane.getDestination()}
+					&Departure_Date=${plane.getDeparture_Date()}&Economy_class=${plane.getEconomy_class()}&Premium_Economy_class=${plane.getPremium_Economy_class()}
+&Bussiness_class=${plane.getBussiness_class()}&Economyrate=${plane.getEconomy_rate()}&Premiumrate=${plane.getPremium_Economy_rate()}
+&Business=${plane.getBussiness_rate()}" 
 					class="btn btn-primary">BOOK NOW</a></td>
          
         </c:if>

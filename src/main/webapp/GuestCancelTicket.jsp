@@ -7,6 +7,8 @@
                             <%@page import="com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao"%>
                             <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+ 
                             
     
 <!DOCTYPE html>
@@ -24,9 +26,12 @@
 
 
 
-<%  
+<%-- <%  
 		List<Passenger_details> objcancellist = (List<Passenger_details>)request.getAttribute("GuestList");
-		%>
+		%> --%>
+		
+		<c:set/>
+		
 <%!
 private static Date getcurrentdate()
 {
@@ -61,15 +66,19 @@ private static Date getcurrentdate()
 			<br>
 			
 			<tbody>
-			<%
+<%-- 			<%
 					int i = 0;
 					for (Passenger_details objcancel : objcancellist) {	
 						i++;
  %>
-				<tr>
+ --%>				
+ 
+ <c:forEach  items="${GuestList}" var="guestcancel" varStatus="status">
+ 
+ <tr>
 				
 					
-					<td><%=i%></td>
+					<%-- <td><%=i%></td>
 					<td><%=objcancel.getClass_details().toUpperCase()%></td>
 					<%System.out.println("class" +  objcancel.getClass_details());%>
 					<td><%=objcancel.getMobile_number()%></td>
@@ -87,20 +96,69 @@ private static Date getcurrentdate()
 					<td class="danger"> <%=objcancel.getStatus()%></td>
 					<td> <%=objcancel.getBookingdate()%></td>
 					<td> <%=objcancel.getMode()%></td>
-					<td class="warning"> <%=objcancel.getAmount()%></td>
+					<td class="warning"> <%=objcancel.getAmount()%></td> --%>
 					
 					
+					  		<td>${status.count}</td>		
+					<td>${guestcancel.getClass_details().toUpperCase()}</td>
+    				<td>${guestcancel.getMobile_number()}</td>
+					<td>${guestcancel.getSource()}</td>
+					<td>${guestcancel.getDestination()}</td>										
+					<td>${guestcancel.getFlight_id()}</td>
+<%-- 					<td>${guestcancel.getArrival_date()}</td>
+ --%>					
+ <fmt:parseDate value="${guestcancel.getArrival_date()}" pattern="yyyy-MM-dd" var="guestarrivaldate" type="date"/>
+					<td><fmt:formatDate value="${guestarrivaldate}" pattern="dd-MM-yyyy"/>  </td>
+					
+					<td>${guestcancel.getTicketNo()}</td>										
+					<td class="success">${guestcancel.getSeatno()}</td>
+					<td class="danger">${guestcancel.getStatus()}</td>
+<%-- 					<td>${guestcancel.getBookingdate()}</td>
+ --%>								
+ 		<fmt:parseDate value="${guestcancel.getBookingdate()}" pattern="yyyy-MM-dd" var="bookeddate" type="date"/>
+					<td><fmt:formatDate value="${bookeddate}" pattern="dd-MM-yyyy"/>  </td>
+					
+					<td>${guestcancel.getMode()}</td>
+					<td class="warning">${guestcancel.getAmount()}</td>
 					
 					
+					             <c:set var="datevalue"  value="${Arrivaldate}"  />
+ 
+ 					<c:set var="status" value="${guestcancel.getStatus() }" />  
 					
-					<%
-					LocalDate  date  = objcancel.getArrival_date();
-					Date local = java.sql.Date.valueOf(date);
-					String status =  objcancel.getStatus();
-					%>
+					 	<c:choose>
+ 	
+ 	<c:when test="${datevalue<guestcancel.getArrival_date()}">
+ 	 	<c:choose>
+ 	 	
+ 	 	 	<c:when test= "${guestcancel.getStatus().equals('Cancelled')}">
+ 	
+ 	<td>CANCELLED</td>
+ 	
+ 	</c:when>
+ 	<c:otherwise>
+
+	     		<td><a href="FlightCancellation.jsp?seatno=${guestcancel.getSeatno()}&Flightid=${guestcancel.getFlight_id()}&Departuredate=${guestcancel.getArrival_date()}
+	&Class=${guestcancel.getClass_details()}&Amount=${guestcancel.getAmount()}"
+		class="btn btn-primary" >CancelTicket</a></td>
+ 	</c:otherwise>
+ 	 	
+ 	 	</c:choose>
+ 	
 				
+		</c:when>
+<c:otherwise>	
+
+<td>DEPARTED</td>
+
+
+</c:otherwise>					
+					</c:choose>
+					
+ 					</tr>												
+ 					</c:forEach>
 				
-				<%
+<%-- 				<%
 			if (local.after(getcurrentdate())){
 			%>
 					
@@ -131,6 +189,10 @@ private static Date getcurrentdate()
 							<%
 				}
 				%>
+				
+ --%>				
+ 
+ 
 			
 					</tbody>
 		           </table>

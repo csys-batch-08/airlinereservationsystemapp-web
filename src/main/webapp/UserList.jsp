@@ -2,6 +2,11 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="com.airlinereservationsystemapp.Models.Flight"%>
 <%@page import="java.util.List"%>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+                 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,10 +39,7 @@ a:hover, a:active {
 
 <a href="FlightSearch.jsp"class="btn btn-danger"> Back </a> <br > <br />
 
-<%  
-		List<Flight> regobject = (List<Flight>)request.getAttribute("Flight");
- 
-		%>
+	<c:set value="${Flight}" var="regobject" />
 	
    		<table border="2" class="table">
 			<h1 align="center"><b>Registered User  List</b></h1>
@@ -56,29 +58,24 @@ a:hover, a:active {
 			<br>
 			<br>
 			<tbody>
-				<%
-					int i = 0;
-					for (Flight register : regobject) {
-						i++;
-				%>
+				      <c:forEach items="${regobject}" var="reg" varStatus="status">
+				
 				<tr>
 				
 					
-					<td><%=i%></td>
-					<td><%=register.getName()%></td>
-					<td class="table-warning"><%=register.getEmailid()%></td>
-					<td><%=register.getUsername()%></td>
-					<td><%=register.getPassword()%></td>
+					  		<td>${status.count}</td>	
+					<td>${reg.getName()}</td>
+					<td class="table-warning">${reg.getEmailid()}</td>
+					<td>${reg.getUsername()}</td>
+					<td>${reg.getPassword()}</td>
 					
-					<td> <%=register.getGender()%></td>
-					<td> <%=register.getPhonenumber()%></td>
-					<td class="table-danger"> <%=register.getRegisterDate()%></td>
+					<td> ${reg.getGender()}</td>
+					<td> ${reg.getPhonenumber()}</td>
+					<td class="table-danger"> ${reg.getRegisterDate()}</td>
 					
 			</tr>
 					
-					<%
-				}
-				%>
+				</c:forEach>
 					</tbody>
 		           </table>
 			

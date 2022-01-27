@@ -158,8 +158,8 @@ a:hover, a:active {
  					  					 <td>${flight.getEconomy_class()}</td>
  					  					 <td>${flight.getPremium_Economy_class()}</td>
  					  					 <td>${flight.getBussiness_class()}</td>
- 					  					 <td><fmt:formatDate value="${flight.getArrival_Time()}" pattern="DD-MM-YYYY" />  </td>
- 					  					 <td><fmt:formatDate value="${flight.getDeparture_time()}" pattern="DD-MM-YYYY"/></td>
+ 					  					 <td><fmt:formatDate value="${flight.getArrival_Time()}" pattern="dd-MM-yyyy"  />  </td>
+ 					  					 <td><fmt:formatDate   value="${flight.getDeparture_time()}" pattern="dd-MM-yyyy"/></td>
  					  					 <td>${flight.getEconomyseats()}</td>
  					  					 <td>${flight.getPremiumseats()}</td>
  					  					 <td>${flight.getBusinessseats()}</td>
@@ -168,7 +168,9 @@ a:hover, a:active {
  					  					 <td>${flight.getFlightstatus()}</td>
  					  					 
  					  					 					<c:if test ="${loggedinadmin!=null}">  
-						<td><a href="Updateflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">UpdateFlight</a></td>
+						<td><a href="Updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
+						&Economyclass=${flight.getEconomy_class()}&premiumeconomyclass=${flight.getPremium_Economy_class()}&Businessclass=${flight.getBussiness_class()}
+						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td>
 			                                              </c:if>
 			                                              
 			                                              	 <c:if test ="${loggedinadmin!=null}">  

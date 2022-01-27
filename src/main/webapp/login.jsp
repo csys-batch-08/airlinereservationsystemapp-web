@@ -1,5 +1,10 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+                         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+                 
+    
     
 <!DOCTYPE html>
 <html>
@@ -95,11 +100,16 @@ body{
 </style>
 
      
-		<%
+<%-- 		<%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String error  = (String) session.getAttribute("Error");
- %>	
+ %>	 --%>
+ 
+ <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
+<c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
+<c:set value="${Error}" var="error"  />
+ 
 <div style="margin-right: 900px; margin-top: 70px;">	
 <main class="container-fluid">
 		<h3 align="center" style="color: white;">Login</h3>
@@ -124,7 +134,7 @@ String error  = (String) session.getAttribute("Error");
     </div>
     
    	 <div id="fads">
-   	<%
+<%--    	<%
 			if (error!= null) {
 			%>
 					<p id="value"   style="font-size: 20px; color: red;"><%=error%> </p>
@@ -132,7 +142,12 @@ String error  = (String) session.getAttribute("Error");
 				<% }
 			
 			
-   			%>
+   			%> --%>
+   <c:if test="${error!=null}">
+   					<p id="value"   style="font-size: 20px; color: red;">${error} </p>
+   
+   </c:if>
+   
    
    </div>
  
@@ -146,28 +161,15 @@ String error  = (String) session.getAttribute("Error");
  
 
  
- 
+ <c:set value="${param.username}" var="username"/>
      
 				
-				<%
-			
-			String username = request.getParameter("username");
-    		System.out.println("Username "+username);
-			
-			
-			%>
-			    
 		<div class="container" style="background-color:#f1f1f1">
     <button type="button"  class="cancelbtn"><a href="FlightSearch.jsp" style="text-decoration: blink;">BACK</a></button>
-    <%
-			if (error!= null) {
-			%>
-				   <a href="ForgetPassword.jsp?username=<%=username%>" class="btn btn-primary"  >Forget password?</a>
-					
-				<% }
-			
-			
-   			%>
+   			<c:if test="${error!=null}">
+   			
+   		   <a href="ForgetPassword.jsp?username=${param.username}" class="btn btn-primary"  >Forget password?</a>
+   			</c:if>
    
   </div>
   

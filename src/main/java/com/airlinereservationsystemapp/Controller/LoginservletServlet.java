@@ -25,6 +25,8 @@ import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
+import Services.FlightService;
+
 /**
  * Servlet implementation class Loginservlet
  */
@@ -80,6 +82,19 @@ requestDispatcher.forward(request, response);
 
 					session.setAttribute("LOGGED_IN_USER", username);
 					
+					 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+					 
+						FlightService flightService = new FlightService();
+						int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
+
+						System.out.println("The closing Balance is " +Closingbalance);
+						
+						session.setAttribute("Closingbalance", Closingbalance);
+
+						session.getAttribute("Sourcelist");
+						
+						System.out.println("sourceliost of value printed"+session.getAttribute("Sourcelist"));
+
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 					requestDispatcher.forward(request, response);
 
@@ -103,6 +118,8 @@ requestDispatcher.forward(request, response);
 			System.out.println(e.getMessage());
 			// TODO Auto-generated catch block
 		}
+		 
+
 			
 
 	}

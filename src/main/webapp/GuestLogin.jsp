@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+                         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,14 +100,17 @@ span.psw {
 }
 
 </style>
-<%
+<%-- <%
 
 String loggedguest = (String)session.getAttribute("LOGGED");
 String role = (String)session.getAttribute("ROLE");
 String error =   (String)session.getAttribute("Errorvalue");
+%> --%>
 
 
-%>
+<c:set var="error"  value="${Errorvalue}"/>
+
+<c:set var="role"  value="${ROLE}"/>
 
 
 <a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />; 
@@ -144,7 +151,7 @@ String error =   (String)session.getAttribute("Errorvalue");
 			
 			</form>
 		<div>	
-			<%
+<%-- 			<%
 			if (error!= null) {
 			%>
 					<p id="value"   style="font-size: 20px; color: red;"><%=error%> </p>
@@ -153,7 +160,16 @@ String error =   (String)session.getAttribute("Errorvalue");
 			
 			
    			%>
-   </div>
+ --%>   
+             <c:if test="${error!=null }">
+         					<p id="value"   style="font-size: 20px; color: red;"> ${error}</p>
+             
+              </c:if>
+ 
+ 
+ 
+ 
+ </div>
 			
     		
     </div>

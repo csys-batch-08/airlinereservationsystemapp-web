@@ -69,7 +69,7 @@ public class WalletServlet extends HttpServlet {
 				session.getAttribute("Seatvalue");
 				session.getAttribute("Flightid");
 				session.getAttribute("Ticketno");
-				session.getAttribute("Amount");
+				session.getAttribute("Amont");
 
 
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
@@ -87,6 +87,7 @@ public class WalletServlet extends HttpServlet {
 					{
 						int closingbalance = wallet_amount + Amount ; 
 						wallet.updatebalance(Username, closingbalance);
+						session.setAttribute("Closingvalue", closingbalance);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 						requestDispatcher.forward(request, response);
 					}

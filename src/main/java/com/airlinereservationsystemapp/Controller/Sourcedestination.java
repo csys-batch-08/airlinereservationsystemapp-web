@@ -79,8 +79,6 @@ public class Sourcedestination extends HttpServlet {
 			System.out.println("cureebdhhdahdhghgshsdhghgdhghds"+arrives);
 
 			
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("SearchFlight");
-//			requestDispatcher.forward(request, response);
 
 			
 			response.sendRedirect("FlightSearch.jsp");

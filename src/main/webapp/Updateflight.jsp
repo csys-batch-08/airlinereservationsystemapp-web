@@ -4,6 +4,11 @@
 <%@page import="Services.FlightService"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+                 
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -43,7 +48,7 @@ a:hover, a:active {
 				<b>UPDATE  FLIGHT DETAILS</b></h1>
 		<form name="addflight" action="UpdateFlight" method="post"  >
 		
-						    <input type="number"  name="Flightid" value="<%=request.getParameter("flightId")%>" readonly   placeholder="Flight_id"  
+						    <input type="number"  name="Flightid" value="${param.flightId}" readonly   placeholder="Flight_id"  
 				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" />
 		<br>
 			
@@ -69,39 +74,39 @@ a:hover, a:active {
 			%>
 			
 			
-			<br /> <input type="text" name="Flightname" value="<%=flightname%>" 
+			<br /> <input type="text" name="Flightname" value="${param.flightname}" 
 				placeholder="FLIGHT_NAME"  autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				
-			<br> <input type="text" id="text" name="source" value="<%=source%>"  
+			<br> <input type="text" id="text" name="source" value="${param.source}"  
 				placeholder="Enter Source"  
 				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" />
 			
 			
-			<br> <input type="text" name="Destination" value="<%=destination%>"  
+			<br> <input type="text" name="Destination" value="${param.Destination}" 
 			  placeholder="Enter Destination " 
 				autofocus  
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
 				<br>
 				
-				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="<%=economyClassRate%>" 
+				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="${param.Economyclass}" 
 				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
 				
-			<br> <input type="number" name="PremiumEconomyclass" value="<%=businessClassRate%>"  
+			<br> <input type="number" name="PremiumEconomyclass" value="${param.premiumeconomyclass}"  
 				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
 				
-			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="<%=firstClassRate%>"
+			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="${param.Businessclass}"
 							min = "0" pattern="[0-9]"    
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="ArrivalDate" id="arrivaldate" placeholder="Bussinessclass" value="<%=Arrival_date%>"  
+							<input type="date"  name="ArrivalDate" id="arrivaldate" placeholder="Bussinessclass" value="${param.Arrivaldate}"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="Bussinessclass" value="<%=Departure_date%>"  
+							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="Bussinessclass" value="${param.Departuredate}"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
 				<br> 
 				

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="Services.FlightService"%>
+                         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+                 
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,14 +123,18 @@ a:hover, a:active {
 
 </style>
 
-<%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+<%-- <% String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 FlightService flightService = new FlightService();
 int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 
-%>
+%> --%>
+
+<c:set value="${Closingvalue}" var="closebalance"/>
+<c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
+<c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
+
     <jsp:include page="Header.jsp"></jsp:include>
     <main class="container-fluid">
     <h1 style="text-align: center;"> eWallet Deposit</h1>
@@ -134,7 +143,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
             <form  id="form" name ="amountvalid" action="Wallet" method="post"  onsubmit="return validation()" >
             <div class="container">
                   <label for="closingbalance" ><b>Closing Balance</b></label>
-                  <input type="number" name="closingbalance" value="<%=Closingbalance%>"
+                  <input type="number" name="closingbalance" value="${Closingvalue}"
 				style="position: relative; top: -1px; left: 100px;"      required autofocus  readonly
 				/>
 			<br></br>
