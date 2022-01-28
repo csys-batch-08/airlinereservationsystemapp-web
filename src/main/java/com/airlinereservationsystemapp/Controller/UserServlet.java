@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.airlinereservationsystemapp.DaoImpl.AddFlightDao;
-import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
 import com.airlinereservationsystemapp.Models.Flight;
-import com.airlinereservationsystemapp.Models.Flight_list;
 
 /**
  * Servlet implementation class UserServlet

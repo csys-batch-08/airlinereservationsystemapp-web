@@ -1,7 +1,6 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Passenger_details;

@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.airlinereservationsystemapp.DaoImpl.AddFlightDao;
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
-import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
 /**

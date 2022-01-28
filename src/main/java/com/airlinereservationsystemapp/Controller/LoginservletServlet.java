@@ -1,29 +1,18 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.time.LocalDate;
-
 import javax.servlet.RequestDispatcher;
 
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.airlinereservationsystemapp.DaoImpl.FlightRegisterDao;
 import com.airlinereservationsystemapp.DaoImpl.LoginDao;
-import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
-import com.airlinereservationsystemapp.Models.Flight;
-import com.airlinereservationsystemapp.Models.Passenger_details;
 
 import Services.FlightService;
 

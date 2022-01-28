@@ -2,14 +2,7 @@ package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -20,11 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
-import com.airlinereservationsystemapp.DaoImpl.LoginDao;
 import com.airlinereservationsystemapp.DaoImpl.SourceDao;
 import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
-import com.airlinereservationsystemapp.Models.Flight_list;
 
 /**
  * Servlet implementation class SearchFlight
