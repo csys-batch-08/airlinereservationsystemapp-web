@@ -131,7 +131,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 
 %> --%>
 
-<c:set value="${Closingvalue}" var="closebalance"/>
+<%-- <c:set value="${Closingvalue}" var="closebalance"/>  --%>
 <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 
@@ -142,10 +142,12 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
        
             <form  id="form" name ="amountvalid" action="Wallet" method="post"  onsubmit="return validation()" >
             <div class="container">
-                  <label for="closingbalance" ><b>Closing Balance</b></label>
-                  <input type="number" name="closingbalance" value="${Closingvalue}"
+                  <label for="closingbalance" style="position: relative; top: 79px; left: 4px;" ><b>Closing Balance</b></label>
+                  <input type="hidden" name="closingbalance"  id="closingbalance" value="${Closingvalue}"
 				style="position: relative; top: -1px; left: 100px;"      required autofocus  readonly
-				/>
+				/> 
+				<h3 style="position: relative;top: 34px; left: 220px;" id="closing"  ></h3>
+				
 			<br></br>
 				 <label for="depositamount"><b>Deposit Amount</b></label>
 			 <input type="number" id="depositamount" name="depositamount"  
@@ -184,6 +186,9 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 			<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic; position: relative; top: 10px; left: 50px;"   > Back </a> <br > <br />
 			
             </div>
+
+            
+            
            </form>
             </div>
             </main>
@@ -204,9 +209,40 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 
 		    }
 		}
-		    	
-	 
+		    walletuser();
 		    
+		    function walletuser()
+		    {  
+		    console.log("called");
+		        let closingbalance=document.getElementById('closingbalance').value;
+		        console.log(closingbalance);
+		    var url="closingbalance.jsp?closingbalance="+closingbalance;  
+		    if(window.XMLHttpRequest){  
+		    request=new XMLHttpRequest();  
+		    }  
+		    else if(window.ActiveXObject){  
+		    request=new ActiveXObject("Microsoft.XMLHTTP");  
+		    }  
+		    try  
+		    {  
+		    request.onreadystatechange=closingdetails;  
+		    request.open("GET",url,true);  
+		    request.send();  
+		    }  
+		    catch(e)  
+		    {  
+		    alert("Unable to connect to server");  
+		    }
+		        
+		       }
+		    function closingdetails(){  
+		    	if(request.readyState==4){  
+		    	var response =request.responseText;  
+		    	document.getElementById('closing').innerHTML = response;  
+                
+		        }
+		    	}		    
+
 
 
 
