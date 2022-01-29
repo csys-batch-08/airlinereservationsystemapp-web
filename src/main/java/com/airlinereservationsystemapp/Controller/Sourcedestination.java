@@ -61,6 +61,8 @@ public class Sourcedestination extends HttpServlet {
 			
 			System.out.println("Welcome to Source listsjbfj");
 			
+			System.out.println("Sourcelist details"+session.getAttribute("Sourcelist"));
+			
 			LocalDate arrivaldte  = getdate();
 			
 			Date arrives =  getcurrentdate();

@@ -110,7 +110,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
       ${destination.getDestination()}
       
       </option>
-      
       </c:forEach>
       </datalist>
 
@@ -136,7 +135,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     
     </div>
     
-                <p id="searchresponse"></p>
                 
     
     <script>

@@ -1,7 +1,6 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightRegisterDao;
 import com.airlinereservationsystemapp.Models.Flight;
@@ -37,7 +37,7 @@ public class FlightRegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		 response.setContentType("text/html");
-	       
+	       HttpSession session = request.getSession();
 
 		try {
 			String name = request.getParameter("name");
@@ -56,21 +56,33 @@ public class FlightRegisterServlet extends HttpServlet {
 			
 			Flight objFlightRegister = new Flight(name,email,username,password,gender,Phonenumber);
 			FlightRegisterDao RegDao = new FlightRegisterDao();
-			RegDao.Registration(objFlightRegister);
-		//response.getWriter().print("Data Registered");
+//			RegDao.Registration(objFlightRegister);
 			   
-
-			
-			
-			
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+           int i =  RegDao.Fileregistration(objFlightRegister);
+           
+           System.out.println("Flight Registration nnnn"+" "+" "+i);
+           
+           if(i!=0)
+           {
+        	   session.setAttribute("Valid", "Successfully Registered");
+				//RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+				//requestDispatcher.forward(request, response);
+        	   response.sendRedirect("login.jsp?success=1");
+                
+           }
+           else if(i==0)
+           {
+        	   session.setAttribute("invalid", "Data Not Registered");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("Register.jsp");
 				requestDispatcher.forward(request, response);
+
+           }
+			
+			
+			
 				
 				
-			//response.sendRedirect("Login.jsp");
 		} catch (Exception e) {
-			//e.printStackTrace();
-			//response.sendRedirect("Register.jsp?errorMessage=" + e.getMessage());
 		}
 
 			

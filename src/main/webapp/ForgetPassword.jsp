@@ -91,12 +91,13 @@ span.psw {
 <a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 
      
-		<%
+<%-- 		<%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>		
-<main class="container-fluid">
+ --%>
+ <main class="container-fluid">
 		<h3 align="center">Forget Password</h3>
 		<div align="center">
 				<form  action="ForgetPassword" name="loginform" method="post" onsubmit = "return passwordvalidation()" >

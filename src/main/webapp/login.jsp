@@ -113,9 +113,11 @@ String error  = (String) session.getAttribute("Error");
  
 <div style="margin-right: 900px; margin-top: 70px;">	
 <main class="container-fluid">
-		<h3 align="center" style="color: white;">Login</h3>
-		<div align="center">		
-	
+		<h1 align="center" style="color: white;">Login</h1>
+		<div align="center">	
+	<c:if test="${param.success eq 1}">
+	<h2 id="register" ><c:out value="${Valid}"  /> </h2>
+	</c:if>
 				<form  action="Loginservlet"  method="post"  >
 				
 				
@@ -256,7 +258,15 @@ String error  = (String) session.getAttribute("Error");
       {
     	  document.getElementById('value').style.opacity= '0';
       }
-		  
+      
+      
+  	document.getElementById("username").onkeyup = function() {myfunction()};
+	
+	function myfunction()
+	{
+		document.getElementById("register").innerHTML = "";
+	}
+
 
    </script>
    </main>

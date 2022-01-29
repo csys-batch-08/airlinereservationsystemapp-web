@@ -51,7 +51,37 @@ public class FlightRegisterDao implements FlightRegisterInterface
 			return new java.sql.Date(today.getTime());
 		}
 			
-	
+		public int Fileregistration( Flight objFlightRegister) throws ClassNotFoundException 
+		{
+			int str = 0;
+			try
+			{
+			
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+				
+				String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) values(?,?,?,?,?,?,?)";
+				//System.out.println(objFlightRegister.getName());
+				PreparedStatement stmt = con.prepareStatement(sql);
+				stmt.setString(1, objFlightRegister.getName());
+				stmt.setString(2, objFlightRegister.getEmailid());
+				stmt.setString(3, objFlightRegister.getUsername());
+				stmt.setString(4, objFlightRegister.getPassword());
+				stmt.setString(5, objFlightRegister.getGender());
+				stmt.setLong(6, objFlightRegister.getPhonenumber());
+				stmt.setDate(7, getcurrentdate());
+				 str = stmt.executeUpdate();
+				System.out.println("Completed :" +str);
+			}
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+				System.out.println(e);
+
+			}
+			return str;
+		}
+
 
 	
 
