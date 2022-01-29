@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="Assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="Assets/css/loginheaderstyle.css" />
+        <meta http-equiv="pragma" content="no-cache" />
+
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<a class="navbar-brand" href="Index.jsp">AirLine Reservation

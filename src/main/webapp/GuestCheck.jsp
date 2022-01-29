@@ -37,21 +37,8 @@ if(rs.next())
 	
 else
 {
-	PreparedStatement stmt=con.prepareStatement("select * from Guestvalid where  Phone_number = ? and Email_id = ?");  
-	stmt.setLong(1,phone);
-	stmt.setString(2,email);
-	ResultSet rs2=stmt.executeQuery();  
-	if(rs2.next())
-	{
-		System.out.println("Login errorrororororororo errorr r "+email);
-
-	}  
-
 }
-	}
-
-	
-
+}
 }
 catch(Exception e)
 {

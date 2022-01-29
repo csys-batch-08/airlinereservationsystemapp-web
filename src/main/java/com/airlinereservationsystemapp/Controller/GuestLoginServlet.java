@@ -42,6 +42,11 @@ public class GuestLoginServlet extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		System.out.println("sourcelist enteered");
+		session.getAttribute("Sourcelist");
+
+		System.out.println("sourcelist finished"+session.getAttribute("Sourcelist"));
+
 		String guest = "Guest";
 		String role = "guest";
 		session.setAttribute("LOGGED_IN_USER", guest);
@@ -56,6 +61,8 @@ public class GuestLoginServlet extends HttpServlet {
 		session.setAttribute("Mobile", phone);
 		
 		String mail = request.getParameter("email");
+		
+
 
 		
 		FlightRegisterDao object = new FlightRegisterDao();

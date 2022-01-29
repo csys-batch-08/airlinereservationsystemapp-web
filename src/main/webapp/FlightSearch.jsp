@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="Assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="Assets/css/style.css">
 <head>
+            <meta http-equiv="pragma" content="no-cache" />
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,7 +120,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
               <br><br>
               
               
-          
             
             <button  type="submit"  onclick="return validation()">Submit </button><br><br>
 
@@ -174,46 +175,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     
 
     
-    function searchvalid()  
-    {  
-        var source = document.getElementById("fightsource").value; 
-    	var destination = document.getElementById("fightdestination").value;
-
-
-    var url="Search.jsp?source="+source+'&destination='+destination;  
-
-    console.log("Called");
-    console.log("Called second time");
-    console.log(destination);
-    console.log(source);
-
-      
-    if(window.XMLHttpRequest){  
-    request=new XMLHttpRequest();  
-    }  
-    else if(window.ActiveXObject){  
-    request=new ActiveXObject("Microsoft.XMLHTTP");  
-    }  
-      
-    try{  
-    request.onreadystatechange=getInfo;  
-    request.open("GET",url,true);  
-    request.send();  
-    }catch(e){alert("Unable to connect to server");}  
-    }  
-      
-    function getInfo(){  
-    if(request.readyState==4){  
-    var response=request.responseText;  
-    
-      document.getElementById('searchresponse').innerHTML=response; 
-      
-      
-
-   
- }  
-    }  
-      
 
     
     

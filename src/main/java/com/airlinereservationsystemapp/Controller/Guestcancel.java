@@ -1,6 +1,7 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,13 +29,27 @@ public class Guestcancel extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+	public  LocalDate getdate()
+	{
+        LocalDate lt = LocalDate.now();
+		return lt;
+	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		
 		HttpSession session = request.getSession();
+		
+		LocalDate local =  getdate();
+		
+		System.out.println("localdate "+local);
+		
+		session.setAttribute("Guestcurentdate", local);
+		
 	Long phone = (Long)	session.getAttribute("Mobile");
 	
 	System.out.println("Phone number valiwehudshhdhdshghgdg"+phone);

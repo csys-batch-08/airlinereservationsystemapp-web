@@ -88,7 +88,7 @@ a:hover, a:active {
 					<td>${cancel.getDestination()}</td>
 					<td> ${cancel.getFlight_id()}</td>
 					<fmt:parseDate value="${cancel.getArrival_date()}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
-					<td><fmt:formatDate value="${macthDate}" pattern="DD-MM-YYYY"/>  </td>
+					<td><fmt:formatDate value="${macthDate}" pattern="dd-MM-yyyy"/>  </td>
 					
 					<td> ${cancel.getTicketNo()}</td>
 										
@@ -97,7 +97,7 @@ a:hover, a:active {
 					<td class="danger"> ${cancel.getStatus()}</td>
 					<fmt:parseDate value="${cancel.getBookingdate()}" pattern="yyyy-MM-dd" var="bookingdate" type="date"/>
 					
-					<td><fmt:formatDate value="${bookingdate}"  pattern="DD-MM-YYYY" />    </td>
+					<td><fmt:formatDate value="${bookingdate}"  pattern="dd-MM-yyyy" />    </td>
 					<td>${cancel.getMode()}</td>
 					<td class="warning">${cancel.getAmount()}</td> 
 					
@@ -110,12 +110,14 @@ a:hover, a:active {
  
 
              <c:set var="datevalue"  value="${Arrivaldate}"  />
+             <c:set  var="cureendate"  value="${Currentdatetime}"   />
               <c:set var="curendd"  value="${Arrives}"  />
- 
+              
  					<c:set var="status" value="${cancel.getStatus() }" />  
+ 					
 	 	<c:choose>
  	
- 	<c:when test="${datevalue<cancel.getArrival_date()}">
+ 	<c:when test="${cureendate<cancel.getArrival_date()}">
  	 	<c:choose>
  	 	
  	 	 	<c:when test= "${cancel.getStatus().equals('Cancelled')}">
@@ -142,7 +144,6 @@ a:hover, a:active {
 					</c:choose>
 					
  					</tr>																	</c:forEach>
-			
 			
 					</tbody>
 		           </table>

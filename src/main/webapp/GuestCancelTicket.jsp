@@ -30,15 +30,14 @@
 		List<Passenger_details> objcancellist = (List<Passenger_details>)request.getAttribute("GuestList");
 		%> --%>
 		
-		<c:set/>
 		
-<%!
+<%-- <%!
 private static Date getcurrentdate()
 {
 	java.util.Date today = new java.util.Date();
 	return new java.sql.Date(today.getTime());
 }
-%>
+%> --%>
                  <table border="2" class="table">
 			<h1 align="center"><b>Flight List</b></h1>
 			<thead>
@@ -123,12 +122,14 @@ private static Date getcurrentdate()
 					
 					
 					             <c:set var="datevalue"  value="${Arrivaldate}"  />
+					             
+					             <c:set var="guestcan" value="${Guestcurentdate}"   />
  
  					<c:set var="status" value="${guestcancel.getStatus() }" />  
 					
 					 	<c:choose>
  	
- 	<c:when test="${datevalue<guestcancel.getArrival_date()}">
+ 	<c:when test="${guestcan<guestcancel.getArrival_date()}">
  	 	<c:choose>
  	 	
  	 	 	<c:when test= "${guestcancel.getStatus().equals('Cancelled')}">

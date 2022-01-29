@@ -220,8 +220,10 @@ String error =   (String)session.getAttribute("Errorvalue");
 
 
     		}
+    		}
+    	
     	}  
-    }  
+     
 
 
 	document.getElementById("phoneNumber").onkeydown = function() {myfunction()};

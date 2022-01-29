@@ -5,6 +5,7 @@
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+        <meta http-equiv="pragma" content="no-cache" />
 
 <header>
 
@@ -57,7 +58,7 @@
 <%-- <c:when test="${loggedInAsUser.equals('Guest')}">
  --%>
  <c:choose>
- <c:when test="${loggedInAsUser== Guest}">
+ <c:when test="${loggedInAsUser== 'Guest'}">
 
 						<li class="nav-item"input type="text"  readonly><a class="nav-link" href= #>My Wallet</a>
 				</li>
