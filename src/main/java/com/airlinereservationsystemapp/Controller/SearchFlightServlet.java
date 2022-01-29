@@ -48,7 +48,6 @@ public class SearchFlightServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
 
         
        SourceDao objsearchflight = new SourceDao();
@@ -56,7 +55,6 @@ public class SearchFlightServlet extends HttpServlet {
        	try
 		{
 		
-	        out.println("hello");
 	        LocalDate local = null;
 	        String Source = "";
 	        String Destination = "";
@@ -97,7 +95,6 @@ public class SearchFlightServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			out.println(e.getMessage());
 			System.out.println(e);
 		}
 		

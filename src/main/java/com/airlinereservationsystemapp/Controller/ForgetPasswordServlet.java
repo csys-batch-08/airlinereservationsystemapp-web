@@ -31,7 +31,6 @@ public class ForgetPasswordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -53,10 +52,10 @@ public class ForgetPasswordServlet extends HttpServlet {
 		e.printStackTrace();
 	}
      
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-		requestDispatcher.forward(request, response);
-
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+//		requestDispatcher.forward(request, response);
      
+    response.sendRedirect("login.jsp");   
      
      
 	}

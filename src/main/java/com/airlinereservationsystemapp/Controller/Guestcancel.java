@@ -60,14 +60,14 @@ public class Guestcancel extends HttpServlet {
 		
 		request.setAttribute("GuestList", Guestcancel);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
-		requestDispatcher.forward(request, response);
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
+//		requestDispatcher.forward(request, response);
+		
+		response.sendRedirect("GuestCancelTicket.jsp");
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

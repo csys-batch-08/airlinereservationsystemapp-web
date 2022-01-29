@@ -214,7 +214,6 @@ public class PaymentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		 response.setContentType("text/html");
-	        PrintWriter out=response.getWriter();
 
 }
 	}

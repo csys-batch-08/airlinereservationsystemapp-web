@@ -39,8 +39,10 @@ public class UserServlet extends HttpServlet {
 		List<Flight> registerinfo = register.register();
 		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
 		request.setAttribute("Flight", registerinfo);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("UserList.jsp");
-		requestDispatcher.forward(request, response);
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("UserList.jsp");
+//		requestDispatcher.forward(request, response);
+		
+		response.sendRedirect("UserList.jsp");
 
 	}
 
@@ -48,8 +50,6 @@ public class UserServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

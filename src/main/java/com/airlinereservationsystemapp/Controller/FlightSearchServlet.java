@@ -39,8 +39,6 @@ public class FlightSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
         response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
-        out.println("helpp");
        // List<Flight_list> flightList = new ArrayList<>();
 try
 {
@@ -59,7 +57,6 @@ try
 }
 catch(Exception e)
 {
-	out.println("connection established ");
 }
 
 		
@@ -67,8 +64,6 @@ catch(Exception e)
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
