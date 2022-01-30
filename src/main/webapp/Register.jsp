@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Register</title>
+<title>REGISTER FORM</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 </head>
 <body>
-
 	<style>
 body {
 	background-image: url(image/878641.jpg);
@@ -27,7 +27,6 @@ form {
   width:30%;
   align:"center";
 }
-
 input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
   width: 63%;
   padding: 12px 20px;
@@ -36,7 +35,6 @@ input[type=text], input[type=password],input[type=email],input[type=radio],input
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 input[type=radio] {
   width: 18%;
   padding: 12px 20px;
@@ -46,7 +44,6 @@ input[type=radio] {
   box-sizing: border-box;
   
 }
-
 button {
   background-color: #04AA6D;
   color: white;
@@ -56,36 +53,29 @@ button {
   cursor: pointer;
   width: 62%;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
-
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
-
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
-
 .container {
   padding: 16px;
 }
-
 span.psw {
   float: right;
   padding-top: 16px;
 }
-
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -94,9 +84,7 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
-
 </style>
-
 			
 			<main class="container-fluid">
 		<h3 align="center">New User Registration Form </h3>
@@ -144,7 +132,6 @@ span.psw {
 				 /><br>
 				<br>
 				
-
 <div id="phonere">
                		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
 				 placeholder="Enter Mobile Number" style="position: relative;top: -25px" required  onkeydown="return validation()"
@@ -164,9 +151,6 @@ span.psw {
 				for="Others"style="color: white;" >Others</label>
 			
             
-
-
-
 			<div style="text-align: center">
 							<button type="Submit"  style="position: relative;top: 4px" required     "  
 					>
@@ -198,9 +182,7 @@ span.psw {
 		    }
 		    else 		    {
 		        alert("password must be same!");  
-
 		    return false;  
-
 		    }
 		}
 		    
@@ -208,9 +190,7 @@ span.psw {
 		    {  
 		    console.log("called");
 		        let email=document.getElementById('email').value;
-
 		      console.log(email);
-
 		    var url="Exception.jsp?email="+email;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
@@ -240,20 +220,15 @@ span.psw {
 		    	document.getElementById('emailresponse').innerHTML=mailresponse;
 		    	document.getElementById('email').value = '';  
 		    	
-
 		    }
 		    	
 		    	}  
 		   }  
-
-
 		    function validemail()
 		    {  
 		    console.log("called");
 		        let email=document.getElementById("email").value;
-
 		        console.log(email);
-
 		    var url="validemail.jsp?email="+email;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
@@ -317,7 +292,6 @@ span.psw {
 		    		{
 		    	document.getElementById('userresponse').innerHTML=response;  
 		    	document.getElementById('username').value = '';  
-
                 }
 		   
 		    	}  
@@ -327,9 +301,7 @@ span.psw {
 		    {
 			    console.log("called");
 		        let phoneno = document.getElementById("phoneNumber").value;
-
 		        console.log(phoneno);
-
 		    var url="phone.jsp?phoneno="+phoneno;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
@@ -367,11 +339,9 @@ span.psw {
 		    } 
 		    	}
 	    	document.getElementById("email").onkeydown = function() {validfunction()};
-
 	    	function validfunction()
 	    	{
 	    		document.getElementById("emailresponse").innerHTML = "";
-
 	    	}
 		    
 		    	document.getElementById("username").onkeydown = function() {emailfunction()};
@@ -396,15 +366,9 @@ span.psw {
 		    	
 		    	
 		    	
-
-
  	  
  </script>
-
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-   
-   							    
-   </main>
-		
+</main>
 </body>
 </html>

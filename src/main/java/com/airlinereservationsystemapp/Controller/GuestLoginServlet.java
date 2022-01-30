@@ -99,7 +99,7 @@ public class GuestLoginServlet extends HttpServlet {
 //		RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 //		requestDispatcher.forward(request, response);
 		
-		response.sendRedirect("FlightSearch.jsp");
+		response.sendRedirect("flightSearch.jsp");
 	}
 	
 	

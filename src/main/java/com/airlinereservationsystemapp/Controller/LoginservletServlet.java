@@ -54,6 +54,7 @@ public class LoginservletServlet extends HttpServlet {
 				if(Check_Admin == "yes")
 				{
 					System.out.println("Weleocme to add flight ");
+					session.getAttribute("Sourcelist");
 
 					session.setAttribute("LOGGED_IN_ADMIN", username);
 					response.sendRedirect("FlightSearch");  
@@ -82,13 +83,12 @@ requestDispatcher.forward(request, response);
 						
 						System.out.println("sourceliost of value printed"+session.getAttribute("Sourcelist"));
 
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 
 				}
 				
 				
-				response.getWriter().print("Data success");
 			}
 			else
 			{

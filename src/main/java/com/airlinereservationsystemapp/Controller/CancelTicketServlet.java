@@ -72,7 +72,7 @@ public class CancelTicketServlet extends HttpServlet {
 //		RequestDispatcher requestDispatcher = request.getRequestDispatcher("CancelTicket.jsp");
 //		requestDispatcher.forward(request, response);
 		
-		response.sendRedirect("CancelTicket.jsp");
+		response.sendRedirect("cancelticket.jsp");
 
 	}
 

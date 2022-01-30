@@ -82,7 +82,7 @@ public class SearchFlightServlet extends HttpServlet {
 			System.out.println(objavailability);
 			request.setAttribute("Flight_List", objavailability);
 		
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearchList.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightsearchlist.jsp");
 			requestDispatcher.forward(request, response);
 			
 			

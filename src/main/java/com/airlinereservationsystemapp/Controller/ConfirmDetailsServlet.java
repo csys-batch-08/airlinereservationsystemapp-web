@@ -109,7 +109,7 @@ public class ConfirmDetailsServlet extends HttpServlet {
      
      request.setAttribute("Passenger_Deatils", passenger);
      
-     RequestDispatcher requestDispatcher = request.getRequestDispatcher("ConfirmDetails.jsp");
+     RequestDispatcher requestDispatcher = request.getRequestDispatcher("confirmdetails.jsp");
 		requestDispatcher.forward(request, response);
 		
 		

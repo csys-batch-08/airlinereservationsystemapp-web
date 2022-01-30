@@ -88,13 +88,13 @@ public class WalletServlet extends HttpServlet {
 						int closingbalance = wallet_amount + Amount ; 
 						wallet.updatebalance(Username, closingbalance);
 						session.setAttribute("Closingvalue", closingbalance);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 						requestDispatcher.forward(request, response);
 					}
 					else
 					{
 						wallet.insetbalance(Username, wallet_amount);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 						requestDispatcher.forward(request, response);
 
 					}

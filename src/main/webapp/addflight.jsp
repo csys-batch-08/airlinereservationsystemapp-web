@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ADD FLIGHT DETAILS </title>
-
+<title>ADD FLIGHT</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
@@ -18,15 +17,13 @@ a:link, a:visited {
   text-decoration: none;
   display: inline-block;
 }
-
 a:hover, a:active {
   background-color: red;
 }
-
 </style>
-<body>
 
-       <a href="FlightSearch.jsp"   class="btn btn-danger"> Back </a> <br > <br />
+<body>
+       <a href="flightSearch.jsp"   class="btn btn-danger"> Back </a> <br > <br />
        
     <h1 style="text-align: center;">
 				<b>ADD FLIGHT DETAILS</b></h1>
@@ -115,7 +112,6 @@ a:hover, a:active {
     mindate =yyyy + '-' + mm + '-'+ dd  ;
     document.getElementById("Arrivaldate").setAttribute("max",maxdate);
     document.getElementById("Arrivaldate").setAttribute("min",mindate);
-
     }
     todaydate();
     function todaydate()
@@ -129,15 +125,13 @@ a:hover, a:active {
     mindate =yyyy + '-' + mm + '-'+ dd  ;
     document.getElementById("DepartureDate").setAttribute("max",maxdate);
     document.getElementById("DepartureDate").setAttribute("min",mindate);
-
     }
-
     
     
     
     
     </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-    
+
 </body>
 </html>

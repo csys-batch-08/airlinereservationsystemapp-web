@@ -19,7 +19,7 @@
 					href="GuestLogin.jsp">Guest Login</a></li>
 				<li class="nav-item"><a class="nav-link" href="login.jsp">User
 						Login</a>
-				<li class="nav-item"><a class="nav-link" href="Register.jsp">Sign
+				<li class="nav-item"><a class="nav-link" href="register.jsp">Sign
 						Up</a></li>
 			</ul>
 		</div>

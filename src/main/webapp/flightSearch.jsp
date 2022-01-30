@@ -1,38 +1,22 @@
- <%@page import="com.airlinereservationsystemapp.Models.Source"%>
-<%@page import="Services.FlightService"%>
-<%@page import="java.util.List"%>
-<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="Assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="Assets/css/fontawesome.min.css">
-<link rel="stylesheet" href="Assets/css/style.css">
+<html>
 <head>
-            <meta http-equiv="pragma" content="no-cache" />
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="ISO-8859-1">
+<title>FLIGHT SEARCH PAGE</title>
 </head>
-<body>
 <style>
-
 body {
-background-image: url(image/254381.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	
-	font-family: Arial, Helvetica, sans-serif;
-	align:"center";
-	
-}
+   background-image: url(image/254381.jpg);
+   background-repeat: no-repeat;
+   background-size:  cover;
+   }
 
-
+<body>
 
 form {
 left:40px;
@@ -40,7 +24,6 @@ left:40px;
   width:30%;
   align:"center";
 }
-
 /* Full-width inputs */
 input[type=text], input[type=date] {
   width: 63%;
@@ -50,7 +33,6 @@ input[type=text], input[type=date] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 /* Set a style for all buttons */
 button {
   background-color: #04AA6D;
@@ -61,22 +43,12 @@ button {
   cursor: pointer;
   width: 62%;
 }
-
 /* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
 }
 </style>
-<%-- <%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
-%>
- --%>
-
-
-
- <jsp:include page="Header.jsp"></jsp:include>
+ <jsp:include page="header.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
  
         <div style="margin-left: 918px;margin-top: 30px">
@@ -122,21 +94,19 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
             
             <button  type="submit"  onclick="return validation()">Submit </button><br><br>
 
-
-	
-	
            	 <a href="FlightSearch"  class="btn btn-primary">List All Flight Details</a>
+
+
+	        </form>
+	
+	
            	 
            	 
    
             
-        </form>
       
     
     </div>
-    
-                
-    
     <script>
     today();
     function today(){
@@ -149,8 +119,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     mindate =yyyy + '-' + mm + '-'+ dd  ;
     document.getElementById("date").setAttribute("max",maxdate);
     document.getElementById("date").setAttribute("min",mindate);
-
-
 }
     function validation()
     {
@@ -165,21 +133,12 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     }
     else 		    {
         alert("Source and Destination  must not be same!");  
-
     return false;  
-
     }
 }
     
+    </script>
 
-    
-
-    
-    
-    
-    
-    
-</script>
-    
+   
 </body>
 </html>

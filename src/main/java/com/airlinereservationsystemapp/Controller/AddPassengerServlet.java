@@ -1,12 +1,10 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,6 +71,8 @@ public class AddPassengerServlet extends HttpServlet {
 	      
 	      
 
+
+
 	      
 	      
 	      
@@ -96,6 +96,11 @@ public class AddPassengerServlet extends HttpServlet {
 	     int seatno = Integer.parseInt(seat_no);
 	     
 	     System.out.println(seatno);
+	     String amount = request.getParameter("amount");
+         session.setAttribute("flightid", Flight_Id);
+         session.setAttribute("ticket_no", ticket_no);
+         session.setAttribute("amount", amount);
+
 
 	     session.setAttribute("logpass",noofpass);
 	     
@@ -111,7 +116,6 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 
 
 	       System.out.println(ticketno);
-//	       HttpSession session = request.getSession();
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
      System.out.println(loggedInAsUser);
 	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, ticketno,flightid,local);
@@ -128,22 +132,21 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 //				  request.setAttribute("SeatValue", value);
 
 			}
-			request.setAttribute("SeatValue", list);
+			session.setAttribute("SeatValue", list);
 			System.out.println(list);
 			
 			//pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
 			
-			   
+
 			 
-			     RequestDispatcher requestDispatcher = request.getRequestDispatcher("PaymentDetails");
-					requestDispatcher.forward(request, response);
+    //RequestDispatcher rdispather = request.getRequestDispatcher("PaymentDetails");
+    //rdispather.forward(request, response);
+			
+  response.sendRedirect("PaymentDetails");
 
-				SimpleDateFormat sdf = new SimpleDateFormat("DD-MM-YYYY");
-					request.setAttribute("localDateTimeFormat", sdf);
-
-			//response.sendRedirect("Login.jsp");
-		} catch (Exception e) {
+		} 
+	    catch (Exception e) {
 			System.out.println("Hello error");
 			e.printStackTrace();
 		}

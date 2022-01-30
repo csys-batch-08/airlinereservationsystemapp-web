@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.AddFlightDao;
 import com.airlinereservationsystemapp.Models.Flight;
@@ -35,14 +36,13 @@ public class UserServlet extends HttpServlet {
 	{
 		AddFlightDao register = new AddFlightDao();
 		
-		
 		List<Flight> registerinfo = register.register();
 		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
 		request.setAttribute("Flight", registerinfo);
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("UserList.jsp");
-//		requestDispatcher.forward(request, response);
-		
-		response.sendRedirect("UserList.jsp");
+
+       RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");
+         requestDispatcher.forward(request, response);	
+	//response.sendRedirect("userList.jsp");
 
 	}
 

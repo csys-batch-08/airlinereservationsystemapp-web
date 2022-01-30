@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.airlinereservationsystemapp.Models.Flight"%>
+        <%@page import="com.airlinereservationsystemapp.Models.Flight"%>
 <%@page import="java.util.List"%>
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
-                 
-
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>FLIGHT LIST</title>
+<title>USER LIST</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -25,21 +24,15 @@ a:link, a:visited {
   text-decoration: none;
   display: inline-block;
 }
-
 a:hover, a:active {
   background-color: blue;
   color: white;
 }
-
-
-
-
 </style>
+
 <body>
+<a href="flightSearch.jsp"class="btn btn-danger"> Back </a> <br > <br />
 
-<a href="FlightSearch.jsp"class="btn btn-danger"> Back </a> <br > <br />
-
-	<c:set value="${Flight}" var="regobject" />
 	
    		<table border="2" class="table">
 			<h1 align="center"><b>Registered User  List</b></h1>
@@ -58,7 +51,7 @@ a:hover, a:active {
 			<br>
 			<br>
 			<tbody>
-				      <c:forEach items="${regobject}" var="reg" varStatus="status">
+				      <c:forEach items="${Flight}" var="reg" varStatus="status">
 				
 				<tr>
 				
@@ -74,11 +67,9 @@ a:hover, a:active {
 					<td class="table-danger"> ${reg.getRegisterDate()}</td>
 					
 			</tr>
-					
 				</c:forEach>
 					</tbody>
 		           </table>
-			
 
 </body>
 </html>

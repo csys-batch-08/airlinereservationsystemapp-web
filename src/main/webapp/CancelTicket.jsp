@@ -41,7 +41,7 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
+<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
 
 
@@ -126,7 +126,7 @@ a:hover, a:active {
  	</c:when>
  	<c:otherwise>
 
-	     		<td><a href="FlightCancellation.jsp?seatno=${cancel.getSeatno()}&Flightid=${cancel.getFlight_id()}&Departuredate=${cancel.getArrival_date()}
+	     		<td><a href="flightcancellation.jsp?seatno=${cancel.getSeatno()}&Flightid=${cancel.getFlight_id()}&Departuredate=${cancel.getArrival_date()}
 	&Class=${cancel.getClass_details()}&Amount=${cancel.getAmount()}"
 		class="btn btn-primary" >CancelTicket</a></td>
  	</c:otherwise>

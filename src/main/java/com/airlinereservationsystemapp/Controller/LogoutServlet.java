@@ -29,7 +29,7 @@ public class LogoutServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("logout");
 	       request.getSession().invalidate();
-	       response.sendRedirect("FlightSearch.jsp");
+	       response.sendRedirect("flightSearch.jsp");
 	}
 
 	/**

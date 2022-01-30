@@ -87,7 +87,7 @@ public class FlightCancellationServlet extends HttpServlet {
 					
 					response.getWriter().print("Flight Cancelled");
 					   
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 
 				} catch (Exception e) {

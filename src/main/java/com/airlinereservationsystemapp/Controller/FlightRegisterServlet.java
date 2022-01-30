@@ -73,7 +73,7 @@ public class FlightRegisterServlet extends HttpServlet {
            else if(i==0)
            {
         	   session.setAttribute("invalid", "Data Not Registered");
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("Register.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("register.jsp");
 				requestDispatcher.forward(request, response);
 
            }

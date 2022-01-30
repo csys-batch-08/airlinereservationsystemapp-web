@@ -79,7 +79,7 @@ public class Sourcedestination extends HttpServlet {
 			
 
 			
-			response.sendRedirect("FlightSearch.jsp");
+			response.sendRedirect("flightSearch.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

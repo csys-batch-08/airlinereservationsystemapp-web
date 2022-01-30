@@ -30,27 +30,38 @@ public class PaymentDetails extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("Welcome to details servlet");
+		HttpSession session = request.getSession();
 		try
 		{
-			String flightid = request.getParameter("flightId");
-			int FlightId = Integer.parseInt(flightid);
-			String ticketno = request.getParameter("ticketno");
-			int TicketNo = Integer.parseInt(ticketno);
-			String Amount = request.getParameter("amount");
-			int Price = Integer.parseInt(Amount);
+			
+			//String flightid = request.getParameter("flightId");
+			//int FlightId = Integer.parseInt(flightid);
+			//String ticketno = request.getParameter("ticketno");
+			//int TicketNo = Integer.parseInt(ticketno);
+			//String Amount = request.getParameter("amount");
+			//int Price = Integer.parseInt(Amount);
+	         
+			String flightid = (String)session.getAttribute("flightid");
+			System.out.println("flight   dsioisdiisdiisdid"+flightid);
+
+	    String ticketno =  (String)    session.getAttribute("ticket_no");
+		System.out.println("flight   dsioisdiisdiisdid"+ticketno);
+
+	    String Amount = (String)  session.getAttribute("amount");
+		System.out.println("flight   dsioisdiisdiisdid"+Amount);
+
+
 			
 			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Amount);
 			
-			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Price);
 
 		     
-			HttpSession session = request.getSession();
 			int pass = (int)session.getAttribute("logpass");
 
 			  ArrayList<Integer> list=new ArrayList<Integer>();    
 
-ArrayList<Integer> value = (ArrayList<Integer>)request.getAttribute("SeatValue");
+ArrayList<Integer> value = (ArrayList<Integer>)session.getAttribute("SeatValue");
 
 System.out.println("dkjcxhhccxggcxvcvcxvvcxvgsgdffghdsfgfgdfgdsfgdsgfsd"+value);
 
@@ -72,15 +83,6 @@ session.setAttribute("Seatfield",str);
 
 
 			
-//			for(int i = 0; i<pass;i++)
-//			{
-//				System.out.println("hi payment Details");
-//				list.addAll(value);
-//				
-//				System.out.println("For Lopp value"+request.getAttribute("SeatValue"));
-//
-//			}
-//
 System.out.println(value);
 
 System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
@@ -98,12 +100,14 @@ System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
 		     session.setAttribute("Amont", Amount);
 		     request.setAttribute("Seatnovalue", value);
 		     
-		     session.setAttribute("Amount", Price);
+		    //session.setAttribute("Amount", Price);
 
 
 
-		     RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
-				requestDispatcher.forward(request, response);
+		     //RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
+				//requestDispatcher.forward(request, response);
+		     
+		    response.sendRedirect("payment.jsp");
 
 
 		}

@@ -1,4 +1,3 @@
-
 <%@page import="com.airlinereservationsystemapp.Models.Flight_list"%>
 <%@page import="com.airlinereservationsystemapp.DaoImpl.FlightSearchDao"%>
 <%@page import="Services.FlightService"%>
@@ -7,16 +6,13 @@
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
-                 
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>UPDATE FLIGHT DETAILS</title>
+<title>UPDATE FLIGHT</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -31,17 +27,13 @@ a:link, a:visited {
   text-decoration: none;
   display: inline-block;
 }
-
 a:hover, a:active {
   background-color: green;
   color: white;
 }
-
-
-
 </style>
 <body>
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
+<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
 
     <h1 style="text-align: center;">
@@ -52,26 +44,6 @@ a:hover, a:active {
 				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" />
 		<br>
 			
-			<%
-			
-			String flightId = request.getParameter("flightId");
-			
-			int Flight_Id = Integer.parseInt(flightId);
-			
-			FlightSearchDao flightDao = new FlightSearchDao();
-			Flight_list flight = flightDao.getRecordById(Flight_Id);
-			int businessClassRate = flight.getBussiness_class();
-			int economyClassRate = flight.getPremium_Economy_class();
-			int firstClassRate = flight.getEconomy_class();
-			String source = flight.getSource();
-			String destination = flight.getDestination();
-			String flightname = flight.getFlight_name();
-			Date Arrival_date  = flight.getArrival_Time();
-			Date Departure_date  = flight.getDeparture_time();
-			
-
-			
-			%>
 			
 			
 			<br /> <input type="text" name="Flightname" value="${param.flightname}" 
@@ -150,8 +122,6 @@ a:hover, a:active {
     mindate =yyyy + '-' + mm + '-'+ dd  ;
     document.getElementById("arrivaldate").setAttribute("max",maxdate);
     document.getElementById("arrivaldate").setAttribute("min",mindate);
-
-
 }
 </script>
 <script>
@@ -166,12 +136,8 @@ maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
 mindate =yyyy + '-' + mm + '-'+ dd  ;
 document.getElementById("DepartureDate").setAttribute("max",maxdate);
 document.getElementById("DepartureDate").setAttribute("min",mindate);
-
-
 }
-
 </script>
 
 </body>
 </html>
-

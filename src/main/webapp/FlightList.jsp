@@ -79,10 +79,10 @@ a:hover, a:active {
  
 			
 					<a href="UserServlet" class="btn btn-primary">List all User Details</a>
-					<a href="Addflight.jsp" class="btn btn-primary">Add Flight</a>
+					<a href="addflight.jsp" class="btn btn-primary">Add Flight</a>
 			        
 			        <a href="Bookingdetails" class="btn btn-primary">Booking Details</a>
-		<a href="FlightSearch.jsp"  " class="btn btn-outline-danger"> Back </a> <br > <br />
+		<a href="flightSearch.jsp"  " class="btn btn-outline-danger"> Back </a> <br > <br />
 			         
 					
 			
@@ -168,13 +168,13 @@ a:hover, a:active {
  					  					 <td>${flight.getFlightstatus()}</td>
  					  					 
  					  					 					<c:if test ="${loggedinadmin!=null}">  
-						<td><a href="Updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
+						<td><a href="updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
 						&Economyclass=${flight.getEconomy_class()}&premiumeconomyclass=${flight.getPremium_Economy_class()}&Businessclass=${flight.getBussiness_class()}
 						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td>
 			                                              </c:if>
 			                                              
 			                                              	 <c:if test ="${loggedinadmin!=null}">  
-						<td><a href="Deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td>
+						<td><a href="deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td>
 			                                              </c:if>
  					  					 
  								 			 								</tr>

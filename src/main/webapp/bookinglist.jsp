@@ -38,7 +38,7 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
+<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
 
 <%-- <%  

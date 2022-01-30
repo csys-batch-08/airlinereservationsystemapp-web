@@ -157,26 +157,6 @@ width: 40%
 }
 
 </style>
-<%-- <%
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-String role = (String)session.getAttribute("ROLE");
-String flightid=  (String)session.getAttribute("Flight_id");
-String ticketno	=  (String)session.getAttribute("Ticket_no");
-String amount=  (String)session.getAttribute("Amont");
-
-ArrayList<Integer> seatnumeric = (ArrayList<Integer>)session.getAttribute("Seatfield");
-
-String seatvaluefield =  seatnumeric.toString();
-
-System.out.println("seatvaluefield     :"+seatvaluefield);
-
-
-String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
-
-str=str.replaceAll("\\s", "");
-System.out.println(str); 
-
-%> --%>
 <c:set value="${LOGGED_IN_USER}"  var="loguser" />
 <c:set value="${ROLE}"  var="role" />
 <c:set value="${Flight_id}"  var="flightid" />
@@ -260,87 +240,16 @@ System.out.println(str);
 	</c:choose>
 													
     
-<%--     
-		<%
-			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
-			%>
-				      <label for="wallet""><b>Mode *</b></label>
-    
-    <input type="radio"  name="yesCheck" 
-				value="Creditcard" required> 
-				<label for="card" >Credit Card</label> 
-				
-				<input type="radio"  name="yesCheck" value="Debitcard" required > 
-				<label for="card" >Debitcard</label> 
-				    <br>
-				    <br>
-				         		
-				        			<button type="Submit"  required 
-					>
-				SUBMIT	</button>
-				         		
-				
-				<% }
-			else
-			{
-				%>
-				      <label for="wallet"><b>Mode *</b></label>
-    
-    <input type="radio"  name="yesCheck" value="Creditcard" required				 > 
-				<label for="card" >Credit Card</label> 
-				
-				<input type="radio"  name="yesCheck"  value="Debitcard"  required > 
-				<label for="card" >Debitcard</label> 
-				
-                    				<input type="radio"  
-				name="yesCheck" value="Wallet"  required > 
-				<label
-				for="Wallet" >Wallet</label>
-				<br>
-				<br>
-							<button type="Submit"   
-					>
-				SUBMIT	</button>
-				
-													
-				
-                    
-			<% }
-			
-			%> --%>
-			
     		</form>
 				
     		</div>
     		
    </main>
-<!--     <script>
-    function credit(){
-        document.getElementById("master").style.visibility = "visible";
-        document.getElementById("groups").style.visibility = "hidden";
-        document.getElementById("fun").style.visibility = "hidden";
-
-       }
-       function debit(){
-           document.getElementById("groups").style.visibility = "visible";
-           document.getElementById("master").style.visibility = "hidden";
-           document.getElementById("fun").style.visibility = "hidden";
-
-       } 
-</script>
- --> 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	   
 	   
    
-  <!-- <script>
-     setTimeout(function(){
-       window.location.href = 'FlightSearch.jsp';
-    }, 100000000);
- 
- </script>
- -->
  
  
  

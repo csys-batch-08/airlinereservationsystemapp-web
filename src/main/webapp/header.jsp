@@ -27,7 +27,7 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link"
-					href="FlightSearch.jsp">Home <span class="sr-only">(current)</span></a></li>
+					href="flightSearch.jsp">Home <span class="sr-only">(current)</span></a></li>
 					</ul>
 		
 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -35,9 +35,9 @@
 <c:if test="${loggedInAsAdmin == null && loggedInAsUser == null}">
 				<li class="nav-item active"><a class="nav-link"
 					href="login.jsp">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="Register.jsp">Register</a>
+				<li class="nav-item"><a class="nav-link" href="register.jsp">Register</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="GuestLogin.jsp">Guest Login</a>
+				<li class="nav-item"><a class="nav-link" href="guestlogin.jsp">Guest Login</a>
 				</li>
 </c:if>
 <c:if test="${loggedInAsUser == null && loggedInAsAdmin != null}">
@@ -67,7 +67,7 @@
 </c:when>
 <c:otherwise>
 
-					<li class="nav-item"input type="text"  ><a class="nav-link" href= "Mywallet.jsp">My Wallet</a>
+					<li class="nav-item"input type="text"  ><a class="nav-link" href= "mywallet.jsp">My Wallet</a>
 			</li>
 				<li class="nav-item"><a class="nav-link" href="CancelTicket">Cancel Booking</a>
 				</li>

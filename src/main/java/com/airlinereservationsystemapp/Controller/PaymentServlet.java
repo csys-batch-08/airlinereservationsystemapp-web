@@ -145,7 +145,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			session.removeAttribute("ClassDetails");
 
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 				requestDispatcher.forward(request, response);
 			}
 			else
@@ -156,7 +156,7 @@ public class PaymentServlet extends HttpServlet {
 				out.println("</head><body></body></html>");
 				System.out.println("inside  111");
 
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("Mywallet.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("mywallet.jsp");
 				requestDispatcher.forward(request, response);
 			}
 
@@ -184,7 +184,7 @@ public class PaymentServlet extends HttpServlet {
 			pass.Updatepassenger(Integer.parseInt(economy), Integer.parseInt(pre), Integer.parseInt(bus),coach,FlightId);
 
 			System.out.println("Seatstststgadcgdcdaddagcdacsavalue  "+seatstatus);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		

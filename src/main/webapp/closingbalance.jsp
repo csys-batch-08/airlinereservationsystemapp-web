@@ -12,7 +12,7 @@
 </head>
 <body>
 <%
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+/* String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 System.out.println("Valid Entreisssss"+loggedInAsUser);
 FlightService flightService = new FlightService();
 int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
@@ -21,6 +21,7 @@ System.out.println("Valid dhfhfhhfshhfshkfskkhsfkhkhfshkfkhfkhs"+" "+Closingbala
 PrintWriter Write = response.getWriter();
 Write.println(Closingbalance);
 System.out.println("Valid dhfhfhhfshhfshkfskkhsfkhkhfshkfkhfkhs"+" "+Closingbalance);
-%>
+ */
+ %>
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.airlinereservationsystemapp.Controller;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
 import com.airlinereservationsystemapp.Models.Flight_list;
@@ -36,27 +36,29 @@ public class FlightSearchServlet extends HttpServlet {
 	 * @param res 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
         response.setContentType("text/html");
        // List<Flight_list> flightList = new ArrayList<>();
 try
 {
-	
+	HttpSession session = request.getSession();
 	FlightSearchDao flightDao = new FlightSearchDao();
-	
+	System.out.println("hello flight list");
 	
 	List<Flight_list> flightInfo = flightDao.FlightList();
-	//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
-	request.setAttribute("Flight_List", flightInfo);
+	session.setAttribute("Flight_List", flightInfo);
 	System.out.println("Inside 1");
-	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
-	requestDispatcher.forward(request, response);
+	System.out.println("hello flight list"+request.getAttribute("Flight_List"));
+
+//	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightlist.jsp");
+//	requestDispatcher.forward(request, response);
 	
-	
+	response.sendRedirect("flightlist.jsp");
 }
 catch(Exception e)
 {
+	
 }
 
 		

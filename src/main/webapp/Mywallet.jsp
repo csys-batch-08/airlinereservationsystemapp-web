@@ -135,7 +135,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 
-    <jsp:include page="Header.jsp"></jsp:include>
+    <jsp:include page="header.jsp"></jsp:include>
     <main class="container-fluid">
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
@@ -144,9 +144,9 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
             <div class="container">
                   <label for="closingbalance" style="position: relative; top: 79px; left: 4px;" ><b>Closing Balance</b></label>
                   <input type="hidden" name="closingbalance"  id="closingbalance" value="${Closingvalue}"
-				style="position: relative; top: -1px; left: 100px;"      required autofocus  readonly
+				style="position: relative; top: -1px; left: 100px;"      required autofocus  
 				/> 
-				<h3 style="position: relative;top: 34px; left: 220px;" id="closing"  ></h3>
+				<h3  style="position: relative;top: 34px; left: 220px;" id="closing"  ></h3>
 				
 			<br></br>
 				 <label for="depositamount"><b>Deposit Amount</b></label>
@@ -170,7 +170,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 				<br></br>
 				<label for="bankname" style=" display: inline-block;"><b>Select Bank</b></label>
 
-<select name="bankname" id="bankname"  style="position: relative; top: -8px; left: 131px;"  required>
+<select name="bankname" id="bankname"  style="position: relative; top: -8px; left: 131px;"  required    >
   <option value="hdfc">HDFC</option>
   <option value="sbi">SBI</option>
   <option value="standard">Standard Chartered Bank</option>
@@ -183,7 +183,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 					>
 				Submit	</button>
 			</div>
-			<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic; position: relative; top: 10px; left: 50px;"   > Back </a> <br > <br />
+			<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic; position: relative; top: 10px; left: 50px;"   > Back </a> <br > <br />
 			
             </div>
 
@@ -208,15 +208,12 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 		    return false;  
 
 		    }
-		}
+		}		
 		    walletuser();
-		    
 		    function walletuser()
-		    {  
-		    console.log("called");
-		        let closingbalance=document.getElementById('closingbalance').value;
-		        console.log(closingbalance);
-		    var url="closingbalance.jsp?closingbalance="+closingbalance;  
+		    {  		        
+		    let closingbalance=document.getElementById('closingbalance').value;
+		    var url="Walletajax?closingbalance="+closingbalance;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
 		    }  
@@ -239,11 +236,14 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 		    	if(request.readyState==4){  
 		    	var response =request.responseText;  
 		    	document.getElementById('closing').innerHTML = response;  
-                
-		        }
-		    	}		    
+
+		    }
+		    }
 
 
+
+		    
+		    
 
 
 		  

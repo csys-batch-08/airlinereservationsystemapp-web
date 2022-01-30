@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Delete Flight</title>
+<title>DELETE FLIGHT</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -21,17 +21,12 @@ a:link, a:visited {
   text-decoration: none;
   display: inline-block;
 }
-
 a:hover, a:active {
   background-color: red;
 }
-
-
-
 </style>
 <body>
-
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
+<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
  
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
@@ -45,8 +40,6 @@ a:hover, a:active {
 					style="position: relative; left: -194px; height: 35px; top: 68px; width: 230px">
 				DELETE	</button>
 				
-  
- 
- 
+</form>
 </body>
 </html>
