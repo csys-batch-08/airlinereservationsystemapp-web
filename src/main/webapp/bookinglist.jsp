@@ -38,7 +38,10 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
+<!-- <a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br /> -->
+
+<a href="Sourcedestination"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
+
 
 
 <%-- <%  
@@ -69,12 +72,16 @@ a:hover, a:active {
 			</thead>
 <br>
 			<tbody>
-				     <c:forEach items="${Bookinglist}" var="booking" varStatus="status">
+
+			
+				     <c:forEach items="${Bookinglist}" var="booking" >
+				     
+							<c:set var="i" value="${i+1}"/>
 				
 				<tr>
 				
 					
- <td>${status.count}</td>		
+ <td>${i}</td>		
  
 					<td class="table-success">${booking.getPassenger_name()}</td>
 					<td>${booking.getClass_details()}</td>

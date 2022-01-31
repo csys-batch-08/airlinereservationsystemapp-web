@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Passenger_details;
@@ -33,13 +34,14 @@ public class BookingdetailsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		HttpSession session = request.getSession();
 		Passenger_detailsDao booklist = new Passenger_detailsDao();
 		
 		
 		List<Passenger_details> bookinfo = booklist.Bookinglist();
 		System.out.println(bookinfo);
 		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
-		request.setAttribute("Bookinglist", bookinfo);
+		session.setAttribute("Bookinglist", bookinfo);
 		System.out.println("Run File ");
 		//RequestDispatcher requestDispatcher = request.getRequestDispatcher("bookinglist.jsp");
 		//requestDispatcher.forward(request, response);
