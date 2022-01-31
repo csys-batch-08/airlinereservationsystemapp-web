@@ -132,7 +132,6 @@ String error  = (String) session.getAttribute("Error");
     
     <div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
     
-        				<b> <p style="font-style: italic; color: red; font-size: 25px" id = "loginresponse"></p></b>
     
     </div>
     
@@ -171,7 +170,7 @@ String error  = (String) session.getAttribute("Error");
     <button type="button"  class="cancelbtn"><a href="FlightSearch.jsp" style="text-decoration: blink;">BACK</a></button>
    			<c:if test="${error!=null}">
    			
-   		   <a href="ForgetPassword.jsp?username=${param.username}" class="btn btn-primary"  >Forget password?</a>
+   		   <a href="forgotpassword.jsp?username=${param.username}" class="btn btn-primary"  >Forget password?</a>
    			</c:if>
    
   </div>

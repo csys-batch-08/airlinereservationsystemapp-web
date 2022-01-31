@@ -56,9 +56,10 @@ public class FlightRegisterServlet extends HttpServlet {
 			
 			Flight objFlightRegister = new Flight(name,email,username,password,gender,Phonenumber);
 			FlightRegisterDao RegDao = new FlightRegisterDao();
-//			RegDao.Registration(objFlightRegister);
 			   
            int i =  RegDao.Fileregistration(objFlightRegister);
+		String usernameee = 	RegDao.Registration(objFlightRegister);
+		System.out.println("Registerafdhadhhdasahjdajd"+usernameee);
            
            System.out.println("Flight Registration nnnn"+" "+" "+i);
            

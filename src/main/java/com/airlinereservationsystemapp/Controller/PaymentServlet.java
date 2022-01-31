@@ -111,6 +111,7 @@ public class PaymentServlet extends HttpServlet {
 		{
 			System.out.println("vnhvhcvdhg12122");
 			int walletamount = wallet.checkusername(Username);
+			System.out.println("dsjhdjhsdhjdshjdsjhdsjhdjhdsjhdsjhds"+walletamount);
 			if(walletamount > 0 &&  walletamount > Price)
 			{
 				int Closingbalance = walletamount - Price;
@@ -132,13 +133,11 @@ public class PaymentServlet extends HttpServlet {
 
 			}
 				pass.Updatepassenger(Integer.parseInt(economy), Integer.parseInt(pre), Integer.parseInt(bus),coach,FlightId);
-		//	String fieldvalue = (String)session.getAttribute("classfield");
 				
 				
 			
 			System.out.println("hddfhbfdnvnxnxxvxcvcxvcxbcvbvbbvvbxcbvcvbvcbcbxxcvbcbvcxbvxc");
 			
-			//session.removeAttribute(fieldvalue);
 			
 			
 			System.out.println("hdhfdhgdfghdfghd");

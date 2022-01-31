@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.LoginDao;
 
@@ -38,12 +39,15 @@ public class ForgetPasswordServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		HttpSession session = request.getSession();
 		String Username = request.getParameter("username");
 		String Password = request.getParameter("password");
      System.out.println("Forget password");
      
      LoginDao password = new  LoginDao();
      try {
+			session.getAttribute("Sourcelist");
+
 		password.updatepassword(Username, Password);
 		
 		

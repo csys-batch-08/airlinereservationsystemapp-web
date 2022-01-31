@@ -97,9 +97,6 @@ public class AddPassengerServlet extends HttpServlet {
 	     
 	     System.out.println(seatno);
 	     String amount = request.getParameter("amount");
-         session.setAttribute("flightid", Flight_Id);
-         session.setAttribute("ticket_no", ticket_no);
-         session.setAttribute("amount", amount);
 
 
 	     session.setAttribute("logpass",noofpass);
@@ -140,10 +137,8 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 			
 
 			 
-    //RequestDispatcher rdispather = request.getRequestDispatcher("PaymentDetails");
-    //rdispather.forward(request, response);
 			
-  response.sendRedirect("PaymentDetails");
+  response.sendRedirect("PaymentDetails?flightid="+Flight_Id+"&ticketno="+ticket_no+"&amount="+amount);
 
 		} 
 	    catch (Exception e) {

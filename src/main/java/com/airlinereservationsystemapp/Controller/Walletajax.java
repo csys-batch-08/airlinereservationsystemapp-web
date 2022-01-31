@@ -37,7 +37,7 @@ public class Walletajax extends HttpServlet {
 		
 		String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		System.out.println("Valid Entreisssss"+loggedInAsUser);
-		FlightService flightService = new FlightService();
+			FlightService flightService = new FlightService();
 		int Closingbalance;
 		try {
 			Closingbalance = flightService.getclosingbalance(loggedInAsUser);

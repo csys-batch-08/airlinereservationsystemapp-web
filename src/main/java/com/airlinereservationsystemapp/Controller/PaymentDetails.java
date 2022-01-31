@@ -35,23 +35,15 @@ public class PaymentDetails extends HttpServlet {
 		try
 		{
 			
-			//String flightid = request.getParameter("flightId");
-			//int FlightId = Integer.parseInt(flightid);
-			//String ticketno = request.getParameter("ticketno");
-			//int TicketNo = Integer.parseInt(ticketno);
-			//String Amount = request.getParameter("amount");
-			//int Price = Integer.parseInt(Amount);
+			String flightid = request.getParameter("flightid");
+			System.out.println("Before parsing the valuesssss"+flightid);
+			String ticketno = request.getParameter("ticketno");
+			System.out.println("Before parsing the valuesssss"+ticketno);
+			String Amount = request.getParameter("amount");
+			System.out.println("Before parsing the valuesssss"+Amount);
+			
+
 	         
-			String flightid = (String)session.getAttribute("flightid");
-			System.out.println("flight   dsioisdiisdiisdid"+flightid);
-
-	    String ticketno =  (String)    session.getAttribute("ticket_no");
-		System.out.println("flight   dsioisdiisdiisdid"+ticketno);
-
-	    String Amount = (String)  session.getAttribute("amount");
-		System.out.println("flight   dsioisdiisdiisdid"+Amount);
-
-
 			
 			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Amount);
 			

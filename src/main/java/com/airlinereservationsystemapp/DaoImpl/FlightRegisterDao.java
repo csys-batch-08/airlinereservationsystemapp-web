@@ -1,4 +1,5 @@
 package com.airlinereservationsystemapp.DaoImpl;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -10,41 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.airlinereservationsystemapp.Dao.FlightRegisterInterface;
-import com.airlinereservationsystemapp.Models.AddFlight;
 import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
+import oracle.jdbc.OracleConnection.CommitOption;
 
 public class FlightRegisterDao implements FlightRegisterInterface
 {
-	public void Registration( Flight objFlightRegister) throws ClassNotFoundException 
-	{
-		try
-		{
-		
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			
-			String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) values(?,?,?,?,?,?,?)";
-			//System.out.println(objFlightRegister.getName());
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, objFlightRegister.getName());
-			stmt.setString(2, objFlightRegister.getEmailid());
-			stmt.setString(3, objFlightRegister.getUsername());
-			stmt.setString(4, objFlightRegister.getPassword());
-			stmt.setString(5, objFlightRegister.getGender());
-			stmt.setLong(6, objFlightRegister.getPhonenumber());
-			stmt.setDate(7, getcurrentdate());
-			int str = stmt.executeUpdate();
-			System.out.println("Completed :" +str);
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-			System.out.println(e);
-
-		}
-	}
 		private static Date getcurrentdate()
 		{
 			java.util.Date today = new java.util.Date();
@@ -54,6 +27,7 @@ public class FlightRegisterDao implements FlightRegisterInterface
 		public int Fileregistration( Flight objFlightRegister) throws ClassNotFoundException 
 		{
 			int str = 0;
+
 			try
 			{
 			
@@ -61,7 +35,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
 				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 				
 				String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) values(?,?,?,?,?,?,?)";
-				//System.out.println(objFlightRegister.getName());
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1, objFlightRegister.getName());
 				stmt.setString(2, objFlightRegister.getEmailid());
@@ -72,6 +45,9 @@ public class FlightRegisterDao implements FlightRegisterInterface
 				stmt.setDate(7, getcurrentdate());
 				 str = stmt.executeUpdate();
 				System.out.println("Completed :" +str);
+				insertwalletFlight(objFlightRegister);
+
+
 			}
 			catch(SQLException e)
 			{
@@ -82,6 +58,20 @@ public class FlightRegisterDao implements FlightRegisterInterface
 			return str;
 		}
 
+  
+		public void insertwalletFlight (Flight objFlightRegister)throws ClassNotFoundException, SQLException
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			String query = "insert into wallet_details (User_name,Wallet_amount) values(?,?)";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, objFlightRegister.getUsername());
+			stmt.setInt(2, 0);
+			 int fdgdgstr = stmt.executeUpdate();
+			 System.out.println(fdgdgstr);
+
+			
+		}
 
 	
 
@@ -202,6 +192,11 @@ public class FlightRegisterDao implements FlightRegisterInterface
  		return canceldetails;
  }
 
+	@Override
+	public String Registration(Flight objFlightRegister) throws ClassNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 }

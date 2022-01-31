@@ -1,6 +1,7 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.WalletDao;
+
 
 /**
  * Servlet implementation class Wallet
@@ -46,6 +48,7 @@ public class WalletServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();		
 		String Username	= (String)session.getAttribute("LOGGED_IN_USER");
+		System.out.println("dsjdsbbssdnbsddsdbndsnbdsndbsnbdswallet snbsdfbndsbsbnsbndsnbds"+Username);
 	String classvalue = (String)session.getAttribute("ClassDetails");
 	
 	session.setAttribute("classfield", classvalue);
@@ -58,18 +61,23 @@ public class WalletServlet extends HttpServlet {
 			System.out.println(Walletamount);
 
 			int wallet_amount = Integer.parseInt(Walletamount);
+			System.out.println(wallet_amount);
 			WalletDao wallet = new WalletDao();
 			int Amount = wallet.checkusername(Username);
-			System.out.println(Amount);
-//			if(classvalue.equalsIgnoreCase("Economy"))
+			System.out.println("hgsdhgshdgghdhgdsghghsdhgsdhgghdshgdshgsdhghgsdhgsdhghgd"+Amount);
 			if(classvalue!=null)
 			{
+				System.out.println("Fjnsdsdnbdsnbbndsbndsbndsbnbndsbndsbndsbndnbsndbbnsbnnbd"+classvalue);
 				int closingbalance = wallet_amount + Amount ; 
+				System.out.println("shbhgdhgshgdghsdhghgdsghdshghgdhgdsclosing balanceeee"+closingbalance);
 				wallet.updatebalance(Username, closingbalance);
 				session.getAttribute("Seatvalue");
 				session.getAttribute("Flightid");
 				session.getAttribute("Ticketno");
 				session.getAttribute("Amont");
+
+
+
 
 
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
@@ -87,12 +95,14 @@ public class WalletServlet extends HttpServlet {
 					{
 						int closingbalance = wallet_amount + Amount ; 
 						wallet.updatebalance(Username, closingbalance);
-						session.setAttribute("Closingvalue", closingbalance);
+
+
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 						requestDispatcher.forward(request, response);
 					}
 					else
 					{
+
 						wallet.insetbalance(Username, wallet_amount);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 						requestDispatcher.forward(request, response);
@@ -100,24 +110,10 @@ public class WalletServlet extends HttpServlet {
 					}
 				}
 			
+
 	
 			
 		      
-//		    	 if(closingb!=null)
-//		    	 {
-//				       if((Amount > 0))
-//				       {
-//				int closingbalance = wallet_amount + Amount ; 
-//				wallet.updatebalance(Username, closingbalance);
-//				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
-//				requestDispatcher.forward(request, response);
-//				}
-			
-		    	 
-			
-		//	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
-			//requestDispatcher.forward(request, response);
-
 
 			
 		}

@@ -14,7 +14,7 @@ public class WalletDao implements WalletInterface
 	public  int getclosingbalance( String username) throws Exception
 	{
 		
-		int Closing_balance = 0;
+//		int Closing_balance = 0;
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("Weleocme to add flight ");
@@ -26,19 +26,19 @@ public class WalletDao implements WalletInterface
 	    System.out.println(username);
 	   
 		ResultSet rs = pst.executeQuery();
-		if(rs != null)
-		{
-			
+//		if(rs != null)
+//		{
+			int Closing_balance = 0;
 			while (rs.next()) {
-				Closing_balance =  rs.getInt("wallet_amount");
-				 System.out.println(Closing_balance);
+				 Closing_balance =  rs.getInt("wallet_amount");
+				 System.out.println("sdhjjhdsjhsdjhdshjjhdsjhdsjhdjjhdshjsdjh"+Closing_balance);
 				
 				
 			}
-		       
-		}
+		      return Closing_balance;
+  
 		
-	      return Closing_balance;
+		
 	      
 	      
 			
@@ -47,7 +47,7 @@ public class WalletDao implements WalletInterface
 	public  int checkusername( String username) throws Exception
 	{
 		
-		int Closing_balance =0;
+		int Closing_balance = 0 ;
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("Weleocme to add flight ");
@@ -60,13 +60,15 @@ public class WalletDao implements WalletInterface
 	    System.out.println(username);
 	   
 		ResultSet rs = pst.executeQuery();
-		if(rs != null)
-		{
+//		if(rs != null)
+//		{
 			
 			while (rs.next()) {
 				 Closing_balance = rs.getInt("wallet_amount");
+				 System.out.println("djnjhhjsdhjhjsdjhjhsdjhsdjhsjhshdhjsjhjhsdjhjshdjhdshjdshjhjshjdshjjhds"+Closing_balance);
+	
 			}
-		}
+		
 			
 		
 		return Closing_balance;

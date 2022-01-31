@@ -123,15 +123,6 @@ a:hover, a:active {
 
 </style>
 
-<%-- <% String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
-FlightService flightService = new FlightService();
-int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
-
-%> --%>
-
-<%-- <c:set value="${Closingvalue}" var="closebalance"/>  --%>
 <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 
@@ -140,7 +131,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
        
-            <form  id="form" name ="amountvalid" action="Wallet" method="post"  onsubmit="return validation()" >
+            <form  id="form"  action="Wallet" method="post"  onsubmit="return validation()" >
             <div class="container">
                   <label for="closingbalance" style="position: relative; top: 79px; left: 4px;" ><b>Closing Balance</b></label>
                   <input type="hidden" name="closingbalance"  id="closingbalance" value="${Closingvalue}"
@@ -213,7 +204,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 		    function walletuser()
 		    {  		        
 		    let closingbalance=document.getElementById('closingbalance').value;
-		    var url="Walletajax?closingbalance="+closingbalance;  
+		    var url="closingbalance.jsp?closingbalance="+closingbalance;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
 		    }  
