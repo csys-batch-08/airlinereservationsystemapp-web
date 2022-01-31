@@ -14,7 +14,6 @@ import com.airlinereservationsystemapp.Dao.FlightRegisterInterface;
 import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
-import oracle.jdbc.OracleConnection.CommitOption;
 
 public class FlightRegisterDao implements FlightRegisterInterface
 {
