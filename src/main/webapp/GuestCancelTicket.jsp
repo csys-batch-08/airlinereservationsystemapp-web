@@ -139,7 +139,7 @@ private static Date getcurrentdate()
  	</c:when>
  	<c:otherwise>
 
-	     		<td><a href="FlightCancellation.jsp?seatno=${guestcancel.getSeatno()}&Flightid=${guestcancel.getFlight_id()}&Departuredate=${guestcancel.getArrival_date()}
+	     		<td><a href="flightcancellation.jsp?seatno=${guestcancel.getSeatno()}&Flightid=${guestcancel.getFlight_id()}&Departuredate=${guestcancel.getArrival_date()}
 	&Class=${guestcancel.getClass_details()}&Amount=${guestcancel.getAmount()}"
 		class="btn btn-primary" >CancelTicket</a></td>
  	</c:otherwise>

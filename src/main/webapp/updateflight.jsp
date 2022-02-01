@@ -18,6 +18,12 @@
 
 </head>
 <style>
+body
+{
+background-image: url(image/878641.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
 a:link, a:visited {
   background-color: white;
   color: black;
@@ -33,63 +39,100 @@ a:hover, a:active {
 }
 </style>
 <body>
-<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
+<a href="Sourcedestination"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
 
     <h1 style="text-align: center;">
 				<b>UPDATE  FLIGHT DETAILS</b></h1>
 		<form name="addflight" action="UpdateFlight" method="post"  >
 		
-						    <input type="number"  name="Flightid" value="${param.flightId}" readonly   placeholder="Flight_id"  
-				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" />
+<%-- 						    <input type="number"  name="Flightid" value="${param.flightId}" readonly   placeholder="Flight_id"  
+				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" /> --%>
+				      <input type="number" class="form-control " id="Flightid" name="Flightid"  value="${param.flightId}" readonly
+				      style="position: relative;width: 250px;left: 38px; top: 0px;">
+				
 		<br>
 			
 			
 			
-			<br /> <input type="text" name="Flightname" value="${param.flightname}" 
+			<br /> <%-- <input type="text" name="Flightname" value="${param.flightname}" 
 				placeholder="FLIGHT_NAME"  autofocus
-				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
+				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /> --%>
 				
-			<br> <input type="text" id="text" name="source" value="${param.source}"  
+					<input type="text" class="form-control"  value="${param.flightname}"  name="Flightname"
+				      style="position: relative;width: 250px;left: 38px; top:-29px;">
+				
+				
+			<br>
+			 <%-- <input type="text" id="text" name="source" value="${param.source}"  
 				placeholder="Enter Source"  
-				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" />
+				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" /> --%>
+				
+				<input type="text" class="form-control"  value="${param.source}"  name="source"
+				      style="position: relative;width: 250px;left: 38px; top: -25px;">
 			
 			
-			<br> <input type="text" name="Destination" value="${param.Destination}" 
+			<br> 
+			<%-- <input type="text" name="Destination" value="${param.Destination}" 
 			  placeholder="Enter Destination " 
 				autofocus  
-				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
+				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" /> --%>
+					<input type="text" class="form-control"  value="${param.Destination}"  name="Destination"
+				      style="position: relative;width: 250px;left: 38px; top: -21px;">
+				
 				<br>
 				
-				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="${param.Economyclass}" 
+<%-- 				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="${param.Economyclass}" 
 				min = "0" pattern="[0-9]"  
-				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
+				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" /> --%>
 				
-			<br> <input type="number" name="PremiumEconomyclass" value="${param.premiumeconomyclass}"  
-				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
-				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
-				
-			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="${param.Businessclass}"
-							min = "0" pattern="[0-9]"    
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
-				<br> 
-				
-							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px">
-				<br> 
-				
-							<input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
-				<br> 
-				
-			<input type="text"  name="Status" placeholder="status" value="Yet To Arrived"  
-				value="Male" style="position: relative; left: 296px;height: 31px; top: -6px;width: 229px">
-				<br> 
-				
-				
-				
-				
+				<input type="number" class="form-control"  value="${param.Economyclass}"  name="Economyclass"
+				      style="position: relative;width: 250px;left: 38px; top: -17px;">
+				      
 			<br> 
+			<%-- <input type="number" name="PremiumEconomyclass" value="${param.premiumeconomyclass}"  
+				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
+				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /> --%>
+				
+					<input type="number" class="form-control"  value="${param.premiumeconomyclass}" name="PremiumEconomyclass"
+				      style="position: relative;width: 250px;left: 38px; top: -14px;">
+				
+				<br>
+				
+<%-- 			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="${param.Businessclass}"
+							min = "0" pattern="[0-9]"    
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px"> --%>
+				
+				<input type="number" class="form-control"  value="${param.Businessclass}" name="Bussinessclass" 
+				      style="position: relative;width: 250px;left: 38px; top: -10px;">
+				<br> 
+				
+							<%-- <input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px"> --%>
+				
+						<input type="date" class="form-control"  value="${param.Departuredate}"  name="DepartureDate"
+				      style="position: relative;width: 250px;left: 38px; top: -6px;">
+				
+				<br> 
+				
+							<%-- <input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
+ --%>				
+ <input type="date" class="form-control"  value="${param.Arrivaldate}"  name="ArrivalDate"
+				      style="position: relative;width: 250px;left: 38px; top: -2px;">
+ 
+ 
+ <br> 
+				
+<!-- 			<input type="text"  name="Status" placeholder="status" value="Yet To Arrived"  
+				value="Male" style="position: relative; left: 296px;height: 31px; top: -6px;width: 229px">
+ -->				
+ 
+  <input type="text" class="form-control"  value="Yet To Arrived"  name="Status"
+				      style="position: relative;width: 250px;left: 38px; top: 2px;">
+ 
+ 
+ <br> 
 			
 			
 			
@@ -100,10 +143,9 @@ a:hover, a:active {
 
 			<div style="text-align: center">
 				<button type="Submit"  class="btn btn-primary" 
-					style="position: relative; left: 40px; height: 36px; top: 99px; width: 230px">
+					style="position: relative; left: 40px; height: 36px; top: -30px; width: 230px">
 				SUBMIT	</button>
 			</div>
-			
 		</form>
 		
     <script>

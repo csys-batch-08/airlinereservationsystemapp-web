@@ -115,10 +115,6 @@ span.psw {
 
     		<form name="GuestForm" action="GuestLogin" method="post" >
     		
-    			<div class="imgcontainer">
-				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU
-" alt="Avatar" class="avatar">
-				</div>
 				
     		      <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
 				 placeholder="Enter Mobile Number" required  pattern = "[6-9][0-9]{9}"

@@ -13,6 +13,12 @@
 
 </head>
 <style>
+body
+{
+  background-image: url(image/1264514.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 a:link, a:visited {
   background-color: #f44336;
   color: white;
@@ -31,13 +37,14 @@ a:hover, a:active {
  
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
 			
-			<br /> <input type="number" name="Flight_id" value= "${param.flightId}" readonly
-				placeholder="FLIGHT_ID" required autofocus
-				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
+			<br /> 
+									<input type="number" class="form-control " name="Flight_id"  value="${param.flightId}" readonly
+style="position: relative;width: 228px;left: 58px; top: -5px;height: 41px; ">
 				
+				<br>
 				
 				<button type="Submit"  class="btn btn-danger" 
-					style="position: relative; left: -194px; height: 35px; top: 68px; width: 230px">
+					style="position: relative; left:62px; height: 41px; top: 38px; width: 172px">
 				DELETE	</button>
 				
 </form>

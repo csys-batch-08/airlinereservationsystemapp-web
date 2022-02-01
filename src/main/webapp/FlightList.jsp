@@ -117,9 +117,9 @@ a:hover, a:active {
 					<th>Premium Seats</th>
 					<th>Business Seats</th>
 					<th>Departured Time</th>
-										<th>Arrival Time</th>
+					<th>Arrival Time</th>
 					
-										<th>Flight Status</th>
+					<th>Flight Status</th>
 					
 					
 					
@@ -164,8 +164,8 @@ a:hover, a:active {
  					  					 <td>${flight.getEconomyseats()}</td>
  					  					 <td>${flight.getPremiumseats()}</td>
  					  					 <td>${flight.getBusinessseats()}</td>
+ 					  			    	 <td>${flight.getDepartureTime()}</td>
  					  					 <td>${flight.getArrivaltime()}</td>
- 					  					 <td>${flight.getDepartureTime()}</td>
  					  					 <td>${flight.getFlightstatus()}</td>
  					  					 
  					  					 					<c:if test ="${loggedinadmin!=null}">  

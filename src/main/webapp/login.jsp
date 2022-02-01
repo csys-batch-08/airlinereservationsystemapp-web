@@ -53,18 +53,18 @@ button:hover {
   padding: 10px 18px;
   background-color: #f44336;
 }
-.imgcontainer {
+/*.imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
 img.avatar {
   width: 23%;
   border-radius: 50%;
-}
+} */
 .container {
   padding: 16px;
 }
-span.psw {
+ span.psw {
   float: right;
   padding-top: 16px;
 }
@@ -76,12 +76,12 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
-}
-body{
+} 
+/* body{
 	background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-}
+} */
  
 </style>
 
@@ -110,11 +110,7 @@ body{
     <label for="password" style="color: white;"><b>Password</b></label>
     <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
     
-    <div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
-    
-    
-    </div>
-    
+
    	 <div id="fads">
    <c:if test="${error!=null}">
    					<p id="value"   style="font-size: 20px; color: red;">${error} </p>
@@ -137,7 +133,7 @@ body{
  <c:set value="${param.username}" var="username"/>
      
 				
-		<div class="container" style="background-color:#f1f1f1">
+		<div class="container"     style="background-color:#f1f1f1">
     <button type="button"  class="cancelbtn"><a href="Sourcedestination" style="text-decoration: blink;">BACK</a></button>
    			<c:if test="${error!=null}">
    			

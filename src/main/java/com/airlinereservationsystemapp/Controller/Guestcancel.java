@@ -41,7 +41,7 @@ public class Guestcancel extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
+		System.out.println("Megdbvvhdshvdhhdgshgdshgsdhghgsdhgdsghdsghsdhgshgdghsdhgsdhgsdghghd");
 		HttpSession session = request.getSession();
 		
 		LocalDate local =  getdate();
@@ -58,7 +58,7 @@ public class Guestcancel extends HttpServlet {
 		List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
 		System.out.println(Guestcancel);
 		
-		request.setAttribute("GuestList", Guestcancel);
+		session.setAttribute("GuestList", Guestcancel);
 		
 //		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
 //		requestDispatcher.forward(request, response);

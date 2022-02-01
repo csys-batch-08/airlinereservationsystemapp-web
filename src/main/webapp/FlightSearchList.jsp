@@ -134,5 +134,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		
 			
 		</c:if>
+		
 </body>
 </html>

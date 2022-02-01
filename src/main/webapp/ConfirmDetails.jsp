@@ -11,7 +11,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Confirm Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 
@@ -23,11 +26,11 @@ body {
 }
 form {
   border: 3px solid #f1f1f1;
-  width:30%;
-  align:"center";
+  width:35%;
+ align:"center";
 }
 
-input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
+/* input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
   width: 43%;
   padding: 12px 20px;
   margin: 5px 0;
@@ -67,7 +70,7 @@ button:hover, button:active {
   background-color:lime;
 }
 
-
+ */
 
 </style>
 
@@ -78,77 +81,110 @@ button:hover, button:active {
 		<h3 align="center">Confirm Details</h3>
 		<div align="center">
 		
-		   		<form action="AddPassenger" method="post">
+		   		<form action="AddPassenger" method="post"  style="position:relative;height: 700px;"  >
 		
  
-            <label for="username" style="position: relative; left: 20px; height: 25px; top: 4px; width: 230px"
-            >PassengerName</label> 
-				<input type="text" name="username" id="username" style="position: relative; left: 29px; height: 25px; top: 5px; width: 210px"
-				 value="${passengers.getPassenger_name()}"  readonly /> 
+            <label for="username" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:33px;left: -117px;height: 20px; " 
+            >PassengerName </label> 
+				<%-- <input type="text" name="username" id="username" style="position: relative; left: 29px; height: 25px; top: 5px; width: 210px"
+				 value="${passengers.getPassenger_name()}"  readonly />  --%>
+				 
+				 <input type="text" class="form-control" name = "username"   id="username" value="${passengers.getPassenger_name()}" readonly
+				    style="position: relative;width: 214px;top:7px;left: 73px;height: 32px;"  >
 				<br/>
 				<br>
 				<br>
             
 				
 				
-				 <label for="coach"style="position: relative; left: 23px; height: 25px; top: -6px; width: 230px"
-				 >CoachDetails</label> 
+				 <label for="coach" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-29px;left: -117px;height: 20px; "
+				 >CoachDetails </label> 
             
-			<input type="text"
-				name="coach" id="flightId"  style="position: relative; left: 38px; height: 25px; top: -6px; width: 210px"
+<%-- 			<input type="text"
+				name="coach" id="v"  style="position: relative; left: 38px; height: 25px; top: -6px; width: 210px"
 			  value="${passengers.getClass_details()}"  
-				readonly /> <br /> <br /> 
+				readonly /> --%>
+				 <input type="text" class="form-control" name = "coach"   id="coach" value="${passengers.getClass_details()}" readonly
+				    style="position: relative;width: 214px;top:-60px;left: 73px;height: 32px;"  >
+				 <br /> <br /> 
 				
 				
-				 <label for="MobileNumber"style="position: relative; left: 23px; height: 25px; top: -6px; width: 230px"
-				 >MobileNumber</label> 
+				 <label for="MobileNumber" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-74px;left: -117px;height: 20px; "
+				 >MobileNumber </label> 
             
-			<input type="number"
+<%-- 			<input type="number"
 				name="MobileNumber" id="MobileNumber" style="position: relative; left: 32px; height: 25px; top: -6px; width: 210px"
 				  value="${passengers.getMobile_number()}" 
-				readonly /> <br /> <br /> 
+				readonly />  --%>
+				 <input type="text" class="form-control" name = "MobileNumber"   id="MobileNumber" value="${passengers.getMobile_number()}" readonly
+				    style="position: relative;width: 214px;top:-99px;left: 73px;height: 32px;"  >
+				
+				<br /> <br /> 
 				
 				
-				 <label for="source" style="position: relative; left: 22px; height: 25px; top: -6px; width: 230px"
-				 >Source</label> 
+				 <label for="source" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-110px;left: -117px;height: 20px; "
+				 >Source </label> 
             
-			<input type="text"
+<%-- 			<input type="text"
 				name="source" id="flightId"style="position: relative; left: 61px; height: 25px; top: -6px; width: 210px"
 				  value="${passengers.getSource()}" 
-				readonly /> <br /> <br /> 
+				readonly /> --%>
+				
+					 <input type="text" class="form-control" name = "source"   id="source" value="${passengers.getSource()}" readonly
+				    style="position: relative;width: 214px;top:-138px;left: 73px;height: 32px;"  >
+				
+				 <br /> <br /> 
 				
 				
-				 <label for="destination" style="position: relative; left: 29px; height: 25px; top: -6px; width: 230px"
-				 >Destination</label> 
+				 <label for="destination" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-146px;left: -117px;height: 20px; "
+				 >Destination </label> 
             
-			<input type="text"
+<%-- 			<input type="text"
 				name="destination" id="flightId"style="position: relative; left: 47px; height: 25px; top: -6px; width: 210px"
 				  value="${passengers.getDestination()}"
-				readonly /> <br /> <br /> 
+				readonly />  --%>
+					 <input type="text" class="form-control" name = "destination"   id="destination" value="${passengers.getDestination()}" readonly
+				    style="position: relative;width: 214px;top:-177px;left: 73px;height: 32px;"  >
 				
-				 <label for="bookingDate" style="position: relative; left: 38px; height: 25px; top: -6px; width: 230px"
-				 >BookingDate</label> 
+				<br /> <br /> 
+				
+				 <label for="bookingDate" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-189px;left: -117px;height: 20px; "
+				 >Departed Date </label> 
             
-			<input type="text"
+<%-- 			<input type="text"
 				name="bookingDate" id="flightId"style="position: relative; left: 44px; height: 25px; top: -6px; width: 210px"
 				    value="${passengers.getArrival_date()}"
-				readonly /> <br /> <br /> 
+				readonly />  --%>
+					 <input type="text" class="form-control" name = "bookingDate"   id="bookingDate" value="${passengers.getArrival_date()}" readonly
+				    style="position: relative;width: 214px;top:-216px;left: 73px;height: 32px;"  >
 				
-				 <label for="numberOfPassengers" style="position: relative; left: 25px; height: 25px; top: -6px; width: 230px"
-				 >NoOfPassengers</label> 
+				<br /> <br /> 
+				
+				 <label for="numberOfPassengers" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-228px;left: -117px;height: 20px; "
+				 >NoOfPassengers </label> 
             
-			<input type="text"
+			<%-- <input type="text"
 				name="numberOfPassengers" id="flightId"style="position: relative; left: 34px; height: 25px; top: -6px; width: 210px"
 				  value="${passengers.getNoOfPassengers()}"
-				readonly /> <br /> <br /> 
+				readonly />  --%>
+				 <input type="text" class="form-control" name = "numberOfPassengers"   id="numberOfPassengers" value="${passengers.getNoOfPassengers()}" readonly
+				    style="position: relative;width: 214px;top:-255px;left: 73px;height: 32px;"  >
+	
+				
+				<br /> <br /> 
 				
 				
-				            <label for="flightId" style="position: relative; left: 26px; height: 25px; top: -6px; width: 230px"
+				            <label for="flightId" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:-264px;left: -117px;height: 20px; "
 				            >Flight Id</label>
-			<input type="text"
+<%-- 			<input type="text"
 				name="flightId" id="flightId" style="position: relative; left: 55px; height: 25px; top: -6px; width: 210px"
 				value="${passengers.getFlight_id()}"
-				readonly /> <br /> <br /> 
+				readonly />  --%>
+				
+				 <input type="text" class="form-control" name = "flightId"   id="flightId" value="${passengers.getFlight_id()}" readonly
+				    style="position: relative;width: 214px;top:-294px;left: 73px;height: 32px;"  >
+				
+				<br /> <br /> 
 				
 				<input type="hidden"
 				name="Economyclass" id="Economyclass"  value="${passengers.getEconomyseat()}"
@@ -179,7 +215,10 @@ button:hover, button:active {
 				name="seatno" id="amount"  value="${passengers.getSeatno()}"
 				readonly /> <br /> 
 				
-								  <button type="submit" >Submit</button>
+								  
+								  
+								  <button type="submit"  class="btn btn-outline-primary"
+								  style="position:relative;top: -374px;left: -6px; width: 99px;height: 35px; " >Submit</button>
 				
 				
 				

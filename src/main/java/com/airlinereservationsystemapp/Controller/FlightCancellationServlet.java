@@ -63,6 +63,10 @@ public class FlightCancellationServlet extends HttpServlet {
 
 	 HttpSession session = request.getSession();
 	 String User = (String) session.getAttribute("LOGGED_IN_USER");
+	 
+//	 <c:set value="${LOGGED_IN_USER}" var="loggedguest"  />
+//	 <c:set value="${ROLE}" var="role"  />
+
 		       WalletDao wallet = new WalletDao();
 		       
 		       
@@ -70,7 +74,25 @@ public class FlightCancellationServlet extends HttpServlet {
 		       
 				Passenger_detailsDao cancelflight = new Passenger_detailsDao();
 				try {
-					cancelflight.Updatecancelstatus(seatno);
+					
+			if(User.equalsIgnoreCase("Guest"))
+			{
+				System.out.println("Entering condition value");
+				cancelflight.Updatecancelstatus(seatno);
+				
+				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
+				System.out.println("Ticket COunttvalue"+ticketcount);
+				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
+				
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+				requestDispatcher.forward(request, response);
+
+
+			}
+			else
+				{
+				cancelflight.Updatecancelstatus(seatno);
+				
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
 				System.out.println("Ticket COunttvalue"+ticketcount);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
@@ -89,7 +111,7 @@ public class FlightCancellationServlet extends HttpServlet {
 					   
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
-
+				}
 				} catch (Exception e) {
 					response.getWriter().print("Flight not  Cancelled");
 

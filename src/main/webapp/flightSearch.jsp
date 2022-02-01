@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>FLIGHT SEARCH PAGE</title>
+
 </head>
 <style>
 body {
@@ -48,7 +49,7 @@ button:hover {
 
 
 </style>
- <jsp:include page="header.jsp"></jsp:include>
+ <jsp:include page="headerfile.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
  
         <div style="margin-left: 918px;margin-top: 30px">
@@ -92,9 +93,9 @@ button:hover {
               
               
             
-            <button  type="submit"  onclick="return validation()">Submit </button><br><br>
+            <button  type="submit" style="font-style: italic; font-size: 15px;"  onclick="return validation()">Submit </button><br><br>
 
-           	 <a href="FlightSearch"  class="btn btn-primary">List All Flight Details</a>
+           	 <a href="FlightSearch" style="font-style: italic;font-size: 15px;" class="btn btn-primary">List All Flight Details</a>
 
 
 	        </form>

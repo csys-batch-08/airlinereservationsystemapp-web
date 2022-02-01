@@ -100,7 +100,7 @@ a:hover, a:active {
 <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 
-    <jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="headerfile.jsp"></jsp:include>
     <main class="container-fluid">
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
