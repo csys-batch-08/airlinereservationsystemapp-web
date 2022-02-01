@@ -51,16 +51,15 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<th>DepartingFrom</th>
 					<th>Departing To</th>
 					<th>DepartureDate</th>
-					
+					<th>Arrival_Date</th>
 					<th>Economy Class</th>
 					<th>PremiumEconomyClass</th>
 					<th>Business Class</th>
 				    <th>Economy Rate</th>
 					<th>Premium Rate</th>
-					<th>Business Rate</th>
-<!-- 					<th>Arrival Time</th>
- -->				
- 	<th>Departure Time</th>
+					<th>Business Rate</th> 					
+ 				    <th>Departure Time</th>
+ 				    <th>Arrival Time</th>
 					
 					
 			<c:if test="${loggedinuser != null}">
@@ -88,6 +87,10 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  					  					 <fmt:parseDate value="${plane.getDeparture_Date()}" pattern="yyyy-MM-dd" var="departured" type="date"/>
  					  					 
  					  					 <td><fmt:formatDate value="${departured}" pattern="dd-MM-yyyy"   />    </td>
+ 					  					  <fmt:parseDate value="${plane.getArrival_Date()}" pattern="yyyy-MM-dd" var="arrivied" type="date"/>
+ 					  					 
+ 					  					 <td><fmt:formatDate value="${arrivied}" pattern="dd-MM-yyyy"   />    </td>
+ 					  					 
  					  					 <td>${plane.getEconomy_class()}</td>
  					  					 <td>${plane.getPremium_Economy_class()}</td>
  					  					 <td>${plane.getBussiness_class()}</td>
@@ -95,6 +98,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  					  					 <td>${plane.getPremium_Economy_rate()}</td>
  					  					 <td>${plane.getBussiness_rate()}</td>
  					  					 <td>${plane.getDepartureTime()}</td>
+ 					  			         <td>${plane.getArrivalTime()}</td>
+ 					  					 
  
  
  

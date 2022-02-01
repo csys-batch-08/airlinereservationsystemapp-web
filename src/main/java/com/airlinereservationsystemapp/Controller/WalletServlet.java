@@ -71,43 +71,23 @@ public class WalletServlet extends HttpServlet {
 				int closingbalance = wallet_amount + Amount ; 
 				System.out.println("shbhgdhgshgdghsdhghgdsghdshghgdhgdsclosing balanceeee"+closingbalance);
 				wallet.updatebalance(Username, closingbalance);
-				session.getAttribute("Seatvalue");
-				session.getAttribute("Flightid");
-				session.getAttribute("Ticketno");
-				session.getAttribute("Amont");
-
-
-
-
-
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
 				requestDispatcher.forward(request, response);
-				
-				
-
 				
 			}
 
 			
-			else			
+			else if(Amount>0)			
 			{
-					if(Amount>0)
-					{
+//					if(Amount>0)
+//					{
 						int closingbalance = wallet_amount + Amount ; 
 						wallet.updatebalance(Username, closingbalance);
 
 
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 						requestDispatcher.forward(request, response);
-					}
-					else
-					{
-
-						wallet.insetbalance(Username, wallet_amount);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
-						requestDispatcher.forward(request, response);
-
-					}
+					//}
 				}
 			
 

@@ -111,13 +111,14 @@ a:hover, a:active {
 					<th>Economy Class</th>
 					<th>Premium Class</th>
 					<th>Business Class</th>
-					<th>Arrival_Date</th>
 					<th>Departure_Date</th>
+					<th>Arrival_Date</th>
 					<th>Economy Seats</th>
 					<th>Premium Seats</th>
 					<th>Business Seats</th>
-					<th>Arrival Time</th>
 					<th>Departured Time</th>
+										<th>Arrival Time</th>
+					
 										<th>Flight Status</th>
 					
 					
@@ -158,8 +159,8 @@ a:hover, a:active {
  					  					 <td>${flight.getEconomy_class()}</td>
  					  					 <td>${flight.getPremium_Economy_class()}</td>
  					  					 <td>${flight.getBussiness_class()}</td>
+ 					  					  <td><fmt:formatDate   value="${flight.getDeparture_time()}" pattern="dd-MM-yyyy"/></td>
  					  					 <td><fmt:formatDate value="${flight.getArrival_Time()}" pattern="dd-MM-yyyy"  />  </td>
- 					  					 <td><fmt:formatDate   value="${flight.getDeparture_time()}" pattern="dd-MM-yyyy"/></td>
  					  					 <td>${flight.getEconomyseats()}</td>
  					  					 <td>${flight.getPremiumseats()}</td>
  					  					 <td>${flight.getBusinessseats()}</td>

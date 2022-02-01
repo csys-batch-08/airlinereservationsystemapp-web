@@ -125,7 +125,7 @@ public class PaymentServlet extends HttpServlet {
 					System.out.println("seatno integeegcfcdg"+mystr);
 					 seatstatus = Integer.parseInt(mystr);
 					 System.out.println("smfhsfhvsfdfgfgdsgdffgdgdfgsgfdfgsgfd"+seatstatus);
-					 request.setAttribute("Seatvalue", seatstatus);
+//					 request.setAttribute("Seatvalue", seatstatus);
 
 					 System.out.println("dsjdhhsgsgfgsfgfshhfshfsghsfhgsfhghfsghghfgshfsghs"+seatstatus);
 				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
@@ -161,9 +161,9 @@ public class PaymentServlet extends HttpServlet {
 
 
 			
-			session.setAttribute("Flightid", FlightId);
-			session.setAttribute("Ticketno", TicketNo);
-			session.setAttribute("Amount", splitprice);
+//			session.setAttribute("Flightid", FlightId);
+//			session.setAttribute("Ticketno", TicketNo);
+//			session.setAttribute("Amount", splitprice);
 
 			
 		

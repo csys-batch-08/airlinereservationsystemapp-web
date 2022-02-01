@@ -109,7 +109,7 @@ return Seatavailabilitylist;
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			
-			String query = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class, b.ArrivalTime , a.DepartureTime FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id WHERE  a.flight_departure_date >= ?";
+			String query = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,b.arrival_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class, b.ArrivalTime , a.DepartureTime FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id WHERE  a.flight_departure_date >= ?";
 			
 			int i=1;
 
@@ -172,6 +172,7 @@ return Seatavailabilitylist;
 					String Source = rs1.getString("Source");
 					String flight_destination = rs1.getString("Destination");
 				   Date Departure_Time = rs1.getDate("Flight_Departure_date");
+				   Date Arrival_Time = rs1.getDate("Arrival_Date");
 					int economyClass = rs1.getInt("Ecomomy_seats");
 					int premiumeconomyclass = rs1.getInt("Premium_Economy_Seats");
 					int businessClass = rs1.getInt("Business_Seats");
@@ -192,7 +193,7 @@ return Seatavailabilitylist;
 					
 					
 					
-					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id,Flight_name,Source, flight_destination, Departure_Time, economyClass,  premiumeconomyclass, businessClass,Economy_rate,premium_economy_rate,Bussiness_rate,arrived,Departed);
+					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id,Flight_name,Source, flight_destination, Departure_Time,Arrival_Time, economyClass,  premiumeconomyclass, businessClass,Economy_rate,premium_economy_rate,Bussiness_rate,arrived,Departed);
 					
 					Seatavailabilitylist.add(objFlightseat);
 					

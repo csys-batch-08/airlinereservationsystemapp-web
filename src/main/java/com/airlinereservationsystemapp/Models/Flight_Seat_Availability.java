@@ -21,6 +21,34 @@ public class Flight_Seat_Availability
 	private String source;
 	private String destination;
 	private Date Departure_Date;
+	private Date Arrival_Date;;
+
+	public Flight_Seat_Availability(int flightId, String flightname, String source, String destination,
+			Date departure_Date, Date arrival_Date, int economy_class, int premium_Economy_class, int bussiness_class,
+			double economy_rate, double premium_Economy_rate, double bussiness_rate, String arrivalTime,
+			String departureTime) {
+		super();
+		this.flightId = flightId;
+		this.flightname = flightname;
+		this.source = source;
+		this.destination = destination;
+		Departure_Date = departure_Date;
+		Arrival_Date = arrival_Date;
+		Economy_class = economy_class;
+		this.premium_Economy_class = premium_Economy_class;
+		Bussiness_class = bussiness_class;
+		Economy_rate = economy_rate;
+		Premium_Economy_rate = premium_Economy_rate;
+		Bussiness_rate = bussiness_rate;
+		ArrivalTime = arrivalTime;
+		DepartureTime = departureTime;
+	}
+	public Date getArrival_Date() {
+		return Arrival_Date;
+	}
+	public void setArrival_Date(Date arrival_Date) {
+		Arrival_Date = arrival_Date;
+	}
 	private int Economy_class;
 	private int premium_Economy_class;
 	private int Bussiness_class;

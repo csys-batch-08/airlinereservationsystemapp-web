@@ -74,11 +74,11 @@ a:hover, a:active {
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="ArrivalDate" id="arrivaldate" placeholder="Bussinessclass" value="${param.Arrivaldate}"
+							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="Bussinessclass" value="${param.Departuredate}"  
+							<input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
 				<br> 
 				
