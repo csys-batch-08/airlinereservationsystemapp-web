@@ -15,9 +15,7 @@ body {
    background-repeat: no-repeat;
    background-size:  cover;
    }
-
 <body>
-
 form {
 left:40px;
  height:40%;
@@ -47,6 +45,8 @@ button {
 button:hover {
   opacity: 0.8;
 }
+
+
 </style>
  <jsp:include page="header.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>

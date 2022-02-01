@@ -41,12 +41,12 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
+<a href="Sourcedestination"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
+			<h1 align="center"><b>Flight List</b></h1>
 
 
 		   		<table border="2" class="table">
-			<h1 align="center"><b>Flight List</b></h1>
 			<thead>
 				<tr class="info">
 				   <th  >S.no</th>

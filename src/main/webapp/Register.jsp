@@ -22,12 +22,12 @@ form {
   width:30%;
   align:"center";
 }
-form {
+/* form {
   border: 3px solid #f1f1f1;
   width:30%;
   align:"center";
-}
-input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
+} */
+ input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
   width: 63%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -56,34 +56,9 @@ button {
 button:hover {
   opacity: 0.8;
 }
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-img.avatar {
-  width: 23%;
-  border-radius: 50%;
-}
-.container {
+ .container {
   padding: 16px;
-}
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+} 
 </style>
 			
 			<main class="container-fluid">
@@ -152,8 +127,7 @@ span.psw {
 			
             
 			<div style="text-align: center">
-							<button type="Submit"  style="position: relative;top: 4px" required     "  
-					>
+							<button type="Submit"  style="position: relative;top: 4px">
 				Register	</button>
 			
 			</div>

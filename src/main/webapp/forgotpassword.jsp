@@ -59,36 +59,12 @@ button:hover {
   background-color: #f44336;
 }
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-img.avatar {
-  width: 23%;
-  border-radius: 50%;
-}
-
 .container {
   padding: 16px;
 }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
-}
 </style>
-<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+<a href="Sourcedestination"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 
      
 <%-- 		<%

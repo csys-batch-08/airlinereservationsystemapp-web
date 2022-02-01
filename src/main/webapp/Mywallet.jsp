@@ -74,38 +74,12 @@ button:hover {
   background-color: #f44336;
 }
 
-/* Center the avatar image inside this container */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-/* Avatar image */
-img.avatar {
-  width: 23%;
-  border-radius: 50%;
-}
-
 /* Add padding to containers */
 .container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+ 
 a:link, a:visited {
   background-color: white;
   color: black;
@@ -204,7 +178,7 @@ a:hover, a:active {
 		    function walletuser()
 		    {  		        
 		    let closingbalance=document.getElementById('closingbalance').value;
-		    var url="closingbalance.jsp?closingbalance="+closingbalance;  
+		    var url="Walletajax?closingbalance="+closingbalance;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
 		    }  

@@ -26,11 +26,6 @@ form {
   width:30%;
   align:"center";
 }
-form {
-  border: 3px solid #f1f1f1;
-  width:30%;
-  align:"center";
-}
 
 input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
   width: 43%;
@@ -64,47 +59,18 @@ button:hover {
   opacity: 0.8;
 }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-img.avatar {
-  width: 23%;
-  border-radius: 50%;
-}
-
 .container {
   padding: 16px;
 }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
+button:hover, button:active {
+  background-color:lime;
 }
 
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
+
 
 </style>
 
-<%-- <%
-Passenger_details passengers  = (Passenger_details) request.getAttribute("Passenger_Deatils");
-		
-		%>
- --%>		
  
  <c:set  var="passengers" value="${Passenger_Deatils}" />
 		
@@ -213,7 +179,7 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
 				name="seatno" id="amount"  value="${passengers.getSeatno()}"
 				readonly /> <br /> 
 				
-								  <button type="submit">Submit</button>
+								  <button type="submit" >Submit</button>
 				
 				
 				

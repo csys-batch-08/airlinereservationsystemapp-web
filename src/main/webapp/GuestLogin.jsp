@@ -100,20 +100,13 @@ span.psw {
 }
 
 </style>
-<%-- <%
-
-String loggedguest = (String)session.getAttribute("LOGGED");
-String role = (String)session.getAttribute("ROLE");
-String error =   (String)session.getAttribute("Errorvalue");
-%> --%>
-
 
 <c:set var="error"  value="${Errorvalue}"/>
 
 <c:set var="role"  value="${ROLE}"/>
 
 
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />; 
+<a href="Sourcedestination"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />; 
 
 <main class="container-fluid">
 		<h3 align="center">Guest Login </h3>

@@ -34,8 +34,9 @@ public class FlightService {
 		Closing_balance  = objwallet.getclosingbalance(username);
 		
 		return Closing_balance;
+		}
 		
 		
-	}
+		
 
 }

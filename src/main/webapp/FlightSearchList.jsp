@@ -37,7 +37,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		
 		 <c:if test="${flights!= null}">
 		 
-		<a href="flightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />
+		<a href="Sourcedestination" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />
 
 
  

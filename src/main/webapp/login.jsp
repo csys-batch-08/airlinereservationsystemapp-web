@@ -4,7 +4,6 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
                  
-            <meta http-equiv="pragma" content="no-cache" />
     
     
 <!DOCTYPE html>
@@ -15,7 +14,6 @@
 </head>
 <body>
 <style>
-
 body {
 background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	background-repeat: no-repeat;
@@ -25,15 +23,11 @@ background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	align:"center";
 	
 }
-
-
-
 form {
   border: 3px solid #f1f1f1;
   width:90%;
   align:"left";
 }
-
 input[type=text], input[type=password] {
   width: 63%;
   padding: 12px 20px;
@@ -42,7 +36,6 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 button {
   background-color: #04AA6D;
   color: white;
@@ -52,36 +45,29 @@ button {
   cursor: pointer;
   width: 62%;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
-
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
-
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
-
 .container {
   padding: 16px;
 }
-
 span.psw {
   float: right;
   padding-top: 16px;
 }
-
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -95,24 +81,18 @@ body{
 	background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-
 }
-
+ 
 </style>
 
      
-<%-- 		<%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-String error  = (String) session.getAttribute("Error");
- %>	 --%>
  
  <c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin"/>
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 <c:set value="${Error}" var="error"  />
+ <main class="container-fluid">
  
 <div style="margin-right: 900px; margin-top: 70px;">	
-<main class="container-fluid">
 		<h1 align="center" style="color: white;">Login</h1>
 		<div align="center">	
 	<c:if test="${param.success eq 1}">
@@ -136,15 +116,6 @@ String error  = (String) session.getAttribute("Error");
     </div>
     
    	 <div id="fads">
-<%--    	<%
-			if (error!= null) {
-			%>
-					<p id="value"   style="font-size: 20px; color: red;"><%=error%> </p>
-					
-				<% }
-			
-			
-   			%> --%>
    <c:if test="${error!=null}">
    					<p id="value"   style="font-size: 20px; color: red;">${error} </p>
    
@@ -167,7 +138,7 @@ String error  = (String) session.getAttribute("Error");
      
 				
 		<div class="container" style="background-color:#f1f1f1">
-    <button type="button"  class="cancelbtn"><a href="FlightSearch.jsp" style="text-decoration: blink;">BACK</a></button>
+    <button type="button"  class="cancelbtn"><a href="Sourcedestination" style="text-decoration: blink;">BACK</a></button>
    			<c:if test="${error!=null}">
    			
    		   <a href="forgotpassword.jsp?username=${param.username}" class="btn btn-primary"  >Forget password?</a>
@@ -208,7 +179,7 @@ String error  = (String) session.getAttribute("Error");
 		    }
 		    
 		    
-		    function validlogin()
+/* 		    function validlogin()
 		    {
 			    console.log("called");
 		        let uname =document.getElementById("username").value;
@@ -247,7 +218,7 @@ String error  = (String) session.getAttribute("Error");
 		    	var loginresponse =request.responseText;  
 		    	document.getElementById('loginresponse').innerHTML=loginresponse;  
 		    	}  
-		    }  
+		    }   */
 
 		    window.onload = function() {
 		    	  window.setTimeout(fadeout, 3000); //8 seconds

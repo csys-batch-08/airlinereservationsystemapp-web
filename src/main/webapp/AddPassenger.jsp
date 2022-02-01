@@ -14,6 +14,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>FlightApp - Add Passengers details</title>
+
 </head>
 <body>
    
@@ -33,7 +34,6 @@ form {
   width:41%;
   align:"center";
 }
-
 input[type=text], input[type=password],input[type=date],input[type=number],input[type=tel] {
   width: 40%;
   padding: 7px 20px;
@@ -44,7 +44,6 @@ input[type=text], input[type=password],input[type=date],input[type=number],input
   box-sizing: border-box;
   position : relative;
 }
-
 input[type=radio] {
   width: 18%;
   padding: 12px 20px;
@@ -53,7 +52,6 @@ input[type=radio] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 button {
   background-color: #04AA6D;
   color: white;
@@ -63,36 +61,29 @@ button {
   cursor: pointer;
   width: 62%;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
-
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
-
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
-
 .container {
   padding: 16px;
 }
-
 span.psw {
   float: right;
   padding-top: 16px;
 }
-
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -111,19 +102,12 @@ span.psw {
   text-decoration: none;
   display: inline-block;
 }
-
 a:hover, a:active {
   background-color:red;
 }
   
 
 </style>
-<%-- <%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
-%>
- --%>
  
  <c:set var="loggedinadmin"     value="${LOGGED_IN_ADMIN}"/> 
 
@@ -131,7 +115,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
     
    	<main class="container-fluid">
-		<h3 align="center">Booking Details </h3>
 		<div align="center">
 		
 <!-- 		<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
@@ -373,7 +356,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			switch (coach) {
 			case "premium": {
 				totalprice = numberOfPassengers * economyClassPrice;
-				price = totalprice - (totalprice * 15 / 100)
+				price = totalprice - (totalprice * 5 / 100)
 
 
 		        console.log(totalprice);
@@ -388,7 +371,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			}
 			case "Economy": {
 				totalprice = numberOfPassengers * firstClassPrice;
-				price = totalprice - (totalprice * 10/ 100)
+				price = totalprice - (totalprice * 8/ 100)
 
 				document.getElementById("price").value = price;
 				
@@ -404,7 +387,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			}
 			case "Bussiness": {
 				totalprice = numberOfPassengers * businessClassPrice;
-				price = totalprice - (totalprice * 20/ 100)
+				price = totalprice - (totalprice * 10/ 100)
 
 				document.getElementById("price").value = price;
 				seats  = Businesseats-numberOfPassengers;
@@ -439,7 +422,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	    switch (coach) {
 	    case "premium": {
 	        totalprice = numberOfPassengers * economyClassPrice;
-	        price  = totalprice+(totalprice*15/100) ;
+	        price  = totalprice+(totalprice*5/100) ;
 
 	        console.log(totalprice);
 	        console.log(price);
@@ -456,7 +439,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	    }
 	    case "Economy": {
 	    	totalprice = numberOfPassengers * firstClassPrice;
-	        price  = totalprice+(totalprice*10/100) ;
+	        price  = totalprice+(totalprice*8/100) ;
 
 	        document.getElementById("price").value = price;
 
@@ -474,7 +457,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	    case "Bussiness": 
 	    {
 	    	totalprice = numberOfPassengers * businessClassPrice;
-	        price  = totalprice+(totalprice*20/100) ;
+	        price  = totalprice+(totalprice*10/100) ;
 
 	        document.getElementById("price").value = price;
 	        seats  = Businesseats-numberOfPassengers;
@@ -486,9 +469,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 	  }
 	  
-
-
-		
+		 				   
+	  
 	</script>
 </body>
 </html>
