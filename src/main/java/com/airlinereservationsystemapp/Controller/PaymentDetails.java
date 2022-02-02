@@ -31,6 +31,7 @@ public class PaymentDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Welcome to details servlet");
@@ -52,9 +53,9 @@ public class PaymentDetails extends HttpServlet {
 			
 
 		     
-			int pass = (int)session.getAttribute("logpass");
+			//int pass = (int)session.getAttribute("logpass");
 
-			  ArrayList<Integer> list=new ArrayList<Integer>();    
+			// ArrayList<Integer> list=new ArrayList<Integer>();    
 
 ArrayList<Integer> value = (ArrayList<Integer>)session.getAttribute("SeatValue");
 
