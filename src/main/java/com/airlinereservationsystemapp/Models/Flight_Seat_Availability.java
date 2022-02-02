@@ -171,5 +171,32 @@ public class Flight_Seat_Availability
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
 	}
+	public Flight_Seat_Availability(int flightId, String source, String destination, Date departure_Date,
+			int economy_class, int premium_Economy_class, int bussiness_class) {
+		super();
+		this.flightId = flightId;
+		this.source = source;
+		this.destination = destination;
+		Departure_Date = departure_Date;
+		Economy_class = economy_class;
+		this.premium_Economy_class = premium_Economy_class;
+		Bussiness_class = bussiness_class;
+	}
+	public Flight_Seat_Availability(int flightId, String source, String destination, Date departure_Date,
+			int economy_class, int premium_Economy_class, int bussiness_class, double economy_rate,
+			double premium_Economy_rate, double bussiness_rate) {
+		super();
+		this.flightId = flightId;
+		this.source = source;
+		this.destination = destination;
+		Departure_Date = departure_Date;
+		Economy_class = economy_class;
+		this.premium_Economy_class = premium_Economy_class;
+		Bussiness_class = bussiness_class;
+		Economy_rate = economy_rate;
+		Premium_Economy_rate = premium_Economy_rate;
+		Bussiness_rate = bussiness_rate;
+	}
+	
 	
 }

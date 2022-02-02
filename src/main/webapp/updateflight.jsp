@@ -43,12 +43,15 @@ a:hover, a:active {
 
 
     <h1 style="text-align: center;">
+    
+    <c:set var="flight" value="${Flight_id}"  />  
 				<b>UPDATE  FLIGHT DETAILS</b></h1>
+				
 		<form name="addflight" action="UpdateFlight" method="post"  >
 		
 <%-- 						    <input type="number"  name="Flightid" value="${param.flightId}" readonly   placeholder="Flight_id"  
 				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" /> --%>
-				      <input type="number" class="form-control " id="Flightid" name="Flightid"  value="${param.flightId}" readonly
+				      <input type="number" class="form-control " id="Flightid" name="Flightid"  value="${flight.getFlight_id()}" readonly
 				      style="position: relative;width: 250px;left: 38px; top: 0px;">
 				
 		<br>
@@ -59,7 +62,7 @@ a:hover, a:active {
 				placeholder="FLIGHT_NAME"  autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /> --%>
 				
-					<input type="text" class="form-control"  value="${param.flightname}"  name="Flightname"
+					<input type="text" class="form-control"  value="${flight.getFlight_name()}"  name="Flightname"
 				      style="position: relative;width: 250px;left: 38px; top:-29px;">
 				
 				
@@ -68,7 +71,7 @@ a:hover, a:active {
 				placeholder="Enter Source"  
 				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" /> --%>
 				
-				<input type="text" class="form-control"  value="${param.source}"  name="source"
+				<input type="text" class="form-control"  value="${flight.getSource()}"  name="source"
 				      style="position: relative;width: 250px;left: 38px; top: -25px;">
 			
 			
@@ -77,7 +80,7 @@ a:hover, a:active {
 			  placeholder="Enter Destination " 
 				autofocus  
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" /> --%>
-					<input type="text" class="form-control"  value="${param.Destination}"  name="Destination"
+					<input type="text" class="form-control"  value="${flight.getDestination()}"  name="Destination"
 				      style="position: relative;width: 250px;left: 38px; top: -21px;">
 				
 				<br>
@@ -86,7 +89,7 @@ a:hover, a:active {
 				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" /> --%>
 				
-				<input type="number" class="form-control"  value="${param.Economyclass}"  name="Economyclass"
+				<input type="number" class="form-control"  value="${flight.getEconomy_class()}"  name="Economyclass"
 				      style="position: relative;width: 250px;left: 38px; top: -17px;">
 				      
 			<br> 
@@ -94,7 +97,7 @@ a:hover, a:active {
 				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /> --%>
 				
-					<input type="number" class="form-control"  value="${param.premiumeconomyclass}" name="PremiumEconomyclass"
+					<input type="number" class="form-control"  value="${flight.getPremium_Economy_class()}" name="PremiumEconomyclass"
 				      style="position: relative;width: 250px;left: 38px; top: -14px;">
 				
 				<br>
@@ -103,14 +106,14 @@ a:hover, a:active {
 							min = "0" pattern="[0-9]"    
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px"> --%>
 				
-				<input type="number" class="form-control"  value="${param.Businessclass}" name="Bussinessclass" 
+				<input type="number" class="form-control"  value="${flight.getBussiness_class()}" name="Bussinessclass" 
 				      style="position: relative;width: 250px;left: 38px; top: -10px;">
 				<br> 
 				
 							<%-- <input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px"> --%>
 				
-						<input type="date" class="form-control"  value="${param.Departuredate}"  name="DepartureDate"
+						<input type="date" class="form-control"  value="${flight.getDeparture_time()}"  name="DepartureDate"
 				      style="position: relative;width: 250px;left: 38px; top: -6px;">
 				
 				<br> 
@@ -118,7 +121,7 @@ a:hover, a:active {
 							<%-- <input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
  --%>				
- <input type="date" class="form-control"  value="${param.Arrivaldate}"  name="ArrivalDate"
+ <input type="date" class="form-control"  value="${flight.getArrival_Time()}"  name="ArrivalDate"
 				      style="position: relative;width: 250px;left: 38px; top: -2px;">
  
  

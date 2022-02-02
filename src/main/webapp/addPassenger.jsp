@@ -118,6 +118,9 @@ a:hover, a:active {
 
 <c:set var="loggedinuser"    value="${LOGGED_IN_USER}"/>  
 
+<c:set var="flight"    value="${Addlist}"/>  
+
+
     
    	<main class="container-fluid">
 		<div align="center">
@@ -137,7 +140,7 @@ a:hover, a:active {
 				name="flightId" id="flightId"style="position: relative; left: 65px; height: 23px; top: 6px; width: 229px"
 				value="${param.flightId}"  
 				readonly /> <br /> <br />  --%>
-				    <input type="text" class="form-control" name = "flightId"   id="flightId" value="${param.flightId}" readonly
+				    <input type="text" class="form-control" name = "flightId"   id="flightId" value="${flight.getFlightId()}" readonly
 				    style="position: relative;width: 238px;top:-26px;left: 99px;height: 32px;"  >
 				
 				<label for="source"style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:3px;left: -111px;height: 20px; ">Source:</label> 
@@ -145,7 +148,7 @@ a:hover, a:active {
 				name="source" id="source" style="position: relative; left: 70px; height: 24px; top: 1px; width: 230px"
 				value="${param.source}"
 				readonly /> <br /> <br />  --%>
-					<input type="text" class="form-control" name = "source"   id="source" value="${param.source}" readonly
+					<input type="text" class="form-control" name = "source"   id="source" value="${flight.getSource()}" readonly
 				    style="position: relative;width: 238px;top:-26px;left: 99px;height: 32px;"  >
 				
 				<label for="destination"style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:3px;left: -120px;height: 20px; ">Destination:</label> 
@@ -153,7 +156,7 @@ a:hover, a:active {
 				name="destination" id="destination"style="position: relative; left: 54px; height: 24px; top: 3px; width: 230px"
 				 value="${param.destination}"
 				readonly /> <br /> <br /> --%> 
-				<input type="text" class="form-control" name = "destination"   id="destination" value="${param.destination}" readonly
+				<input type="text" class="form-control" name = "destination"   id="destination" value="${flight.getDestination()}" readonly
 				  style="position: relative;width: 238px;top:-26px;left: 99px;height: 32px;"  >
 				
 				<label for="departuredate" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:4px;left: -113px;height: 20px; ">Departure Date:</label> 
@@ -162,7 +165,7 @@ a:hover, a:active {
 				 value="${param.Departure_Date}"
 				readonly /> <br /> <br />  --%>
 				
-				<input type="text" class="form-control" name = "departuredate"   id="departuredate" value="${param.Departure_Date}" readonly
+				<input type="text" class="form-control" name = "departuredate"   id="departuredate" value="${flight.getDeparture_Date()}" readonly
 				  style="position: relative;width: 238px;top:-26px;left: 99px;height: 32px;"  >
 				
 				
@@ -189,21 +192,21 @@ a:hover, a:active {
 				
 			<input type="hidden"
 				name="Economyclass" id="Economyclass" 
-				value="${param.Economy_class}"
+				value="${flight.getEconomy_class()}"
 				readonly /> 
 			
 			
 				
 				<input type="hidden"
 				name="PremiumEconomyclass" id="PremiumEconomyclass" 
-				 value="${param.Premium_Economy_class}"
+				 value="${flight.getPremium_Economy_class()}"
 				readonly  />  
 				
 								
 				
 				<input type="hidden"
 				name="Bussinessclass" id="Bussinessclass" 
-			 value="${param.Bussiness_class }"
+			 value="${flight.getBussiness_class() }"
 				readonly />  
 				
 				
@@ -226,15 +229,16 @@ a:hover, a:active {
 				 				
 				 				>Coach:</label> 
 				  
-				  <c:set var="ecoseats" value="${param.Economy_class}"/>
+				  <c:set var="ecoseats" value="${flight.getEconomy_class()}"/>
 				    
 				      <fmt:parseNumber var="economy" type="number" integerOnly="true"  value="${ecoseats}" />  
 				  			
-				  				  <c:set var="preseats" value="${param.Premium_Economy_class}"/>
+				  				  <c:set var="preseats" value="${flight.getPremium_Economy_class()}"/>
 				    
 				      <fmt:parseNumber var="premium" type="number" integerOnly="true"  value="${preseats}" />  
 				  
-				  	  <c:set var="busseats" value="${param.Bussiness_class}"/>
+				  	  <c:set var="busseats" value="${flight.getBussiness_class()}"/>
+				  	  
 				    
 				      <fmt:parseNumber var="bussiness" type="number" integerOnly="true"  value="${busseats}" />  
 				  
@@ -309,15 +313,16 @@ a:hover, a:active {
 			 </c:choose>
 			
 						
-		 <c:set var="eco" value="${param.Economyrate}" ></c:set>
+		 <c:set var="eco" value="${flight.getEconomy_rate()}" ></c:set>
+		 
 		 
 		 				      <fmt:parseNumber var="economy" value="${eco}" />  
 		 
-		 		 <c:set var="pre" value="${param.Premiumrate}" ></c:set>
+		 		 <c:set var="pre" value="${flight.getPremium_Economy_rate()}" ></c:set>
 		 
 		 				      <fmt:parseNumber var="premium" value="${pre}" />  
 		 
-		 		 <c:set var="bus" value="${param.Business}" ></c:set>
+		 		 <c:set var="bus" value="${flight.getBussiness_rate()}" ></c:set>
 		 
 		 				      <fmt:parseNumber var="business" value="${bus}" />  
 		 

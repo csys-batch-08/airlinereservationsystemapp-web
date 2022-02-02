@@ -170,14 +170,16 @@ a:hover, a:active {
  					  					 <td>${flight.getArrivaltime()}</td>
  					  					 <td>${flight.getFlightstatus()}</td>
  					  					 
- 					  					 					<c:if test ="${loggedinadmin!=null}">  
-						<td><a href="updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
+ 					  					 					  
+						<%-- <td><a href="updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
 						&Economyclass=${flight.getEconomy_class()}&premiumeconomyclass=${flight.getPremium_Economy_class()}&Businessclass=${flight.getBussiness_class()}
-						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td>
+						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td> --%>
+						<c:if test ="${loggedinadmin!=null}">
+						<td><a href="Update?flightId=${flight.getFlight_id()}" class="btn btn-danger" >UpdateFlight</a></td>
 			                                              </c:if>
 			                                              
  			                                              	  <c:if test ="${loggedinadmin!=null}">  
-				<td><a href="deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td> 
+				<td><a href="Delete?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td> 
 
 			                                              </c:if>
  					  					 				  

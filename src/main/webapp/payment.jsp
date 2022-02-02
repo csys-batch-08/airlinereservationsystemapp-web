@@ -177,7 +177,7 @@ width: 40%
 				
 					<div class="Files" id="fun">
 					
-													<form action="Payment" method="Get">
+													<form action="Payment" method="post">
 					
 				
 				

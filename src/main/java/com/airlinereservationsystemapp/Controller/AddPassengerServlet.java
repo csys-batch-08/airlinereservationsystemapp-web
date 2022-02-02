@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -135,10 +136,10 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 			//pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
 			
-
+ RequestDispatcher req = request.getRequestDispatcher("PaymentDetails?flightid="+Flight_Id+"&ticketno="+ticket_no+"&amount="+amount);
 			 
-			
-  response.sendRedirect("PaymentDetails?flightid="+Flight_Id+"&ticketno="+ticket_no+"&amount="+amount);
+			req.forward(request, response);
+  //response.sendRedirect("PaymentDetails?flightid="+Flight_Id+"&ticketno="+ticket_no+"&amount="+amount);
 
 		} 
 	    catch (Exception e) {

@@ -116,12 +116,18 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
          <c:if test="${plane.getEconomy_class()!=0 && plane.getPremium_Economy_class()!= 0 && plane.getBussiness_class()!=0}">
          
-                      <td><a href="addPassenger.jsp?flightId=${plane.getFlightId()}&source=${plane.getSource()}&destination=${plane.getDestination()}
+                  <%--    <td><a href="addPassenger.jsp?flightId=${plane.getFlightId()}&source=${plane.getSource()}&destination=${plane.getDestination()}
+					&Departure_Date=${plane.getDeparture_Date()}&Economy_class=${plane.getEconomy_class()}&Premium_Economy_class=${plane.getPremium_Economy_class()}
+&Bussiness_class=${plane.getBussiness_class()}&Economyrate=${plane.getEconomy_rate()}&Premiumrate=${plane.getPremium_Economy_rate()}
+&Business=${plane.getBussiness_rate()}" 
+					class="btn btn-primary">BOOK NOW</a></td> --%>
+				 <td><a href="Addpassenger?flightId=${plane.getFlightId()}&source=${plane.getSource()}&destination=${plane.getDestination()}
 					&Departure_Date=${plane.getDeparture_Date()}&Economy_class=${plane.getEconomy_class()}&Premium_Economy_class=${plane.getPremium_Economy_class()}
 &Bussiness_class=${plane.getBussiness_class()}&Economyrate=${plane.getEconomy_rate()}&Premiumrate=${plane.getPremium_Economy_rate()}
 &Business=${plane.getBussiness_rate()}" 
 					class="btn btn-primary">BOOK NOW</a></td>
-         
+					
+       
         </c:if>
            
 </c:if>

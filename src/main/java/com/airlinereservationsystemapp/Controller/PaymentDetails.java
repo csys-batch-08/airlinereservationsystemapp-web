@@ -29,6 +29,10 @@ public class PaymentDetails extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		System.out.println("Welcome to details servlet");
 		HttpSession session = request.getSession();
 		try
@@ -106,9 +110,7 @@ System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
 		{
 			System.out.println(e);
 		}
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

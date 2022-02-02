@@ -153,7 +153,21 @@ public class Flight_list
 		Arrivaltime = arrivaltime;
 	}
 	
-	
+	public Flight_list(int flight_id, String source, String destination, int economy_class, int premium_Economy_class,
+			int bussiness_class, Date departure_time, int economyseats, int premiumseats, int businessseats) {
+		super();
+		Flight_id = flight_id;
+		Source = source;
+		Destination = destination;
+		Economy_class = economy_class;
+		this.premium_Economy_class = premium_Economy_class;
+		Bussiness_class = bussiness_class;
+		Departure_time = departure_time;
+		Economyseats = economyseats;
+		this.premiumseats = premiumseats;
+		this.businessseats = businessseats;
+	}
+
 
 	
 	
