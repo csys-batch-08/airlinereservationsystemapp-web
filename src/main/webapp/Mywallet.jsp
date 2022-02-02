@@ -11,6 +11,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Wallet Deposit</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <style>
@@ -18,12 +22,14 @@ body {
 	background-image: url(image/flih.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	overflow-x:hidden
+
 }
 form {
   
-  width:50%;
+  width:100%;
   align:"center";
-  height:50%;
+  height:100%;
 }
 form {
  
@@ -31,8 +37,8 @@ form {
   align:"center";
 }
 
-/* Full-width inputs */
-input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
+ /* Full-width inputs */
+/*input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
   width: 6%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -52,7 +58,7 @@ input[type=number] {
 }
 
 /* Set a style for all buttons */
-button {
+/*button {
   background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
@@ -63,19 +69,19 @@ button {
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+/*button:hover {
   opacity: 0.8;
 }
 
 /* Extra style for the cancel button (red) */
-.cancelbtn {
+/*.cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
 /* Add padding to containers */
-.container {
+/*.container {
   padding: 16px;
 }
 
@@ -93,7 +99,7 @@ a:link, a:visited {
 a:hover, a:active {
   background-color: green;
   color: white;
-}
+} */
 
 </style>
 
@@ -101,54 +107,65 @@ a:hover, a:active {
 <c:set value="${LOGGED_IN_USER}" var="loggedInAsUser"  />
 
     <jsp:include page="headerfile.jsp"></jsp:include>
+    
     <main class="container-fluid">
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
        
             <form  id="form"  action="Wallet" method="post"  onsubmit="return validation()" >
             <div class="container">
-                  <label for="closingbalance" style="position: relative; top: 79px; left: 4px;" ><b>Closing Balance</b></label>
+            
+                  <label for="closingbalance" style="font-family: serif;font-size: 21px; position:relative;width: 250px;top:33px;left: 3px;height: 20px;"
+                   ><b>Closing Balance</b></label>
+                 
                   <input type="hidden" name="closingbalance"  id="closingbalance" value="${Closingvalue}"
 				style="position: relative; top: -1px; left: 100px;"      required autofocus  
 				/> 
-				<h3  style="position: relative;top: 34px; left: 220px;" id="closing"  ></h3>
+				
+				<h3  style="position: relative;top: -8px; left: 220px;" id="closing"  ></h3>
 				
 			<br></br>
-				 <label for="depositamount"><b>Deposit Amount</b></label>
-			 <input type="number" id="depositamount" name="depositamount"  
+				 <label for="depositamount"style="font-family: serif;font-size: 21px; position:relative;width: 214px;top:-30px;left: 3px;height: 32px;" ><b>Deposit Amount</b></label>
+<!-- 			 <input type="number" id="depositamount" name="depositamount"  
 				min = "1" pattern="[1-9]+" required style="position: relative; top: -5px; left: 94px;"
-				 />
+				 /> -->
+				<input type="number" class="form-control" name = "depositamount"   id="depositamount" min = "1" pattern="[1-9]+"  required
+				    style="position: relative;width: 214px;top:-72px;left: 206px;height: 32px;"  >
+			 
 			<br></br>
-			 <label for="confirmdepositamount"><b> Confirm Deposit Amount</b></label>
-			 <input type="number" id="confirmdepositamount" name="confirmdepositamount"  
+			 <label for="confirmdepositamount" style="font-family: serif;font-size: 20px; position:relative;width: 250px;top:-73px;left: -20px;height: 20px;" ><b> Confirm Deposit Amount</b></label>
+<!-- 			 <input type="number" id="confirmdepositamount" name="confirmdepositamount"  
 				min = "1"  pattern="[1-9]+" required style="position: relative; top: -8px; left: 27px;"
 				 />
-				 <br></br>
-				  <label for="mode" required  ><b> Payment Mode *</b></label>
-				 <input type="radio" id="debit" name="debit" style="position: relative; top: -2px; left:81px; "
-				value="DebitCard"  > 
+ -->
+ 				<input type="number" class="form-control" name = "confirmdepositamount"   id="confirmdepositamount" min = "1" pattern="[1-9]+" required
+				    style="position: relative;width: 218px;top:-102px;left: 204px;height: 32px;"  >
+ 
+ 
+ 				 <br></br>
+ 				 
+				  <label for="mode" class="radio-inline"  onkeydown="return validation()"
+				  style="font-family: serif;font-size: 20px; position:relative;width: 250px;top:-109px;left: -20px;
+				  height: 20px;" ><b> Payment Mode *</b></label>
+<!-- 				 <input type="radio" id="debit" name="debit" style="position: relative; top: -2px; left:81px; "
+				value="DebitCard"  checked  > 
 				<label for="debit" style="position: relative; top: -3px; left: 72px;"  >DebitCard</label> 
 				
 				<input type="radio" id="net" name="net" value="NetBanking"  style="position: relative; top: -2px; left: 96px;" > 
-				<label for="net"  style="position: relative; top: -4px; left: 88px;">Net Banking</label> 
+				<label for="net"  style="position: relative; top: -4px; left: 88px;">Net Banking</label>  -->
+				
+				<label class="radio-inline" style="position: relative;width: 210px;top:-102px;
+				left: -64px;height: 32px;font-size: 20px; "><input type="radio" name="optradio" checked style="font-size: 10px; position: relative;width: 26px;"  >Debit Card</label>
+				<label class="radio-inline"  style="position: relative;width: 218px;top:-102px;
+				left: -147px;height: 32px; font-size: 20px "><input type="radio" name="optradio" checked>Credit Card</label>
+				
 				
 				<br></br>
-				<label for="bankname" style=" display: inline-block;"><b>Select Bank</b></label>
-
-<select name="bankname" id="bankname"  style="position: relative; top: -8px; left: 131px;"  required    >
-  <option value="hdfc">HDFC</option>
-  <option value="sbi">SBI</option>
-  <option value="standard">Standard Chartered Bank</option>
-  <option value="icici">ICICI</option>
-</select>
-
-<br></br>
-<div style="text-align: center">
-				<button type="Submit"  required  style="position: relative; top: 47px; left: 40px;"
-					>
-				Submit	</button>
+        <div style="text-align: center">
+				<button type="Submit"  class="btn btn-info"  id="submit"    style="position: relative; top: -52px; left: -252px; width: 112px;"  >
+					Submit	</button>
 			</div>
-			<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic; position: relative; top: 10px; left: 50px;"   > Back </a> <br > <br />
+			<a href="Sourcedestination" class="btn btn-danger" style="font-style: italic; position: relative; top: -86px; left: 56px; width: 83px"   > Back </a> <br > <br />
 			
             </div>
 
@@ -162,6 +179,8 @@ a:hover, a:active {
 		    {
 		     var amount=document.amountvalid.depositamount.value 
 		    var confirmamount = document.amountvalid.confirmdepositamount.value
+		    console.log(amount);
+		     console.log(confirmamount);
 		    if(amount==confirmamount)
 		    {
                  return true;
@@ -173,7 +192,7 @@ a:hover, a:active {
 		    return false;  
 
 		    }
-		}		
+		}
 		    walletuser();
 		    function walletuser()
 		    {  		        

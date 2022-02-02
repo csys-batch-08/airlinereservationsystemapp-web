@@ -20,13 +20,19 @@
 
 <style>
 body {
-     background-image : url(image/flih.jpg);
+	background-image: url(image/flih.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
+	overflow-y:hidden
+
 }
+
+
+
 form {
   border: 3px solid #f1f1f1;
   width:35%;
+  height : 50%;
  align:"center";
 }
 
@@ -79,12 +85,12 @@ button:hover, button:active {
 		
 		<main class="container-fluid">
 		<h3 align="center">Confirm Details</h3>
-		<div align="center">
+		<div align="center" style="position: relative;height: 1200px;margin: 0px;" >
 		
-		   		<form action="AddPassenger" method="post"  style="position:relative;height: 700px;"  >
+		   		<form action="AddPassenger" method="post"  >
 		
  
-            <label for="username" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:33px;left: -117px;height: 20px; " 
+            <label for="username" style="font-family: serif;font-size: 18px; position:relative;width: 250px;top:33px;left: -117px;height: 20px;"
             >PassengerName </label> 
 				<%-- <input type="text" name="username" id="username" style="position: relative; left: 29px; height: 25px; top: 5px; width: 210px"
 				 value="${passengers.getPassenger_name()}"  readonly />  --%>
@@ -218,7 +224,7 @@ button:hover, button:active {
 								  
 								  
 								  <button type="submit"  class="btn btn-outline-primary"
-								  style="position:relative;top: -374px;left: -6px; width: 99px;height: 35px; " >Submit</button>
+								  style="position:relative ;top: -397px;left: -6px; width: 99px;height: 35px; " >Submit</button>
 				
 				
 				
