@@ -45,8 +45,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
 				 str = stmt.executeUpdate();
 				System.out.println("Completed :" +str);
 				insertwalletFlight(objFlightRegister);
-
-
 			}
 			catch(SQLException e)
 			{
@@ -71,9 +69,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
 
 			
 		}
-
-	
-
 	
      public String  guestcheck(long phone, String mail) throws ClassNotFoundException, SQLException
      {

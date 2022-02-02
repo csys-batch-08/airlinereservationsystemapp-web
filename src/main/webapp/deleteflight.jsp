@@ -37,11 +37,13 @@ a:hover, a:active {
  
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
 			
-			<br /> 
-									<input type="number" class="form-control " name="Flight_id"  value="${param.flightId}" readonly
-style="position: relative;width: 228px;left: 58px; top: -5px;height: 41px; ">
+			<br /> <%-- value="${param.flightId}" --%>
+									 <input type="number" class="form-control " name="Flight_id" value="${param.flightId}"  readonly
+style="position: relative;width: 228px;left: 58px; top: -5px;height: 41px; "> 
 				
 				<br>
+				
+				
 				
 				<button type="Submit"  class="btn btn-danger" 
 					style="position: relative; left:62px; height: 41px; top: 38px; width: 172px">

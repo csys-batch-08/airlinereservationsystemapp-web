@@ -49,7 +49,7 @@ try
 	List<Flight_list> flightInfo = flightDao.FlightList();
 	session.setAttribute("Flight_List", flightInfo);
 	System.out.println("Inside 1");
-	System.out.println("hello flight list"+request.getAttribute("Flight_List"));
+	System.out.println("hello flight list"+session.getAttribute("Flight_List"));
 
 //	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightlist.jsp");
 //	requestDispatcher.forward(request, response);

@@ -147,10 +147,12 @@ a:hover, a:active {
 			<tbody>
  
  
-     <c:forEach items="${Flight_List}" var="flight" varStatus="status">
+     <c:forEach items="${Flight_List}" var="flight" >
+ <c:set var="i" value="${i+1 }"/>
+
  
  <tr>
-  		<td>${status.count}</td>		
+  		<td>${i}</td>		
  
   	<td>${flight.getFlight_id()}</td>
  					 <td>${flight.getFlight_name()}</td>
@@ -174,10 +176,13 @@ a:hover, a:active {
 						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td>
 			                                              </c:if>
 			                                              
-			                                              	 <c:if test ="${loggedinadmin!=null}">  
-						<td><a href="deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td>
+ 			                                              	  <c:if test ="${loggedinadmin!=null}">  
+				<td><a href="deleteflight.jsp?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td> 
+
 			                                              </c:if>
+ 					  					 				  
  					  					 
+ 								 			 					
  								 			 								</tr>
  								 			     </c:forEach>
  								 			     

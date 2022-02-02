@@ -165,7 +165,7 @@ button:hover {
 		    console.log("called");
 		        let email=document.getElementById('email').value;
 		      console.log(email);
-		    var url="Exception.jsp?email="+email;  
+		    var url="Emailcheck?email="+email;  
 		    if(window.XMLHttpRequest){  
 		    request=new XMLHttpRequest();  
 		    }  
