@@ -165,7 +165,7 @@ a:hover, a:active {
 				<button type="Submit"  class="btn btn-info"  id="submit"    style="position: relative; top: -52px; left: -252px; width: 112px;"  >
 					Submit	</button>
 			</div>
-			<a href="Sourcedestination" class="btn btn-danger" style="font-style: italic; position: relative; top: -86px; left: 56px; width: 83px"   > Back </a> <br > <br />
+			<a href="flightSearch.jsp" class="btn btn-danger" style="font-style: italic; position: relative; top: -86px; left: 56px; width: 83px"   > Back </a> <br > <br />
 			
             </div>
 
