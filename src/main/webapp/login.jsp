@@ -108,7 +108,7 @@ img.avatar {
 <b></b>
 
     <label for="password" style="color: white;"><b>Password</b></label>
-    <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
+    <input type="password" id = "Password"  placeholder="Enter Password" name="password" required onkeyup="validlogin()"     >
     
 
    	 <div id="fads">
@@ -119,16 +119,13 @@ img.avatar {
    
    
    </div>
+             <button type="submit" id="submit" >Login</button>
  
-
-
-
-    <button type="submit"  >Login</button>
-
+ 
  </div>
  
+ <p id="loginresponse"></p>
  
-
  
  <c:set value="${param.username}" var="username"/>
      
@@ -175,16 +172,14 @@ img.avatar {
 		    }
 		    
 		    
-/* 		    function validlogin()
+	    function validlogin()
 		    {
 			    console.log("called");
 		        let uname =document.getElementById("username").value;
-		        let pass =document.getElementById("Password").value;
 
-		        console.log(pass);
 
 		        console.log(uname);
-		   var url="Exceptionlogin.jsp?uname="+uname+'&Password='+pass;
+		   var url="Uservalid?uname="+uname;
 
 	        console.log(url);
 
@@ -197,7 +192,7 @@ img.avatar {
 		    try  
 		    {  
 		    request.onreadystatechange=getInfo;  
-		    request.open("GET",url,true); 
+		    request.open("POST",url,true); 
 		    request.send();
 		    }  
 		    catch(e)  
@@ -211,10 +206,15 @@ img.avatar {
 		    function getInfo()
 		    {  
 		    	if(request.readyState==4){  
-		    	var loginresponse =request.responseText;  
-		    	document.getElementById('loginresponse').innerHTML=loginresponse;  
+		    	var loginresponse =request.responseText; 
+		    	if(loginresponse.includes("User Name Not Valid"))
+	    		{
+			    	document.getElementById('loginresponse').innerHTML=loginresponse;  
+                    document.getElementById('username').value = '';  
+                  }
+
 		    	}  
-		    }   */
+		    }   
 
 		    window.onload = function() {
 		    	  window.setTimeout(fadeout, 3000); //8 seconds
@@ -232,6 +232,13 @@ img.avatar {
 	{
 		document.getElementById("register").innerHTML = "";
 	}
+	document.getElementById("submit").onkeyup = function() {usernamefunction()};
+	
+	function usernamefunction()
+	{
+		document.getElementById("loginresponse").innerHTML = "";
+	}
+
 
 
    </script>
