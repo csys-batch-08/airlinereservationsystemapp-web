@@ -79,50 +79,6 @@ public class LoginDao implements LoginDaoInterface
 			
 	}
 	
-//	public  List<Flight_Seat_Availability> GetflightDetails( String source, String destination) throws Exception
-//	{
-//		List<Flight_Seat_Availability> lstseat =  new ArrayList<>();
-//		try
-//		{
-//			
-//			String admin = "";
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
-//			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-//			
-//			String sql = "select * from Flight_Seats_availabilty where source = ? and destination = ?";
-//			
-//			PreparedStatement pst = connection.prepareStatement(sql);
-//			pst.setString(1, source);
-//			pst.setString(2, destination);
-//		  
-//			ResultSet rs = pst.executeQuery();
-//			
-//				while (rs.next()) {
-//					 System.out.println("hello");
-//					 admin =  rs.getString("source");
-//					 System.out.println(admin);
-//					 if(admin.equalsIgnoreCase("yes"))
-//					 {
-//						 System.out.println(admin);
-//						// return admin = "yes";
-//					 }
-//					
-//					
-//				}
-//			       
-//		}
-//			catch(Exception e)
-//			{
-//				 System.out.println("hellokjhdsc");
-//
-//				System.out.println(e.getMessage());
-//			}
-//		
-//		
-//	      return lstseat;
-//			
-//	}
-
 	public  void updatepassword( String username,String password) throws Exception
 	{
 		Class.forName("oracle.jdbc.driver.OracleDriver");

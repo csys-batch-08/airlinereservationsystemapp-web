@@ -13,6 +13,8 @@
 <%
 
 String username =request.getParameter("username");  
+System.out.println("axious method comee insidee eee e e e "+username);
+
 try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");

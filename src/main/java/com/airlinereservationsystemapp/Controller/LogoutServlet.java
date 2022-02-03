@@ -30,7 +30,7 @@ public class LogoutServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		System.out.println("logout");
-		request.getSession().invalidate();
+			request.getSession().invalidate();
 	       response.sendRedirect("Sourcedestination");
 
 	       //response.sendRedirect("flightSearch.jsp");

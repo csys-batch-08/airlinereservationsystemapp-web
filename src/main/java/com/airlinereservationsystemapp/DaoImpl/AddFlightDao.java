@@ -137,14 +137,14 @@ catch(SQLException e)
 	}
 	
 	
-	public void updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status) throws Exception
+	public void updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status,String loggedinadmin) throws Exception
 	{
 		System.out.println("Method update ");
 	
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 	
-    CallableStatement cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,? )}");
+    CallableStatement cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,?,? )}");
 
     System.out.println("Class Details");
     cstmt.setInt(1, flightid);
@@ -157,6 +157,8 @@ catch(SQLException e)
     cstmt.setDate(8, java.sql.Date.valueOf(Arrival_Date));
     cstmt.setDate(9, java.sql.Date.valueOf(Departure_Date));
     cstmt.setString(10, Status);
+    cstmt.setString(11, loggedinadmin);
+
 
 
     

@@ -13,8 +13,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>UPDATE FLIGHT</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 
 </head>
 <style>
@@ -113,7 +115,7 @@ a:hover, a:active {
 							<%-- <input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px"> --%>
 				
-						<input type="date" class="form-control"  value="${flight.getDeparture_time()}"  name="DepartureDate"
+						<input type="date" class="form-control"  value="${flight.getDeparture_time()}"  name="DepartureDate" id="DepartureDate"
 				      style="position: relative;width: 250px;left: 38px; top: -6px;">
 				
 				<br> 
@@ -121,7 +123,7 @@ a:hover, a:active {
 							<%-- <input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
  --%>				
- <input type="date" class="form-control"  value="${flight.getArrival_Time()}"  name="ArrivalDate"
+ <input type="date" class="form-control"  value="${flight.getArrival_Time()}"  name="ArrivalDate" id="ArrivalDate"
 				      style="position: relative;width: 250px;left: 38px; top: -2px;">
  
  
@@ -154,7 +156,7 @@ a:hover, a:active {
     <script>
     
     
-    
+
     
     today();
     function today(){
@@ -165,8 +167,8 @@ a:hover, a:active {
         var yyyy1= today.getFullYear()+10;
     maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
     mindate =yyyy + '-' + mm + '-'+ dd  ;
-    document.getElementById("arrivaldate").setAttribute("max",maxdate);
-    document.getElementById("arrivaldate").setAttribute("min",mindate);
+    document.getElementById("ArrivalDate").setAttribute("max",maxdate);
+    document.getElementById("ArrivalDate").setAttribute("min",mindate);
 }
 </script>
 <script>

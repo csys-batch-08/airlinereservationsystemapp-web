@@ -42,8 +42,6 @@ public class WalletServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		try
 		{
 			HttpSession session = request.getSession();		
@@ -77,18 +75,19 @@ public class WalletServlet extends HttpServlet {
 			}
 
 			
-			else if(Amount>0)			
+			else if(Amount>=0)			
 			{
+				int closingbalance = wallet_amount + Amount ; 
+				wallet.updatebalance(Username, closingbalance);
+
+
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+				requestDispatcher.forward(request, response);
+			}
 //					if(Amount>0)
 //					{
-						int closingbalance = wallet_amount + Amount ; 
-						wallet.updatebalance(Username, closingbalance);
-
-
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
-						requestDispatcher.forward(request, response);
 					//}
-				}
+				
 			
 
 	

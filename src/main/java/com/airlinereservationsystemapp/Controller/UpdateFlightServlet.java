@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.AddFlightDao;
 
@@ -66,10 +67,13 @@ public class UpdateFlightServlet extends HttpServlet {
 				int premiumclass = Integer.parseInt(premium_Economy_class);
 				int Bussinessclass = Integer.parseInt(Bussiness_class);
 				
+				HttpSession session = request.getSession();
+				String loggedinadmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+
 					AddFlightDao update = new AddFlightDao();
 					System.out.println("Call update4  method");
 					UpdateFlightServlet flightupdate = new UpdateFlightServlet();
-					 update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status);
+					 update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status,loggedinadmin);
 					System.out.println("Call update2  method");
 					System.out.println("update 2 completed ");
 					

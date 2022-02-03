@@ -112,7 +112,8 @@ a:hover, a:active {
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
        
-            <form  id="form"  action="Wallet" method="post"  onsubmit="return validation()" >
+<form action="Wallet" method="post">
+            
             <div class="container">
             
                   <label for="closingbalance" style="font-family: serif;font-size: 21px; position:relative;width: 250px;top:33px;left: 3px;height: 20px;"

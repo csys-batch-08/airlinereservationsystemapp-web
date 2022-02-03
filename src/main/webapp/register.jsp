@@ -8,6 +8,8 @@
 <title>REGISTER FORM</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+    
 
 </head>
 <body>
@@ -86,10 +88,12 @@ button:hover {
 				 
 			
 			
-			<br> <input type="text" id="username" name="username"onkeyup="validemail()"  
+			<br> <input type="text" id="username" name="username"  
 				pattern="[A-Za-z\s]{3,8}"  placeholder="Enter User name" style="position: relative;top: -10px"  required
 				autofocus  
-				/>	<br>			 
+				/>	
+				
+				<br>			 
 				
 			
 				<br>
@@ -135,7 +139,6 @@ button:hover {
 		 				  	
 		 				  	 <p  id = "emailresponse"></p> 
 		 
-			<p id="validresponse" ></p>
 			
 			<p id = "userresponse"></p>
 			<p id = "phoneresponse"></p>
@@ -197,44 +200,9 @@ button:hover {
 		    }
 		    	
 		    	}  
-		   }  
-		    function validemail()
-		    {  
-		    console.log("called");
-		        let email=document.getElementById("email").value;
-		        console.log(email);
-		    var url="validemail.jsp?email="+email;  
-		    if(window.XMLHttpRequest){  
-		    request=new XMLHttpRequest();  
-		    }  
-		    else if(window.ActiveXObject){  
-		    request=new ActiveXObject("Microsoft.XMLHTTP");  
-		    }  
-		    try  
-		    {  
-		    request.onreadystatechange=updateInfo;  
-		    request.open("GET",url,true);  
-		    request.send();  
-		    }  
-		    catch(e)  
-		    {  
-		    alert("Unable to connect to server");  
-		    }
-		        
-		       }
+		   }
 		    
-		    function updateInfo(){  
-		    	if(request.readyState==4){  
-		    	var formatresponse =request.responseText;  
-		    	if(formatresponse.includes("mention Email id in correct format"))
-		    		{
-		    	document.getElementById('validresponse').innerHTML=formatresponse; 
-		    	document.getElementById('email').value = ''	;
-		    		}
-		    	
-		    	}  
-		    	}  
-		    function validuser()
+	    function validuser()
 		    {  
 		    console.log("called");
 		        let username=document.getElementById("username").value;
@@ -270,7 +238,9 @@ button:hover {
 		   
 		    	}  
 		    	}  
-		    
+ 	    
+ 
+
 		    function phonenumber()
 		    {
 			    console.log("called");
@@ -318,12 +288,6 @@ button:hover {
 	    		document.getElementById("emailresponse").innerHTML = "";
 	    	}
 		    
-		    	document.getElementById("username").onkeydown = function() {emailfunction()};
-		    	
-		    	function emailfunction()
-		    	{
-		    		document.getElementById("validresponse").innerHTML = "";
-		    	}
 		    	document.getElementById("password").onkeydown = function() {userfunction()};
 		    	
 		    	function userfunction()
@@ -342,7 +306,6 @@ button:hover {
 		    	
  	  
  </script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </main>
 </body>
 </html>

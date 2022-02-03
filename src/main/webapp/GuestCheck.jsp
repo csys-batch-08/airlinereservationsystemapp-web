@@ -43,7 +43,6 @@ else
 catch(Exception e)
 {
 	e.printStackTrace(); 
-	System.out.println("khhgfhfjgfhffhf"+e);
 
 }
  
