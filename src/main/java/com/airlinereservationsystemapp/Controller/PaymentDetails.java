@@ -40,69 +40,36 @@ public class PaymentDetails extends HttpServlet {
 		{
 			
 			String flightid = request.getParameter("flightid");
-			System.out.println("Before parsing the valuesssss"+flightid);
 			String ticketno = request.getParameter("ticketno");
-			System.out.println("Before parsing the valuesssss"+ticketno);
 			String Amount = request.getParameter("amount");
-			System.out.println("Before parsing the valuesssss"+Amount);
-			
-
-	         
-			
-			System.out.println("dhnhdhdhhhdfhhhdfhfhbamounttttt"+Amount);
-			
-
-		     
-			//int pass = (int)session.getAttribute("logpass");
-
-			// ArrayList<Integer> list=new ArrayList<Integer>();    
-
 ArrayList<Integer> value = (ArrayList<Integer>)session.getAttribute("SeatValue");
 
-System.out.println("dkjcxhhccxggcxvcvcxvvcxvgsgdffghdsfgfgdfgdsfgdsgfsd"+value);
 
 session.setAttribute("Seatfield",value);
 
 String seatvaluefield =  value.toString();
 
-System.out.println("seatvaluefield     :"+seatvaluefield);
 
 
 String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
 
 str=str.replaceAll("\\s", "");
 
-System.out.println("Converted seat typr valuesssaasasa"+str); 
 
 session.setAttribute("Seatfield",str);
 
 
 
 			
-System.out.println(value);
-
-System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
-		     
-		     System.out.println("Seftgddfghdcghdcagfhcdafhdafhdcgfadcghdac");
-
 		     request.setAttribute("Flight_ID", flightid);
 		     session.setAttribute("Flight_id", flightid);
 		     
-		     System.out.println(flightid);
 		     request.setAttribute("Ticket_no", ticketno);
 		     session.setAttribute("Ticket_no", ticketno);
 
 		     request.setAttribute("Amount", Amount);
 		     session.setAttribute("Amont", Amount);
 		     request.setAttribute("Seatnovalue", value);
-		     
-		    //session.setAttribute("Amount", Price);
-
-
-
-		     //RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
-				//requestDispatcher.forward(request, response);
-		     
 		    response.sendRedirect("payment.jsp");
 
 

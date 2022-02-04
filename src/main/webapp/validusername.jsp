@@ -8,40 +8,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+                     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+
 </head>
 <body>
-<%
 
-String username =request.getParameter("username");  
-System.out.println("axious method comee insidee eee e e e "+username);
-
-try
-{  
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
-ps.setString(1,username);  
-ResultSet rs=ps.executeQuery();  
-if(rs.next())
-{
-	System.out.println("nvfhfh");
-	PrintWriter Write = response.getWriter();
-   Write.println("User Name already Registered");
-	System.out.println("catch");
-
-}  
-
-}
-catch(Exception e)
-{
-	e.printStackTrace(); 
-	System.out.println(e);
+<p>hbhhvhvvbvb</p><c:out value="${username} "/>
 
 
-}
- 
 
-
-%>
 </body>
 </html>

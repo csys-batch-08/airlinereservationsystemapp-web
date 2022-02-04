@@ -40,7 +40,6 @@ int Flightid = Integer.parseInt(Flight_id);
 		AddFlightDao delete = new AddFlightDao();
 		try {
 			 delete.DeleteFlight(Flightid);
-			response.getWriter().print("Data Deleted");
 			   
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);

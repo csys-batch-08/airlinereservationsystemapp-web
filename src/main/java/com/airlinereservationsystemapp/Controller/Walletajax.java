@@ -33,18 +33,14 @@ public class Walletajax extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
-		System.out.println("Hello Ajax Content Type");
 		
 		String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-		System.out.println("Valid Entreisssss"+loggedInAsUser);
 			FlightService flightService = new FlightService();
 		int Closingbalance;
 		try {
 			Closingbalance = flightService.getclosingbalance(loggedInAsUser);
-			System.out.println("Valid dhfhfhhfshhfshkfskkhsfkhkhfshkfkhfkhs"+" "+Closingbalance);
 			PrintWriter Write = response.getWriter();
 			Write.println(Closingbalance);
-			System.out.println("Valid dhfhfhhfshhfshkfskkhsfkhkhfshkfkhfkhs"+" "+Closingbalance);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

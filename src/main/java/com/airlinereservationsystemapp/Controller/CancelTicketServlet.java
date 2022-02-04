@@ -46,10 +46,8 @@ public class CancelTicketServlet extends HttpServlet {
 	{
 	       HttpSession session = request.getSession();
 
-		System.out.println("Metghdpapapdapidaipadi va;dlkajdhhgdghdaghghdaghdaghgahdhgad");
 		
 		LocalDate today = getdate();
-		System.out.println("The current date and and time is"+today);
 		
 		session.setAttribute("Currentdatetime", today);
 		
@@ -58,20 +56,10 @@ public class CancelTicketServlet extends HttpServlet {
 	       
 
 		List<Passenger_details> cancelinfo = cancellist.CancelTicket(loggedInAsUser);
-		System.out.println(cancelinfo);
 		
 		
 		session.setAttribute("CancelList", cancelinfo);
-		
-		
-		
-		
-		
-		
-		
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("CancelTicket.jsp");
-//		requestDispatcher.forward(request, response);
-		
+				
 		response.sendRedirect("cancelticket.jsp");
 
 	}

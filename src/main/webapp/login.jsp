@@ -96,7 +96,7 @@ img.avatar {
 		<h1 align="center" style="color: white;">Login</h1>
 		<div align="center">	
 	<c:if test="${param.success eq 1}">
-	<h2 id="register" ><c:out value="${Valid}"  /> </h2>
+<%--     <h2 id="register" ><c:out value="${Valid}"  /> </h2> --%>
 	</c:if>
 				<form  action="Loginservlet"  method="post"  >
 				

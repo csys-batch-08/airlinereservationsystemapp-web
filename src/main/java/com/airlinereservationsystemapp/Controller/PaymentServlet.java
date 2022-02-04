@@ -47,19 +47,14 @@ public class PaymentServlet extends HttpServlet {
 		{
 	        PrintWriter out=response.getWriter();
 
-			System.out.println("method come inside");
 		HttpSession session = request.getSession();
 		WalletDao wallet = new WalletDao();
 		String Username = (String)session.getAttribute("LOGGED_IN_USER");
-		System.out.println("method come outsidehcvbsv");
 
-	System.out.println("inside  111");
 		String flightid = request.getParameter("flightid");
 		int FlightId = Integer.parseInt(flightid);
-		System.out.println("Flightd idkjhsjdda"+FlightId);
 		String ticketno = request.getParameter("ticketno");
 		int TicketNo = Integer.parseInt(ticketno);
-		System.out.println(TicketNo);
 		String Amount = request.getParameter("Amount");
 		int Price = Integer.parseInt(Amount);
 		
@@ -68,33 +63,20 @@ public class PaymentServlet extends HttpServlet {
 		
 	int noofflightpassengers = (int)session.getAttribute("logpass");
 	
-	System.out.println("noofpassemnehfeg"+noofflightpassengers);
 	
 	
  int splitprice =  Price/noofflightpassengers;
- 
-
- 
- System.out.println("lldjhdsjghdsgdggsdg"+splitprice);
- 
- 
-		
-		System.out.println(Price);
 		String mode = request.getParameter("yesCheck");
-		System.out.println(mode);
 		
 		String seat_no = request.getParameter("seatno");
-		System.out.println("seatno"+seat_no);
 		
 		session.setAttribute("Seatvalue", seat_no);
 
 		String str = seat_no.replaceAll("\\[", "").replaceAll("\\]", "");
 		str=str.replaceAll("\\s", "");
-		System.out.println(str);
 
 		String[] res = str.split(",",0);
 		
-		System.out.println("Stringresvalue"+res);
 
 	    int passvalue = (int)session.getAttribute("logpass");
 	      
@@ -103,36 +85,27 @@ public class PaymentServlet extends HttpServlet {
 		
 	     String economy = (String) session.getAttribute("Economy");
 	     
-	     System.out.println("Economyclass fir;leel   "+economy);
 	      String pre = (String)session.getAttribute("Premium");
 	    String bus = (String)  session.getAttribute("Bussiness");
 	    
 		String coach = (String)session.getAttribute("ClassDetails");
-	     System.out.println("Classs Details value  "+coach);
 
        Passenger_detailsDao pass =  new Passenger_detailsDao();
 
 		if(mode.equalsIgnoreCase("Wallet"))
 		{
-			System.out.println("vnhvhcvdhg12122");
 			int walletamount = wallet.checkusername(Username);
-			System.out.println("dsjhdjhsdhjdshjdsjhdsjhdjhdsjhdsjhds"+walletamount);
 			if(walletamount > 0 &&  walletamount > Price)
 			{
 				int Closingbalance = walletamount - Price;
-				System.out.println("dnfvgfdsdghwdhdghdf");
 
 				wallet.updatebalance(Username,Closingbalance);
 				String noofpassengers = (String)request.getAttribute("noofpass");
-				System.out.println("Comeinside:"+passvalue);
 				for(String mystr:  res)
 				{
-					System.out.println("seatno integeegcfcdg"+mystr);
 					 seatstatus = Integer.parseInt(mystr);
-					 System.out.println("smfhsfhvsfdfgfgdsgdffgdgdfgsgfdfgsgfd"+seatstatus);
 //					 request.setAttribute("Seatvalue", seatstatus);
 
-					 System.out.println("dsjdhhsgsgfgsfgfshhfshfsghsfhgsfhghfsghghfgshfsghs"+seatstatus);
 				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 				
 
@@ -141,11 +114,6 @@ public class PaymentServlet extends HttpServlet {
 				
 				
 			
-			System.out.println("hddfhbfdnvnxnxxvxcvcxvcxbcvbvbbvvbxcbvcvbvcbcbxxcvbcbvcxbvxc");
-			
-			
-			
-			System.out.println("hdhfdhgdfghdfghd");
 			
 			session.removeAttribute("ClassDetails");
 
@@ -163,31 +131,17 @@ public class PaymentServlet extends HttpServlet {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("mywallet.jsp");
 				requestDispatcher.forward(request, response);
 			}
-
-
-			
-//			session.setAttribute("Flightid", FlightId);
-//			session.setAttribute("Ticketno", TicketNo);
-//			session.setAttribute("Amount", splitprice);
-
-			
-		
 		}
 		
 		else 
 		{
-			System.out.println(Username);
-			System.out.println("cjccbalwaidhinsertded");
 			for(String mystr:  res)
 			{
-				System.out.println("seatno integeegcfcdg"+mystr);
 				 seatstatus = Integer.parseInt(mystr);
 					wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 
 			}
 			pass.Updatepassenger(Integer.parseInt(economy), Integer.parseInt(pre), Integer.parseInt(bus),coach,FlightId);
-
-			System.out.println("Seatstststgadcgdcdaddagcdacsavalue  "+seatstatus);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);
 		}

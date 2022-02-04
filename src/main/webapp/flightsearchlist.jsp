@@ -80,7 +80,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  
    		<td>${status.count}</td>		
  
-  	<td>${plane.getFlightId()}</td>
+  	<td id="blsls" >${plane.getFlightId()}</td>
  					 <td>${plane.getFlightname()}</td>
  					  					 <td>${plane.getSource()}</td>
  					  					 <td>${plane.getDestination()}</td>
@@ -137,9 +137,14 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 </c:forEach>
  </tbody>
 </table>	
-		
-			
-		</c:if>
+</c:if>
+
+<script>
+
+document.getElementById("blsls").innerHTML = "";
+
+
+</script>
 		
 </body>
 </html>

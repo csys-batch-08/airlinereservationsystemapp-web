@@ -59,40 +59,22 @@ public class SearchFlightServlet extends HttpServlet {
 	        String Source = "";
 	        String Destination = "";
 			 Source = request.getParameter("source");
-			 System.out.println(Source);
 			 Destination = request.getParameter("destination");
-			 System.out.println(Destination);
 			String date =  request.getParameter("date");
-			System.out.println(date);
 			if(date!=null && date != "")
 			{
 			 local = LocalDate.parse(date);
-			System.out.println(local);
 			}
-
-			//System.out.println(Source);
-			//System.out.println(Destination);
-		
-			
 			HttpSession session =  request.getSession();
 			
 			//List<Flight_Seat_Availability> objavailability = objsearchflight.ListSeat(Source, Destination);
 			List<Flight_Seat_Availability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
 
-			System.out.println(objavailability);
 			request.setAttribute("Flight_List", objavailability);
 		
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightsearchlist.jsp");
 			requestDispatcher.forward(request, response);
-			
-			
-			
-
-
-
-
-			
-		}
+					}
 		catch(Exception e)
 		{
 			System.out.println(e);

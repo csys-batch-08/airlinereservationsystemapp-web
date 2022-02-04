@@ -37,7 +37,6 @@ public class UserServlet extends HttpServlet {
 		AddFlightDao register = new AddFlightDao();
 		
 		List<Flight> registerinfo = register.register();
-		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
 		request.setAttribute("Flight", registerinfo);
 
        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");

@@ -46,7 +46,6 @@ public class LoginDao implements LoginDaoInterface
 		String admin = "";
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		System.out.println("Weleocme to add flight ");
 		String sql = "SELECT * FROM register WHERE user_name = ? AND password =?";
 		
 		PreparedStatement pst = connection.prepareStatement(sql);
@@ -57,13 +56,10 @@ public class LoginDao implements LoginDaoInterface
 		ResultSet rs = pst.executeQuery();
 		if(rs != null)
 		{
-			System.out.println("Valid");
 			while (rs.next()) {
 				 admin =  rs.getString("Is_Admin");
-				 System.out.println(admin);
 				 if(admin.equalsIgnoreCase("yes"))
 				 {
-					 System.out.println(admin);
 					 return admin = "yes";
 				 }
 				 else
@@ -83,14 +79,12 @@ public class LoginDao implements LoginDaoInterface
 	{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		System.out.println("Weleocme to add flight ");
 		 String sql = "update register set password = ?   where user_name = ?";
 		
 
 		PreparedStatement pst = connection.prepareStatement(sql);
 		pst.setString(1, password);
 		pst.setString(2, username);
-	    System.out.println(username);
 	   
 	    pst.executeUpdate();
 		

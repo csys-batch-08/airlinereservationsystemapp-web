@@ -35,21 +35,16 @@ public class Addpassenger extends HttpServlet {
 	{
 		HttpSession session  = request.getSession();
 	String flight_id = request.getParameter("flightId");
-		System.out.println("Flight Idd  mdmmdmm"+flight_id);
 		int flightId = Integer.parseInt(flight_id);
     	String source = request.getParameter("source");
-		System.out.println(source);
 		String destination = request.getParameter("destination");
 		
 		String DepartureDate = request.getParameter("Departure_Date");
 		Date  Departure_Date = java.sql.Date.valueOf(DepartureDate) ;
 
-		System.out.println(Departure_Date);
 		
 		String Economyclass = request.getParameter("Economyrate");
-System.out.println("jhdsjhsdhjjhjhshjsdjhdhjddjhjhddhjsjhd"+Economyclass);		
 Double Economyrate  = Double.parseDouble(Economyclass);
-System.out.println("jhdsjhsdhjjhjhshjsdjhdhjddjhjhddhjsjhd"+Economyrate);		
 
 		
 		String PremiumEconomyclass = request.getParameter("Premiumrate");
@@ -59,7 +54,6 @@ System.out.println("jhdsjhsdhjjhjhshjsdjhdhjddjhjhddhjsjhd"+Economyrate);
 		String Economyclass1 = request.getParameter("Economy_class");
 		int Economy_class = Integer.parseInt(Economyclass1);
 		
-		System.out.println(Economyclass1);
 		String Premiumrate1 = request.getParameter("Premium_Economy_class");
 		int Premium_Economy_class = Integer.parseInt(Premiumrate1);
 		String Businesseat = request.getParameter("Bussiness_class");

@@ -30,10 +30,8 @@ public class Delete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
-		System.out.println("methodcomeeeeeeinsideee");
 		String flightid = request.getParameter("flightId");
 		
-		System.out.println("djnjhdfjhdfjhdfhjfdjhfjhjhfdjhjhjhfdhjdfhjfdjhfjhjhf"+"  "+flightid);
 		
 		session.setAttribute("flightId", flightid);
 		

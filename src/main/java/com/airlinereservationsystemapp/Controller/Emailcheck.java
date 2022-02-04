@@ -33,8 +33,15 @@ public class Emailcheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		String email = request.getParameter("email");
-		System.out.println(email);
+		
 		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
@@ -43,10 +50,8 @@ public class Emailcheck extends HttpServlet {
 	ResultSet rs=ps.executeQuery();  
 	if(rs.next())
 	{
-		System.out.println(email);
 		PrintWriter Write = response.getWriter();
 	   Write.println("Email id Already Registered");
-		System.out.println("fhfh"+email);
 	}  
 	}
 		catch(Exception e)
@@ -55,13 +60,7 @@ public class Emailcheck extends HttpServlet {
 				}
 
 
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
 	}
 }
 

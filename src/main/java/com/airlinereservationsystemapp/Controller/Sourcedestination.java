@@ -59,10 +59,6 @@ public class Sourcedestination extends HttpServlet {
 			
 			session.setAttribute("Sourcelist", Sourceinfo);
 			
-			System.out.println("Welcome to Source listsjbfj");
-			
-			System.out.println("Sourcelist details"+session.getAttribute("Sourcelist"));
-			
 			LocalDate arrivaldte  = getdate();
 			
 			Date arrives =  getcurrentdate();
@@ -71,13 +67,6 @@ public class Sourcedestination extends HttpServlet {
 
 			
 			session.setAttribute("Arrivaldate",arrivaldte );
-			
-			System.out.println("jdfbjfdbfdjbjjxcbjbjjbbjvbjvbjbjvxbj"+arrivaldte);
-			
-			System.out.println("cureebdhhdahdhghgshsdhghgdhghds"+arrives);
-
-			
-
 			
 			response.sendRedirect("flightSearch.jsp");
 		} catch (Exception e) {

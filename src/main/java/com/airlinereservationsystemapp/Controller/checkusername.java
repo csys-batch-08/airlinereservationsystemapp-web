@@ -1,28 +1,28 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.airlinereservationsystemapp.DaoImpl.LoginDao;
 
 /**
- * Servlet implementation class ForgetPassword
+ * Servlet implementation class checkusername
  */
-@WebServlet("/ForgetPassword")
-public class ForgetPasswordServlet extends HttpServlet {
+@WebServlet("/checkusername")
+public class checkusername extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ForgetPasswordServlet() {
+    public checkusername() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +32,7 @@ public class ForgetPasswordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -39,28 +40,32 @@ public class ForgetPasswordServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		HttpSession session = request.getSession();
-		String Username = request.getParameter("username");
-		String Password = request.getParameter("password");
-     
-     LoginDao password = new  LoginDao();
-     try {
-			session.getAttribute("Sourcelist");
+		String username =request.getParameter("username");  
 
-		password.updatepassword(Username, Password);
-		
-		
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-     
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//		requestDispatcher.forward(request, response);
-     
-    response.sendRedirect("login.jsp");   
-     
-     
+
+		try
+		{  
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+		PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
+		ps.setString(1,username);  
+		ResultSet rs=ps.executeQuery();  
+		if(rs.next())
+		{
+		   response.getWriter().println("User Name already Registered");
+
+		}  
+
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace(); 
+			System.out.println(e);
+
+
+		}
+		 
+
 	}
 
 }

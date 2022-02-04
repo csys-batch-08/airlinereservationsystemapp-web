@@ -44,9 +44,7 @@ public class FlightRegisterServlet extends HttpServlet {
 			String email = request.getParameter("email");
 
 			String username = request.getParameter("username");
-			//int age = Integer.parseInt(request.getParameter("age"));
 			String password = request.getParameter("password");
-			//String phoneNumber = request.getParameter("phoneNumber");
 
 			String gender = request.getParameter("Gender");
 			String  Phonenum =request.getParameter("phoneNumber");
@@ -59,15 +57,11 @@ public class FlightRegisterServlet extends HttpServlet {
 			   
            int i =  RegDao.Fileregistration(objFlightRegister);
 		String usernameee = 	RegDao.Registration(objFlightRegister);
-		System.out.println("Registerafdhadhhdasahjdajd"+usernameee);
-           
-           System.out.println("Flight Registration nnnn"+" "+" "+i);
+
            
            if(i!=0)
            {
         	   session.setAttribute("Valid", "Successfully Registered");
-				//RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-				//requestDispatcher.forward(request, response);
         	   response.sendRedirect("login.jsp?success=1");
                 
            }

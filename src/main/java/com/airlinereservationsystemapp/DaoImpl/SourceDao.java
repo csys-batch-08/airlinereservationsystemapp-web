@@ -39,11 +39,8 @@ public class SourceDao implements SourceInterface
 			pst.setString(1, source);
 			pst.setString(2, destination);
 			pst.setDate(3,getcurrentdate() );;
-		    System.out.println(source);
-		    System.out.println(destination);
 			ResultSet rs1 = pst.executeQuery();
 			
-				System.out.println("Valid");
 				while (rs1!=null && rs1.next()) {
 				{
 					System.out.println("hello1");
@@ -115,21 +112,18 @@ return Seatavailabilitylist;
 
 			if(source != null)
 			{
-			   System.out.println("SOuedgvcsvcdgjvcvgjcxv enterttefd");
 			    query += "and b.source = ?";
 			    
 			}
 			if(destination != null)
 			{
-				   System.out.println("Destination  enterttefd");
    
 			    query += "and b.destination = ?";
 			   
 			}
 			if(date != null)
 			{
-				   System.out.println("Datetet enterttefd");
-
+				   
 			
 			   query += "and a.flight_departure_date = ?";
 			
@@ -139,33 +133,26 @@ return Seatavailabilitylist;
 			if(source != null && source != "")
 			{
 			    i++;
-			    System.out.println("dskhjfgdvfhdfhfdhvalue of    i   "+i);
 			    pst.setString(i,source);
 			}
 			if(destination != null && destination!= "")
 			{
 			    i++;
-			    System.out.println("dskhjfgdvfhdfhfdhvalue of    i   "+i);
 
 			    pst.setString(i,destination);
 			}
 			if(date != null)
 			{
 			i++;
-		    System.out.println("dskhjfgdvfhdfhfdhvalue of    i   "+i);
 
 			pst.setDate(i,java.sql.Date.valueOf(date));
 			}
 			
 			
-		    System.out.println(source);
-		    System.out.println(destination);
 			ResultSet rs1 = pst.executeQuery();
 			
-				System.out.println("Valid");
 				while (rs1!=null && rs1.next()) {
 				{
-					System.out.println("hello1");
 					int Flight_id = rs1.getInt("flight_id");
 					
 					String Flight_name = rs1.getString("flight_name");

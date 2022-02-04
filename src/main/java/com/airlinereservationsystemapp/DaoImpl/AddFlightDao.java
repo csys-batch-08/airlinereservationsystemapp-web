@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -38,14 +39,10 @@ public class AddFlightDao implements AddFlightInterface
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 	String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
 	PreparedStatement stmt = con.prepareStatement(sql , returnCols);
-	System.out.println(fly.getFlight_name());
-	System.out.println("Pravenn Kumar");
 	 
 	stmt.setString(1,fly.getFlight_name() );
-	System.out.println("Name ");
 	stmt.setString(2,fly.getSource());
 	stmt.setString(3,fly.getDestination());
-	System.out.println("Destination");
 	stmt.setInt(4,fly.getEconomy_class());
 	stmt.setInt(5,fly.getPremium_Economy_class());
 	stmt.setInt(6,fly.getBussiness_class());
@@ -53,18 +50,15 @@ public class AddFlightDao implements AddFlightInterface
 	stmt.setDate(8, java.sql.Date.valueOf(fly.getDeparture_Date()));
 
 	stmt.setTime(9,java.sql.Time.valueOf( fly.getArrivalTime()));
-	System.out.println("Time ");
 
 	 stmt.executeUpdate();
 	 
 	 
 	 
     // if (stmt.executeUpdate() > 0) { 
-    		System.out.println(returnCols);
     		
          java.sql.ResultSet generatedKeys = stmt.getGeneratedKeys();
          if (generatedKeys.next()) 
-        		System.out.println(generatedKeys);
           FlightId =  generatedKeys.getInt(1); 
         //}
 
@@ -82,10 +76,8 @@ catch(SQLException e)
 }
 	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date,LocalTime DepartureTime ) throws ClassNotFoundException, SQLException
 	{
-		System.out.println("Method Inside");
 		
 		
-		System.out.println(flightid);
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
@@ -106,7 +98,6 @@ catch(SQLException e)
 
 		int str = stmt1.executeUpdate();
 		//con.commit();
-		System.out.println("Finished");
 
 		
 	}
@@ -126,9 +117,7 @@ catch(SQLException e)
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
     CallableStatement cstmt = con.prepareCall("{call DeleteFlight(? )}");
-    System.out.println("Delete  Details");
     cstmt.setInt(1, Flight_id);
-    System.out.println("Delete Method ");
     cstmt.executeUpdate();
 
     
@@ -137,16 +126,15 @@ catch(SQLException e)
 	}
 	
 	
-	public void updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status,String loggedinadmin) throws Exception
+	public String updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status,String loggedinadmin) throws Exception
 	{
-		System.out.println("Method update ");
 	
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 	
-    CallableStatement cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,?,? )}");
+    CallableStatement cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,?,?,?)}");
 
-    System.out.println("Class Details");
+
     cstmt.setInt(1, flightid);
     cstmt.setString(2, flightname);
     cstmt.setString(3, Source);
@@ -159,12 +147,15 @@ catch(SQLException e)
     cstmt.setString(10, Status);
     cstmt.setString(11, loggedinadmin);
 
+    cstmt.registerOutParameter(12,java.sql.Types.VARCHAR);
 
-
-    
-
-    System.out.println("Method update3 ");
     cstmt.executeUpdate();
+
+    String rres =  cstmt.getNString(12);
+
+   
+     return rres;
+     
 	}
 	
 	
@@ -175,8 +166,6 @@ catch(SQLException e)
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("connection established"+con);
-			//out.println("connection established"+con);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from register where is_admin != 'yes'");
 			System.out.println("connection established"+con);
@@ -202,7 +191,6 @@ catch(SQLException e)
 		}
 		catch(Exception e)
 		{
-			//out.println("connection established qqww");
 		}
 return registerlist;
 				   

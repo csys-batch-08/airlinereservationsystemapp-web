@@ -40,22 +40,17 @@ public class UpdateFlightServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Call update method");
 
 			try {
 				String Flight_id  = request.getParameter("Flightid");
 
 				String flight_name = request.getParameter("Flightname");
 				String source = request.getParameter("source");
-
-				System.out.println("Call update1 method");
-				
 				String Destination = request.getParameter("Destination");
 				String   Economy_class = request.getParameter("Economyclass");
 				String   premium_Economy_class =request.getParameter("PremiumEconomyclass");
 				String   Bussiness_class = request.getParameter("Bussinessclass");
 				
-				System.out.println("Call update2  method");
 //	        java.util.Date date = new java.util.Date();
          String  Arrival_date  = request.getParameter("ArrivalDate"); 
  LocalDate local = LocalDate.parse(Arrival_date);
@@ -71,14 +66,7 @@ public class UpdateFlightServlet extends HttpServlet {
 				String loggedinadmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 
 					AddFlightDao update = new AddFlightDao();
-					System.out.println("Call update4  method");
-					UpdateFlightServlet flightupdate = new UpdateFlightServlet();
-					 update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status,loggedinadmin);
-					System.out.println("Call update2  method");
-					System.out.println("update 2 completed ");
-					
-					response.getWriter().print("Data Updated ");
-					
+					String Details =  update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status,loggedinadmin);
 					
 
 				 

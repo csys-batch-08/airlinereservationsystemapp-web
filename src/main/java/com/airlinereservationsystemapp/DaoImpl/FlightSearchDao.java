@@ -25,16 +25,12 @@ public class FlightSearchDao implements FlightSearchInterface
 		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		System.out.println("connection established"+con);
 		
-		//out.println("connection established"+con);
 		Statement stmt = con.createStatement();
 		String sql = "SELECT b.flight_id,b.flight_name,b.arrival_date,b.arrivaltime,a.DepartureTime,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class,a.Flight_Status FROM Flight_Seats_availabilty a inner join Flight_details b on a.flight_id = b.flight_id  ";
 		ResultSet rs = stmt.executeQuery(sql);
-		System.out.println("123");
 		while(rs.next())
 		{
-			System.out.println("Come fliyst value of flight");
 			int  flightId = rs.getInt("flight_id");
 			String airlines = rs.getString("flight_name");
 			String Source = rs.getString("source");
@@ -44,7 +40,6 @@ public class FlightSearchDao implements FlightSearchInterface
 			int businessClass = rs.getInt("Bussiness_class");
 			Date Arrival_Time = rs.getDate("arrival_date");
 			
-			System.out.println("Arrival_Time"+Arrival_Time);
 			Date Departure_Time = rs.getDate("flight_departure_date");
 			int economyseats = rs.getInt("ecomomy_seats");
 			int premiumseats = rs.getInt("premium_economy_Seats");
@@ -60,9 +55,7 @@ public class FlightSearchDao implements FlightSearchInterface
 			
 			String flightstatus = rs.getString("Flight_Status");
 
-System.out.println(flightstatus);
 
-			//Flight_list objFlight = new Flight_list();
 			Flight_list objFlight = new Flight_list(flightId, airlines, Source, destination, economyClass, premiumeconomyclass, businessClass, Arrival_Time, Departure_Time, economyseats, premiumseats, bussiness, dateStr,departured,flightstatus);
 
 			flightList.add(objFlight);
@@ -72,7 +65,6 @@ System.out.println(flightstatus);
 	}
 	catch(Exception e)
 	{
-		//out.println("connection established qqww");
 	}
 return flightList;
 			   
@@ -86,11 +78,9 @@ return flightList;
 	
 		try {
 			
-			System.out.println("connection established"+ flightId);
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("connection established"+con);
 			
 				String sql = "SELECT * FROM flight_details WHERE flight_Id = ? ";
 			
@@ -119,7 +109,6 @@ return flightList;
 					Date Departure_Time = rs.getDate("Departure_Date");				
 
 
-					// Store the data in model
 					flight = new Flight_list(id, airlines,Arrival_Time,Departure_Time,source,destination,firstClass,economyClass,businessClass);
 
 					

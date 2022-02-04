@@ -41,10 +41,8 @@ public class GuestLoginServlet extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		System.out.println("sourcelist enteered");
 		session.getAttribute("Sourcelist");
 
-		System.out.println("sourcelist finished"+session.getAttribute("Sourcelist"));
 
 		String guest = "Guest";
 		String role = "guest";
@@ -52,7 +50,6 @@ public class GuestLoginServlet extends HttpServlet {
 		session.setAttribute("Guest", role);
 		//request.setAttribute("ROLE", role);
 
-		System.out.println(guest);
 		
 		String mobile = request.getParameter("phoneNumber");
 		Long phone = Long.parseLong(mobile);
@@ -70,12 +67,10 @@ public class GuestLoginServlet extends HttpServlet {
 		try {
 			
 			valid  =  object.guestcheck(phone, mail);
-			System.out.println("Welcome Checkjdbjsdbbd"+valid);
 
 			
 			if(valid!=null)
 		{
-				System.out.println("Welcome Login Ckddjsbjjsjgsdjgdjbjbdsbjjbds");
 				
 
 		}	
@@ -83,7 +78,6 @@ public class GuestLoginServlet extends HttpServlet {
        if(valid==null)
        {
     	   object.insertguestvalid(phone, mail);
-    	   System.out.println("Registered");
        }
 
 

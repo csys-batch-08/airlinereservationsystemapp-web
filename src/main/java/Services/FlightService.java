@@ -28,7 +28,6 @@ public class FlightService {
 		public int getclosingbalance(String username) throws Exception
 		{
 		
-		System.out.println(username);
 		int Closing_balance = 0;
 		WalletDao objwallet  = new WalletDao ();
 		Closing_balance  = objwallet.getclosingbalance(username);

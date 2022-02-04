@@ -41,22 +41,17 @@ public class Guestcancel extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Megdbvvhdshvdhhdgshgdshgsdhghgsdhgdsghdsghsdhgshgdghsdhgsdhgsdghghd");
 		HttpSession session = request.getSession();
 		
 		LocalDate local =  getdate();
-		
-		System.out.println("localdate "+local);
-		
 		session.setAttribute("Guestcurentdate", local);
 		
 	Long phone = (Long)	session.getAttribute("Mobile");
 	
-	System.out.println("Phone number valiwehudshhdhdshghgdg"+phone);
+
 
 		FlightRegisterDao listvalue = new FlightRegisterDao();
 		List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
-		System.out.println(Guestcancel);
 		
 		session.setAttribute("GuestList", Guestcancel);
 		

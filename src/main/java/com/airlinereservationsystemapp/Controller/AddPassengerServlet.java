@@ -47,13 +47,11 @@ public class AddPassengerServlet extends HttpServlet {
 	    try {
 			  String Flight_Id =request.getParameter("flightId");
 			  int flightid = Integer.parseInt(Flight_Id);
-			  System.out.println(flightid);
 			String name = request.getParameter("username");
 			System.out.println(name);
 			String date = request.getParameter("bookingDate");
 			LocalDate local = LocalDate.parse(date);
 
-			System.out.println("hdsghsdghghdsghhhhhhhhhsghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"+local);
 			session.setAttribute("Date", local);
 
 			String Source = request.getParameter("source");
@@ -61,61 +59,29 @@ public class AddPassengerServlet extends HttpServlet {
 	      String mobno = request.getParameter("MobileNumber");
 	      
 	      String economyseats = request.getParameter("Economyclass");
-	      System.out.println("Economy  String  seat valeue"+economyseats);
+
 
 	      int econ = Integer.parseInt(economyseats);
-	      System.out.println("Economy seat valeue"+econ);
+
 			String premiumeconomyseats = request.getParameter("PremiumEconomyclass");
-			System.out.println(premiumeconomyseats);
 	      String businesseats = request.getParameter("Bussinessclass");
-	      
-	      
-	      
-
-
-
-	      
-	      
-	      
-	      long mobileno = Long.parseLong(mobno);
-	      System.out.println(mobno);
-			String class_details = request.getParameter("coach");
-			System.out.println(class_details);
-			
+	    	      long mobileno = Long.parseLong(mobno);
+			String class_details = request.getParameter("coach");			
 	       String noofpassengers = request.getParameter("numberOfPassengers");
-	       System.out.println("String No of passengers" +noofpassengers);
 	       int noofpass = Integer.parseInt(noofpassengers);
-	       System.out.println("int No of passengers" +noofpass);
-
-	       System.out.println(noofpass);
 	       String ticket_no = request.getParameter("ticketno");
 	     int ticketno = Integer.parseInt(ticket_no);
 	     
 	     String seat_no  =  request.getParameter("seatno");
-	     System.out.println(seat_no);
 	     
 	     int seatno = Integer.parseInt(seat_no);
-	     
-	     System.out.println(seatno);
 	     String amount = request.getParameter("amount");
-
-
 	     session.setAttribute("logpass",noofpass);
-	     
 	     session.setAttribute("Economy", economyseats);
-	      session.setAttribute("Premium", premiumeconomyseats);
-	      session.setAttribute("Bussiness", businesseats);
-			session.setAttribute("ClassDetails", class_details);
-
-
-	     
-System.out.println("mbhfvddno fpo a[apasssenddhgdtad");	 
-
-
-
-	       System.out.println(ticketno);
-	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-     System.out.println(loggedInAsUser);
+	     session.setAttribute("Premium", premiumeconomyseats);
+	     session.setAttribute("Bussiness", businesseats);
+	   	session.setAttribute("ClassDetails", class_details);
+	  String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, ticketno,flightid,local);
 			Passenger_detailsDao pass = new Passenger_detailsDao();
 			
@@ -123,15 +89,12 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 
 			for(int i=0;i<noofpass;i++)
 			{
-				System.out.println("hi");
 				 int seatnumber = pass.Setnogenerated(passenger,ticketno,loggedInAsUser);
 				 list.add(seatnumber);
-				 System.out.println("Seatnumbehfsfdy" +seatnumber);
 //				  request.setAttribute("SeatValue", value);
 
 			}
 			session.setAttribute("SeatValue", list);
-			System.out.println(list);
 			
 			//pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
@@ -143,7 +106,6 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 
 		} 
 	    catch (Exception e) {
-			System.out.println("Hello error");
 			e.printStackTrace();
 		}
 

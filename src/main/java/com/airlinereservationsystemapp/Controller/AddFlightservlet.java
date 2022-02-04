@@ -62,7 +62,6 @@ public class AddFlightservlet extends HttpServlet {
 			int   Economyclass = Integer.parseInt(request.getParameter("Economyclass"));
 			int   premiumEconomyclass = Integer.parseInt(request.getParameter("PremiumEconomyclass"));
 			int   Bussinessclass = Integer.parseInt(request.getParameter("Bussinessclass"));
-			System.out.println("Class Details");
 	        String  Arrival_time  = request.getParameter("ArrivalDate"); 
             LocalDate local = LocalDate.parse(Arrival_time);
 			String Departure_time  =  request.getParameter("DepartureDate");
@@ -81,7 +80,6 @@ public class AddFlightservlet extends HttpServlet {
             AddFlightDao adddao = new AddFlightDao();
             AddFlight flight = new AddFlight(flightname, source, Destination, Economyclass, premiumEconomyclass, Bussinessclass,local,loca1,time);             
             int Flight_Id  = adddao.AddFlightDetails(flight);
-            System.out.println(Flight_Id);
             adddao.Addseats(Flight_Id, source, Destination,ecoseats,preseats,busseats,loca1,time2);
 			response.sendRedirect("flightSearch.jsp");				
 		} catch (Exception e) {
@@ -92,9 +90,5 @@ public class AddFlightservlet extends HttpServlet {
 		
 	}
 
-	private void AddSeats() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

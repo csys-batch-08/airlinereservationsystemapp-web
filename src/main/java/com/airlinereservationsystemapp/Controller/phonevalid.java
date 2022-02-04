@@ -14,16 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Uservalid
+ * Servlet implementation class phonevalid
  */
-@WebServlet("/Uservalid")
-public class Uservalid extends HttpServlet {
+@WebServlet("/phonevalid")
+public class phonevalid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Uservalid() {
+    public phonevalid() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,47 +33,36 @@ public class Uservalid extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String phone  = request.getParameter("phoneno");
+		long mobileno = Long.parseLong(phone);
+		
+	try {	
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+	PreparedStatement ps=con.prepareStatement("select * from register where Phone_number=? ");  
+	ps.setLong(1,mobileno); 
+	ResultSet rs=ps.executeQuery();  
+	if(rs.next())
 	{
-		String username =request.getParameter("uname");  
-		
-		try
-		{  
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
-		ps.setString(1,username);  
-		ResultSet rs=ps.executeQuery();  
-		if(rs.next())
-		{
+		PrintWriter Write = response.getWriter();
+	   Write.println("Mobile Number Already Present");
+	}
+	}
+	catch(Exception e)
+	{
+		PrintWriter Write = response.getWriter();
+		e.printStackTrace();  
+	}
+	 
 
-		}  
-		else
-		{
-			PrintWriter Write = response.getWriter();
-		   Write.println("User Name Not Valid");
-
-		}
-
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace(); 
-			System.out.println(e);
-
-
-		}
-		 
-
-
-		
 
 	}
 

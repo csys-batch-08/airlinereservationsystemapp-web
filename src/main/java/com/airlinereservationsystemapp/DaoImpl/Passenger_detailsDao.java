@@ -200,10 +200,8 @@ return booklist;
 		List<Passenger_details> canceldetails = new ArrayList<>();
 		try 
 		{
-			System.out.println("Cancel come inside");
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		System.out.println("Weleocme to add flight ");
 		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,c.flight_departure_date ,a.ticket_no , a.Seat_no , a.Status,a.Booked_date,"
 				+ "b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b "
 				+ "on a.seat_no = b.seatno inner join flight_seats_availabilty c on a.FLight_id = c.flight_id  where user_name = ?";
@@ -214,7 +212,6 @@ return booklist;
 		ResultSet rs = pst.executeQuery();
 		if(rs != null)
 		{
-			System.out.println("Valid");
 			while (rs.next()) 
 			{
 				String  Class =  rs.getString(1);
@@ -224,9 +221,7 @@ return booklist;
 				String  destination =  rs.getString(4);
 				Date  Departreddate =  rs.getDate(6);
 				  LocalDate localDate2 = Departreddate.toLocalDate();
-System.out.println(localDate2);
 				int  flightid =  rs.getInt(5);
-				System.out.println(flightid);
 
 				int  seatno =  rs.getInt(8);
 				int  ticketno =  rs.getInt(7);
@@ -235,11 +230,6 @@ System.out.println(localDate2);
 			  LocalDate bookdate = bookingdate.toLocalDate();
 			  String amountmode = rs.getString(12);
 			  int amount = rs.getInt(11);
-			  System.out.println("amount"+amount);
-			  
-
-				
-				System.out.println(bookingdate);
 				
 				
 				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno,status,bookdate,flightid,amountmode,amount);
@@ -265,10 +255,8 @@ System.out.println(localDate2);
 		 {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("inside 343 11");
 			String sql = "";
 
-			System.out.println("Function 1");
 
 				 sql = "update passenger_details set status = ?   where Seat_no = ?";
 					PreparedStatement stmt = con.prepareStatement(sql);
@@ -279,7 +267,6 @@ System.out.println(localDate2);
 
 
 
-					System.out.println("Function 2");
 
 					
 		
@@ -298,10 +285,8 @@ System.out.println(localDate2);
 		 {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("inside 11");
 			String sql = "";
           
-			System.out.println("Function 3");
 
             if(classdetails.equalsIgnoreCase("Economy"))
             {
@@ -312,7 +297,6 @@ System.out.println(localDate2);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
 					
                  stmt.executeUpdate();
-     			System.out.println("Function 4");
 
             }  
             if(classdetails.equalsIgnoreCase("premium"))
@@ -324,7 +308,6 @@ System.out.println(localDate2);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
 					
                  stmt.executeUpdate();
-     			System.out.println("Function PE4");
 
             }  
             if(classdetails.equalsIgnoreCase("Bussiness"))
@@ -336,7 +319,6 @@ System.out.println(localDate2);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
 					
                  stmt.executeUpdate();
-     			System.out.println("Function pe4");
 
             }     
 
@@ -358,7 +340,6 @@ System.out.println(localDate2);
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			//Statement stmt = con.createStatement();
 			String sql = "select * from flight_seats_availabilty where Flight_Departure_Date = ? and flight_id =?";
-			System.out.println("connection established"+con);
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setDate(1, java.sql.Date.valueOf(DepartureDate));
 			stmt.setInt(2, flightid);
@@ -372,7 +353,6 @@ System.out.println(localDate2);
 					
 
 					  seats   = rs.getInt("Ecomomy_Seats");
-					System.out.println(seats);
 					return seats;
 
 				}

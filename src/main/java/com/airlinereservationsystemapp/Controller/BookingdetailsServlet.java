@@ -39,13 +39,8 @@ public class BookingdetailsServlet extends HttpServlet {
 		
 		
 		List<Passenger_details> bookinfo = booklist.Bookinglist();
-		System.out.println(bookinfo);
-		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
 		session.setAttribute("Bookinglist", bookinfo);
 		System.out.println("Run File ");
-		//RequestDispatcher requestDispatcher = request.getRequestDispatcher("bookinglist.jsp");
-		//requestDispatcher.forward(request, response);
-
 		response.sendRedirect("bookinglist.jsp");
 	}
 

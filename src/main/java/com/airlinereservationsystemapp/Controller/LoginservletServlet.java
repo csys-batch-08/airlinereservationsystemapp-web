@@ -41,33 +41,26 @@ public class LoginservletServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		System.out.println(username);
 		HttpSession session = request.getSession();
 		LoginDao login = new LoginDao();
 		 Boolean  loginvalidation ;
 		 try {
-			 System.out.println(username);
 			loginvalidation = login.Loginfile( username, password);
-			System.out.println(username);
 			if(loginvalidation)
 			{
 				String Check_Admin = login.CheckAdmin(username, password);
 				if(Check_Admin == "yes")
 				{
-					System.out.println("Weleocme to add flight ");
 					session.getAttribute("Sourcelist");
 
 					session.setAttribute("LOGGED_IN_ADMIN", username);
 					response.sendRedirect("FlightSearch");  
-					System.out.println("User Details");
 RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
-System.out.println("Userlist1");
 requestDispatcher.forward(request, response);
 
 				}
 				else 
 				{
-					System.out.println("Weleocme to add1 flight ");
 
 					session.setAttribute("LOGGED_IN_USER", username);
 					
@@ -76,13 +69,11 @@ requestDispatcher.forward(request, response);
 						FlightService flightService = new FlightService();
 						int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 
-						System.out.println("The closing Balance is " +Closingbalance);
 						
 						session.setAttribute("Closingbalance", Closingbalance);
 
 						session.getAttribute("Sourcelist");
 						
-						System.out.println("sourceliost of value printed"+session.getAttribute("Sourcelist"));
 
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);

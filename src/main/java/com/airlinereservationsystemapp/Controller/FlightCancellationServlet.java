@@ -44,22 +44,20 @@ public class FlightCancellationServlet extends HttpServlet {
 		
 		String  seat_no  = request.getParameter("seatno");
 		int seatno = Integer.parseInt(seat_no);
-		System.out.println(seatno);
 		
 	String Flight_id  = request.getParameter("Flightid");
 		int flight = Integer.parseInt(Flight_id);
-		System.out.println(flight);
+
 	
 	String class_details = request.getParameter("Class");
-	System.out.println(class_details);
+
 	String departuredate   = request.getParameter("DepartureDate");
-	System.out.println(departuredate);
+
 	 LocalDate date = LocalDate.parse(departuredate);
-	 System.out.println(date);
+
 	 
 	 String amountpaid  = request.getParameter("amount");
 	 int amount = Integer.parseInt(amountpaid);
-	 System.out.println(amount);
 
 	 HttpSession session = request.getSession();
 	 String User = (String) session.getAttribute("LOGGED_IN_USER");
@@ -81,7 +79,6 @@ public class FlightCancellationServlet extends HttpServlet {
 				cancelflight.Updatecancelstatus(seatno);
 				
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-				System.out.println("Ticket COunttvalue"+ticketcount);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
 				
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
@@ -94,14 +91,11 @@ public class FlightCancellationServlet extends HttpServlet {
 				cancelflight.Updatecancelstatus(seatno);
 				
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-				System.out.println("Ticket COunttvalue"+ticketcount);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
 				
 			       int refundbalance = wallet.getclosingbalance(class_details);
-			       
-			       System.out.println(refundbalance);
-
-				     wallet.refundbalance(User, amount);
+				   
+			       wallet.refundbalance(User, amount);
 				     
 				
 //					cancelflight.Updatepassenger(economy, premium, business,class_details,flight);

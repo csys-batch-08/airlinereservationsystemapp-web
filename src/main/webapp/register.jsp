@@ -9,7 +9,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 </head>
 <body>
@@ -88,7 +92,7 @@ button:hover {
 				 
 			
 			
-			<br> <input type="text" id="username" name="username"  
+			<br> <input type="text" id="username" name="username"  onkeyup=" validuser()"
 				pattern="[A-Za-z\s]{3,8}"  placeholder="Enter User name" style="position: relative;top: -10px"  required
 				autofocus  
 				/>	
@@ -99,7 +103,7 @@ button:hover {
 				<br>
 				
 				
-				<input type="password" name="password" id="password" placeholder="Enter new password" onkeyup=" validuser()" 
+				<input type="password" name="password" id="password" placeholder="Enter new password" 
 					style="position: relative;top: -8px"
 				required
 				/><br>
@@ -163,125 +167,61 @@ button:hover {
 		    }
 		}
 		    
-		    function sendemail()
-		    {  
-		    console.log("called");
-		        let email=document.getElementById('email').value;
-		      console.log(email);
-		    var url="Emailcheck?email="+email;  
-		    if(window.XMLHttpRequest){  
-		    request=new XMLHttpRequest();  
-		    }  
-		    else if(window.ActiveXObject){  
-		    request=new ActiveXObject("Microsoft.XMLHTTP");  
-		    }  
-		    try  
-		    {  
-		    request.onreadystatechange=putInfo;  
-		    request.open("GET",url,true);  
-		    request.send();  
-		    }  
-		    catch(e)  
-		    {  
-		    alert("Unable to connect to server");  
-		    }
-		        
-		       }
-		    
-		    function putInfo(){  
-		    	if(request.readyState==4){  
-		    	var mailresponse =request.responseText; 
-		    	console.log(mailresponse);
-		    	if(mailresponse.includes("Email id Already Registered"))
-		    		{
-		    	document.getElementById('emailresponse').innerHTML=mailresponse;
-		    	document.getElementById('email').value = '';  
-		    	
-		    }
-		    	
-		    	}  
-		   }
-		    
-	    function validuser()
-		    {  
-		    console.log("called");
-		        let username=document.getElementById("username").value;
-		        console.log(username);
-		    var url="validusername.jsp?username="+username;  
-		    if(window.XMLHttpRequest){  
-		    request=new XMLHttpRequest();  
-		    }  
-		    else if(window.ActiveXObject){  
-		    request=new ActiveXObject("Microsoft.XMLHTTP");  
-		    }  
-		    try  
-		    {  
-		    request.onreadystatechange=getuser;  
-		    request.open("GET",url,true);  
-		    request.send();  
-		    }  
-		    catch(e)  
-		    {  
-		    alert("Unable to connect to server");  
-		    }
-		        
-		       }
-		    
-		    function getuser(){  
-		    	if(request.readyState==4){  
-		    	var response =request.responseText;  
-		    	if(response.includes("User Name already Registered"))
-		    		{
-		    	document.getElementById('userresponse').innerHTML=response;  
-		    	document.getElementById('username').value = '';  
-                }
-		   
-		    	}  
-		    	}  
- 	    
+ function sendemail(){
+     let email=document.getElementById('email').value;
+     console.log(email);
+		$.ajax({
+			type:'POST',
+	 url:'Emailcheck',
+	data:'email='+email,    
+	cache:false,
+	 success:function(response){
+	 	if(response.includes("Email id Already Registered"))
+	    {
+		document.getElementById("emailresponse").innerHTML=response;
+		document.getElementById('email').value = '';  
+		}
+	 }
+		});
+			    }
  
-
-		    function phonenumber()
-		    {
-			    console.log("called");
-		        let phoneno = document.getElementById("phoneNumber").value;
-		        console.log(phoneno);
-		    var url="phone.jsp?phoneno="+phoneno;  
-		    if(window.XMLHttpRequest){  
-		    request=new XMLHttpRequest();  
-		    }  
-		    else if(window.ActiveXObject){  
-		    request=new ActiveXObject("Microsoft.XMLHTTP");  
-		    }  
-		    try  
-		    {  
-		    request.onreadystatechange=getInfo;  
-		    request.open("GET",url,true);  
-		    request.send();  
-		    }  
-		    catch(e)  
-		    {  
-		    alert("Unable to connect to server");  
+ function validuser(){
+ let username=document.getElementById("username").value;
+		    console.log(username);
+	$.ajax({
+		type:'POST',
+ url:'checkusername',
+data:'username='+username,    
+cache:false,
+ success:function(response){
+ 	if(response.includes("User Name already Registered"))
+    {
+	document.getElementById("userresponse").innerHTML=response;
+	document.getElementById('username').value = '';  
+	}
+ }
+	});
 		    }
-		        
-		       }
+	
+		    function phonenumber(){
+                  let phoneno = document.getElementById("phoneNumber").value;
+		    		$.ajax({
+		    			type:'POST',
+		    	 url:'phonevalid',
+		    	data:'phoneno='+phoneno,    
+		    	cache:false,
+		    	 success:function(response){
+		    	 	if(response.includes("Mobile Number Already Present"))
+		    	    {
+		    		document.getElementById("phoneresponse").innerHTML=response;
+		    		document.getElementById('phoneNumber').value = '';  
+		    		}
+		    	 }
+		    		});
+		    			    }
+		    		
+
 		    
-		    function getInfo(){  
-		    	if(request.readyState==4){  
-		    	var phonevalueresponse =request.responseText;  
-		    	if(phonevalueresponse.includes("Invalid Mobile"))
-		    		{
-			    	document.getElementById('phoneresponse').innerHTML=phonevalueresponse;  		    	
-			    	document.getElementById('phoneNumber').value = '';  		    	
-		    		}
-		    	else
-		    		{
-		    		
-		    		}
-		    		
-		    	
-		    } 
-		    	}
 	    	document.getElementById("email").onkeydown = function() {validfunction()};
 	    	function validfunction()
 	    	{
@@ -302,6 +242,8 @@ button:hover {
 		    	}
 		    	
 		    	
+		    	
+
 		    	
 		    	
  	  

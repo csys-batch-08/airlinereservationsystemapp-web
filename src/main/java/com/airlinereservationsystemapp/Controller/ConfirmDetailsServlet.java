@@ -51,30 +51,23 @@ public class ConfirmDetailsServlet extends HttpServlet {
 		{
 		  String Flight_Id =request.getParameter("flightId");
 		  int flightid = Integer.parseInt(Flight_Id);
-		  System.out.println(flightid);
 		String name = request.getParameter("username");
 		String date = request.getParameter("departuredate");
        LocalDate local = LocalDate.parse(date);
-
-		System.out.println(local);
 		String Source = request.getParameter("source");
 		String Destination = request.getParameter("destination");
       String mobno = request.getParameter("MobileNumber");
       long mobileno = Long.parseLong(mobno);
-      System.out.println(mobileno);
 		String class_details = request.getParameter("coach");
 		//String seat  = request.getParameter("SEAT_NO");
 		//int seat_no = Integer.parseInt(seat);
        String noofpassengers = request.getParameter("numberOfPassengers");
-       System.out.println(noofpassengers);
        int noofpass = Integer.parseInt(noofpassengers);
-       System.out.println(noofpass);
        String economyseats = request.getParameter("Economy_class");
        int ecoseats = 0;
 		if 	(economyseats != null && economyseats != "") 
 		{
 			ecoseats = Integer.parseInt(economyseats);
-		System.out.println(" "+""+""+ecoseats);
 		}
 
 	     
@@ -83,7 +76,6 @@ public class ConfirmDetailsServlet extends HttpServlet {
 		if 	(premiumeconomyseats != null && premiumeconomyseats != "") 
 			{
 			 premiumecoseats = Integer.parseInt(premiumeconomyseats);
-			System.out.println(premiumecoseats);
 			}
 		
 	      String businesseats = request.getParameter("Bussinessclass");
@@ -92,19 +84,16 @@ public class ConfirmDetailsServlet extends HttpServlet {
 		if 	(businesseats != null && businesseats != "") 
 			{
 			bussseats = Integer.parseInt(businesseats);
-			System.out.println(bussseats);
 			}
 
       String Price_details = request.getParameter("price");
       int price = Integer.parseInt(Price_details);
-      System.out.println(price);
      //  Date Bookingdate =(Date) new SimpleDateFormat("yyyy-mm-dd").parse(date);
        
       // Date Bookingdate = (Date) sdf.parse(date);
      //int price = Integer.parseInt(Price_details);
        
 		 int ticketno = generator();
-		 System.out.println(ticketno);
      Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,local,ecoseats,premiumecoseats,bussseats,flightid,noofpass,ticketno,price);
      
      request.setAttribute("Passenger_Deatils", passenger);
@@ -119,9 +108,6 @@ public class ConfirmDetailsServlet extends HttpServlet {
 		int prerate =  flight.getPremium_Economy_class();
         int ecorate =   flight.getEconomy_class();
 		
-		System.out.println("Rate For Premium"+prerate);
-		System.out.println("Rate For Economy"+ecorate);
-		System.out.println("Rate For Bussines"+busrate);
 		
 		request.setAttribute("Economy", ecorate);
 		request.setAttribute("Premium", prerate);

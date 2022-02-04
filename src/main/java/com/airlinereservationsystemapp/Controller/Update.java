@@ -34,9 +34,7 @@ public class Update extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session  = request.getSession();
-		System.out.println("Methodd come inside");
 		String flightid =  request.getParameter("flightId");
-		System.out.println("flightidddddd"+flightid);
 		int Flight_Id = Integer.parseInt(flightid);
 		
 		FlightSearchDao flightDao = new FlightSearchDao();

@@ -43,7 +43,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
 				stmt.setLong(6, objFlightRegister.getPhonenumber());
 				stmt.setDate(7, getcurrentdate());
 				 str = stmt.executeUpdate();
-				System.out.println("Completed :" +str);
 				insertwalletFlight(objFlightRegister);
 			}
 			catch(SQLException e)
@@ -90,18 +89,12 @@ public class FlightRegisterDao implements FlightRegisterInterface
 			if(rs.next())
 			{
 				System.out.println("Error Checking and Login checking");
-//		         java.sql.ResultSet rs1 = stmt.getResultSet();
-//		         if (rs1.next()) 
-//		        		System.out.println("Genretatetednbba ndandvdhahvahda");
 		          roles =  rs.getString("Roles"); 
 		      }
 			else
 			{
 				System.out.println("Error Checking and Login DFaodkekekekkdd");
 
-		        //  roles =  rs.getString("Roles") ; 
-				
-				System.out.println(roles);
 				
 				return roles;
 
@@ -128,8 +121,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
  		List<Passenger_details> canceldetails = new ArrayList<>();
  		try 
  		{
- 			System.out.println("Cancel come inside");
- 			System.out.println("sfkjnfbdbfdbnffdnfdb"+mobile);
  		Class.forName("oracle.jdbc.driver.OracleDriver");
  		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
  		System.out.println("Weleocme to add flight ");
@@ -151,7 +142,6 @@ public class FlightRegisterDao implements FlightRegisterInterface
  				String  destination =  rs.getString(4);
  				Date  Departreddate =  rs.getDate(6);
  				  LocalDate localDate2 = Departreddate.toLocalDate();
- System.out.println(localDate2);
  				int  flightid =  rs.getInt(5);
  				System.out.println(flightid);
 
@@ -162,11 +152,9 @@ public class FlightRegisterDao implements FlightRegisterInterface
  			  LocalDate bookdate = bookingdate.toLocalDate();
  			  String amountmode = rs.getString(12);
  			  int amount = rs.getInt(11);
- 			  System.out.println("amount"+amount);
  			  
 
  				
- 				System.out.println(bookingdate);
  				
  				
  				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno,status,bookdate,flightid,amountmode,amount);

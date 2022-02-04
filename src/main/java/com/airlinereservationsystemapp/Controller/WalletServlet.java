@@ -46,28 +46,20 @@ public class WalletServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();		
 		String Username	= (String)session.getAttribute("LOGGED_IN_USER");
-		System.out.println("dsjdsbbssdnbsddsdbndsnbdsndbsnbdswallet snbsdfbndsbsbnsbndsnbds"+Username);
 	String classvalue = (String)session.getAttribute("ClassDetails");
 	
 	session.setAttribute("classfield", classvalue);
 
-  System.out.println("sjfshsghfshgfhfsh"+classvalue);
 
 		
-		System.out.println(Username);
 			String Walletamount = request.getParameter("depositamount");
-			System.out.println(Walletamount);
 
 			int wallet_amount = Integer.parseInt(Walletamount);
-			System.out.println(wallet_amount);
 			WalletDao wallet = new WalletDao();
 			int Amount = wallet.checkusername(Username);
-			System.out.println("hgsdhgshdgghdhgdsghghsdhgsdhgghdshgdshgsdhghgsdhgsdhghgd"+Amount);
 			if(classvalue!=null)
 			{
-				System.out.println("Fjnsdsdnbdsnbbndsbndsbndsbnbndsbndsbndsbndnbsndbbnsbnnbd"+classvalue);
 				int closingbalance = wallet_amount + Amount ; 
-				System.out.println("shbhgdhgshgdghsdhghgdsghdshghgdhgdsclosing balanceeee"+closingbalance);
 				wallet.updatebalance(Username, closingbalance);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
 				requestDispatcher.forward(request, response);
@@ -84,17 +76,6 @@ public class WalletServlet extends HttpServlet {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 				requestDispatcher.forward(request, response);
 			}
-//					if(Amount>0)
-//					{
-					//}
-				
-			
-
-	
-			
-		      
-
-			
 		}
 		catch(Exception e)
 		{
