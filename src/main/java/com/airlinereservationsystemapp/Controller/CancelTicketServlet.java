@@ -52,6 +52,7 @@ public class CancelTicketServlet extends HttpServlet {
 		session.setAttribute("Currentdatetime", today);
 		
 		Passenger_detailsDao cancellist = new Passenger_detailsDao();
+		try {
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	       
 
@@ -64,6 +65,11 @@ public class CancelTicketServlet extends HttpServlet {
 		
         RequestDispatcher req = request.getRequestDispatcher("cancelticket.jsp");
 		req.forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
 
 	}

@@ -83,15 +83,17 @@ try {
 		
 			 
 		
-		}
-		catch (Exception e) {
-				e.printStackTrace();
-		}
+		
 		
 	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 		requestDispatcher.forward(request, response);
 		
 		//response.sendRedirect("flightSearch.jsp");
+}
+catch (Exception e) {
+	e.printStackTrace();
+}
+
 	}
 	
 	

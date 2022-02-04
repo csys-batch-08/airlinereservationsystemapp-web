@@ -51,13 +51,18 @@ public class Guestcancel extends HttpServlet {
 
 
 		FlightRegisterDao listvalue = new FlightRegisterDao();
+		try {
 		List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
 		
 		session.setAttribute("GuestList", Guestcancel);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
 		requestDispatcher.forward(request, response);
-		
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+	}
+
 		//response.sendRedirect("guestcancelticket.jsp");
 
 	}

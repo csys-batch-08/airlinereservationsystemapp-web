@@ -32,6 +32,7 @@ public class Delete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
+		try {
 		String flightid = request.getParameter("flightId");
 		
 		
@@ -41,6 +42,11 @@ public class Delete extends HttpServlet {
 		
         RequestDispatcher req = request.getRequestDispatcher("deleteflight.jsp");
 		req.forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
 
 	}

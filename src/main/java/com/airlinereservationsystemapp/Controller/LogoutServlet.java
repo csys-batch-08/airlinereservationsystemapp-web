@@ -31,11 +31,16 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		try {
 			request.getSession().invalidate();
 	      // response.sendRedirect("Sourcedestination");
 	       
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Sourcedestination");
 			requestDispatcher.forward(request, response);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+	}
 
 
 	      // response.sendRedirect("flightSearch.jsp");

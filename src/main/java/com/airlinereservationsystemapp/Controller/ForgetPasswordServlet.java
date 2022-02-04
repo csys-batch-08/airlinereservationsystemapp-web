@@ -50,13 +50,14 @@ public class ForgetPasswordServlet extends HttpServlet {
 		password.updatepassword(Username, Password);
 		
 		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-     
+	 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 		requestDispatcher.forward(request, response);
 // response.sendRedirect("login.jsp");   
+     }
+     catch (Exception e) {
+ 		e.printStackTrace();
+ 	}
      
      
 	}

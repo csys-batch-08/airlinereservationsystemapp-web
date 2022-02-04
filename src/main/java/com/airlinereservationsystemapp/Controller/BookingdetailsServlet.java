@@ -36,6 +36,7 @@ public class BookingdetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		try {
 		Passenger_detailsDao booklist = new Passenger_detailsDao();
 
 		List<Passenger_details> bookinfo = booklist.Bookinglist();
@@ -46,6 +47,11 @@ public class BookingdetailsServlet extends HttpServlet {
         RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
 		req.forward(request, response);
 
+	}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
