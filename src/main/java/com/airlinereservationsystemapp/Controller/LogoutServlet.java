@@ -1,6 +1,8 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,9 +32,13 @@ public class LogoutServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 			request.getSession().invalidate();
-	       response.sendRedirect("Sourcedestination");
+	      // response.sendRedirect("Sourcedestination");
+	       
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Sourcedestination");
+			requestDispatcher.forward(request, response);
 
-	       //response.sendRedirect("flightSearch.jsp");
+
+	      // response.sendRedirect("flightSearch.jsp");
 	}
 
 	/**

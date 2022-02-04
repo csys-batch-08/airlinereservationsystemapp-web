@@ -34,6 +34,8 @@ public class Update extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session  = request.getSession();
+		try
+		{
 		String flightid =  request.getParameter("flightId");
 		int Flight_Id = Integer.parseInt(flightid);
 		
@@ -42,8 +44,15 @@ public class Update extends HttpServlet {
 		
 		session.setAttribute("Flight_id", flight);
 
-		response.sendRedirect("updateflight.jsp");
-		
+		//response.sendRedirect("updateflight.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");
+		requestDispatcher.forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			
+		}
 	}
 
 	/**

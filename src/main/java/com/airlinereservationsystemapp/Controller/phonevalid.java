@@ -33,7 +33,6 @@ public class phonevalid extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,10 +40,10 @@ public class phonevalid extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String phone  = request.getParameter("phoneno");
+		try {	
+	String phone  = request.getParameter("phoneno");
 		long mobileno = Long.parseLong(phone);
 		
-	try {	
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 	PreparedStatement ps=con.prepareStatement("select * from register where Phone_number=? ");  
@@ -58,7 +57,6 @@ public class phonevalid extends HttpServlet {
 	}
 	catch(Exception e)
 	{
-		PrintWriter Write = response.getWriter();
 		e.printStackTrace();  
 	}
 	 

@@ -42,6 +42,8 @@ public class FlightCancellationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
+			
 		String  seat_no  = request.getParameter("seatno");
 		int seatno = Integer.parseInt(seat_no);
 		
@@ -62,16 +64,8 @@ public class FlightCancellationServlet extends HttpServlet {
 	 HttpSession session = request.getSession();
 	 String User = (String) session.getAttribute("LOGGED_IN_USER");
 	 
-//	 <c:set value="${LOGGED_IN_USER}" var="loggedguest"  />
-//	 <c:set value="${ROLE}" var="role"  />
-
 		       WalletDao wallet = new WalletDao();
-		       
-		       
-		       
-		       
 				Passenger_detailsDao cancelflight = new Passenger_detailsDao();
-				try {
 					
 			if(User.equalsIgnoreCase("Guest"))
 			{
@@ -101,13 +95,11 @@ public class FlightCancellationServlet extends HttpServlet {
 //					cancelflight.Updatepassenger(economy, premium, business,class_details,flight);
 					
 					
-					response.getWriter().print("Flight Cancelled");
 					   
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 				}
 				} catch (Exception e) {
-					response.getWriter().print("Flight not  Cancelled");
 
 					e.printStackTrace();
 				}

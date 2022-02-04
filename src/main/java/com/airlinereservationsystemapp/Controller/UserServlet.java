@@ -35,13 +35,19 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		AddFlightDao register = new AddFlightDao();
-		
+		try {
 		List<Flight> registerinfo = register.register();
 		request.setAttribute("Flight", registerinfo);
 
        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");
          requestDispatcher.forward(request, response);	
 	//response.sendRedirect("userList.jsp");
+		}
+		catch(Exception e)
+		{
+			
+		}
+         
 
 	}
 

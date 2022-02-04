@@ -1,6 +1,8 @@
 package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +37,11 @@ public class Delete extends HttpServlet {
 		
 		session.setAttribute("flightId", flightid);
 		
-		response.sendRedirect("deleteflight.jsp");
+		//response.sendRedirect("deleteflight.jsp");
+		
+        RequestDispatcher req = request.getRequestDispatcher("deleteflight.jsp");
+		req.forward(request, response);
+
 
 	}
 

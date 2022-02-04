@@ -51,14 +51,12 @@ public class ForgetPasswordServlet extends HttpServlet {
 		
 		
 	} catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
      
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//		requestDispatcher.forward(request, response);
-     
-    response.sendRedirect("login.jsp");   
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+		requestDispatcher.forward(request, response);
+// response.sendRedirect("login.jsp");   
      
      
 	}

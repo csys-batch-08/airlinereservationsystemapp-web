@@ -60,7 +60,11 @@ public class CancelTicketServlet extends HttpServlet {
 		
 		session.setAttribute("CancelList", cancelinfo);
 				
-		response.sendRedirect("cancelticket.jsp");
+//		response.sendRedirect("cancelticket.jsp");
+		
+        RequestDispatcher req = request.getRequestDispatcher("cancelticket.jsp");
+		req.forward(request, response);
+
 
 	}
 

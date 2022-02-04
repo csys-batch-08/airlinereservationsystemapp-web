@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,8 @@ public class Addpassenger extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session  = request.getSession();
+		try
+		{
 	String flight_id = request.getParameter("flightId");
 		int flightId = Integer.parseInt(flight_id);
     	String source = request.getParameter("source");
@@ -63,11 +66,15 @@ Double Economyrate  = Double.parseDouble(Economyclass);
 		Flight_Seat_Availability flight  = new 	Flight_Seat_Availability(flightId, source, destination,  Departure_Date, Economy_class, Premium_Economy_class, Bussiness_class, Economyrate, Premiumrate, Business);
 		session.setAttribute("Addlist", flight);
 		
-//		RequestDispatcher req = request.getRequestDispatcher("addPassenger.jsp");
-//		req.forward(request, response);
+        RequestDispatcher req = request.getRequestDispatcher("addPassenger.jsp");
+		req.forward(request, response);
 
-      response.sendRedirect("addPassenger.jsp");
-
+      //response.sendRedirect("addPassenger.jsp");
+		}
+		catch(Exception e)
+		{
+		   e.printStackTrace();
+		   }
 
 
 
@@ -80,7 +87,6 @@ Double Economyrate  = Double.parseDouble(Economyclass);
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

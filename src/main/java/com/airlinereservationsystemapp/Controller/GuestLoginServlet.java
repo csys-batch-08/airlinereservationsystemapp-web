@@ -43,7 +43,7 @@ public class GuestLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.getAttribute("Sourcelist");
 
-
+try {
 		String guest = "Guest";
 		String role = "guest";
 		session.setAttribute("LOGGED_IN_USER", guest);
@@ -64,7 +64,6 @@ public class GuestLoginServlet extends HttpServlet {
 		FlightRegisterDao object = new FlightRegisterDao();
 		 String  valid ;
 
-		try {
 			
 			valid  =  object.guestcheck(phone, mail);
 
@@ -87,13 +86,12 @@ public class GuestLoginServlet extends HttpServlet {
 		}
 		catch (Exception e) {
 				e.printStackTrace();
-				System.out.println(e);
 		}
 		
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
-//		requestDispatcher.forward(request, response);
+	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+		requestDispatcher.forward(request, response);
 		
-		response.sendRedirect("flightSearch.jsp");
+		//response.sendRedirect("flightSearch.jsp");
 	}
 	
 	

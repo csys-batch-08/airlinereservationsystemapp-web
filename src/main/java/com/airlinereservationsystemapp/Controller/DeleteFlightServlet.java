@@ -35,16 +35,17 @@ public class DeleteFlightServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{		//doGet(request, response);
+		
+		AddFlightDao delete = new AddFlightDao();
+try {
 		String  Flight_id  = request.getParameter("Flight_id");
 int Flightid = Integer.parseInt(Flight_id);
-		AddFlightDao delete = new AddFlightDao();
-		try {
 			 delete.DeleteFlight(Flightid);
 			   
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);
-
-		} catch (Exception e) {
+}
+		 catch (Exception e) {
 			e.printStackTrace();
 		}
 		
