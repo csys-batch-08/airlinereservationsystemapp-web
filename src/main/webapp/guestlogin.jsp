@@ -140,16 +140,6 @@ span.psw {
 			
 			</form>
 		<div>	
-<%-- 			<%
-			if (error!= null) {
-			%>
-					<p id="value"   style="font-size: 20px; color: red;"><%=error%> </p>
-					
-				<% }
-			
-			
-   			%>
- --%>   
              <c:if test="${error!=null }">
          					<p id="value"   style="font-size: 20px; color: red;"> ${error}</p>
              

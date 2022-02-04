@@ -184,6 +184,11 @@ mindate =yyyy + '-' + mm + '-'+ dd  ;
 document.getElementById("DepartureDate").setAttribute("max",maxdate);
 document.getElementById("DepartureDate").setAttribute("min",mindate);
 }
+
+
+
+
+	
 </script>
 
 </body>

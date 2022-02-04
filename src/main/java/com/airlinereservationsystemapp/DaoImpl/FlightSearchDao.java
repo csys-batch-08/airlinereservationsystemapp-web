@@ -14,21 +14,24 @@ import java.util.List;
 import java.util.TimeZone;
 
 import com.airlinereservationsystemapp.Dao.FlightSearchInterface;
-import com.airlinereservationsystemapp.Models.Flight_list; 
+import com.airlinereservationsystemapp.Models.Flight_list;
+import com.util.Connectutil; 
 
 public class FlightSearchDao implements FlightSearchInterface
 {
 	public List<Flight_list> FlightList()
 	{
 		List<Flight_list> flightList = new ArrayList<>();
+		Connection con =null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 
-		try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		
-		Statement stmt = con.createStatement();
+		try {
+			con = Connectutil.getdbconnect();
 		String sql = "SELECT b.flight_id,b.flight_name,b.arrival_date,b.arrivaltime,a.DepartureTime,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class,a.Flight_Status FROM Flight_Seats_availabilty a inner join Flight_details b on a.flight_id = b.flight_id  ";
-		ResultSet rs = stmt.executeQuery(sql);
+		 stmt = con.prepareStatement(sql);
+		 rs = stmt.executeQuery();
 		while(rs.next())
 		{
 			int  flightId = rs.getInt("flight_id");
@@ -65,7 +68,12 @@ public class FlightSearchDao implements FlightSearchInterface
 	}
 	catch(Exception e)
 	{
+		e.printStackTrace();
 	}
+		finally
+		{
+			Connectutil.close(con,stmt,rs);
+		}
 return flightList;
 			   
 				   
@@ -75,20 +83,16 @@ return flightList;
 
 		public Flight_list getRecordById(int flightId) {
 		Flight_list flight = null;
+		Connection con = null;
+	     PreparedStatement pst = null;
+          ResultSet rs = null;
 	
 		try {
-			
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			
-				String sql = "SELECT * FROM flight_details WHERE flight_Id = ? ";
-			
-			
-			
-			PreparedStatement pst = con.prepareStatement(sql);
+			con = Connectutil.getdbconnect();
+					String sql = "SELECT * FROM flight_details WHERE flight_Id = ? ";
+			 pst = con.prepareStatement(sql);
 			pst.setInt(1, flightId);
-			ResultSet rs = pst.executeQuery();	
+			 rs = pst.executeQuery();	
 			if(rs != null)
 			{
 				while(rs.next())
@@ -119,9 +123,14 @@ return flightList;
 
 			
 		} 
-		catch (SQLException | ClassNotFoundException e) {
-			
+		catch (Exception e) 
+		{
+		  e.printStackTrace();	
 		} 
+		finally
+		{
+			Connectutil.close(con,pst,rs);
+		}
 		return flight;
 	}
 		

@@ -20,6 +20,7 @@ import com.airlinereservationsystemapp.Dao.AddFlightInterface;
 import com.airlinereservationsystemapp.Models.AddFlight;
 import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Flight_list;
+import com.util.Connectutil;
 
 
 
@@ -31,14 +32,18 @@ public class AddFlightDao implements AddFlightInterface
 	{
 		 Integer FlightId = 0;
 		 String returnCols[] = { "Flight_Id" };
+		 Connection con = null;
+	     PreparedStatement stmt = null;
+
 	
 	try
 	{
 		 
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+	//Class.forName("oracle.jdbc.driver.OracleDriver");
+	//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+	 con = Connectutil.getdbconnect();
 	String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
-	PreparedStatement stmt = con.prepareStatement(sql , returnCols);
+	 stmt = con.prepareStatement(sql , returnCols);
 	 
 	stmt.setString(1,fly.getFlight_name() );
 	stmt.setString(2,fly.getSource());
@@ -68,37 +73,47 @@ public class AddFlightDao implements AddFlightInterface
 catch(SQLException e)
 {
 	e.printStackTrace();
-	System.out.println(e);
 
 }	
+	finally
+	{
+		Connectutil.close(con,stmt);
+	}
     return FlightId;
 
 }
-	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date,LocalTime DepartureTime ) throws ClassNotFoundException, SQLException
+	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date,LocalTime DepartureTime ) 
 	{
+		 Connection con = null;
+	     PreparedStatement stmt = null;
+
+		try {
 		
-		
-		
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		
+		 con = Connectutil.getdbconnect();		
 	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,business_seats,flight_departure_date,DepartureTime)values(?,?,?,?,?,?,?,?)";
 		
-		PreparedStatement stmt1 =  con.prepareStatement(query);
+	stmt =  con.prepareStatement(query);
 		
-		stmt1.setString(1, Source);
-		stmt1.setString(2, Destination);
-		stmt1.setInt(3,flightid);
-		stmt1.setInt(4,economyseats);
-		stmt1.setInt(5,premiumseats);
-		stmt1.setInt(6,bussinessseats);
-		stmt1.setDate(7, java.sql.Date.valueOf(Departure_Date));
-		stmt1.setTime(8,java.sql.Time.valueOf(DepartureTime ));
+	stmt.setString(1, Source);
+	stmt.setString(2, Destination);
+	stmt.setInt(3,flightid);
+		stmt.setInt(4,economyseats);
+		stmt.setInt(5,premiumseats);
+		stmt.setInt(6,bussinessseats);
+		stmt.setDate(7, java.sql.Date.valueOf(Departure_Date));
+		stmt.setTime(8,java.sql.Time.valueOf(DepartureTime ));
 
 
-		int str = stmt1.executeUpdate();
-		//con.commit();
-
+		int str = stmt.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			Connectutil.close(con,stmt);	
+		}
 		
 	}
 	
@@ -110,29 +125,43 @@ catch(SQLException e)
 	
 	
 	
-	public void  DeleteFlight(int Flight_id) throws Exception
+	public void  DeleteFlight(int Flight_id) 
 	{
-		
-	
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-    CallableStatement cstmt = con.prepareCall("{call DeleteFlight(? )}");
+		 Connection con = null;
+		 CallableStatement cstmt = null;
+  
+	     try {
+    	
+	 con = Connectutil.getdbconnect();
+     cstmt = con.prepareCall("{call DeleteFlight(? )}");
     cstmt.setInt(1, Flight_id);
     cstmt.executeUpdate();
-
+	     }
+	     catch(Exception e)
+	     {
+	    	 e.printStackTrace();
+	     }
+	     finally
+	     {
+	    	 Connectutil.close(con,cstmt);
+	     }
     
     
 
 	}
 	
 	
-	public String updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status,String loggedinadmin) throws Exception
+	public String updateFlight(int flightid , String flightname, String Source, String Destination , int Economy_class, int premium_Economy_class , int Bussiness_class, LocalDate Arrival_Date, LocalDate Departure_Date,String Status,String loggedinadmin) 
 	{
+		 Connection con = null;
+		 CallableStatement cstmt = null;
+		 String rres = null;
+   try
+   {
 	
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+	 con = Connectutil.getdbconnect();
 	
-    CallableStatement cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,?,?,?)}");
+     cstmt = con.prepareCall("{call UpdateFlight(?,?,?,?,?,?,?,?,?,?,?,?)}");
 
 
     cstmt.setInt(1, flightid);
@@ -151,9 +180,19 @@ catch(SQLException e)
 
     cstmt.executeUpdate();
 
-    String rres =  cstmt.getNString(12);
-
+     rres =  cstmt.getNString(12);
+   }
    
+   catch(Exception e)
+   {
+	   e.printStackTrace();
+   }
+   
+   finally
+   {
+  	 Connectutil.close(con,cstmt);
+   }
+
      return rres;
      
 	}
@@ -162,13 +201,16 @@ catch(SQLException e)
 	public List<Flight> register()
 	{
 		List<Flight> registerlist = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
 		try
 		{
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from register where is_admin != 'yes'");
-			System.out.println("connection established"+con);
+			 con = Connectutil.getdbconnect();
+		//	Statement stmt = con.createStatement();
+			 stmt = con.prepareStatement("select * from register where is_admin != 'yes'");
+			 rs = stmt.executeQuery();
 			while(rs.next())
 			{
 				String Name   = rs.getString("Names");
@@ -191,6 +233,11 @@ catch(SQLException e)
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			Connectutil.close(con,stmt,rs);
 		}
 return registerlist;
 				   

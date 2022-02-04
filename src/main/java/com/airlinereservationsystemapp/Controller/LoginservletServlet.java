@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,85 +20,65 @@ import Services.FlightService;
  */
 @WebServlet("/Loginservlet")
 public class LoginservletServlet extends HttpServlet {
-	
-	protected void doget(HttpServletRequest request, HttpServletResponse response) throws Exception 	{
-	
-		} 
-		 
-		
-		
-	
+
+	protected void doget(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-			
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		HttpSession session = request.getSession();
 		LoginDao login = new LoginDao();
-		 Boolean  loginvalidation ;
-		 try {
-			loginvalidation = login.Loginfile( username, password);
-			if(loginvalidation)
-			{
+		Boolean loginvalidation;
+		try {
+			loginvalidation = login.Loginfile(username, password);
+			if (loginvalidation) {
 				String Check_Admin = login.CheckAdmin(username, password);
-				if(Check_Admin == "yes")
-				{
+				if (Check_Admin == "yes") {
 					session.getAttribute("Sourcelist");
 
 					session.setAttribute("LOGGED_IN_ADMIN", username);
-					response.sendRedirect("FlightSearch");  
-RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
-requestDispatcher.forward(request, response);
+					response.sendRedirect("FlightSearch");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
+					requestDispatcher.forward(request, response);
 
-				}
-				else 
-				{
+				} else {
 
 					session.setAttribute("LOGGED_IN_USER", username);
-					
-					 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-					 
-						FlightService flightService = new FlightService();
-						int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 
-						
-						session.setAttribute("Closingbalance", Closingbalance);
+					String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
-						session.getAttribute("Sourcelist");
-						
+					FlightService flightService = new FlightService();
+					int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
+
+					session.setAttribute("Closingbalance", Closingbalance);
+
+					session.getAttribute("Sourcelist");
 
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 
 				}
-				
-				
-			}
-			else
-			{
+
+			} else {
 				session.setAttribute("Error", "Invalid Crediantals");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 				requestDispatcher.forward(request, response);
 
+				// response.getWriter().print("Data failed");
 
-				//response.getWriter().print("Data failed");
-
-				
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			// TODO Auto-generated catch block
 		}
-		 
-
-			
 
 	}
 

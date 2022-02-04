@@ -68,10 +68,24 @@ public class UpdateFlightServlet extends HttpServlet {
 					AddFlightDao update = new AddFlightDao();
 					String Details =  update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status,loggedinadmin);
 					
+			           if(Details!=null)
+			           {
+			        	   session.setAttribute("Valid", "Flight Details Updated");
+							RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp?success=2");
+							requestDispatcher.forward(request, response);
+			                
+			           }
+			           else 
+			           {
+			        	   session.setAttribute("invalid", "Flight Details not Updated Flightid not Found ");
+							RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp?success=3");
+							requestDispatcher.forward(request, response);
 
+			           }
+
+
+					
 				 
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
-				requestDispatcher.forward(request, response);
 
 			} catch (Exception e) {
 				System.out.println(e);

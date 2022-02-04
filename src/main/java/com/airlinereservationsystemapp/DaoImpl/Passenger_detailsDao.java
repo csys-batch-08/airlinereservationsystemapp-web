@@ -18,6 +18,7 @@ import java.util.List;
 import com.airlinereservationsystemapp.Dao.PassengerDetailsInterface;
 import com.airlinereservationsystemapp.Models.Flight_list;
 import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.util.Connectutil;
 
 public class Passenger_detailsDao implements PassengerDetailsInterface
 {
@@ -25,23 +26,19 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 	{
 		 int seatno = 0;
 		 String returnCols[] = { "Seat_no" };
-
+		 Connection con = null;
+	     PreparedStatement stmt = null;
 		try
 		{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		System.out.println("inside 11");
-		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement stmt = con.prepareStatement(sql,returnCols);
+            con = Connectutil.getdbconnect();
+           String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
+		 stmt = con.prepareStatement(sql,returnCols);
 		stmt.setString(1,obj.getPassenger_name());
-		System.out.println("inside 1");
 		stmt.setString(2,obj.getClass_details());
 		stmt.setLong(3,obj.getMobile_number());
 		stmt.setString(4, obj.getSource());
-		System.out.println("Inside2 ");
 		stmt.setString(5, obj.getDestination());
 		stmt.setInt(6,obj.getFlight_id());
-		System.out.println("inside foldr");
 		stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
 		stmt.setInt(8,ticketno);
 		stmt.setString(9, "Booked");
@@ -55,17 +52,18 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 		
         java.sql.ResultSet generatedKeys = stmt.getGeneratedKeys();
         if (generatedKeys.next()) 
-       		System.out.println(generatedKeys);
          seatno =  generatedKeys.getInt(1); 
-        System.out.println(seatno);
 
 	}
 	catch(Exception e)
 	{
-		System.out.println(e.getMessage());
-		System.out.println(e);
-		
+      e.printStackTrace();		
 	}
+		finally
+		{
+			Connectutil.close(con,stmt);
+
+		}
 		return seatno;
 }
 
@@ -82,16 +80,14 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 	public List<Passenger_details> Bookinglist()
 	{
 		List<Passenger_details> booklist = new ArrayList<>();
+		Connection con  =null;
+		PreparedStatement stmt =null;
+		ResultSet rs =null;
 		try
 		{
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("connection established"+con);
-			
-			//out.println("connection established"+con);
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from passenger_details");
-			//out.println("123");
+			con = Connectutil.getdbconnect();
+			  stmt = con.prepareStatement("select * from passenger_details");
+			 rs = stmt.executeQuery();
 			while(rs.next())
 			{
 				String  name = rs.getString(1);
@@ -124,7 +120,11 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+		 e.printStackTrace();
+		 }
+		finally
+		{
+			Connectutil.close(con,stmt,rs);
 		}
 return booklist;
 				   
@@ -132,90 +132,70 @@ return booklist;
 	
 	public  void Updatepassenger(int economyseats , int premiumseats, int businessseats,String Coach, int Flightid) 
 	{
-		System.out.println("Update Passenger Method");
+		Connection con =null;
+		PreparedStatement stmt =null;
 		 try
 		 {
-			 System.out.println("hi");
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-			System.out.println("inside 11");
-			String sql = "";
+			 con = Connectutil.getdbconnect();
+						String sql = "";
 
 			if(Coach.equalsIgnoreCase("Economy"))
 					{
-				System.out.println(economyseats);
 				 sql = "update flight_seats_availabilty set ECOMOMY_SEATS = ?   where FLIGHT_ID = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1,economyseats);
 					stmt.setInt(2,Flightid);
 					stmt.executeUpdate();
-
-
-
-
-
 					}
 			else if(Coach.equalsIgnoreCase("premium"))
 			{
 				 sql = "update flight_seats_availabilty set PREMIUM_ECONOMY_SEATS = ?   where FLIGHT_ID = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1,premiumseats);
 					stmt.setInt(2,Flightid);
 					 stmt.executeUpdate();
-
-
-
-
 			}
 			else if(Coach.equalsIgnoreCase("Bussiness"))
 			{
 				 sql = "update flight_seats_availabilty set BUSINESS_SEATS = ?   where FLIGHT_ID = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1,businessseats);
 					stmt.setInt(2,Flightid);
 					 stmt.executeUpdate();
-
-
-
 			}
 		 }
 		 catch(Exception e)
 		 {
-			 System.out.println(e.getMessage());
+             e.printStackTrace();
+          }
+		 finally
+		 {
+			 Connectutil.close(con,stmt);
 		 }
-
-			
-			
-
-
-
-			
-			
-
-		
 	}
 	
 	public List<Passenger_details> CancelTicket(String Username)
 	{
 		List<Passenger_details> canceldetails = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst =null;
+		ResultSet rs =null;
 		try 
 		{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			connection = Connectutil.getdbconnect();
 		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,c.flight_departure_date ,a.ticket_no , a.Seat_no , a.Status,a.Booked_date,"
 				+ "b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b "
 				+ "on a.seat_no = b.seatno inner join flight_seats_availabilty c on a.FLight_id = c.flight_id  where user_name = ?";
 
 		
-		PreparedStatement pst = connection.prepareStatement(sql);
+		 pst = connection.prepareStatement(sql);
 		pst.setString(1, Username);
-		ResultSet rs = pst.executeQuery();
+		 rs = pst.executeQuery();
 		if(rs != null)
 		{
 			while (rs.next()) 
 			{
 				String  Class =  rs.getString(1);
-				System.out.println(Class);
 				long  mobno =  rs.getLong(2);
 				String  source =  rs.getString(3);
 				String  destination =  rs.getString(4);
@@ -243,7 +223,11 @@ return booklist;
 	}
 		catch(Exception e)
 		{
-			System.out.println(e.getMessage());
+             e.printStackTrace();
+        }
+		finally
+		{
+			Connectutil.close(connection,pst,rs);
 		}
 		return canceldetails;
 }
@@ -251,29 +235,25 @@ return booklist;
 	
 	public  void Updatecancelstatus(int seatno) 
 	{
+		Connection con = null;
+		PreparedStatement stmt =null;
 		 try
 		 {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			 con = Connectutil.getdbconnect();
 			String sql = "";
-
-
 				 sql = "update passenger_details set status = ?   where Seat_no = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setString(1,"Cancelled");
 					stmt.setInt(2,seatno);
 					stmt.executeUpdate();
-
-
-
-
-
-					
-		
 		 }
 		 catch(Exception e)
 		 {
-			 System.out.println(e.getMessage());
+			e.printStackTrace();
+		 }
+		 finally
+		 {
+			 Connectutil.close(con,stmt);
 		 }
 	}
 	
@@ -281,17 +261,16 @@ return booklist;
 	
 	public  void Updateticketcount(int flightid , LocalDate DepartureDate , String classdetails,int seats) 
 	{
+		Connection con =null;
+		PreparedStatement stmt =null;
 		 try
 		 {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			 con = Connectutil.getdbconnect();
 			String sql = "";
-          
-
-            if(classdetails.equalsIgnoreCase("Economy"))
+             if(classdetails.equalsIgnoreCase("Economy"))
             {
 				 sql = "update flight_seats_availabilty set Ecomomy_seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
@@ -302,7 +281,7 @@ return booklist;
             if(classdetails.equalsIgnoreCase("premium"))
             {
 				 sql = "update flight_seats_availabilty set Premium_Economy_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
@@ -313,7 +292,7 @@ return booklist;
             if(classdetails.equalsIgnoreCase("Bussiness"))
             {
 				 sql = "update flight_seats_availabilty set Business_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
-					PreparedStatement stmt = con.prepareStatement(sql);
+					 stmt = con.prepareStatement(sql);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
@@ -327,24 +306,30 @@ return booklist;
 		 
 		 catch(Exception e)
 		 {
-			 System.out.println(e);
+			 e.printStackTrace();
+		 }
+		 finally
+		 {
+			 Connectutil.close(con,stmt);
 		 }
 	}
 	
 	public  int getticketcount(String classdetails,int flightid, LocalDate DepartureDate) 
 	{
 		int seats = 0;
+		Connection con =null;
+		PreparedStatement stmt =null;
+		ResultSet rs =null;
 		 try
 		 {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			con = Connectutil.getdbconnect();
 			//Statement stmt = con.createStatement();
 			String sql = "select * from flight_seats_availabilty where Flight_Departure_Date = ? and flight_id =?";
-			PreparedStatement stmt = con.prepareStatement(sql);
+			 stmt = con.prepareStatement(sql);
 			stmt.setDate(1, java.sql.Date.valueOf(DepartureDate));
 			stmt.setInt(2, flightid);
 			
-			 ResultSet rs  = stmt.executeQuery();
+			  rs  = stmt.executeQuery();
 			while(rs.next())
 			{
 			
@@ -374,7 +359,11 @@ return booklist;
 		 }
 		 catch(Exception e)
 		 {
-			 
+			 e.printStackTrace();
+		 }
+		 finally
+		 {
+			 Connectutil.close(con,stmt,rs);
 		 }
 		return seats;
 	}

@@ -13,7 +13,6 @@ public interface WalletInterface
 	public  void updatebalance( String username,int Amount) throws Exception;
 
 	
-	public void InserPaymentdetails(int Flightid, int Ticketno , int totalamount , String modeoftransaction,String username) throws ClassNotFoundException, SQLException;
 
 
 

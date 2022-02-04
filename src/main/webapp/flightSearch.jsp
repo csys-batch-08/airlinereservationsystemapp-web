@@ -49,8 +49,19 @@ button:hover {
 
 
 </style>
+
+
  <jsp:include page="headerfile.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
+ 
+ 	<c:if test="${param.success eq 2}">
+    <h2 id="register" ><c:out value="${Valid}"   /> </h2> 
+    	</c:if>
+ 
+  	<c:if test="${param.success eq 3}">
+    <h2 id="register" ><c:out value="${invalid}"  /> </h2> 
+    	</c:if>
+ 
  
         <div style="margin-left: 918px;margin-top: 30px">
         
@@ -137,7 +148,15 @@ button:hover {
     return false;  
     }
 }
-    
+    window.onload = function() {
+  	  window.setTimeout(fadeout, 2000); //8 seconds
+  	}
+
+  function fadeout()
+  {
+  document.getElementById('register').style.opacity= '0';
+  }
+
     </script>
 
    

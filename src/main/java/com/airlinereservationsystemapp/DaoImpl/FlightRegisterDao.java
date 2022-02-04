@@ -13,6 +13,7 @@ import java.util.List;
 import com.airlinereservationsystemapp.Dao.FlightRegisterInterface;
 import com.airlinereservationsystemapp.Models.Flight;
 import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.util.Connectutil;
 
 
 public class FlightRegisterDao implements FlightRegisterInterface
@@ -26,15 +27,15 @@ public class FlightRegisterDao implements FlightRegisterInterface
 		public int Fileregistration( Flight objFlightRegister) throws ClassNotFoundException 
 		{
 			int str = 0;
-
+			Connection con = null;
+			PreparedStatement stmt =null;
 			try
 			{
 			
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+				 con = Connectutil.getdbconnect();
 				
 				String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) values(?,?,?,?,?,?,?)";
-				PreparedStatement stmt = con.prepareStatement(sql);
+				 stmt = con.prepareStatement(sql);
 				stmt.setString(1, objFlightRegister.getName());
 				stmt.setString(2, objFlightRegister.getEmailid());
 				stmt.setString(3, objFlightRegister.getUsername());
@@ -48,43 +49,59 @@ public class FlightRegisterDao implements FlightRegisterInterface
 			catch(SQLException e)
 			{
 				e.printStackTrace();
-				System.out.println(e);
 
+			}
+			finally
+			{
+				Connectutil.close(con,stmt);
 			}
 			return str;
 		}
 
   
-		public void insertwalletFlight (Flight objFlightRegister)throws ClassNotFoundException, SQLException
+		public void insertwalletFlight (Flight objFlightRegister)
 		{
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			Connection con = null;
+			PreparedStatement stmt =null;
+          try {
+			
+			 con = Connectutil.getdbconnect();
 			String query = "insert into wallet_details (User_name,Wallet_amount) values(?,?)";
-			PreparedStatement stmt = con.prepareStatement(query);
+			 stmt = con.prepareStatement(query);
 			stmt.setString(1, objFlightRegister.getUsername());
 			stmt.setInt(2, 0);
 			 int fdgdgstr = stmt.executeUpdate();
 			 System.out.println(fdgdgstr);
 
-			
+          }
+          catch(Exception e)
+          {
+        	  e.printStackTrace();
+          }
+          finally
+          {
+        	  Connectutil.close(con,stmt);
+          }
 		}
 	
-     public String  guestcheck(long phone, String mail) throws ClassNotFoundException, SQLException
+     public String  guestcheck(long phone, String mail) 
      {
 		 String  roles = null ;
 		 String returnCols[] = { "ROLES" };
-		 
-		 
+		 Connection con = null;
+			PreparedStatement stmt =null;
+			ResultSet rs = null;
+		 try {
 
     	 System.out.println("Method COme Inisdedssdds");
     	 Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			 con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			
 			String sql = "select * from Guestvalid where Phone_Number = ? and Email_id = ?";
-			PreparedStatement stmt = con.prepareStatement(sql);
+			 stmt = con.prepareStatement(sql);
 			stmt.setLong(1, phone);
 			stmt.setString(2, mail);
-			ResultSet rs = stmt.executeQuery();
+			 rs = stmt.executeQuery();
 			System.out.println("Ready For Login Vlaidation");
 			if(rs.next())
 			{
@@ -99,37 +116,54 @@ public class FlightRegisterDao implements FlightRegisterInterface
 				return roles;
 
 			}
+		 }
+		 catch(Exception e)
+		 {
+			e.printStackTrace(); 
+		 }
+		 finally
+		 {
+			 Connectutil.close(con,stmt,rs);
+		 }
 			return roles;
      }
-     public void insertguestvalid(long phone, String mail) throws ClassNotFoundException, SQLException
+     public void insertguestvalid(long phone, String mail) 
      {
-    	 System.out.println("Method Inserguestdhsvhshhvdhvhdvhdhvdshvdshvdvhdhvdvhdhv Inisdedssdds");
-    	 Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+		 Connection con = null;
+			PreparedStatement state =null;
+
+			try {
+			 con = Connectutil.getdbconnect();
 
 			String query = "insert into Guestvalid (PHONE_NUMBER,EMAIL_ID) values(?,?)";
-			PreparedStatement state = con.prepareStatement(query);
+			 state = con.prepareStatement(query);
 			state.setLong(1, phone);
 			state.setString(2, mail);
 			state.executeUpdate();
-			System.out.println("Insert Checking");
-
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			finally
+			{
+				Connectutil.close(con,state);
+			}
      }
      
      public List<Passenger_details> CancelTicket(long mobile)
  	{
  		List<Passenger_details> canceldetails = new ArrayList<>();
+ 		Connection connection = null;
+ 		PreparedStatement pst = null;
+ 		ResultSet rs = null;
  		try 
  		{
- 		Class.forName("oracle.jdbc.driver.OracleDriver");
- 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
- 		System.out.println("Weleocme to add flight ");
+ 			connection = Connectutil.getdbconnect();
  		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,c.flight_departure_date ,a.ticket_no , a.Seat_no ,a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b on a.seat_no = b.seatno inner join flight_seats_availabilty c on a.FLight_id = c.flight_id  inner join Guestvalid e on e.PHONE_NUMBER = a.Mobile_number where Mobile_number = ?";
-
- 		
- 		PreparedStatement pst = connection.prepareStatement(sql);
+ 		 pst = connection.prepareStatement(sql);
  		pst.setLong(1, mobile);
- 		ResultSet rs = pst.executeQuery();
+ 		 rs = pst.executeQuery();
  		if(rs != null)
  		{
  			System.out.println("Valid");
@@ -168,8 +202,11 @@ public class FlightRegisterDao implements FlightRegisterInterface
  	}
  		catch(Exception e)
  		{
- 			System.out.println(e.getMessage());
- 			System.out.println(e);
+ 			e.printStackTrace();
+ 		}
+ 		finally
+ 		{
+ 			Connectutil.close(connection,pst,rs);
  		}
  		return canceldetails;
  }

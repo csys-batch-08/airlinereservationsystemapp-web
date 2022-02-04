@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Airline System</title>
 </head>
 <style>
 
@@ -31,7 +31,7 @@ body {
 
  setTimeout(function(){
     window.location.href = 'Sourcedestination';
- }, 3000);
+ }, 2000);
  
 
 </script>

@@ -11,7 +11,6 @@ public interface LoginDaoInterface
 	
 	public  String CheckAdmin( String username, String password) throws Exception ;
 	
-	public  List<Flight_Seat_Availability> GetflightDetails( String source, String destination) throws Exception ;
 	
 	public  void updatepassword( String username,String password) throws Exception ;
 

@@ -37,69 +37,6 @@ form {
   align:"center";
 }
 
- /* Full-width inputs */
-/*input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
-  width: 6%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-input[type=number] {
-  width: 31%;
-  left: 15%;
-  padding: 2px 20px;
-  margin: 3px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-/*button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 25%;
-}
-
-/* Add a hover effect for buttons */
-/*button:hover {
-  opacity: 0.8;
-}
-
-/* Extra style for the cancel button (red) */
-/*.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Add padding to containers */
-/*.container {
-  padding: 16px;
-}
-
- 
-a:link, a:visited {
-  background-color: white;
-  color: black;
-  border: 2px solid green;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-a:hover, a:active {
-  background-color: green;
-  color: white;
-} */
 
 </style>
 
@@ -127,34 +64,16 @@ a:hover, a:active {
 				
 			<br></br>
 				 <label for="depositamount"style="font-family: serif;font-size: 21px; position:relative;width: 214px;top:-30px;left: 3px;height: 32px;" ><b>Deposit Amount</b></label>
-<!-- 			 <input type="number" id="depositamount" name="depositamount"  
-				min = "1" pattern="[1-9]+" required style="position: relative; top: -5px; left: 94px;"
-				 /> -->
 				<input type="number" class="form-control" name = "depositamount"   id="depositamount" min = "1" pattern="[1-9]+"  required
 				    style="position: relative;width: 214px;top:-72px;left: 206px;height: 32px;"  >
 			 
 			<br></br>
-			 <label for="confirmdepositamount" style="font-family: serif;font-size: 20px; position:relative;width: 250px;top:-73px;left: -20px;height: 20px;" ><b> Confirm Deposit Amount</b></label>
-<!-- 			 <input type="number" id="confirmdepositamount" name="confirmdepositamount"  
-				min = "1"  pattern="[1-9]+" required style="position: relative; top: -8px; left: 27px;"
-				 />
- -->
- 				<input type="number" class="form-control" name = "confirmdepositamount"   id="confirmdepositamount" min = "1" pattern="[1-9]+" required
-				    style="position: relative;width: 218px;top:-102px;left: 204px;height: 32px;"  >
- 
- 
+			
  				 <br></br>
  				 
 				  <label for="mode" class="radio-inline"  onkeydown="return validation()"
 				  style="font-family: serif;font-size: 20px; position:relative;width: 250px;top:-109px;left: -20px;
 				  height: 20px;" ><b> Payment Mode *</b></label>
-<!-- 				 <input type="radio" id="debit" name="debit" style="position: relative; top: -2px; left:81px; "
-				value="DebitCard"  checked  > 
-				<label for="debit" style="position: relative; top: -3px; left: 72px;"  >DebitCard</label> 
-				
-				<input type="radio" id="net" name="net" value="NetBanking"  style="position: relative; top: -2px; left: 96px;" > 
-				<label for="net"  style="position: relative; top: -4px; left: 88px;">Net Banking</label>  -->
-				
 				<label class="radio-inline" style="position: relative;width: 210px;top:-102px;
 				left: -64px;height: 32px;font-size: 20px; "><input type="radio" name="optradio" checked style="font-size: 10px; position: relative;width: 26px;"  >Debit Card</label>
 				<label class="radio-inline"  style="position: relative;width: 218px;top:-102px;
