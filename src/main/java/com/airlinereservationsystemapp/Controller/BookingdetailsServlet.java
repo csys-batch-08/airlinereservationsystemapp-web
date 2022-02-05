@@ -42,10 +42,10 @@ public class BookingdetailsServlet extends HttpServlet {
 		List<Passenger_details> bookinfo = booklist.Bookinglist();
 		session.setAttribute("Bookinglist", bookinfo);
 		
-		response.sendRedirect("bookinglist.jsp");
+//		response.sendRedirect("bookinglist.jsp");
 		
-//        RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
-//		req.forward(request, response);
+      RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
+	req.forward(request, response);
 
 	}
 		catch(Exception e)
