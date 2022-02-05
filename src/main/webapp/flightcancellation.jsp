@@ -64,6 +64,9 @@ a:hover, a:active {
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
 				
+						<input type="text" name="mode" id="mode" value= "${param.Mode}" readonly
+				 required autofocus
+				style="position: relative; left: 40px; height: 30px; top: 72px; width: 230px" /><br><br>
 				
 				
 				

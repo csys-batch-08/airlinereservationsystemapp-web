@@ -127,7 +127,7 @@ a:hover, a:active {
  	<c:otherwise>
 
 	     		<td><a href="flightcancellation.jsp?seatno=${cancel.getSeatno()}&Flightid=${cancel.getFlight_id()}&Departuredate=${cancel.getArrival_date()}
-	&Class=${cancel.getClass_details()}&Amount=${cancel.getAmount()}"
+	&Class=${cancel.getClass_details()}&Amount=${cancel.getAmount()}&Mode=${cancel.getMode()}"
 		class="btn btn-primary" >CancelTicket</a></td>
  	</c:otherwise>
  	 	

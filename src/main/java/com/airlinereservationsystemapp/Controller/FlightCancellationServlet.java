@@ -60,6 +60,8 @@ public class FlightCancellationServlet extends HttpServlet {
 	 
 	 String amountpaid  = request.getParameter("amount");
 	 int amount = Integer.parseInt(amountpaid);
+	 
+	 String modestatus = request.getParameter("mode");
 
 	 HttpSession session = request.getSession();
 	 String User = (String) session.getAttribute("LOGGED_IN_USER");
@@ -69,7 +71,6 @@ public class FlightCancellationServlet extends HttpServlet {
 					
 			if(User.equalsIgnoreCase("Guest"))
 			{
-				System.out.println("Entering condition value");
 				cancelflight.Updatecancelstatus(seatno);
 				
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
@@ -82,23 +83,47 @@ public class FlightCancellationServlet extends HttpServlet {
 			}
 			else
 				{
+				if(modestatus.equalsIgnoreCase("Debitcard"))
+				{
 				cancelflight.Updatecancelstatus(seatno);
 				
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
 				
-			       int refundbalance = wallet.getclosingbalance(class_details);
-				   
-			       wallet.refundbalance(User, amount);
-				     
-				
-//					cancelflight.Updatepassenger(economy, premium, business,class_details,flight);
-					
-					
-					   
+//			       int refundbalance = wallet.getclosingbalance(class_details);
+//				   
+//			       wallet.refundbalance(User, amount);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+				requestDispatcher.forward(request, response);
+
+				}
+				if(modestatus.equalsIgnoreCase("Creditcard"))
+				{	
+					cancelflight.Updatecancelstatus(seatno);
+					
+					int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
+					cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
+               	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 				}
+				if(modestatus.equalsIgnoreCase("wallet"))
+				{
+					cancelflight.Updatecancelstatus(seatno);
+					
+					int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
+					cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
+					
+				       int refundbalance = wallet.getclosingbalance(class_details);
+					   
+			       wallet.refundbalance(User, amount);
+//					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+//					requestDispatcher.forward(request, response);
+			       
+			       response.sendRedirect("flightSearch.jsp");
+
+				}
+			}
+		
 				} catch (Exception e) {
 
 					e.printStackTrace();

@@ -59,10 +59,8 @@ public class SearchFlightServlet extends HttpServlet {
 			 Destination = request.getParameter("destination");
 			String date =  request.getParameter("date");
 			//if(date!=null && date != "")
-			if(date!=null)
-
-			{
-			 local = LocalDate.parse(date);
+			if (date != null && !date.isEmpty())			{
+				 local = LocalDate.parse(date);
 			}
 			HttpSession session =  request.getSession();
 			

@@ -222,7 +222,7 @@ width: 40%
 							<label for="card">Credit Card</label>
 
 							<input type="radio" name="yesCheck" value="Debitcard" required>
-							<label for="card">Debitcard</label>
+							<label for="card">Debit card</label>
 
 							<input type="radio" name="yesCheck" value="Wallet" required>
 							<label for="Wallet">Wallet</label>
