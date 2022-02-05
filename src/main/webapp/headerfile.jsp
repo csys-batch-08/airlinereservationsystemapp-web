@@ -40,7 +40,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Air Line Reservation System</a>
+      <a class="navbar-brand">Airline Reservation System</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active" style="position: relative;left: 30px;font-size: 18px"><a  href="Sourcedestination">Home</a></li>

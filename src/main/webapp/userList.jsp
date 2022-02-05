@@ -46,7 +46,7 @@ a:hover, a:active {
 					<th>Gender</th>
 					<th>Phone Number</th>
 					<th>Registered_Date</th>
-					</tr>
+			</tr>
 			</thead>
 			<br>
 			<br>
@@ -56,12 +56,11 @@ a:hover, a:active {
 				<tr>
 				
 					
-					  		<td>${status.count}</td>	
+					<td>${status.count}</td>	
 					<td>${reg.getName()}</td>
 					<td class="table-warning">${reg.getEmailid()}</td>
 					<td>${reg.getUsername()}</td>
 					<td>${reg.getPassword()}</td>
-					
 					<td> ${reg.getGender()}</td>
 					<td> ${reg.getPhonenumber()}</td>
 					<td class="table-danger"> ${reg.getRegisterDate()}</td>

@@ -58,52 +58,67 @@ a:hover, a:active {
 	</h1>
 
 	<form name="addflight" action="UpdateFlight" method="post">
-             <label class="visually-hidden" for="Flightid"></label>
-		<input type="number" class="form-control " id="Flightid"
+	             <label class="visually-hidden" for="Flightid"></label>
+	             	<input type="number" class="form-control " id="Flightid"
 			name="Flightid" value="${flight.getFlight_id()}" readonly
-			style="position: relative; width: 250px; left: 38px; top: 0px;">
+			style="position: relative; width: 250px; left: 38px; top: -18px;">
 				<br> <br /> 
+					  <label class="visually-hidden" for="Flightname"></label>
 				<input type="text" class="form-control"
 			value="${flight.getFlight_name()}" name="Flightname" id="Flightname"
 			style="position: relative; width: 250px; left: 38px; top: -29px;">
-
-
-		<br> <input type="text" class="form-control"
+		<br>
+		<label class="visually-hidden" for="source"></label>
+		<input type="text" class="form-control"
 			value="${flight.getSource()}" name="source" id="source"
 			style="position: relative; width: 250px; left: 38px; top: -25px;">
 
 
-		<br> <input type="text" class="form-control"
+		<br>
+		<label class="visually-hidden" for="Destination"></label>
+		<input type="text" class="form-control"
 			value="${flight.getDestination()}" name="Destination"
 			id="Destination"
 			style="position: relative; width: 250px; left: 38px; top: -21px;">
 
-		<br> <input type="number" class="form-control"
+		<br>
+		<label class="visually-hidden" for="Economyclass"></label>
+		<input type="number" class="form-control"
 			value="${flight.getEconomy_class()}" name="Economyclass"
 			id="Economyclass"
 			style="position: relative; width: 250px; left: 38px; top: -17px;">
 
-		<br> <input type="number" class="form-control"
+		<br> 
+	    <label class="visually-hidden" for="PremiumEconomyclass"></label>
+		<input type="number" class="form-control"
 			value="${flight.getPremium_Economy_class()}"
 			name="PremiumEconomyclass" id="PremiumEconomyclass"
 			style="position: relative; width: 250px; left: 38px; top: -14px;">
 
-		<br> <input type="number" class="form-control"
+		<br>
+	    <label class="visually-hidden" for="Bussinessclass"></label>
+		<input type="number" class="form-control"
 			value="${flight.getBussiness_class()}" name="Bussinessclass"
 			id="Bussinessclass"
 			style="position: relative; width: 250px; left: 38px; top: -10px;">
-		<br> <input type="date" class="form-control"
+		<br> 
+	   <label class="visually-hidden" for="DepartureDate"></label>
+		<input type="date" class="form-control"
 			value="${flight.getDeparture_time()}" name="DepartureDate"
 			id="DepartureDate"
 			style="position: relative; width: 250px; left: 38px; top: -6px;">
 
-		<br> <input type="date" class="form-control"
+		<br> 
+		    <label class="visually-hidden" for="ArrivalDate"></label>
+			<input type="date" class="form-control"
 			value="${flight.getArrival_Time()}" name="ArrivalDate"
 			id="ArrivalDate"
 			style="position: relative; width: 250px; left: 38px; top: -2px;">
 
 
-		<br> <input type="text" class="form-control"
+		<br> 
+		<label class="visually-hidden" for="Status"></label>
+		<input type="text" class="form-control"
 			value="Yet To Arrived" name="Status" id="Status"
 			style="position: relative; width: 250px; left: 38px; top: 2px;">
 
