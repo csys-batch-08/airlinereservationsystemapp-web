@@ -9,7 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>UPDATE FLIGHT</title>
@@ -47,12 +47,10 @@ a:hover, a:active {
     <h1 style="text-align: center;">
     
     <c:set var="flight" value="${Flight_id}"  />  
-				<b>UPDATE  FLIGHT DETAILS</b></h1>
+				<strong>UPDATE  FLIGHT DETAILS</strong></h1>
 				
 		<form name="addflight" action="UpdateFlight" method="post"  >
 		
-<%-- 						    <input type="number"  name="Flightid" value="${param.flightId}" readonly   placeholder="Flight_id"  
-				style="position: relative; left:38px; height: 31px; top: -14px;width: 250px" /> --%>
 				      <input type="number" class="form-control " id="Flightid" name="Flightid"  value="${flight.getFlight_id()}" readonly
 				      style="position: relative;width: 250px;left: 38px; top: 0px;">
 				
@@ -60,80 +58,51 @@ a:hover, a:active {
 			
 			
 			
-			<br /> <%-- <input type="text" name="Flightname" value="${param.flightname}" 
-				placeholder="FLIGHT_NAME"  autofocus
-				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /> --%>
-				
-					<input type="text" class="form-control"  value="${flight.getFlight_name()}"  name="Flightname"
+			<br />
+					<input type="text" class="form-control"  value="${flight.getFlight_name()}"  name="Flightname" id="Flightname"
 				      style="position: relative;width: 250px;left: 38px; top:-29px;">
 				
 				
 			<br>
-			 <%-- <input type="text" id="text" name="source" value="${param.source}"  
-				placeholder="Enter Source"  
-				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" /> --%>
 				
-				<input type="text" class="form-control"  value="${flight.getSource()}"  name="source"
+				<input type="text" class="form-control"  value="${flight.getSource()}"  name="source" id="source"
 				      style="position: relative;width: 250px;left: 38px; top: -25px;">
 			
 			
 			<br> 
-			<%-- <input type="text" name="Destination" value="${param.Destination}" 
-			  placeholder="Enter Destination " 
-				autofocus  
-				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" /> --%>
-					<input type="text" class="form-control"  value="${flight.getDestination()}"  name="Destination"
+					<input type="text" class="form-control"  value="${flight.getDestination()}"  name="Destination" id="Destination"
 				      style="position: relative;width: 250px;left: 38px; top: -21px;">
 				
 				<br>
 				
-<%-- 				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="${param.Economyclass}" 
-				min = "0" pattern="[0-9]"  
-				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" /> --%>
-				
-				<input type="number" class="form-control"  value="${flight.getEconomy_class()}"  name="Economyclass"
+				 
+				<input type="number" class="form-control"  value="${flight.getEconomy_class()}"  name="Economyclass" id="Economyclass"
 				      style="position: relative;width: 250px;left: 38px; top: -17px;">
 				      
 			<br> 
-			<%-- <input type="number" name="PremiumEconomyclass" value="${param.premiumeconomyclass}"  
-				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
-				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /> --%>
 				
 					<input type="number" class="form-control"  value="${flight.getPremium_Economy_class()}" name="PremiumEconomyclass"
-				      style="position: relative;width: 250px;left: 38px; top: -14px;">
+				     id="PremiumEconomyclass" style="position: relative;width: 250px;left: 38px; top: -14px;">
 				
 				<br>
 				
-<%-- 			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="${param.Businessclass}"
-							min = "0" pattern="[0-9]"    
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px"> --%>
 				
-				<input type="number" class="form-control"  value="${flight.getBussiness_class()}" name="Bussinessclass" 
+				<input type="number" class="form-control"  value="${flight.getBussiness_class()}" name="Bussinessclass"  id="Bussinessclass"
 				      style="position: relative;width: 250px;left: 38px; top: -10px;">
 				<br> 
-				
-							<%-- <input type="date"  name="DepartureDate" id="DepartureDate" placeholder="DepartureDate" value="${param.Departuredate}"
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px"> --%>
 				
 						<input type="date" class="form-control"  value="${flight.getDeparture_time()}"  name="DepartureDate" id="DepartureDate"
 				      style="position: relative;width: 250px;left: 38px; top: -6px;">
 				
 				<br> 
 				
-							<%-- <input type="date"  name="ArrivalDate" id="ArrivalDate" placeholder="ArrivalDate" value="${param.Arrivaldate}"  
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
- --%>				
  <input type="date" class="form-control"  value="${flight.getArrival_Time()}"  name="ArrivalDate" id="ArrivalDate"
 				      style="position: relative;width: 250px;left: 38px; top: -2px;">
  
  
  <br> 
-				
-<!-- 			<input type="text"  name="Status" placeholder="status" value="Yet To Arrived"  
-				value="Male" style="position: relative; left: 296px;height: 31px; top: -6px;width: 229px">
- -->				
- 
-  <input type="text" class="form-control"  value="Yet To Arrived"  name="Status"
+  
+  <input type="text" class="form-control"  value="Yet To Arrived"  name="Status"  id="Status"
 				      style="position: relative;width: 250px;left: 38px; top: 2px;">
  
  

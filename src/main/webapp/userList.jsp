@@ -7,7 +7,7 @@
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>USER LIST</title>
@@ -35,7 +35,7 @@ a:hover, a:active {
 
 	
    		<table border="2" class="table">
-			<h1 align="center"><b>Registered User  List</b></h1>
+			<h1 align="center"><strong>Registered User  List</strong></h1>
 			<thead>
 				<tr class="table-primary">
 				   <th >S.no</th>

@@ -12,7 +12,7 @@
         
             
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -183,18 +183,18 @@ width: 40%
 				
 				
 				
-				    <label for="flightid" ><b>Flight Id</b></label>
+				    <label for="flightid" ><strong>Flight Id</strong></label>
     <input type="text" id="flightid" name="flightid" value ="${flightid}"  readonly>
 <br></br>
-    <label for="ticketno"><b>Ticket No</b></label>
-    <input type="text"  name="ticketno" value="${ticketno}" readonly>
+    <label for="ticketno"><strong>Ticket No</strong></label>
+    <input type="text"  name="ticketno" id="ticketno"  value="${ticketno}" readonly>
 <br></br>
-    <label for="amount"><b>Amount</b></label>
-    <input type="text"  name="Amount" value="${Amont}" readonly>
+    <label for="amount"><strong>Amount</strong>></label>
+    <input type="text"  name="Amount" id="Amount"  value="${Amont}" readonly>
     <br></br>
     
-        <label for="Seatno"><b>SEATNO</b></label>
-    <input type="text"  name="seatno" value="${seatnumeric}" readonly>
+        <label for="Seatno"><strong>SEATNO</strong>></label>
+    <input type="text"  name="seatno" id="seatno" value="${seatnumeric}" readonly>
     <br></br>
         <c:choose>
     <c:when test="${loguser.equals('Guest')}">
@@ -206,7 +206,7 @@ width: 40%
 				<label for="card" >Credit Card</label> 
 				
 				<input type="radio"  name="yesCheck" value="Debitcard" required > 
-				<label for="card" >Debitcard</label> 
+				<label for="card" >Debit card</label> 
 				    <br>
 				    <br>
 				         		
@@ -214,37 +214,32 @@ width: 40%
 					>
 				SUBMIT	</button>
    </c:when>
-   <c:otherwise>
-   
-   				      <label for="wallet"><b>Mode *</b></label>
-    
-    <input type="radio"  name="yesCheck" value="Creditcard" required				 > 
-				<label for="card" >Credit Card</label> 
-				
-				<input type="radio"  name="yesCheck"  value="Debitcard"  required > 
-				<label for="card" >Debitcard</label> 
-				
-                    				<input type="radio"  
-				name="yesCheck" value="Wallet"  required > 
-				<label
-				for="Wallet" >Wallet</label>
-				<br>
-				<br>
-							<button type="Submit"   
-					>
-				SUBMIT	</button>
-				
-   </c:otherwise> 
-    
-        
-	</c:choose>
+						<c:otherwise>
+
+							<label for="wallet"><b>Mode *</b></label>
+
+							<input type="radio" name="yesCheck" value="Creditcard" required>
+							<label for="card">Credit Card</label>
+
+							<input type="radio" name="yesCheck" value="Debitcard" required>
+							<label for="card">Debitcard</label>
+
+							<input type="radio" name="yesCheck" value="Wallet" required>
+							<label for="Wallet">Wallet</label>
+							<br>
+							<br>
+							<button type="Submit">SUBMIT</button>
+
+						</c:otherwise>
+
+
+					</c:choose>
 													
     
     		</form>
 				
     		</div>
-    		
-   </main>
+    		</div>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	   
@@ -252,7 +247,7 @@ width: 40%
    
  
  
- 
+    </main>
  
 </body>
 </html>

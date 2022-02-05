@@ -34,7 +34,6 @@ public class Guestcheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -42,14 +41,15 @@ public class Guestcheck extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String mobile =request.getParameter("phone"); 
-		long phone = Long.parseLong(mobile);
 		String email = request.getParameter("mail");
 		Connection con  =null; 
 		PreparedStatement ps =null;
 		ResultSet rs =null;
 		try
 		{  
+			String mobile =request.getParameter("phone"); 
+			long phone = Long.parseLong(mobile);
+
 			 con = Connectutil.getdbconnect();
 			if(phone!=0)
 			{
@@ -67,6 +67,11 @@ public class Guestcheck extends HttpServlet {
 		{
 		}
 		}
+		}
+		catch(NumberFormatException e)
+		{
+			e.printStackTrace(); 
+
 		}
 		catch(Exception e)
 		{

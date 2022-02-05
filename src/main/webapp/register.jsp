@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>REGISTER FORM</title>
@@ -110,7 +110,7 @@ button:hover {
 				<br>
 				
 				
-			<br> <input type="password" name="password1"style="position: relative;top: -25px"
+			<br> <input type="password" name="password1"style="position: relative;top: -25px" id="Confirm"
 				required  placeholder="Confirm Password "  
 				 /><br>
 				<br>
