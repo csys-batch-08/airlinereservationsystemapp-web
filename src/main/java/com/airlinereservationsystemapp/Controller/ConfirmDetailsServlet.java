@@ -65,7 +65,9 @@ public class ConfirmDetailsServlet extends HttpServlet {
        int noofpass = Integer.parseInt(noofpassengers);
        String economyseats = request.getParameter("Economy_class");
        int ecoseats = 0;
-		if 	(economyseats != null && economyseats != "") 
+//		if 	(economyseats != null && economyseats != "") 
+		if 	(economyseats != null) 
+
 		{
 			ecoseats = Integer.parseInt(economyseats);
 		}
@@ -73,7 +75,9 @@ public class ConfirmDetailsServlet extends HttpServlet {
 	     
 			String premiumeconomyseats = request.getParameter("PremiumEconomyclass");
 			int premiumecoseats = 0;
-		if 	(premiumeconomyseats != null && premiumeconomyseats != "") 
+//		if 	(premiumeconomyseats != null && premiumeconomyseats != "") 
+		if 	(premiumeconomyseats != null) 
+
 			{
 			 premiumecoseats = Integer.parseInt(premiumeconomyseats);
 			}
@@ -81,7 +85,9 @@ public class ConfirmDetailsServlet extends HttpServlet {
 	      String businesseats = request.getParameter("Bussinessclass");
 	      
 			int bussseats = 0;
-		if 	(businesseats != null && businesseats != "") 
+//		if 	(businesseats != null && businesseats != "") 
+			if 	(businesseats != null ) 
+
 			{
 			bussseats = Integer.parseInt(businesseats);
 			}

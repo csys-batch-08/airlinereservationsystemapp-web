@@ -53,8 +53,8 @@ public class Passenger_details
 		TicketNo = ticketNo;
 		this.seatno = seatno;
 		Economyseat = economyseat;
-		this.premiumeconomyseats = premiumeconomyseats;
-		this.businessseats = businessseats;
+//		this.premiumeconomyseats = premiumeconomyseats;
+//		this.businessseats = businessseats;
 		Status = status;
 		Bookingdate = bookingdate;
 		Flight_id = getFlight_id();
@@ -135,19 +135,28 @@ public class Passenger_details
 		Mobile_number = mobile_number;
 		Source = source;
 		Destination = destination;
-		TicketNo = TicketNo;
+		//TicketNo = TicketNo;
+		this.TicketNo = TicketNo;
+
 		Flight_id = flight_id;
 		Arrival_date = bookingdate;
 
 	}
+//	public int getTicketNo() {
+//		return TicketNo;
+//	}
+//	public void setTicketNo(int TicketNo) {
+//		TicketNo = TicketNo;
+//	}
+	
+	public int getNoOfPassengers() {
+		return NoOfPassengers;
+	}
 	public int getTicketNo() {
 		return TicketNo;
 	}
-	public void setTicketNo(int TicketNo) {
-		TicketNo = TicketNo;
-	}
-	public int getNoOfPassengers() {
-		return NoOfPassengers;
+	public void setTicketNo(int ticketNo) {
+		TicketNo = ticketNo;
 	}
 	public void setNoOfPassengers(int noOfPassengers) {
 		NoOfPassengers = noOfPassengers;
@@ -205,7 +214,9 @@ public class Passenger_details
 		Source = source;
 		Destination = destination;
 		Arrival_date = arrival_date;
-		TicketNo = TicketNo;
+//		TicketNo = TicketNo;
+		this.TicketNo = TicketNo;
+
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
 	}

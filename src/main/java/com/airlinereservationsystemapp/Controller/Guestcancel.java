@@ -54,7 +54,8 @@ public class Guestcancel extends HttpServlet {
 		try {
 		List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
 		
-		session.setAttribute("GuestList", Guestcancel);
+		//	session.setAttribute("Flight_List", flightInfo);
+request.setAttribute("GuestList", Guestcancel);
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
 		requestDispatcher.forward(request, response);

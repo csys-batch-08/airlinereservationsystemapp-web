@@ -58,7 +58,9 @@ public class SearchFlightServlet extends HttpServlet {
 			 Source = request.getParameter("source");
 			 Destination = request.getParameter("destination");
 			String date =  request.getParameter("date");
-			if(date!=null && date != "")
+			//if(date!=null && date != "")
+			if(date!=null)
+
 			{
 			 local = LocalDate.parse(date);
 			}

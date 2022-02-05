@@ -42,7 +42,10 @@ public class Update extends HttpServlet {
 		FlightSearchDao flightDao = new FlightSearchDao();
 		Flight_list flight = flightDao.getRecordById(Flight_Id);
 		
-		session.setAttribute("Flight_id", flight);
+//		session.setAttribute("Flight_id", flight);
+		
+	request.setAttribute("Flight_id", flight);
+
 
 		//response.sendRedirect("updateflight.jsp");
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");

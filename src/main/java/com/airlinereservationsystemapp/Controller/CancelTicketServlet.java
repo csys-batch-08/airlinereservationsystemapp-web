@@ -59,7 +59,9 @@ public class CancelTicketServlet extends HttpServlet {
 		List<Passenger_details> cancelinfo = cancellist.CancelTicket(loggedInAsUser);
 		
 		
-		session.setAttribute("CancelList", cancelinfo);
+		//session.setAttribute("CancelList", cancelinfo);
+		request.setAttribute("CancelList", cancelinfo);
+
 				
 //		response.sendRedirect("cancelticket.jsp");
 		

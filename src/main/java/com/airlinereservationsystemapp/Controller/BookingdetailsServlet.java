@@ -40,8 +40,9 @@ public class BookingdetailsServlet extends HttpServlet {
 		Passenger_detailsDao booklist = new Passenger_detailsDao();
 
 		List<Passenger_details> bookinfo = booklist.Bookinglist();
-		session.setAttribute("Bookinglist", bookinfo);
-		
+		//session.setAttribute("Bookinglist", bookinfo);
+		request.setAttribute("Bookinglist", bookinfo);
+
 //		response.sendRedirect("bookinglist.jsp");
 		
       RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");

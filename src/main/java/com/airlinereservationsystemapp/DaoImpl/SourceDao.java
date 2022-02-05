@@ -124,11 +124,17 @@ public class SourceDao implements SourceInterface {
 			}
 			 pst = connection.prepareStatement(query);
 			pst.setDate(1, getcurrentdate());
-			if (source != null && source != "") {
+//			if (source != null && source != "") 
+			if (source != null) 
+
+			{
 				i++;
 				pst.setString(i, source);
 			}
-			if (destination != null && destination != "") {
+//			if (destination != null && destination != "") 
+			if (destination != null) 
+
+			{
 				i++;
 
 				pst.setString(i, destination);

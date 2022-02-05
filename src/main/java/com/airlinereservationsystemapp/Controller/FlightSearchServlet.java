@@ -46,12 +46,14 @@ try
 	FlightSearchDao flightDao = new FlightSearchDao();
 	
 	List<Flight_list> flightInfo = flightDao.FlightList();
-	session.setAttribute("Flight_List", flightInfo);
+//	session.setAttribute("Flight_List", flightInfo);
+	request.setAttribute("Flight_List", flightInfo);
 
-//	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightlist.jsp");
-//	requestDispatcher.forward(request, response);
+
+	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightlist.jsp");
+	requestDispatcher.forward(request, response);
 	
-	response.sendRedirect("flightlist.jsp");
+	//response.sendRedirect("flightlist.jsp");
 }
 catch(Exception e)
 {
