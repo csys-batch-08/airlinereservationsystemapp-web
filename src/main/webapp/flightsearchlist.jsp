@@ -50,7 +50,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 		<table class="table table-hover">
 			<h1>
-				<b>Flight List</b>
+				<strong>Flight List</strong>
 			</h1>
 			<thead>
 				<tr>

@@ -4,7 +4,7 @@
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Login Screen</title>
@@ -80,13 +80,13 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				
 				
 				<div class="container"> 
-				    <label for="username"><b>Username</b></label>
+				    <label for="username"><strong>Username</strong></label>
     <input type="text" id="username" placeholder="Enter Username" name="username" value="${param.username}"required>
 <br></br>
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <label for="password"><strong>Password</strong></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required>
 <br></br>
-<label for="username"><b>Confirm Password</b></label>
+<label for="username"><strong>Confirm Password</strong>></label>
     <input type="password" id="confirmpassword" placeholder="Enter password" name="confirmpassword" required>
     <br></br>
     <button type="submit">Login</button>

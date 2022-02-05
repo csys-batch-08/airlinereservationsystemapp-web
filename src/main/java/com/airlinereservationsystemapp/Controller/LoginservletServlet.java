@@ -42,7 +42,10 @@ public class LoginservletServlet extends HttpServlet {
 			loginvalidation = login.Loginfile(username, password);
 			if (loginvalidation) {
 				String Check_Admin = login.CheckAdmin(username, password);
-				if (Check_Admin == "yes") {
+				//if (Check_Admin == "yes") 
+			if (Check_Admin.equalsIgnoreCase("Yes")) 
+
+				{
 					session.getAttribute("Sourcelist");
 
 					session.setAttribute("LOGGED_IN_ADMIN", username);

@@ -3,7 +3,6 @@ package com.airlinereservationsystemapp.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -16,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.util.Connectutil;
 
 /**
- * Servlet implementation class Emailcheck
+ * Servlet implementation class Guestcheck
  */
-@WebServlet("/Emailcheck")
-public class Emailcheck extends HttpServlet {
+@WebServlet("/Guestcheck")
+public class Guestcheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Emailcheck() {
+    public Guestcheck() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +32,9 @@ public class Emailcheck extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -42,34 +42,44 @@ public class Emailcheck extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String email = request.getParameter("email");
-		Connection con = null;
+		String mobile =request.getParameter("phone"); 
+		long phone = Long.parseLong(mobile);
+		String email = request.getParameter("mail");
+		Connection con  =null; 
 		PreparedStatement ps =null;
-		ResultSet rs = null;
-		try {
-		 con = Connectutil.getdbconnect();
-			ps=con.prepareStatement("select * from register where Email_id=? ");  
-	ps.setString(1,email);  
-	 rs=ps.executeQuery();  
-	if(rs.next())
-	{
-		PrintWriter Write = response.getWriter();
-	   Write.println("Email id Already Registered");
-	}  
-	}
+		ResultSet rs =null;
+		try
+		{  
+			 con = Connectutil.getdbconnect();
+			if(phone!=0)
+			{
+		 ps=con.prepareStatement("select * from register where  Phone_number = ?");  
+		ps.setLong(1,phone);
+		 rs=ps.executeQuery();  
+		if(rs.next())
+		{
+			PrintWriter Write = response.getWriter();
+		   Write.println("Phone Number Already Registered");
+
+		}  
+			
+		else
+		{
+		}
+		}
+		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
-				
+			e.printStackTrace(); 
+
 		}
 		finally
 		{
 			Connectutil.close(con,ps,rs);
 		}
-
+		 
 
 
 	}
+
 }
-
-

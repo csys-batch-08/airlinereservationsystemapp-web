@@ -100,7 +100,7 @@ a:hover, a:active {
 		
 		  <table class="table">
 		
-			<h1 align="center"><b>Flight List</b></h1>
+			<h1 align="center"><strong>Flight List</strong></h1>
 			<thead class="table-warning">
 				<tr>
 				   <th >S.no</th>

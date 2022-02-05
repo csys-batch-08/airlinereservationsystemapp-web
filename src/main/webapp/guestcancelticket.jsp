@@ -12,7 +12,7 @@
                             
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>GUEST CANCEL LIST</title>
@@ -39,7 +39,7 @@ private static Date getcurrentdate()
 }
 %> --%>
                  <table border="2" class="table">
-			<h1 align="center"><b>Flight List</b></h1>
+			<h1 align="center"><strong>Flight List</strong></h1>
 			<thead>
 				<tr class="info">
 				   <th  >S.no</th>

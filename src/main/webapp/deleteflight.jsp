@@ -4,7 +4,7 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>DELETE FLIGHT</title>
@@ -38,7 +38,7 @@ a:hover, a:active {
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
 			
 			<br /> <%-- value="${param.flightId}" --%>
-									 <input type="number" class="form-control " name="Flight_id" value="${flightId}"  readonly
+									 <input type="number" class="form-control " name="Flight_id" id="flightid"  value="${flightId}"  readonly
 style="position: relative;width: 228px;left: 58px; top: -5px;height: 41px; "> 
 				
 				<br>

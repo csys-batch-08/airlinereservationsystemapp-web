@@ -5,7 +5,7 @@
                      <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>GUESTLOGIN</title>
@@ -129,7 +129,7 @@ span.psw {
 				 />
 			
 						<div style="text-align: center" >
-				<button type="Submit"  required   onkeyup ="validlogin()" >Submit
+				<button type="Submit"  required   onkeyup ="validlogin()" >Submit</button>
 					
 					
 				
@@ -154,18 +154,8 @@ span.psw {
     </div>
     <script>
     
-    function validlogin()
-    {
-	    console.log("called");
-        let mail =document.getElementById("email").value;
-        let phone =document.getElementById("phoneNumber").value;
 
-        console.log(mail);
-
-        console.log(phone);
-   var url="GuestCheck.jsp?phone="+phone+'&mail='+mail;
-
-    console.log(url);
+/*     console.log(url);
 
     if(window.XMLHttpRequest){  
     request=new XMLHttpRequest();  
@@ -203,6 +193,33 @@ span.psw {
     	
     	}  
      
+ */
+ function validlogin()
+ {
+	    console.log("called");
+     let mail =document.getElementById("email").value;
+     let phone =document.getElementById("phoneNumber").value;
+
+     console.log(mail);
+
+     console.log(phone);
+var url="GuestCheck?phone="+phone+'&mail='+mail;
+
+	$.ajax({
+		type:'POST',
+ url:'Guestcheck',
+data:'phone='+phone,    
+cache:false,
+ success:function(response){
+ 	if(response.includes("Phone Number Already Registered"))
+    {
+	document.getElementById("guestresponse").innerHTML=response;
+	document.getElementById('phoneNumber').value = '';  
+	}
+ }
+	});
+		    }
+	
 
 
 	document.getElementById("phoneNumber").onkeydown = function() {myfunction()};

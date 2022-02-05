@@ -4,7 +4,7 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Flight Cancel</title>
@@ -44,23 +44,23 @@ a:hover, a:active {
 
 <form name="cancelflight.form" action="FlightCancellation" method="post"  >
 			
-			<br /> <input type="number" name="seatno" value= "${param.seatno}" readonly
+			<br /> <input type="number" name="seatno" id="seatno"  value= "${param.seatno}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				
-				<input type="number" name="Flightid" value= "${param.Flightid}" readonly
+				<input type="number" name="Flightid" id="Flightid" value= "${param.Flightid}" readonly
 				 required autofocus
 				style="position: relative; left: -196px; height: 30px; top: 212px; width: 230px" /><br><br>
 				
-				<input type="date" name="DepartureDate" value= "${param.Departuredate}" readonly
+				<input type="date" name="DepartureDate" id="DepartureDate" value= "${param.Departuredate}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
 				
-								<input type="text" name="Class" value= "${param.Class}" readonly
+								<input type="text" name="Class" id="Class" value= "${param.Class}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
 				
-					<input type="text" name="amount" value= "${param.Amount}" readonly
+					<input type="text" name="amount" id="amount" value= "${param.Amount}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
 				

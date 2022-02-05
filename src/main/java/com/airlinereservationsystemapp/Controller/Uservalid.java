@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.util.Connectutil;
+
 /**
  * Servlet implementation class Uservalid
  */
@@ -43,14 +45,16 @@ public class Uservalid extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String username =request.getParameter("uname");  
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs =null;
 		
 		try
 		{  
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
+			con = Connectutil.getdbconnect();
+		 ps=con.prepareStatement("select * from register where User_name=? ");  
 		ps.setString(1,username);  
-		ResultSet rs=ps.executeQuery();  
+		 rs=ps.executeQuery();  
 		if(rs.next())
 		{
 
@@ -66,12 +70,12 @@ public class Uservalid extends HttpServlet {
 		catch(Exception e)
 		{
 			e.printStackTrace(); 
-			System.out.println(e);
-
-
 		}
 		 
-
+       finally
+       {
+    	   Connectutil.close(con,ps,rs);
+       }
 
 		
 

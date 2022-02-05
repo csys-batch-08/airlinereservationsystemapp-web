@@ -12,7 +12,7 @@
     
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>CANCEL LIST</title>
@@ -43,7 +43,7 @@ a:hover, a:active {
 
 <a href="Sourcedestination"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
-			<h1 align="center"><b>Flight List</b></h1>
+			<h1 align="center"><strong>Flight List</strong></h1>
 
 
 		   		<table border="2" class="table">

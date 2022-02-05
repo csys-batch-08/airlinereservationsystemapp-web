@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.util.Connectutil;
+
 /**
  * Servlet implementation class phonevalid
  */
@@ -40,15 +42,17 @@ public class phonevalid extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {	
 	String phone  = request.getParameter("phoneno");
 		long mobileno = Long.parseLong(phone);
+		Connection con = null;
+		PreparedStatement ps =null;
+		ResultSet rs =null;
 		
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-	PreparedStatement ps=con.prepareStatement("select * from register where Phone_number=? ");  
+		try {	
+			con = Connectutil.getdbconnect();
+	 ps=con.prepareStatement("select * from register where Phone_number=? ");  
 	ps.setLong(1,mobileno); 
-	ResultSet rs=ps.executeQuery();  
+	 rs=ps.executeQuery();  
 	if(rs.next())
 	{
 		PrintWriter Write = response.getWriter();
@@ -59,6 +63,10 @@ public class phonevalid extends HttpServlet {
 	{
 		e.printStackTrace();  
 	}
+		finally
+		{
+			Connectutil.close(con,ps,rs);
+		}
 	 
 
 
