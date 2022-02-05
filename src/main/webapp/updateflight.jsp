@@ -58,7 +58,7 @@ a:hover, a:active {
 	</h1>
 
 	<form name="addflight" action="UpdateFlight" method="post">
-
+             <label class="visually-hidden" for="Flightid"></label>
 		<input type="number" class="form-control " id="Flightid"
 			name="Flightid" value="${flight.getFlight_id()}" readonly
 			style="position: relative; width: 250px; left: 38px; top: 0px;">
