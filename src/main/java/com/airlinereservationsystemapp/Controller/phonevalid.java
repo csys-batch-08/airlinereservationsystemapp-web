@@ -42,13 +42,14 @@ public class phonevalid extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	String phone  = request.getParameter("phoneno");
-		long mobileno = Long.parseLong(phone);
 		Connection con = null;
 		PreparedStatement ps =null;
 		ResultSet rs =null;
 		
 		try {	
+			String phone  = request.getParameter("phoneno");
+			long mobileno = Long.parseLong(phone);
+
 			con = Connectutil.getdbconnect();
 	 ps=con.prepareStatement("select * from register where Phone_number=? ");  
 	ps.setLong(1,mobileno); 

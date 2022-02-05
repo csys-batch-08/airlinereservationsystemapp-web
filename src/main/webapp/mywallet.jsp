@@ -63,7 +63,7 @@ form {
 				<h3  style="position: relative;top: -8px; left: 220px;" id="closing"  ></h3>
 				
 			<br></br>
-				 <label for="depositamount"style="font-family: serif;font-size: 21px; position:relative;width: 214px;top:-30px;left: 3px;height: 32px;" ><strong>Deposit Amount</strong>></label>
+				 <label for="depositamount"style="font-family: serif;font-size: 21px; position:relative;width: 214px;top:-30px;left: 3px;height: 32px;" ><strong>Deposit Amount</strong></label>
 				<input type="number" class="form-control" name = "depositamount"   id="depositamount" min = "1" pattern="[1-9]+"  required
 				    style="position: relative;width: 214px;top:-72px;left: 206px;height: 32px;"  >
 			 
@@ -73,7 +73,7 @@ form {
  				 
 				  <label for="mode" class="radio-inline"  onkeydown="return validation()"
 				  style="font-family: serif;font-size: 20px; position:relative;width: 250px;top:-109px;left: -20px;
-				  height: 20px;" ><strong> Payment Mode *</strong>></label>
+				  height: 20px;" ><strong> Payment Mode *</strong></label>
 				<label class="radio-inline" style="position: relative;width: 210px;top:-102px;
 				left: -64px;height: 32px;font-size: 20px; "><input type="radio" name="optradio" checked style="font-size: 10px; position: relative;width: 26px;"  >Debit Card</label>
 				<label class="radio-inline"  style="position: relative;width: 218px;top:-102px;

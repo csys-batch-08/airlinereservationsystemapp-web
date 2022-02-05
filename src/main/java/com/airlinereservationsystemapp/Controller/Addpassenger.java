@@ -64,8 +64,9 @@ Double Economyrate  = Double.parseDouble(Economyclass);
 		
 		
 		Flight_Seat_Availability flight  = new 	Flight_Seat_Availability(flightId, source, destination,  Departure_Date, Economy_class, Premium_Economy_class, Bussiness_class, Economyrate, Premiumrate, Business);
-		session.setAttribute("Addlist", flight);
-		
+		//session.setAttribute("Addlist", flight);
+		request.setAttribute("Addlist", flight);
+
         RequestDispatcher req = request.getRequestDispatcher("addPassenger.jsp");
 		req.forward(request, response);
 
