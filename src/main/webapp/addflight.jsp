@@ -23,70 +23,74 @@ a:hover, a:active {
 </style>
 
 <body>
-<!--        <a href="flightSearch.jsp"   class="btn btn-danger"> Back </a> <br > <br /> -->
 
        <a href="Sourcedestination"   class="btn btn-danger"> Back </a> <br > <br />
 
        
     <h1 style="text-align: center;">
-				<b>ADD FLIGHT DETAILS</b></h1>
+				<strong>ADD FLIGHT DETAILS</strong></h1>
 		<form name="addflight" action="AddFlightservlet" method="post"  >
 			
-			<br /> <input type="text" name="Flightname"  
+			<label class="visually-hidden" for="Flightname"></label>
+			<br /> <input type="text" name="Flightname"  id="Flightname"
 				placeholder="FLIGHT_NAME" required autofocus pattern="[A-Z a-z]{3,120}" 
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
-				
+			
+			<label class="visually-hidden" for="text"></label>
 			<br> <input type="text" id="text" name="source" 
 				placeholder="Enter Source" required pattern="[A-Z a-z]{3,120}"
 				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" />
 			
-			
-			<br> <input type="text" name="Destination"
+						<label class="visually-hidden" for="Destination"></label>
+			<br> <input type="text" name="Destination" id="Destination"
 			  placeholder="Enter Destination " required
 				autofocus  pattern="[A-Z a-z]{3,120}"
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
 				<br>
 				
-				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS"  min = "0" required pattern="[0-9]+"
+				<label class="visually-hidden" for="Economyclass"></label>
+				<input type="number" name="Economyclass"  id="Economyclass"  placeholder="ECONOMY_CLASS"  min = "1" required pattern="[1-9]+"
 				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
 				
-			<br> <input type="number" name="PremiumEconomyclass" min = "0" pattern="[0-9]+"
+			<label class="visually-hidden" for="PremiumEconomyclass"></label>
+			<br> <input type="number" name="PremiumEconomyclass" id="PremiumEconomyclass" min = "1" pattern="[1-9]+"
 				placeholder="PREMIUM_ECONOMY_CLASS " required
 				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
 				
-			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" min = "0" pattern="[0-9]+"
+							<label class="visually-hidden" for="Bussinessclass"></label>
+			<input type="number"  name="Bussinessclass" - id="Bussinessclass" placeholder="Bussinessclass" min = "1" pattern="[1-9]+"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
-				
+											<label class="visually-hidden" for="Arrivaldate"></label>
 								<input type="date" name="ArrivalDate" id="Arrivaldate" placeholder = "ArrivalDate" required
 				style="position: relative; left: 40px; height: 30px; top:120px; width: 230px" />
 				<br>
-				
+															<label class="visually-hidden" for="DepartureDate"></label>
 								<input type="date" name="DepartureDate" id="DepartureDate" placeholder = "DepartureDate" required
 				style="position: relative; left: 45px; height: 30px; top: 151px; width: 230px" />
 				<br>
-				
-				<input type="time" name="Arrivaltime" placeholder = "ArrivalTime" required
+				<label class="visually-hidden" for="Arrivaltime"></label>
+				<input type="time" name="Arrivaltime" id="Arrivaltime" placeholder = "ArrivalTime" required
 				style="position: relative; left: 382px; height: 30px; top:-153px; width: 230px" />
 				<br>
-				
-				<input type="time" name="Departuretime" placeholder = "Departure TIme" required
+								<label class="visually-hidden" for="Departuretime"></label>
+				<input type="time" name="Departuretime" id="Departuretime" placeholder = "Departure TIme" required
 				style="position: relative; left: 382px; height: 30px; top: -114px; width: 230px" />
 				<br>
 				
 				
 				
-				
-				<input type="number" name="ecomomy_seats" placeholder = "ecomomy_seats" min = "0"  required pattern="[0-9]+"
+												<label class="visually-hidden" for="ecomomy_seats"></label>
+				<input type="number" name="ecomomy_seats" id="ecomomy_seats" placeholder = "ecomomy_seats" min = "1"  required pattern="[1-9]+"
 				style="position: relative; left: 384px; height: 30px; top: -89px; width: 230px" />
 				<br>
 				
-				
-				<input type="number" name="premium_economy_seats" placeholder = "premium_economy_seats" min = "0"  required pattern="[0-9]+"
+																<label class="visually-hidden" for="premium_economy_seats"></label>
+				<input type="number" name="premium_economy_seats" id="premium_economy_seats" placeholder = "premium_economy_seats" min = "1"  required pattern="[1-9]+"
 				style="position: relative; left: 384px; height: 30px; top: -62px; width: 230px" />
 				<br>
-				
-								<input type="number" name="business_seats" placeholder = "business_seats" min = "0" pattern="[0-9]+" required
+												<label class="visually-hidden" for="business_seats"></label>
+								<input type="number" name="business_seats" id="business_seats" placeholder = "business_seats" min = "1" pattern="[1-9]+" required
 				style="position: relative; left: 384px; height: 30px; top: -37px; width: 230px" />
 				<br>
 				

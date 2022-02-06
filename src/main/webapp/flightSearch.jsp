@@ -52,7 +52,7 @@ button:hover {
 
 
  <jsp:include page="headerfile.jsp"></jsp:include>
-       <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
+       <marquee style="color: red"><em style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</em>></marquee>
  
  	<c:if test="${param.success eq 2}">
     <h2 id="register" ><c:out value="${Valid}"   /> </h2> 
@@ -66,7 +66,8 @@ button:hover {
         <div style="margin-left: 918px;margin-top: 30px">
         
             <form  id="form" action="SearchFlight"   method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
-                     
+                 
+                 <label class="visually-hidden" for="source"></label>
               <input type="text"  
               id="fightsource" list="source" name="source" placeholder="Source" required>  
  <datalist id="source" >  
@@ -82,8 +83,8 @@ button:hover {
             </c:forEach>
       
  </datalist>
-    
-   <input type="text"  
+                     <label class="visually-hidden" for="destination"></label>
+       <input type="text"  
               id="fightdestination" list="destination" name="destination" placeholder="Destination"  required
 >  
  <datalist id="destination">  
@@ -96,10 +97,8 @@ button:hover {
       </option>
       </c:forEach>
       </datalist>
-
+                     <label class="visually-hidden" for="date"></label>
                    <input  type="date" name="date" id  = "date" max="2022-10-26"  >
-              
-              
               <br><br>
               
               

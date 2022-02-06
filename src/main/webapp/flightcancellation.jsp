@@ -44,26 +44,30 @@ a:hover, a:active {
 
 <form name="cancelflight.form" action="FlightCancellation" method="post"  >
 			
+			<label class="visually-hidden" for="seatno"></label>
 			<br /> <input type="number" name="seatno" id="seatno"  value= "${param.seatno}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				
+							<label class="visually-hidden" for="Flightid"></label>
 				<input type="number" name="Flightid" id="Flightid" value= "${param.Flightid}" readonly
 				 required autofocus
 				style="position: relative; left: -196px; height: 30px; top: 212px; width: 230px" /><br><br>
-				
+							
+							<label class="visually-hidden" for="DepartureDate"></label>
 				<input type="date" name="DepartureDate" id="DepartureDate" value= "${param.Departuredate}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
-				
+											<label class="visually-hidden" for="Class"></label>
 								<input type="text" name="Class" id="Class" value= "${param.Class}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
-				
+						<label class="visually-hidden" for="amount"></label>
 					<input type="text" name="amount" id="amount" value= "${param.Amount}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
-				
+						
+						<label class="visually-hidden" for="mode"></label>
 						<input type="text" name="mode" id="mode" value= "${param.Mode}" readonly
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: 72px; width: 230px" /><br><br>

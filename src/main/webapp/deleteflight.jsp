@@ -37,7 +37,8 @@ a:hover, a:active {
  
   		<form name="addflight.form" action="DeleteFlight" method="post"  >
 			
-			<br /> <%-- value="${param.flightId}" --%>
+			<br /> 
+			<label class="visually-hidden" for="flightid">Name</label>
 									 <input type="number" class="form-control " name="Flight_id" id="flightid"  value="${flightId}"  readonly
 style="position: relative;width: 228px;left: 58px; top: -5px;height: 41px; "> 
 				

@@ -8,7 +8,7 @@
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Confirm Details</title>
@@ -222,8 +222,8 @@ button:hover, button:active {
 				readonly /> <br /> 
 				
 								  
-								  
-								  <button type="submit"  class="btn btn-outline-primary"
+								  <label class="visually-hidden" for="button">Name</label>
+								  <button type="submit"  class="btn btn-outline-primary" id="button"
 								  style="position:relative ;top: -397px;left: -6px; width: 99px;height: 35px; " >Submit</button>
 				
 				

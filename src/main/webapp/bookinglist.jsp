@@ -38,19 +38,13 @@ a:hover, a:active {
 </style>
 <body>
 
-<!-- <a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br /> -->
 
 <a href="Sourcedestination"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
 
 
-<%-- <%  
-		List<Passenger_details> objbookinglist = (List<Passenger_details>)request.getAttribute("Bookinglist");
- 
-		%>
- --%>		
 		   		<table border="2" class="table">
-			<h1 align="centre"><b>Booking  List</b></h1>
+			<h1 align="centre"><strong>Booking  List</strong>></h1>
 			<thead>
 				<tr class="table-secondary">
 				   <th >S.no</th>
