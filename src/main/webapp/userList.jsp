@@ -51,11 +51,8 @@ a:hover, a:active {
 			<br>
 			<br>
 			<tbody>
-				      <c:forEach items="${Flight}" var="reg" varStatus="status">
-				
+	 <c:forEach items="${Flight}" var="reg" varStatus="status">
 				<tr>
-				
-					
 					<td>${status.count}</td>	
 					<td>${reg.getName()}</td>
 					<td class="table-warning">${reg.getEmailid()}</td>
@@ -64,7 +61,6 @@ a:hover, a:active {
 					<td> ${reg.getGender()}</td>
 					<td> ${reg.getPhonenumber()}</td>
 					<td class="table-danger"> ${reg.getRegisterDate()}</td>
-					
 			</tr>
 				</c:forEach>
 					</tbody>

@@ -2,8 +2,16 @@ package com.airlinereservationsystemapp.Controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
+import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,10 +48,18 @@ public class Sourcedestination extends HttpServlet {
 		return new java.sql.Date(today.getTime());
 	}
 
+	public String getcurrenttime()
+	{
+        java.util.Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss z");  
+        String strDate = dateFormat.format(date);  
+        System.out.println("Converted String: " + strDate);
+		return strDate;  
+
+	}
 
     public Sourcedestination() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -62,6 +78,12 @@ public class Sourcedestination extends HttpServlet {
 			LocalDate arrivaldte  = getdate();
 			
 			Date arrives =  getcurrentdate();
+			
+			String datetett =  getcurrenttime();
+			
+			System.out.println(datetett);
+			
+			session.setAttribute("Timecheck", datetett);
 			
 			session.setAttribute("Arrives",arrives );
 

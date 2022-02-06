@@ -9,6 +9,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 
 <meta charset="ISO-8859-1">
 <title>Flight List</title>
@@ -74,7 +81,6 @@ a:hover, a:active {
 
 
 
-	    
 <c:if test ="${loggedinadmin!=null}">  
  
 			
@@ -98,7 +104,7 @@ a:hover, a:active {
  <c:if test="${flights!=null}">  
  
 		
-		  <table class="table">
+		  <table class="table" id="myTable">
 		
 			<h1 align="center"><strong>Flight List</strong></h1>
 			<thead class="table-warning">
@@ -168,15 +174,12 @@ a:hover, a:active {
  					  					 <td>${flight.getBusinessseats()}</td>
  					  			    	 <td>${flight.getDepartureTime()}</td>
  					  					 <td>${flight.getArrivaltime()}</td>
- 					  					 <td>${flight.getFlightstatus()}</td>
- 					  					 
+ 	 					  				 <td>${flight.getFlightstatus()}</td> 
+
  					  					 					  
-						<%-- <td><a href="updateflight.jsp?flightId=${flight.getFlight_id()}&flightname=${flight.getFlight_name()}&source=${flight.getSource()}&Destination=${flight.getDestination()}
-						&Economyclass=${flight.getEconomy_class()}&premiumeconomyclass=${flight.getPremium_Economy_class()}&Businessclass=${flight.getBussiness_class()}
-						&Arrivaldate=${flight.getArrival_Time()}&Departuredate=${flight.getDeparture_time()}" class="btn btn-danger">UpdateFlight</a></td> --%>
 						<c:if test ="${loggedinadmin!=null}">
 						<td><a href="Update?flightId=${flight.getFlight_id()}" class="btn btn-danger" >UpdateFlight</a></td>
-			                                              </c:if>
+			            </c:if>
 			                                              
  			                                              	  <c:if test ="${loggedinadmin!=null}">  
 				<td><a href="Delete?flightId=${flight.getFlight_id()}" class="btn btn-danger">DeleteFlight</a></td> 
@@ -185,16 +188,18 @@ a:hover, a:active {
  					  					 				  
  					  					 
  								 			 					
- 								 			 								</tr>
+ 								 			 	</tr>
  								 			     </c:forEach>
- 								 			     
- 					  
- 
-					
-					
-								</tbody>
+		</tbody>
 		</table>
 	</c:if>
+	
+	<script>
+	
+	$(document).ready( function () {
+	    $('#myTable').DataTable();
+	} );
+	</script>
 		
 </body>
 </html>
