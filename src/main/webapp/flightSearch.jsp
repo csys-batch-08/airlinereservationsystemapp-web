@@ -67,7 +67,7 @@ button:hover {
         
             <form  id="form" action="SearchFlight"   method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
                  
-                 <label class="visually-hidden" for="source"></label>
+                 <label class="visually-hidden" for="fightsource"></label>
               <input type="text"  
               id="fightsource" list="source" name="source" placeholder="Source" required>  
  <datalist id="source" >  
@@ -83,7 +83,7 @@ button:hover {
             </c:forEach>
       
  </datalist>
-                     <label class="visually-hidden" for="destination"></label>
+                     <label class="visually-hidden" for="fightdestination"></label>
        <input type="text"  
               id="fightdestination" list="destination" name="destination" placeholder="Destination"  required
 >  
