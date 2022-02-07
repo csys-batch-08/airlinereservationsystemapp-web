@@ -38,6 +38,7 @@ public class FlightSearchServlet extends HttpServlet {
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
 
+			e.getMessage();
 		}
 	}
 

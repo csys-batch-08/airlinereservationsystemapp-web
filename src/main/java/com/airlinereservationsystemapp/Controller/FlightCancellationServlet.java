@@ -78,7 +78,7 @@ public class FlightCancellationServlet extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			e.getMessage();
+			}
 	}
 }

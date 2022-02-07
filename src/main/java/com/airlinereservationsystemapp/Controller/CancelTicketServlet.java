@@ -49,7 +49,7 @@ public class CancelTicketServlet extends HttpServlet {
 			RequestDispatcher req = request.getRequestDispatcher("cancelticket.jsp");
 			req.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

@@ -24,8 +24,8 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<!-- <body>
- -->
+ <body>
+
  	<style>
 body {
 	background-image: url(image/bg9.jpg);
@@ -157,7 +157,6 @@ a:hover, a:active {
 	width: 40%
 }
 </style>
-<body>
 	<c:set value="${LOGGED_IN_USER}" var="loguser" />
 	<c:set value="${ROLE}" var="role" />
 	<c:set value="${Flight_id}" var="flightid" />

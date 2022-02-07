@@ -45,7 +45,7 @@ public class BookingdetailsServlet extends HttpServlet {
 			RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
 			req.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

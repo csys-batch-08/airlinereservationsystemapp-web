@@ -64,8 +64,8 @@ public class Addpassenger extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-		   e.printStackTrace();
-		   }
+			e.getMessage();
+			}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

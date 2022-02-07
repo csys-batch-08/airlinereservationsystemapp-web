@@ -37,8 +37,8 @@ public class DeleteFlightServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			e.getMessage();
+			}
 	}
 
 }

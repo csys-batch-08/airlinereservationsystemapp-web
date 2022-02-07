@@ -84,7 +84,7 @@ public class AddPassengerServlet extends HttpServlet {
 					"PaymentDetails?flightid=" + Flight_Id + "&ticketno=" + ticket_no + "&amount=" + amount);
 			req.forward(request, response);
 		} catch (Exception e) {
-			System.out.println(e);
+			e.getMessage();
 		}
 	}
 	public int generator() {

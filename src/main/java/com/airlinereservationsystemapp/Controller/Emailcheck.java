@@ -58,8 +58,8 @@ public class Emailcheck extends HttpServlet {
 				Write.println("Email id Already Registered");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+			e.getMessage();
+			} finally {
 			Connectutil.close(con, ps, rs);
 		}
 	}

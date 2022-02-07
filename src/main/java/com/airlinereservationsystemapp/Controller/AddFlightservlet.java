@@ -81,7 +81,9 @@ public class AddFlightservlet extends HttpServlet {
             int Flight_Id  = adddao.AddFlightDetails(flight);
             adddao.Addseats(Flight_Id, source, Destination,ecoseats,preseats,busseats,loca1,time2);
 			response.sendRedirect("flightSearch.jsp");				
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
+			e.getMessage();
 		}
 	}
 

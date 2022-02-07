@@ -75,8 +75,8 @@ public class ConfirmDetailsServlet extends HttpServlet {
 			request.setAttribute("Premium", prerate);
 			request.setAttribute("Bussiness", busrate);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			e.getMessage();
+			}
 	}
 
 	public int generator() {

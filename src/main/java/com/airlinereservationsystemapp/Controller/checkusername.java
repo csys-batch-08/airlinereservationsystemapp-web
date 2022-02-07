@@ -58,7 +58,7 @@ public class checkusername extends HttpServlet {
 				response.getWriter().println("User Name already Registered");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, ps, rs);
 		}

@@ -27,8 +27,8 @@ public class Delete extends HttpServlet {
 			RequestDispatcher req = request.getRequestDispatcher("deleteflight.jsp");
 			req.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			e.getMessage();
+			}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
