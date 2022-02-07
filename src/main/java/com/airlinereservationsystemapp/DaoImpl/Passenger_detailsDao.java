@@ -189,6 +189,10 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 	public void Updateticketcount(int flightid, LocalDate DepartureDate, String classdetails, int seats) {
 		Connection con = null;
 		PreparedStatement stmt = null;
+		PreparedStatement stmt1 = null;
+		PreparedStatement stmt2 = null;
+
+
 		try {
 			con = Connectutil.getdbconnect();
 			String sql = "";
@@ -202,19 +206,19 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 			}
 			if (classdetails.equalsIgnoreCase("premium")) {
 				sql = "update flight_seats_availabilty set Premium_Economy_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
-				stmt = con.prepareStatement(sql);
-				stmt.setInt(1, seats + 1);
-				stmt.setInt(2, flightid);
-				stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
-				stmt.executeUpdate();
+				stmt1 = con.prepareStatement(sql);
+				stmt1.setInt(1, seats + 1);
+				stmt1.setInt(2, flightid);
+				stmt1.setDate(3, java.sql.Date.valueOf(DepartureDate));
+				stmt1.executeUpdate();
 			}
 			if (classdetails.equalsIgnoreCase("Bussiness")) {
 				sql = "update flight_seats_availabilty set Business_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
-				stmt = con.prepareStatement(sql);
-				stmt.setInt(1, seats + 1);
-				stmt.setInt(2, flightid);
-				stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
-				stmt.executeUpdate();
+				stmt2 = con.prepareStatement(sql);
+				stmt2.setInt(1, seats + 1);
+				stmt2.setInt(2, flightid);
+				stmt2.setDate(3, java.sql.Date.valueOf(DepartureDate));
+				stmt2.executeUpdate();
 			}
 		} catch (Exception e) {
 			e.getMessage();
