@@ -55,7 +55,7 @@ public class Uservalid extends HttpServlet {
 				Write.println("User Name Not Valid");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, ps, rs);
 		}

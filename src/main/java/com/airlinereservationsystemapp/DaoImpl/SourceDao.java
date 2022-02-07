@@ -66,7 +66,7 @@ public class SourceDao implements SourceInterface {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs1);
 		}
@@ -148,7 +148,7 @@ public class SourceDao implements SourceInterface {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs1);
 
@@ -163,7 +163,8 @@ public class SourceDao implements SourceInterface {
 		ResultSet rs = null;
 		try {
 			con = Connectutil.getdbconnect();
-			stmt = con.prepareStatement("select * from flight_details");
+			//stmt = con.prepareStatement("select * from flight_details");
+			stmt = con.prepareStatement("select SOURCE,DESTINATION from flight_details");
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				String Source = rs.getString("Source");
@@ -172,7 +173,7 @@ public class SourceDao implements SourceInterface {
 				SourceList.add(objFlight);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt, rs);
 		}

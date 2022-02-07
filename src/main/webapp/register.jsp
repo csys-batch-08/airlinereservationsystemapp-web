@@ -100,7 +100,7 @@ button:hover {
 						type="password" name="password" id="password"
 						placeholder="Enter new password"
 						style="position: relative; top: 14px" required /> <br> <label
-						class="visually-hidden" for="password1"></label> <input
+						class="visually-hidden" for="Confirm"></label> <input
 						type="password" name="password1"
 						style="position: relative; top: 20px" id="Confirm" required
 						placeholder="Confirm Password " /><br> <br>

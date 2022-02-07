@@ -103,9 +103,12 @@ span.psw {
 		<h3 align="center">Guest Login</h3>
 		<div align="center">
 			<form name="GuestForm" action="GuestLogin" method="post">
+			   <label class="visually-hidden" for="phoneNumber"></label>
 				<input type="tel" id="phoneNumber" name="phoneNumber"
 					pattern="[6-9][0-9]{9}" placeholder="Enter Mobile Number" required
-					pattern="[6-9][0-9]{9}" /> <br> <input type="email" id="email"
+					pattern="[6-9][0-9]{9}" /> <br> 
+								   <label class="visually-hidden" for="email"></label>
+					<input type="email" id="email"
 					name="email"
 					pattern="[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
 					placeholder="Enter email address" required />

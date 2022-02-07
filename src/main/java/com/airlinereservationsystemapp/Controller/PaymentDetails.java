@@ -55,7 +55,7 @@ public class PaymentDetails extends HttpServlet {
 			request.setAttribute("Seatnovalue", value);
 			response.sendRedirect("payment.jsp");
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

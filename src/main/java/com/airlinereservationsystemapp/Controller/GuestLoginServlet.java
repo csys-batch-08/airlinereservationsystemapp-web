@@ -53,7 +53,7 @@ try {
 		requestDispatcher.forward(request, response);
 }
 catch (Exception e) {
-	e.printStackTrace();
+	e.getMessage();
 }
 	}
 }

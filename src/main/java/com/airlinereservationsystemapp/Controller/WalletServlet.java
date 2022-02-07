@@ -63,7 +63,7 @@ public class WalletServlet extends HttpServlet {
 				requestDispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

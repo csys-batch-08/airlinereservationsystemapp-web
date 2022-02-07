@@ -59,7 +59,7 @@ public class LoginservletServlet extends HttpServlet {
 				requestDispatcher.forward(request, response);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

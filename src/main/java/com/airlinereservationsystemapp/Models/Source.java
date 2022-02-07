@@ -1,7 +1,13 @@
 package com.airlinereservationsystemapp.Models;
 
-public class Source 
+import java.io.Serializable;
+
+public class Source implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Source;
 	private String Destination;
 

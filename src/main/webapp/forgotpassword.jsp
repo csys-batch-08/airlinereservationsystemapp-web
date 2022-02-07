@@ -72,8 +72,8 @@ button:hover {
 						name="username" value="${param.username}" required> <br></br>
 					<label for="password"><strong>Password</strong></label> <input
 						type="password" placeholder="Enter Password" name="password"
-						id="password" required> <br></br> <label for="username"><strong>Confirm
-							Password</strong>></label> <input type="password" id="confirmpassword"
+						id="password" required> <br></br> <label for="confirmpassword"><strong>Confirm
+							Password</strong></label> <input type="password" id="confirmpassword"
 						placeholder="Enter password" name="confirmpassword" required>
 					<br></br>
 					<button type="submit">Login</button>

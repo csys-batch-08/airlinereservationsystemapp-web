@@ -45,7 +45,7 @@ public class Update extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

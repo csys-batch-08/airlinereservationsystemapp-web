@@ -71,7 +71,7 @@ public class Sourcedestination extends HttpServlet {
 			req.forward(request, response);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

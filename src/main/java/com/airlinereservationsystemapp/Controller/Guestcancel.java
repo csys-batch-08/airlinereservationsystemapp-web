@@ -52,7 +52,7 @@ public class Guestcancel extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

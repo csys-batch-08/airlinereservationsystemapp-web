@@ -60,7 +60,7 @@ public class phonevalid extends HttpServlet {
 				Write.println("Mobile Number Already Present");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, ps, rs);
 		}

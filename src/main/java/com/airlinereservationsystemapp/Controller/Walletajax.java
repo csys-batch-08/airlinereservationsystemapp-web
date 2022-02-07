@@ -41,7 +41,7 @@ public class Walletajax extends HttpServlet {
 			PrintWriter Write = response.getWriter();
 			Write.println(Closingbalance);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

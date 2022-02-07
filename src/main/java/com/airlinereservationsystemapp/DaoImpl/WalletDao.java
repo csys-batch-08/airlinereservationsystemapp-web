@@ -29,7 +29,7 @@ public class WalletDao implements WalletInterface {
 				Closing_balance = rs.getInt("wallet_amount");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs);
 
@@ -54,7 +54,7 @@ public class WalletDao implements WalletInterface {
 				Closing_balance = rs.getInt("wallet_amount");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs);
 		}
@@ -76,7 +76,7 @@ public class WalletDao implements WalletInterface {
 			pst.setString(2, username);
 			rs = pst.executeQuery();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs);
 		}
@@ -93,7 +93,7 @@ public class WalletDao implements WalletInterface {
 			pst.setInt(2, Amount);
 			pst.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst);
 		}
@@ -110,7 +110,7 @@ public class WalletDao implements WalletInterface {
 			pst.setString(2, username);
 			pst.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst);
 		}
@@ -132,7 +132,7 @@ public class WalletDao implements WalletInterface {
 			pst.setInt(6, seatno);
 			pst.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst);
 		}

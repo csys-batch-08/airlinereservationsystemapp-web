@@ -31,7 +31,7 @@ public class LoginDao implements LoginDaoInterface {
 		}
 		catch(Exception e)
 		{
-		  e.printStackTrace();	
+			e.getMessage();
 		}
 		finally
 		{
@@ -66,7 +66,7 @@ public class LoginDao implements LoginDaoInterface {
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			e.getMessage();
 		}
 			finally
 			{
@@ -88,7 +88,7 @@ public class LoginDao implements LoginDaoInterface {
 		}
 		catch(Exception e)
 		{
-		  e.printStackTrace();	
+			e.getMessage();
 		}
 		finally
 		{

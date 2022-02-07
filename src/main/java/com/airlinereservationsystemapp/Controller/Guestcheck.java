@@ -50,9 +50,9 @@ public class Guestcheck extends HttpServlet {
 				}
 			}
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, ps, rs);
 		}

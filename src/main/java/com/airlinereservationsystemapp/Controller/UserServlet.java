@@ -42,7 +42,7 @@ public class UserServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

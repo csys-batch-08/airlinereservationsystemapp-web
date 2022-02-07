@@ -48,7 +48,7 @@ public class AddFlightDao implements AddFlightInterface {
 				FlightId = generatedKeys.getInt(1);
 			// }
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 
 		} finally {
 			Connectutil.close(con, stmt);
@@ -79,7 +79,7 @@ public class AddFlightDao implements AddFlightInterface {
 			stmt.setTime(8, java.sql.Time.valueOf(DepartureTime));
 			int str = stmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -97,7 +97,7 @@ public class AddFlightDao implements AddFlightInterface {
 			cstmt.setInt(1, Flight_id);
 			cstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, cstmt);
 		}
@@ -127,7 +127,7 @@ public class AddFlightDao implements AddFlightInterface {
 			cstmt.executeUpdate();
 			rres = cstmt.getNString(12);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, cstmt);
 		}
@@ -159,7 +159,7 @@ public class AddFlightDao implements AddFlightInterface {
 				registerlist.add(objregister);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt, rs);
 		}

@@ -58,7 +58,7 @@ public class FlightSearchDao implements FlightSearchInterface
 	}
 	catch(Exception e)
 	{
-		e.printStackTrace();
+		e.getMessage();
 	}
 		finally
 		{
@@ -100,7 +100,7 @@ return flightList;
 		} 
 		catch (Exception e) 
 		{
-		  e.printStackTrace();	
+			e.getMessage();
 		} 
 		finally
 		{

@@ -58,7 +58,7 @@ public class SearchFlightServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightsearchlist.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 	}

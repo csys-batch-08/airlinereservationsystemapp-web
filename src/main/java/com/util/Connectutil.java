@@ -19,7 +19,7 @@ public class Connectutil
      }
 	catch(Exception e)
 	{
-		e.printStackTrace();
+		e.getMessage();
 	}
 	return con;
 
@@ -52,7 +52,7 @@ public class Connectutil
 				}
 			} catch (Exception e) 
 			{
-				e.printStackTrace();
+				e.getMessage();
 			}
 	}
 		public static void close(Connection connection, CallableStatement pst) {
@@ -65,7 +65,7 @@ public class Connectutil
 				}
 			} catch (Exception e) 
 			{
-				e.printStackTrace();
+				e.getMessage();
 			}
 	}
 

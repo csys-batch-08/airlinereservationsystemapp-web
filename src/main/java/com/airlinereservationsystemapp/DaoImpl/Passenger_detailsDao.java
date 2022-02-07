@@ -47,7 +47,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 			if (generatedKeys.next())
 				seatno = generatedKeys.getInt(1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 
@@ -87,7 +87,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				booklist.add(passenegr);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt, rs);
 		}
@@ -120,7 +120,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				stmt.executeUpdate();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -161,7 +161,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs);
 		}
@@ -180,7 +180,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 			stmt.setInt(2, seatno);
 			stmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -217,7 +217,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				stmt.executeUpdate();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -250,7 +250,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt, rs);
 		}

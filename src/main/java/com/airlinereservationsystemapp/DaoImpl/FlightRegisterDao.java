@@ -39,7 +39,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 			str = stmt.executeUpdate();
 			insertwalletFlight(objFlightRegister);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -58,7 +58,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 			stmt.setInt(2, 0);
 			int fdgdgstr = stmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
 		}
@@ -88,7 +88,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 				return roles;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt, rs);
 		}
@@ -107,7 +107,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 			state.setString(2, mail);
 			state.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(con, state);
 		}
@@ -147,7 +147,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			Connectutil.close(connection, pst, rs);
 		}
