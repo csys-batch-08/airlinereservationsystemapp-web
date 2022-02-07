@@ -164,7 +164,7 @@ a:hover, a:active {
 	<c:set value="${Ticket_no}" var="ticketno" />
 	<c:set value="${Amont}" var="amount" />
 	<c:set value="${Seatfield}" var="seatnumeric" />
-	<main class="container-fluid">
+<!-- 	<main class="container-fluid"> -->
 		<h3 align="center">Payment Details</h3>
 		<div align="center">
 			<div class="Files" id="fun">
@@ -206,6 +206,5 @@ a:hover, a:active {
 				</form>
 			</div>
 		</div>
-	</main>
 </body>
 </html>

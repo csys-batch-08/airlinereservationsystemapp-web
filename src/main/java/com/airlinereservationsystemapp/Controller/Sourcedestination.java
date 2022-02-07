@@ -60,6 +60,7 @@ public class Sourcedestination extends HttpServlet {
 		FlightService flightService = new FlightService();
 		try {
 			List<Source> Sourceinfo = flightService.getsource();
+//			session.setAttribute("Sourcelist", Sourceinfo);
 			session.setAttribute("Sourcelist", Sourceinfo);
 			LocalDate arrivaldte = getdate();
 			Date arrives = getcurrentdate();
