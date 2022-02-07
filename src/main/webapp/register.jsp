@@ -74,7 +74,6 @@ button:hover {
 	padding: 16px;
 }
 </style>
-
 	<main class="container-fluid">
 		<h3 align="center">New User Registration Form</h3>
 
