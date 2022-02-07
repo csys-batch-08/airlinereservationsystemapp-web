@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,7 +65,10 @@ public class Sourcedestination extends HttpServlet {
 			Date arrives = getcurrentdate();
 			session.setAttribute("Arrives", arrives);
 			session.setAttribute("Arrivaldate", arrivaldte);
-			response.sendRedirect("flightSearch.jsp");
+//			response.sendRedirect("flightSearch.jsp");
+	        RequestDispatcher req = request.getRequestDispatcher("flightSearch.jsp");
+			req.forward(request, response);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

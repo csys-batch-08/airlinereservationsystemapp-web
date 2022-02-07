@@ -19,14 +19,14 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-
 <meta charset="ISO-8859-1">
 <title>Payment Page</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-	<style>
+<!-- <body>
+ -->
+ 	<style>
 body {
 	background-image: url(image/bg9.jpg);
 	background-repeat: no-repeat;
@@ -157,16 +157,13 @@ a:hover, a:active {
 	width: 40%
 }
 </style>
+<body>
 	<c:set value="${LOGGED_IN_USER}" var="loguser" />
 	<c:set value="${ROLE}" var="role" />
 	<c:set value="${Flight_id}" var="flightid" />
 	<c:set value="${Ticket_no}" var="ticketno" />
 	<c:set value="${Amont}" var="amount" />
 	<c:set value="${Seatfield}" var="seatnumeric" />
-
-
-
-
 	<main class="container-fluid">
 		<h3 align="center">Payment Details</h3>
 		<div align="center">

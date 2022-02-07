@@ -58,68 +58,57 @@ a:hover, a:active {
 	</h1>
 
 	<form name="addflight" action="UpdateFlight" method="post">
-	             <label class="visually-hidden" for="Flightid"></label>
-	             	<input type="number" class="form-control " id="Flightid"
-			name="Flightid" value="${flight.getFlight_id()}" readonly
+		<label class="visually-hidden" for="Flightid"></label> <input
+			type="number" class="form-control " id="Flightid" name="Flightid"
+			value="${flight.getFlight_id()}" readonly
 			style="position: relative; width: 250px; left: 38px; top: -18px;">
-				<br> <br /> 
-					  <label class="visually-hidden" for="Flightname"></label>
-				<input type="text" class="form-control"
+		<br> <br /> <label class="visually-hidden" for="Flightname"></label>
+		<input type="text" class="form-control"
 			value="${flight.getFlight_name()}" name="Flightname" id="Flightname"
 			style="position: relative; width: 250px; left: 38px; top: -29px;">
-		<br>
-		<label class="visually-hidden" for="source"></label>
-		<input type="text" class="form-control"
-			value="${flight.getSource()}" name="source" id="source"
+		<br> <label class="visually-hidden" for="source"></label> <input
+			type="text" class="form-control" value="${flight.getSource()}"
+			name="source" id="source"
 			style="position: relative; width: 250px; left: 38px; top: -25px;">
 
 
-		<br>
-		<label class="visually-hidden" for="Destination"></label>
-		<input type="text" class="form-control"
-			value="${flight.getDestination()}" name="Destination"
-			id="Destination"
+		<br> <label class="visually-hidden" for="Destination"></label> <input
+			type="text" class="form-control" value="${flight.getDestination()}"
+			name="Destination" id="Destination"
 			style="position: relative; width: 250px; left: 38px; top: -21px;">
 
-		<br>
-		<label class="visually-hidden" for="Economyclass"></label>
-		<input type="number" class="form-control"
+		<br> <label class="visually-hidden" for="Economyclass"></label> <input
+			type="number" class="form-control"
 			value="${flight.getEconomy_class()}" name="Economyclass"
 			id="Economyclass"
 			style="position: relative; width: 250px; left: 38px; top: -17px;">
 
-		<br> 
-	    <label class="visually-hidden" for="PremiumEconomyclass"></label>
+		<br> <label class="visually-hidden" for="PremiumEconomyclass"></label>
 		<input type="number" class="form-control"
 			value="${flight.getPremium_Economy_class()}"
 			name="PremiumEconomyclass" id="PremiumEconomyclass"
 			style="position: relative; width: 250px; left: 38px; top: -14px;">
 
-		<br>
-	    <label class="visually-hidden" for="Bussinessclass"></label>
+		<br> <label class="visually-hidden" for="Bussinessclass"></label>
 		<input type="number" class="form-control"
 			value="${flight.getBussiness_class()}" name="Bussinessclass"
 			id="Bussinessclass"
 			style="position: relative; width: 250px; left: 38px; top: -10px;">
-		<br> 
-	   <label class="visually-hidden" for="DepartureDate"></label>
+		<br> <label class="visually-hidden" for="DepartureDate"></label>
 		<input type="date" class="form-control"
 			value="${flight.getDeparture_time()}" name="DepartureDate"
 			id="DepartureDate"
 			style="position: relative; width: 250px; left: 38px; top: -6px;">
 
-		<br> 
-		    <label class="visually-hidden" for="ArrivalDate"></label>
-			<input type="date" class="form-control"
-			value="${flight.getArrival_Time()}" name="ArrivalDate"
-			id="ArrivalDate"
+		<br> <label class="visually-hidden" for="ArrivalDate"></label> <input
+			type="date" class="form-control" value="${flight.getArrival_Time()}"
+			name="ArrivalDate" id="ArrivalDate"
 			style="position: relative; width: 250px; left: 38px; top: -2px;">
 
 
-		<br> 
-		<label class="visually-hidden" for="Status"></label>
-		<input type="text" class="form-control"
-			value="Yet To Arrived" name="Status" id="Status"
+		<br> <label class="visually-hidden" for="Status"></label> <input
+			type="text" class="form-control" value="Yet To Arrived" name="Status"
+			id="Status"
 			style="position: relative; width: 250px; left: 38px; top: 2px;">
 
 
