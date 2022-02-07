@@ -21,121 +21,67 @@ import com.airlinereservationsystemapp.Models.Passenger_details;
 @WebServlet("/ConfirmDetails")
 public class ConfirmDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ConfirmDetailsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		
+	public ConfirmDetailsServlet() {
+		super();
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
-		
-		try
-		{
-		  String Flight_Id =request.getParameter("flightId");
-		  int flightid = Integer.parseInt(Flight_Id);
-		String name = request.getParameter("username");
-		String date = request.getParameter("departuredate");
-       LocalDate local = LocalDate.parse(date);
-		String Source = request.getParameter("source");
-		String Destination = request.getParameter("destination");
-      String mobno = request.getParameter("MobileNumber");
-      long mobileno = Long.parseLong(mobno);
-		String class_details = request.getParameter("coach");
-		//String seat  = request.getParameter("SEAT_NO");
-		//int seat_no = Integer.parseInt(seat);
-       String noofpassengers = request.getParameter("numberOfPassengers");
-       int noofpass = Integer.parseInt(noofpassengers);
-       String economyseats = request.getParameter("Economy_class");
-       int ecoseats = 0;
-//		if 	(economyseats != null && economyseats != "") 
-		//if 	(economyseats != null) 
-       if (economyseats != null && !economyseats.isEmpty())
-		{
-			ecoseats = Integer.parseInt(economyseats);
-		}
-
-	     
+		try {
+			String Flight_Id = request.getParameter("flightId");
+			int flightid = Integer.parseInt(Flight_Id);
+			String name = request.getParameter("username");
+			String date = request.getParameter("departuredate");
+			LocalDate local = LocalDate.parse(date);
+			String Source = request.getParameter("source");
+			String Destination = request.getParameter("destination");
+			String mobno = request.getParameter("MobileNumber");
+			long mobileno = Long.parseLong(mobno);
+			String class_details = request.getParameter("coach");
+			String noofpassengers = request.getParameter("numberOfPassengers");
+			int noofpass = Integer.parseInt(noofpassengers);
+			String economyseats = request.getParameter("Economy_class");
+			int ecoseats = 0;
+			if (economyseats != null && !economyseats.isEmpty()) {
+				ecoseats = Integer.parseInt(economyseats);
+			}
 			String premiumeconomyseats = request.getParameter("PremiumEconomyclass");
 			int premiumecoseats = 0;
-//		if 	(premiumeconomyseats != null && premiumeconomyseats != "") 
-		//if 	(premiumeconomyseats != null) 
-		       if (premiumeconomyseats != null && !premiumeconomyseats.isEmpty())
-
-			{
-			 premiumecoseats = Integer.parseInt(premiumeconomyseats);
+			if (premiumeconomyseats != null && !premiumeconomyseats.isEmpty()) {
+				premiumecoseats = Integer.parseInt(premiumeconomyseats);
 			}
-		
-	      String businesseats = request.getParameter("Bussinessclass");
-	      
+			String businesseats = request.getParameter("Bussinessclass");
 			int bussseats = 0;
-//		if 	(businesseats != null && businesseats != "") 
-			//if 	(businesseats != null ) 
-		       if (businesseats != null && !businesseats.isEmpty())
-
-			{
-			bussseats = Integer.parseInt(businesseats);
+			if (businesseats != null && !businesseats.isEmpty()) {
+				bussseats = Integer.parseInt(businesseats);
 			}
-
-      String Price_details = request.getParameter("price");
-      int price = Integer.parseInt(Price_details);
-     //  Date Bookingdate =(Date) new SimpleDateFormat("yyyy-mm-dd").parse(date);
-       
-      // Date Bookingdate = (Date) sdf.parse(date);
-     //int price = Integer.parseInt(Price_details);
-       
-		 int ticketno = generator();
-     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,local,ecoseats,premiumecoseats,bussseats,flightid,noofpass,ticketno,price);
-     
-     request.setAttribute("Passenger_Deatils", passenger);
-     
-     RequestDispatcher requestDispatcher = request.getRequestDispatcher("confirmdetails.jsp");
-		requestDispatcher.forward(request, response);
-		
-		
-		FlightSearchDao flightDao = new FlightSearchDao();
-		Flight_list flight = flightDao.getRecordById(flightid);
-		int busrate =  flight.getBussiness_class();
-		int prerate =  flight.getPremium_Economy_class();
-        int ecorate =   flight.getEconomy_class();
-		
-		
-		request.setAttribute("Economy", ecorate);
-		request.setAttribute("Premium", prerate);
-		request.setAttribute("Bussiness", busrate);
-
-
-
-		
-		}
-		catch(Exception e)
-		{
-			
-			 System.out.println(e.getMessage());
+			String Price_details = request.getParameter("price");
+			int price = Integer.parseInt(Price_details);
+			int ticketno = generator();
+			Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,
+					local, ecoseats, premiumecoseats, bussseats, flightid, noofpass, ticketno, price);
+			request.setAttribute("Passenger_Deatils", passenger);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("confirmdetails.jsp");
+			requestDispatcher.forward(request, response);
+			FlightSearchDao flightDao = new FlightSearchDao();
+			Flight_list flight = flightDao.getRecordById(flightid);
+			int busrate = flight.getBussiness_class();
+			int prerate = flight.getPremium_Economy_class();
+			int ecorate = flight.getEconomy_class();
+			request.setAttribute("Economy", ecorate);
+			request.setAttribute("Premium", prerate);
+			request.setAttribute("Bussiness", busrate);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	public int generator()
-	{
+	public int generator() {
 		Random r = new Random(System.currentTimeMillis());
 		return 100 + r.nextInt(1200);
 	}
-	
+
 }

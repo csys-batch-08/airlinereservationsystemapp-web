@@ -21,54 +21,43 @@ import com.airlinereservationsystemapp.Models.Passenger_details;
 @WebServlet("/Guestcancel")
 public class Guestcancel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Guestcancel() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-	public  LocalDate getdate()
-	{
-        LocalDate lt = LocalDate.now();
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Guestcancel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public LocalDate getdate() {
+		LocalDate lt = LocalDate.now();
 		return lt;
 	}
 
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		LocalDate local =  getdate();
+		LocalDate local = getdate();
 		session.setAttribute("Guestcurentdate", local);
-		
-	Long phone = (Long)	session.getAttribute("Mobile");
-	
-
-
+		Long phone = (Long) session.getAttribute("Mobile");
 		FlightRegisterDao listvalue = new FlightRegisterDao();
 		try {
-		List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
-		
-		//	session.setAttribute("Flight_List", flightInfo);
-request.setAttribute("GuestList", Guestcancel);
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
-		requestDispatcher.forward(request, response);
-		}
-		catch (Exception e) {
+			List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
+			request.setAttribute("GuestList", Guestcancel);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
+		}
 	}
 
-		//response.sendRedirect("guestcancelticket.jsp");
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }

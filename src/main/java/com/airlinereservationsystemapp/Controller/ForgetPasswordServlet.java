@@ -12,54 +12,29 @@ import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.LoginDao;
 
-/**
- * Servlet implementation class ForgetPassword
- */
 @WebServlet("/ForgetPassword")
 public class ForgetPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ForgetPasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
 		String Username = request.getParameter("username");
 		String Password = request.getParameter("password");
-     
      LoginDao password = new  LoginDao();
      try {
 			session.getAttribute("Sourcelist");
-
 		password.updatepassword(Username, Password);
-		
-		
-	 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 		requestDispatcher.forward(request, response);
-// response.sendRedirect("login.jsp");   
      }
      catch (Exception e) {
  		e.printStackTrace();
  	}
-     
-     
 	}
-
 }

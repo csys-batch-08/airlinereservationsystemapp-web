@@ -25,16 +25,10 @@ public class LoginservletServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
 		HttpSession session = request.getSession();
 		LoginDao login = new LoginDao();
 		Boolean loginvalidation;
@@ -42,47 +36,30 @@ public class LoginservletServlet extends HttpServlet {
 			loginvalidation = login.Loginfile(username, password);
 			if (loginvalidation) {
 				String Check_Admin = login.CheckAdmin(username, password);
-				//if (Check_Admin == "yes") 
-			if (Check_Admin.equalsIgnoreCase("Yes")) 
-
-				{
+				// if (Check_Admin == "yes")
+				if (Check_Admin.equalsIgnoreCase("Yes")) {
 					session.getAttribute("Sourcelist");
-
 					session.setAttribute("LOGGED_IN_ADMIN", username);
 					response.sendRedirect("FlightSearch");
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
 					requestDispatcher.forward(request, response);
-
 				} else {
-
 					session.setAttribute("LOGGED_IN_USER", username);
-
 					String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
 					FlightService flightService = new FlightService();
 					int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
-
 					session.setAttribute("Closingbalance", Closingbalance);
-
 					session.getAttribute("Sourcelist");
-
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
-
 				}
-
 			} else {
 				session.setAttribute("Error", "Invalid Crediantals");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 				requestDispatcher.forward(request, response);
-
-				// response.getWriter().print("Data failed");
-
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
-
 	}
-
 }

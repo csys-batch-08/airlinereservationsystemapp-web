@@ -22,7 +22,8 @@
 
 <meta charset="ISO-8859-1">
 <title>Payment Page</title>
-		<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<style>
@@ -208,6 +209,6 @@ a:hover, a:active {
 				</form>
 			</div>
 		</div>
-		</main>
+	</main>
 </body>
 </html>

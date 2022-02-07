@@ -20,114 +20,65 @@ import com.airlinereservationsystemapp.DaoImpl.WalletDao;
 @WebServlet("/FlightCancellation")
 public class FlightCancellationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FlightCancellationServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public FlightCancellationServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
-			
-		String  seat_no  = request.getParameter("seatno");
-		int seatno = Integer.parseInt(seat_no);
-		
-	String Flight_id  = request.getParameter("Flightid");
-		int flight = Integer.parseInt(Flight_id);
-
-	
-	String class_details = request.getParameter("Class");
-
-	String departuredate   = request.getParameter("DepartureDate");
-
-	 LocalDate date = LocalDate.parse(departuredate);
-
-	 
-	 String amountpaid  = request.getParameter("amount");
-	 int amount = Integer.parseInt(amountpaid);
-	 
-	 String modestatus = request.getParameter("mode");
-
-	 HttpSession session = request.getSession();
-	 String User = (String) session.getAttribute("LOGGED_IN_USER");
-	 
-		       WalletDao wallet = new WalletDao();
-				Passenger_detailsDao cancelflight = new Passenger_detailsDao();
-					
-			if(User.equalsIgnoreCase("Guest"))
-			{
+			String seat_no = request.getParameter("seatno");
+			int seatno = Integer.parseInt(seat_no);
+			String Flight_id = request.getParameter("Flightid");
+			int flight = Integer.parseInt(Flight_id);
+			String class_details = request.getParameter("Class");
+			String departuredate = request.getParameter("DepartureDate");
+			LocalDate date = LocalDate.parse(departuredate);
+			String amountpaid = request.getParameter("amount");
+			int amount = Integer.parseInt(amountpaid);
+			String modestatus = request.getParameter("mode");
+			HttpSession session = request.getSession();
+			String User = (String) session.getAttribute("LOGGED_IN_USER");
+			WalletDao wallet = new WalletDao();
+			Passenger_detailsDao cancelflight = new Passenger_detailsDao();
+			if (User.equalsIgnoreCase("Guest")) {
 				cancelflight.Updatecancelstatus(seatno);
-				
-				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
-				
+				int ticketcount = cancelflight.getticketcount(class_details, flight, date);
+				cancelflight.Updateticketcount(flight, date, class_details, ticketcount);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 				requestDispatcher.forward(request, response);
-
-
-			}
-			else
-				{
-				if(modestatus.equalsIgnoreCase("Debitcard"))
-				{
-				cancelflight.Updatecancelstatus(seatno);
-				
-				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
-				
-//			       int refundbalance = wallet.getclosingbalance(class_details);
-//				   
-//			       wallet.refundbalance(User, amount);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
-				requestDispatcher.forward(request, response);
-
-				}
-				if(modestatus.equalsIgnoreCase("Creditcard"))
-				{	
+			} else {
+				if (modestatus.equalsIgnoreCase("Debitcard")) {
 					cancelflight.Updatecancelstatus(seatno);
-					
-					int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-					cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
-               	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+					int ticketcount = cancelflight.getticketcount(class_details, flight, date);
+					cancelflight.Updateticketcount(flight, date, class_details, ticketcount);
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 					requestDispatcher.forward(request, response);
 				}
-				if(modestatus.equalsIgnoreCase("wallet"))
-				{
+				if (modestatus.equalsIgnoreCase("Creditcard")) {
 					cancelflight.Updatecancelstatus(seatno);
-					
-					int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-					cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
-					
-				       int refundbalance = wallet.getclosingbalance(class_details);
-					   
-			       wallet.refundbalance(User, amount);
-//					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
-//					requestDispatcher.forward(request, response);
-			       
-			       response.sendRedirect("flightSearch.jsp");
-
+					int ticketcount = cancelflight.getticketcount(class_details, flight, date);
+					cancelflight.Updateticketcount(flight, date, class_details, ticketcount);
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
+					requestDispatcher.forward(request, response);
+				}
+				if (modestatus.equalsIgnoreCase("wallet")) {
+					cancelflight.Updatecancelstatus(seatno);
+					int ticketcount = cancelflight.getticketcount(class_details, flight, date);
+					cancelflight.Updateticketcount(flight, date, class_details, ticketcount);
+					int refundbalance = wallet.getclosingbalance(class_details);
+					wallet.refundbalance(User, amount);
+					response.sendRedirect("flightSearch.jsp");
 				}
 			}
-		
-				} catch (Exception e) {
-
-					e.printStackTrace();
-				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
 }

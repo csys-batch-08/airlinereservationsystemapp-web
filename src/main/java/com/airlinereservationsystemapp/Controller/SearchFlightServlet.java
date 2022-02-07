@@ -22,61 +22,45 @@ import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
 @WebServlet("/SearchFlight")
 public class SearchFlightServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchFlightServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		
-
-		
-	}
-		
-		
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.setContentType("text/html");
+	public SearchFlightServlet() {
+		super();
+	}
 
-        
-       SourceDao objsearchflight = new SourceDao();
-     
-       	try
-		{
-		
-	        LocalDate local = null;
-	        String Source = "";
-	        String Destination = "";
-			 Source = request.getParameter("source");
-			 Destination = request.getParameter("destination");
-			String date =  request.getParameter("date");
-			//if(date!=null && date != "")
-			if (date != null && !date.isEmpty())			{
-				 local = LocalDate.parse(date);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		SourceDao objsearchflight = new SourceDao();
+		try {
+			LocalDate local = null;
+			String Source = "";
+			String Destination = "";
+			Source = request.getParameter("source");
+			Destination = request.getParameter("destination");
+			String date = request.getParameter("date");
+			// if(date!=null && date != "")
+			if (date != null && !date.isEmpty()) {
+				local = LocalDate.parse(date);
 			}
-			HttpSession session =  request.getSession();
-			
-			//List<Flight_Seat_Availability> objavailability = objsearchflight.ListSeat(Source, Destination);
+			HttpSession session = request.getSession();
 			List<Flight_Seat_Availability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
-
 			request.setAttribute("Flight_List", objavailability);
-		
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightsearchlist.jsp");
 			requestDispatcher.forward(request, response);
-					}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

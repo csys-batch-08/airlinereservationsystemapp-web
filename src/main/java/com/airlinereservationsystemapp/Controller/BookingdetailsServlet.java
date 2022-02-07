@@ -10,11 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ResourceBundle; 
+import java.util.ResourceBundle;
 import java.util.ListResourceBundle;
-
-
-
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
 import com.airlinereservationsystemapp.Models.Passenger_details;
 
@@ -41,20 +38,13 @@ public class BookingdetailsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		try {
-		Passenger_detailsDao booklist = new Passenger_detailsDao();
+			Passenger_detailsDao booklist = new Passenger_detailsDao();
 
-		List<Passenger_details> bookinfo = booklist.Bookinglist();
-		//session.setAttribute("Bookinglist", bookinfo);
-		request.setAttribute("Bookinglist", bookinfo);
-
-//		response.sendRedirect("bookinglist.jsp");
-		
-      RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
-	req.forward(request, response);
-
-	}
-		catch(Exception e)
-		{
+			List<Passenger_details> bookinfo = booklist.Bookinglist();
+			request.setAttribute("Bookinglist", bookinfo);
+			RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
+			req.forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -67,5 +57,4 @@ public class BookingdetailsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-
 }

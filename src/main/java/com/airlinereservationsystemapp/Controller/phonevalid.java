@@ -21,56 +21,48 @@ import com.util.Connectutil;
 @WebServlet("/phonevalid")
 public class phonevalid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public phonevalid() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public phonevalid() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Connection con = null;
-		PreparedStatement ps =null;
-		ResultSet rs =null;
-		
-		try {	
-			String phone  = request.getParameter("phoneno");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			String phone = request.getParameter("phoneno");
 			long mobileno = Long.parseLong(phone);
-
 			con = Connectutil.getdbconnect();
-	 ps=con.prepareStatement("select * from register where Phone_number=? ");  
-	ps.setLong(1,mobileno); 
-	 rs=ps.executeQuery();  
-	if(rs.next())
-	{
-		PrintWriter Write = response.getWriter();
-	   Write.println("Mobile Number Already Present");
-	}
-	}
-	catch(Exception e)
-	{
-		e.printStackTrace();  
-	}
-		finally
-		{
-			Connectutil.close(con,ps,rs);
+			ps = con.prepareStatement("select * from register where Phone_number=? ");
+			ps.setLong(1, mobileno);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				PrintWriter Write = response.getWriter();
+				Write.println("Mobile Number Already Present");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Connectutil.close(con, ps, rs);
 		}
-	 
-
-
 	}
-
 }

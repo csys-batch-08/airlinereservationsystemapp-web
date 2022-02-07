@@ -19,82 +19,41 @@ import com.airlinereservationsystemapp.DaoImpl.FlightRegisterDao;
 public class GuestLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public GuestLoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.getAttribute("Sourcelist");
-
 try {
 		String guest = "Guest";
 		String role = "guest";
 		session.setAttribute("LOGGED_IN_USER", guest);
 		session.setAttribute("Guest", role);
-		//request.setAttribute("ROLE", role);
-
-		
 		String mobile = request.getParameter("phoneNumber");
 		Long phone = Long.parseLong(mobile);
-		
 		session.setAttribute("Mobile", phone);
-		
 		String mail = request.getParameter("email");
-		
-
-
-		
 		FlightRegisterDao object = new FlightRegisterDao();
 		 String  valid ;
-
-			
 			valid  =  object.guestcheck(phone, mail);
-
-			
 			if(valid!=null)
 		{
-				
-
 		}	
-
        if(valid==null)
        {
     	   object.insertguestvalid(phone, mail);
        }
-
-
-		
-			 
-		
-		
-		
 	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 		requestDispatcher.forward(request, response);
-		
-		//response.sendRedirect("flightSearch.jsp");
 }
 catch (Exception e) {
 	e.printStackTrace();
 }
-
 	}
-	
-	
 }

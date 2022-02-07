@@ -37,55 +37,37 @@ public class Addpassenger extends HttpServlet {
 		HttpSession session  = request.getSession();
 		try
 		{
-	String flight_id = request.getParameter("flightId");
+	    String flight_id = request.getParameter("flightId");
 		int flightId = Integer.parseInt(flight_id);
     	String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
-		
 		String DepartureDate = request.getParameter("Departure_Date");
 		Date  Departure_Date = java.sql.Date.valueOf(DepartureDate) ;
-
-		
 		String Economyclass = request.getParameter("Economyrate");
-Double Economyrate  = Double.parseDouble(Economyclass);
-
-		
+        Double Economyrate  = Double.parseDouble(Economyclass);
 		String PremiumEconomyclass = request.getParameter("Premiumrate");
 		Double Premiumrate = Double.parseDouble(PremiumEconomyclass);
 		String Bussinessclass = request.getParameter("Business");
 		double Business = Double.parseDouble(Bussinessclass);
 		String Economyclass1 = request.getParameter("Economy_class");
 		int Economy_class = Integer.parseInt(Economyclass1);
-		
 		String Premiumrate1 = request.getParameter("Premium_Economy_class");
 		int Premium_Economy_class = Integer.parseInt(Premiumrate1);
 		String Businesseat = request.getParameter("Bussiness_class");
 		int Bussiness_class =  Integer.parseInt(Businesseat);
-		
-		
 		Flight_Seat_Availability flight  = new 	Flight_Seat_Availability(flightId, source, destination,  Departure_Date, Economy_class, Premium_Economy_class, Bussiness_class, Economyrate, Premiumrate, Business);
 		//session.setAttribute("Addlist", flight);
 		request.setAttribute("Addlist", flight);
-
         RequestDispatcher req = request.getRequestDispatcher("addPassenger.jsp");
 		req.forward(request, response);
-
       //response.sendRedirect("addPassenger.jsp");
 		}
 		catch(Exception e)
 		{
 		   e.printStackTrace();
 		   }
-
-
-
 	}
 
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}

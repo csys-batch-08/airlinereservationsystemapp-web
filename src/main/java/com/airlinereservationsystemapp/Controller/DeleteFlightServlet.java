@@ -17,39 +17,28 @@ import com.airlinereservationsystemapp.DaoImpl.AddFlightDao;
 @WebServlet("/DeleteFlight")
 public class DeleteFlightServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteFlightServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DeleteFlightServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{		//doGet(request, response);
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException { // doGet(request, response);
 		AddFlightDao delete = new AddFlightDao();
-try {
-		String  Flight_id  = request.getParameter("Flight_id");
-int Flightid = Integer.parseInt(Flight_id);
-			 delete.DeleteFlight(Flightid);
-			   
+		try {
+			String Flight_id = request.getParameter("Flight_id");
+			int Flightid = Integer.parseInt(Flight_id);
+			delete.DeleteFlight(Flightid);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 			requestDispatcher.forward(request, response);
-}
-		 catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
 
 }

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import com.airlinereservationsystemapp.Models.Source;
 
 import Services.FlightService;
@@ -31,80 +30,48 @@ import Services.FlightService;
 @WebServlet("/Sourcedestination")
 public class Sourcedestination extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
-	public  LocalDate getdate()
-	{
-        LocalDate lt = LocalDate.now();
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+
+	public LocalDate getdate() {
+		LocalDate lt = LocalDate.now();
 		return lt;
 	}
-	
-	public  Date getcurrentdate()
-	{
+
+	public Date getcurrentdate() {
 		java.util.Date today = new java.util.Date();
 		return new java.sql.Date(today.getTime());
 	}
 
-	public String getcurrenttime()
-	{
-        java.util.Date date = Calendar.getInstance().getTime();  
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss z");  
-        String strDate = dateFormat.format(date);  
-        System.out.println("Converted String: " + strDate);
-		return strDate;  
-
+	public Sourcedestination() {
+		super();
 	}
 
-    public Sourcedestination() {
-        super();
-    }
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session  =  request.getSession();
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		FlightService flightService = new FlightService();
 		try {
 			List<Source> Sourceinfo = flightService.getsource();
-			
 			session.setAttribute("Sourcelist", Sourceinfo);
-			
-			LocalDate arrivaldte  = getdate();
-			
-			Date arrives =  getcurrentdate();
-			
-			String datetett =  getcurrenttime();
-			
-			System.out.println(datetett);
-			
-			session.setAttribute("Timecheck", datetett);
-			
-			session.setAttribute("Arrives",arrives );
-
-			
-			session.setAttribute("Arrivaldate",arrivaldte );
-			
+			LocalDate arrivaldte = getdate();
+			Date arrives = getcurrentdate();
+			session.setAttribute("Arrives", arrives);
+			session.setAttribute("Arrivaldate", arrivaldte);
 			response.sendRedirect("flightSearch.jsp");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
-
-	
 }

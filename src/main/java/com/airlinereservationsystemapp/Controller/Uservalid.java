@@ -21,64 +21,44 @@ import com.util.Connectutil;
 @WebServlet("/Uservalid")
 public class Uservalid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Uservalid() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+	public Uservalid() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		String username =request.getParameter("uname");  
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String username = request.getParameter("uname");
 		Connection con = null;
-		PreparedStatement ps =null;
-		ResultSet rs =null;
-		
-		try
-		{  
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 			con = Connectutil.getdbconnect();
-		 ps=con.prepareStatement("select * from register where User_name=? ");  
-		ps.setString(1,username);  
-		 rs=ps.executeQuery();  
-		if(rs.next())
-		{
-
-		}  
-		else
-		{
-			PrintWriter Write = response.getWriter();
-		   Write.println("User Name Not Valid");
-
+			ps = con.prepareStatement("select * from register where User_name=? ");
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+			} else {
+				PrintWriter Write = response.getWriter();
+				Write.println("User Name Not Valid");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Connectutil.close(con, ps, rs);
 		}
-
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace(); 
-		}
-		 
-       finally
-       {
-    	   Connectutil.close(con,ps,rs);
-       }
-
-		
-
 	}
 
 }

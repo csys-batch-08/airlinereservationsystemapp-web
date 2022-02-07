@@ -16,69 +16,46 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/PaymentDetails")
 public class PaymentDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PaymentDetails() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PaymentDetails() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		System.out.println("Welcome to details servlet");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		try
-		{
-			
+		try {
 			String flightid = request.getParameter("flightid");
 			String ticketno = request.getParameter("ticketno");
 			String Amount = request.getParameter("amount");
-ArrayList<Integer> value = (ArrayList<Integer>)session.getAttribute("SeatValue");
-
-
-session.setAttribute("Seatfield",value);
-
-String seatvaluefield =  value.toString();
-
-
-
-String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
-
-str=str.replaceAll("\\s", "");
-
-
-session.setAttribute("Seatfield",str);
-
-
-
-			
-		     request.setAttribute("Flight_ID", flightid);
-		     session.setAttribute("Flight_id", flightid);
-		     
-		     request.setAttribute("Ticket_no", ticketno);
-		     session.setAttribute("Ticket_no", ticketno);
-
-		     request.setAttribute("Amount", Amount);
-		     session.setAttribute("Amont", Amount);
-		     request.setAttribute("Seatnovalue", value);
-		    response.sendRedirect("payment.jsp");
-
-
+			ArrayList<Integer> value = (ArrayList<Integer>) session.getAttribute("SeatValue");
+			session.setAttribute("Seatfield", value);
+			String seatvaluefield = value.toString();
+			String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
+			str = str.replaceAll("\\s", "");
+			session.setAttribute("Seatfield", str);
+			request.setAttribute("Flight_ID", flightid);
+			session.setAttribute("Flight_id", flightid);
+			request.setAttribute("Ticket_no", ticketno);
+			session.setAttribute("Ticket_no", ticketno);
+			request.setAttribute("Amount", Amount);
+			session.setAttribute("Amont", Amount);
+			request.setAttribute("Seatnovalue", value);
+			response.sendRedirect("payment.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-
 	}
-
 }

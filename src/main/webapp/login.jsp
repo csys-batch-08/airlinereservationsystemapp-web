@@ -3,9 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +53,7 @@ button:hover {
 	padding: 10px 18px;
 	background-color: #f44336;
 }
+
 .container {
 	padding: 16px;
 }
@@ -75,14 +73,10 @@ span.psw {
 	}
 }
 </style>
-
-
-
 	<c:set value="${LOGGED_IN_ADMIN}" var="loggedInAsAdmin" />
 	<c:set value="${LOGGED_IN_USER}" var="loggedInAsUser" />
 	<c:set value="${Error}" var="error" />
 	<main class="container-fluid">
-
 		<div style="margin-right: 900px; margin-top: 70px;">
 			<h1 align="center" style="color: white;">Login</h1>
 			<div align="center">
@@ -92,50 +86,35 @@ span.psw {
 					</h2>
 				</c:if>
 				<form action="Loginservlet" method="post">
-
-
 					<div class="container">
 						<label for="username" style="color: white;"><strong>Username</strong></label>
 						<input type="text" id="username" placeholder="Enter Username"
 							name="username" required> <b></b> <label for="password"
-							style="color: white;"><b>Password</b></label> 
-							<input type="password" id="Password" placeholder="Enter Password"
+							style="color: white;"><b>Password</b></label> <input
+							type="password" id="Password" placeholder="Enter Password"
 							name="password" required onkeyup="validlogin()">
-
-
 						<div id="fads">
 							<c:if test="${error!=null}">
 								<p id="value" style="font-size: 20px; color: red;">${error}
 								</p>
-
 							</c:if>
-
-
 						</div>
 						<button type="submit" id="submit">Login</button>
 					</div>
-
 					<p id="loginresponse"></p>
-
-
 					<c:set value="${param.username}" var="username" />
-
-
 					<div class="container" style="background-color: #f1f1f1">
 						<button type="button" class="cancelbtn">
 							<a href="Sourcedestination" style="text-decoration: blink;">BACK</a>
 						</button>
 						<c:if test="${error!=null}">
-
 							<a href="forgotpassword.jsp?username=${param.username}"
 								class="btn btn-primary">Forget password?</a>
 						</c:if>
-
 					</div>
 				</form>
 			</div>
 		</div>
-
 		<script>
 			function validation() {
 				let username = document.getElementById("username").value;

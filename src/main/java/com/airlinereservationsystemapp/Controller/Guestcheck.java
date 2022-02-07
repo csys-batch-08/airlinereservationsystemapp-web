@@ -20,71 +20,41 @@ import com.util.Connectutil;
 @WebServlet("/Guestcheck")
 public class Guestcheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Guestcheck() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	public Guestcheck() {
+		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String email = request.getParameter("mail");
-		Connection con  =null; 
-		PreparedStatement ps =null;
-		ResultSet rs =null;
-		try
-		{  
-			String mobile =request.getParameter("phone"); 
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			String mobile = request.getParameter("phone");
 			long phone = Long.parseLong(mobile);
-
-			 con = Connectutil.getdbconnect();
-			if(phone!=0)
-			{
-		 ps=con.prepareStatement("select * from register where  Phone_number = ?");  
-		ps.setLong(1,phone);
-		 rs=ps.executeQuery();  
-		if(rs.next())
-		{
-			PrintWriter Write = response.getWriter();
-		   Write.println("Phone Number Already Registered");
-
-		}  
-			
-		else
-		{
+			con = Connectutil.getdbconnect();
+			if (phone != 0) {
+				ps = con.prepareStatement("select * from register where  Phone_number = ?");
+				ps.setLong(1, phone);
+				rs = ps.executeQuery();
+				if (rs.next()) {
+					PrintWriter Write = response.getWriter();
+					Write.println("Phone Number Already Registered");
+				} else {
+				}
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Connectutil.close(con, ps, rs);
 		}
-		}
-		}
-		catch(NumberFormatException e)
-		{
-			e.printStackTrace(); 
-
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace(); 
-
-		}
-		finally
-		{
-			Connectutil.close(con,ps,rs);
-		}
-		 
-
-
 	}
-
 }

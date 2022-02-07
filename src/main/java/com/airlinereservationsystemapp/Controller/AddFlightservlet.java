@@ -58,7 +58,6 @@ public class AddFlightservlet extends HttpServlet {
 			String flightname = request.getParameter("Flightname");
 			String source = request.getParameter("source");           
 			String Destination = request.getParameter("Destination");			
-			//int age = Integer.parseInt(request.getParameter("age"));
 			int   Economyclass = Integer.parseInt(request.getParameter("Economyclass"));
 			int   premiumEconomyclass = Integer.parseInt(request.getParameter("PremiumEconomyclass"));
 			int   Bussinessclass = Integer.parseInt(request.getParameter("Bussinessclass"));
@@ -83,11 +82,7 @@ public class AddFlightservlet extends HttpServlet {
             adddao.Addseats(Flight_Id, source, Destination,ecoseats,preseats,busseats,loca1,time2);
 			response.sendRedirect("flightSearch.jsp");				
 		} catch (Exception e) {
-			System.out.println(e);
-
 		}
-
-		
 	}
 
 

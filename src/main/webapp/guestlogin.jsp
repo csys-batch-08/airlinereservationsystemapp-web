@@ -10,12 +10,9 @@
 <meta charset="ISO-8859-1">
 <title>GUESTLOGIN</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 <body>
-
 <style>
-
 body {
 background-image: url(image/bg9.jpg);
 	background-repeat: no-repeat;
@@ -25,15 +22,10 @@ background-image: url(image/bg9.jpg);
 	align:"center";
 	
 }
-
-
-
 form {
- 
   width:30%;
   align:"center";
 }
-
 /* Full-width inputs */
 input[type=tel], input[type=email] {
   width: 63%;
@@ -100,102 +92,32 @@ span.psw {
     width: 100%;
   }
 }
-
 </style>
-
 <c:set var="error"  value="${Errorvalue}"/>
-
 <c:set var="role"  value="${ROLE}"/>
-
-
 <a href="Sourcedestination"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />; 
-
 <main class="container-fluid">
 		<h3 align="center">Guest Login </h3>
 		<div align="center">
-
-
     		<form name="GuestForm" action="GuestLogin" method="post" >
-    		
-				
     		      <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  pattern = "[6-9][0-9]{9}"
-				 />
-				
-				
+				 placeholder="Enter Mobile Number" required  pattern = "[6-9][0-9]{9}"/>
 			<br> 
-			
-			
 			 <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
- placeholder="Enter email address" required 
-				 />
-			
+ placeholder="Enter email address" required />
 						<div style="text-align: center" >
 				<button type="Submit"  required   onkeyup ="validlogin()" >Submit</button>
-					
-					
-				
 			</div>
 								<p id="guestresponse"  style="font-style: italic; color: red; font-size: 20px;"></p>
-			
 					<a href="flightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
-			
 			</form>
 		<div>	
              <c:if test="${error!=null }">
          					<p id="value"   style="font-size: 20px; color: red;"> ${error}</p>
-             
               </c:if>
- 
- 
- 
- 
  </div>
-			
-    		
     </div>
     <script>
-    
-
-/*     console.log(url);
-
-    if(window.XMLHttpRequest){  
-    request=new XMLHttpRequest();  
-    }  
-    else if(window.ActiveXObject){  
-    request=new ActiveXObject("Microsoft.XMLHTTP");  
-    }  
-    try  
-    {  
-    request.onreadystatechange=getInfo;  
-    request.open("GET",url,true); 
-    request.send();
-    }  
-    catch(e)  
-    {  
-    alert("Unable to connect to server"); 
-    }
-        
-
-    }
-    
-    function getInfo()
-    {  
-    	if(request.readyState==4){  
-    	var response =request.responseText; 
-    	if(response.includes("Phone Number Already Registered"))
-    		{
-    	document.getElementById('guestresponse').innerHTML=response;  
-       
-  document.getElementById("phoneNumber").value="";
-
-
-    		}
-    		}
-    	
-    	}  
-     
- */
  function validlogin()
  {
 	    console.log("called");
@@ -221,23 +143,12 @@ cache:false,
  }
 	});
 		    }
-	
-
-
 	document.getElementById("phoneNumber").onkeydown = function() {myfunction()};
-	
 	function myfunction()
 	{
 		document.getElementById("guestresponse").innerHTML = "";
 	}
-
-    
-    
     </script>
     </main>
-
-
-
-
 </body>
 </html>

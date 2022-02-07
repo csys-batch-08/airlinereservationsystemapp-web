@@ -14,20 +14,16 @@ import com.airlinereservationsystemapp.Models.Flight_list;
 import com.util.Connectutil;
 
 public class LoginDao implements LoginDaoInterface {
-
 	public Boolean Loginfile(String username, String password)  {
- 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			connection = Connectutil.getdbconnect();
-		String sql = "SELECT * FROM register WHERE user_name = ? AND password =?";
-
+		String sql = "SELECT NAMES,EMAIL_ID,USER_NAME,PASSWORD,GENDER,PHONE_NUMBER,REGISTERED_DATE,IS_ADMIN FROM register WHERE user_name = ? AND password =?";
 		 pst = connection.prepareStatement(sql);
 		pst.setString(1, username);
 		pst.setString(2, password);
-
 		 rs = pst.executeQuery();
 		while (rs.next()) {
 			return true;
@@ -35,30 +31,24 @@ public class LoginDao implements LoginDaoInterface {
 		}
 		catch(Exception e)
 		{
-			
+		  e.printStackTrace();	
 		}
 		finally
 		{
 			Connectutil.close(connection,pst,rs);
 		}
-		
-
 		return false;
-
 	}
-
 	public String CheckAdmin(String username, String password)  {
 
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-
 		String admin = "";
 		try
 		{
 		 connection = Connectutil.getdbconnect();
-		String sql = "SELECT * FROM register WHERE user_name = ? AND password =?";
-
+		String sql = "SELECT NAMES,EMAIL_ID,USER_NAME,PASSWORD,GENDER,PHONE_NUMBER,REGISTERED_DATE,IS_ADMIN FROM register WHERE user_name = ? AND password =?";
 		 pst = connection.prepareStatement(sql);
 		pst.setString(1, username);
 		pst.setString(2, password);
@@ -71,9 +61,7 @@ public class LoginDao implements LoginDaoInterface {
 				} else {
 					return admin = "No";
 				}
-
 			}
-
 		}
 		}
 		catch (Exception e)
@@ -84,25 +72,18 @@ public class LoginDao implements LoginDaoInterface {
 			{
 				Connectutil.close(connection,pst,rs);
 			}
-
-
 		return admin;
-
 	}
-
 	public void updatepassword(String username, String password) 
 	{
 		Connection connection = null;
 		PreparedStatement pst = null;
-
 		try {
 			connection = Connectutil.getdbconnect();
 		String sql = "update register set password = ?   where user_name = ?";
-
 		 pst = connection.prepareStatement(sql);
 		pst.setString(1, password);
 		pst.setString(2, username);
-
 		pst.executeUpdate();
 		}
 		catch(Exception e)
@@ -114,7 +95,4 @@ public class LoginDao implements LoginDaoInterface {
 			Connectutil.close(connection,pst);
 		}
 	}
-
-
-
 }

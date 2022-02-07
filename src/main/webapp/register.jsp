@@ -54,7 +54,8 @@ input[type=radio] {
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
-} 
+}
+
 button {
 	background-color: #04AA6D;
 	color: white;
@@ -85,54 +86,45 @@ button:hover {
 			<form name="RegisterForm" action="FlightRegister" method="post">
 				<div class="container">
 
-				<label class="visually-hidden" for="name"></label>
-					<input type="text" name="name" id="name"
-						pattern="[A-Za-z]{3,20}" placeholder="Enter name" required
-						autofocus /> 
-					<br>
-						<label class="visually-hidden" for="email"></label>
-						<input type="text"id="email" name="email" onkeyup="sendemail()"
-						placeholder="Enter email address"style="position: relative; top: 5px" required />
-						<br>
-                    <label class="visually-hidden" for="username"></label>
-					<input type="text" id="username" name="username"
-						onkeyup=" validuser()" pattern="[A-Za-z\s]{3,8}"
-						placeholder="Enter User name"
-						style="position: relative; top: 7px" required autofocus />
-					 <br> 
-		            <label class="visually-hidden" for="password"></label>
-					 <input type="password" name="password"
-						id="password" placeholder="Enter new password"
-						style="position: relative; top: 14px" required />
-                         <br>
-         		            <label class="visually-hidden" for="password1"></label>
-                          <input type="password" name="password1"
+					<label class="visually-hidden" for="name"></label> <input
+						type="text" name="name" id="name" pattern="[A-Za-z]{3,20}"
+						placeholder="Enter name" required autofocus /> <br> <label
+						class="visually-hidden" for="email"></label> <input type="text"
+						id="email" name="email" onkeyup="sendemail()"
+						placeholder="Enter email address"
+						style="position: relative; top: 5px" required /> <br> <label
+						class="visually-hidden" for="username"></label> <input type="text"
+						id="username" name="username" onkeyup=" validuser()"
+						pattern="[A-Za-z\s]{3,8}" placeholder="Enter User name"
+						style="position: relative; top: 7px" required autofocus /> <br>
+					<label class="visually-hidden" for="password"></label> <input
+						type="password" name="password" id="password"
+						placeholder="Enter new password"
+						style="position: relative; top: 14px" required /> <br> <label
+						class="visually-hidden" for="password1"></label> <input
+						type="password" name="password1"
 						style="position: relative; top: 20px" id="Confirm" required
 						placeholder="Confirm Password " /><br> <br>
 
 					<div id="phonere">
-					    <label class="visually-hidden" for="phoneNumber"></label>
-						<input type="tel" id="phoneNumber" name="phoneNumber"
+						<label class="visually-hidden" for="phoneNumber"></label> <input
+							type="tel" id="phoneNumber" name="phoneNumber"
 							pattern="[6-9][0-9]{9}" placeholder="Enter Mobile Number"
 							style="position: relative; top: 3px" required
 							onkeydown="return validation()" />
 					</div>
-					<br> 
-				 <label class="visually-hidden" for="Gender"></label>
-					<input type="radio" id="Male" name="Gender" value="Male"
-						onkeyup="phonenumber()"> 
-						<label for="Male"
-						style="color: white;">Male</label>
-						<input type="radio" id="Female"
+					<br> <label class="visually-hidden" for="Gender"></label> <input
+						type="radio" id="Male" name="Gender" value="Male"
+						onkeyup="phonenumber()"> <label for="Male"
+						style="color: white;">Male</label> <input type="radio" id="Female"
 						name="Gender" value="Female"> <label for="Female"
-						style="color: white;">Female</label> 
-						<input type="radio"
+						style="color: white;">Female</label> <input type="radio"
 						id="Others" name="Gender" value="Others"> <label
-						for="Others" style="color: white;">Others</label> 
-                           <div style="text-align: center">
+						for="Others" style="color: white;">Others</label>
+					<div style="text-align: center">
 						<button type="Submit" style="position: relative; top: 4px">
 							Register</button>
-							</div>
+					</div>
 					<div id="messages"
 						style="text-align: center; color: white; font-family: cursive; font-style: inherit; font-size: 18px;">
 						<p id="emailresponse"></p>

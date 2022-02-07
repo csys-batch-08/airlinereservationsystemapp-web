@@ -19,49 +19,42 @@ import com.airlinereservationsystemapp.Models.Flight_list;
 @WebServlet("/Update")
 public class Update extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Update() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		HttpSession session  = request.getSession();
-		try
-		{
-		String flightid =  request.getParameter("flightId");
-		int Flight_Id = Integer.parseInt(flightid);
-		
-		FlightSearchDao flightDao = new FlightSearchDao();
-		Flight_list flight = flightDao.getRecordById(Flight_Id);
-		
-//		session.setAttribute("Flight_id", flight);
-		
-	request.setAttribute("Flight_id", flight);
+	public Update() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		try {
+			String flightid = request.getParameter("flightId");
+			int Flight_Id = Integer.parseInt(flightid);
 
-		//response.sendRedirect("updateflight.jsp");
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");
-		requestDispatcher.forward(request, response);
-		}
-		catch(Exception e)
-		{
+			FlightSearchDao flightDao = new FlightSearchDao();
+			Flight_list flight = flightDao.getRecordById(Flight_Id);
+			request.setAttribute("Flight_id", flight);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
-			
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }

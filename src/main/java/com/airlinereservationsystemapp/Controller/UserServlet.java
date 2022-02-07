@@ -20,41 +20,38 @@ import com.airlinereservationsystemapp.Models.Flight;
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		AddFlightDao register = new AddFlightDao();
-		try {
-		List<Flight> registerinfo = register.register();
-		request.setAttribute("Flight", registerinfo);
-
-       RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");
-         requestDispatcher.forward(request, response);	
-	//response.sendRedirect("userList.jsp");
-		}
-		catch(Exception e)
-		{
-			
-		}
-         
-
+	public UserServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		AddFlightDao register = new AddFlightDao();
+		try {
+			List<Flight> registerinfo = register.register();
+			request.setAttribute("Flight", registerinfo);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("userList.jsp");
+			requestDispatcher.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
 }
