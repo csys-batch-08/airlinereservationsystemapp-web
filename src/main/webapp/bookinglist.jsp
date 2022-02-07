@@ -3,6 +3,8 @@
         <%@page import="com.airlinereservationsystemapp.Models.Passenger_details"%>
     <%@page import="java.util.List"%>
             <%@page import="com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao"%>
+             <%@page import="java.util.ResourceBundle"%>
+            
             <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
             
