@@ -173,9 +173,9 @@ a:hover, a:active {
 						readonly> <br></br> <label for="ticketno"><strong>Ticket
 							No</strong></label> <input type="text" name="ticketno" id="ticketno"
 						value="${ticketno}" readonly> <br></br> <label
-						for="amount"><strong>Amount</strong>></label> <input type="text"
+						for="Amount"><strong>Amount</strong>></label> <input type="text"
 						name="Amount" id="Amount" value="${Amont}" readonly> <br></br>
-					<label for="Seatno"><strong>SEATNO</strong>></label> <input
+					<label for="seatno"><strong>SEATNO</strong>></label> <input
 						type="text" name="seatno" id="seatno" value="${seatnumeric}"
 						readonly> <br></br>
 					<c:choose>

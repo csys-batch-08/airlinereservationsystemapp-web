@@ -15,8 +15,6 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-
-<
 body>form {
 	left: 40px;
 	height: 40%;
