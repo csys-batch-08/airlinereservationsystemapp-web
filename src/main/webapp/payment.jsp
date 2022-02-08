@@ -179,15 +179,15 @@ a:hover, a:active {
 						type="text" name="seatno" id="seatno" value="${seatnumeric}"
 						readonly> <br></br>
 					<c:choose>
-						<c:when test="${loguser.equals('Guest')}">
-							<label for="wallet""><b>Mode *</b></label>
+						<c:when test="${loguser=='Guest'}">
+							<label for="wallet"><b>Mode *</b></label>
 							<input type="radio" name="yesCheck" value="Creditcard" required>
 							<label for="card">Credit Card</label>
 							<input type="radio" name="yesCheck" value="Debitcard" required>
 							<label for="card">Debit card</label>
 							<br>
 							<br>
-							<button type="Submit" required>SUBMIT</button>
+							<button type="Submit">SUBMIT</button>
 						</c:when>
 						<c:otherwise>
 							<label for="wallet"><b>Mode *</b></label>
