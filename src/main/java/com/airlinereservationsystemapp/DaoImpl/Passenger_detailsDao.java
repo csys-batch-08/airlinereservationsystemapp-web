@@ -222,8 +222,10 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 			e.getMessage();
 		} finally {
 			Connectutil.close(con, stmt);
-		}
+			
+	      }
 	}
+	
 
 	public int getticketcount(String classdetails, int flightid, LocalDate DepartureDate) {
 		int seats = 0;
