@@ -75,11 +75,19 @@ a:hover, a:active {
 					<td>${booking.getSource()}</td>
 					<td>${booking.getDestination()}</td>
 					<td class="table-danger">${booking.getFlight_id()}</td>
-					<td>${booking.getArrival_date()}</td>
+<%-- 					<td>${booking.getArrival_date()}</td> --%>
+						<fmt:parseDate value="${booking.getArrival_date()}"
+							pattern="yyyy-MM-dd" var="arrived" type="date" />
+						<td><fmt:formatDate value="${arrived}"
+								pattern="dd-MM-yyyy" /></td>
 					<td>${booking.getTicketNo()}</td>
 					<td class="table-active">${booking.getSeatno()}</td>
 					<td>${booking.getStatus()}</td>
-					<td>${booking.getBookingdate()}</td>
+<%-- 					<td>${booking.getBookingdate()}</td> --%>
+											<fmt:parseDate value="${booking.getBookingdate()}"
+							pattern="yyyy-MM-dd" var="booked" type="date" />
+						<td><fmt:formatDate value="${booked}"
+								pattern="dd-MM-yyyy" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>

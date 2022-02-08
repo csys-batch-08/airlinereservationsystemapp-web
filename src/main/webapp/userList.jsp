@@ -68,7 +68,10 @@ a:hover, a:active {
 					<td>${reg.getPassword()}</td>
 					<td>${reg.getGender()}</td>
 					<td>${reg.getPhonenumber()}</td>
-					<td class="table-danger">${reg.getRegisterDate()}</td>
+					<fmt:parseDate value="${reg.getRegisterDate()}"
+					pattern="yyyy-MM-dd" var="registered" type="date" />
+					<td class="table-danger"><fmt:formatDate value="${registered}"
+                    pattern="dd-MM-yyyy" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
