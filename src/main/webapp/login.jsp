@@ -89,7 +89,7 @@ span.psw {
 					<div class="container">
 						<label for="username" style="color: white;"><strong>Username</strong></label>
 						<input type="text" id="username" placeholder="Enter Username"
-							name="username" required> </b> <label for="Password"
+							name="username" required> <br> <label for="Password"
 							style="color: white;"><strong>Password</strong></label> <input
 							type="password" id="Password" placeholder="Enter Password"
 							name="password" required onkeyup="validlogin()">

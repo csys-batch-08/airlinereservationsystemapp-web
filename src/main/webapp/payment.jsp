@@ -179,23 +179,23 @@ a:hover, a:active {
 						type="text" name="seatno" id="seatno" value="${seatnumeric}"
 						readonly> <br></br>
 					<c:choose>
-						<c:when test="${loguser=='Guest'}">
-							<label for="wallet"><b>Mode *</b></label>
-							<input type="radio" name="yesCheck" value="Creditcard" required>
+						<c:when test="${loguser eq 'Guest'}">
+							<label for="wallet"><strong>Mode *</strong>></label>
+							<input type="radio" name="yesCheck" id="wallet" value="Creditcard" required>
 							<label for="card">Credit Card</label>
-							<input type="radio" name="yesCheck" value="Debitcard" required>
+							<input type="radio" name="yesCheck" id="card" value="Debitcard" required>
 							<label for="card">Debit card</label>
 							<br>
 							<br>
 							<button type="Submit">SUBMIT</button>
 						</c:when>
 						<c:otherwise>
-							<label for="wallet"><b>Mode *</b></label>
-							<input type="radio" name="yesCheck" value="Creditcard" required>
+							<label for="wallet"><strong>Mode *</strong>></label>
+							<input type="radio" name="yesCheck" id="wallet" value="Creditcard" required>
 							<label for="card">Credit Card</label>
-							<input type="radio" name="yesCheck" value="Debitcard" required>
+							<input type="radio" name="yesCheck" id="card" value="Debitcard" required>
 							<label for="card">Debit card</label>
-							<input type="radio" name="yesCheck" value="Wallet" required>
+							<input type="radio" name="yesCheck" id="card" value="Wallet" required>
 							<label for="Wallet">Wallet</label>
 							<br>
 							<br>
