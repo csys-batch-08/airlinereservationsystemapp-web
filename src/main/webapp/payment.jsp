@@ -180,7 +180,7 @@ a:hover, a:active {
 						readonly> <br></br>
 					<c:choose>
 						<c:when test="${loguser eq 'Guest'}">
-							<label for="wallet"><strong>Mode *</strong>></label>
+							<label for="wallet"><strong>Mode *</strong></label>
 							<input type="radio" name="yesCheck" id="wallet" value="Creditcard" required>
 							<label for="card">Credit Card</label>
 							<input type="radio" name="yesCheck" id="card" value="Debitcard" required>
@@ -190,7 +190,7 @@ a:hover, a:active {
 							<button type="Submit">SUBMIT</button>
 						</c:when>
 						<c:otherwise>
-							<label for="wallet"><strong>Mode *</strong>></label>
+							<label for="wallet"><strong>Mode *</strong></label>
 							<input type="radio" name="yesCheck" id="wallet" value="Creditcard" required>
 							<label for="card">Credit Card</label>
 							<input type="radio" name="yesCheck" id="card" value="Debitcard" required>

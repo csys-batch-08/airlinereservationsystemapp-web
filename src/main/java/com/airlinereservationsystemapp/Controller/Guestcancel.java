@@ -49,7 +49,7 @@ public class Guestcancel extends HttpServlet {
 		try {
 			List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
 			request.setAttribute("GuestList", Guestcancel);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("GuestCancelTicket.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestcancelticket.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.getMessage();

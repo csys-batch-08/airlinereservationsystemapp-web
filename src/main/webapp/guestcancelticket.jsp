@@ -84,7 +84,7 @@
 							<c:otherwise>
 								<td><a
 									href="flightcancellation.jsp?seatno=${guestcancel.getSeatno()}&Flightid=${guestcancel.getFlight_id()}&Departuredate=${guestcancel.getArrival_date()}
-	&Class=${guestcancel.getClass_details()}&Amount=${guestcancel.getAmount()}"
+	&Class=${guestcancel.getClass_details()}&Amount=${guestcancel.getAmount()}&Mode=${guestcancel.getMode()}"
 									class="btn btn-primary">CancelTicket</a></td>
 							</c:otherwise>
 						</c:choose>

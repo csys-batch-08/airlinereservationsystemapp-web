@@ -49,7 +49,7 @@ try {
        {
     	   object.insertguestvalid(phone, mail);
        }
-	RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+	RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightSearch.jsp");
 		requestDispatcher.forward(request, response);
 }
 catch (Exception e) {
