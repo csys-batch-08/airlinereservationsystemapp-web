@@ -16,6 +16,14 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+	
 </head>
 <style>
 a:link, a:visited {
@@ -40,7 +48,7 @@ a:hover, a:active {
 	<br />
 
 
-	<table border="2" class="table">
+	<table border="2" class="table" id="table_id">
 		<h1 align="center">
 			<strong>Registered User List</strong>
 		</h1>
@@ -76,6 +84,13 @@ a:hover, a:active {
 			</c:forEach>
 		</tbody>
 	</table>
+<script>
 
+$(document).ready(function() {
+	$('#table_id').DataTable();
+});
+
+
+</script>
 </body>
 </html>

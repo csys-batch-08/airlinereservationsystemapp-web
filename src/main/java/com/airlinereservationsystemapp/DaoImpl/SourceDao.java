@@ -31,7 +31,10 @@ public class SourceDao implements SourceInterface {
 		ResultSet rs1 = null;
 		try {
 			connection = Connectutil.getdbconnect();
-			String sql = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class, b.ArrivalTime , a.DepartureTime FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id WHERE b.source = ? AND b.destination  = ? and a.flight_departure_date >= ?";
+			String sql = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,"
+					+ "a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class, "
+					+ "b.ArrivalTime , a.DepartureTime FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id "
+					+ "WHERE b.source = ? AND b.destination  = ? and a.flight_departure_date >= ?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, source);
 			pst.setString(2, destination);

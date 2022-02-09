@@ -29,7 +29,8 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 		PreparedStatement stmt = null;
 		try {
 			con = Connectutil.getdbconnect();
-			String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,"
+					+ "Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
 			stmt = con.prepareStatement(sql, returnCols);
 			stmt.setString(1, obj.getPassenger_name());
 			stmt.setString(2, obj.getClass_details());
@@ -67,7 +68,8 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 		ResultSet rs = null;
 		try {
 			con = Connectutil.getdbconnect();
-			String sql = "select PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,DEPARTURED_DATE,FLIGHT_ID,SEAT_NO,TICKET_NO,STATUS,BOOKED_DATE from passenger_details";
+			String sql = "select PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,DEPARTURED_DATE,"
+					+ "FLIGHT_ID,SEAT_NO,TICKET_NO,STATUS,BOOKED_DATE from passenger_details";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			while (rs.next()) {

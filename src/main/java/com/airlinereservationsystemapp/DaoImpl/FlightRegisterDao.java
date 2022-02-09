@@ -27,7 +27,8 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 		PreparedStatement stmt = null;
 		try {
 			con = Connectutil.getdbconnect();
-			String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) values(?,?,?,?,?,?,?)";
+			String sql = "insert into register (Names,Email_id,User_name,Password,gender,Phone_number,Registered_date) "
+					+ "values(?,?,?,?,?,?,?)";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, objFlightRegister.getName());
 			stmt.setString(2, objFlightRegister.getEmailid());
@@ -76,7 +77,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle");
 
-			String sql = "select * from Guestvalid where Phone_Number = ? and Email_id = ?";
+			String sql = "select PHONE_NUMBER,EMAIL_ID , ROLES from Guestvalid where Phone_Number = ? and Email_id = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setLong(1, phone);
 			stmt.setString(2, mail);
@@ -120,7 +121,10 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 		ResultSet rs = null;
 		try {
 			connection = Connectutil.getdbconnect();
-			String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,c.flight_departure_date ,a.ticket_no , a.Seat_no ,a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b on a.seat_no = b.seatno inner join flight_seats_availabilty c on a.FLight_id = c.flight_id  inner join Guestvalid e on e.PHONE_NUMBER = a.Mobile_number where Mobile_number = ?";
+			String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,c.flight_departure_date ,"
+					+ "a.ticket_no , a.Seat_no ,a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a "
+					+ "inner join paymentdetails b on a.seat_no = b.seatno inner join flight_seats_availabilty c on a.FLight_id = c.flight_id  "
+					+ "inner join Guestvalid e on e.PHONE_NUMBER = a.Mobile_number where Mobile_number = ?";
 			pst = connection.prepareStatement(sql);
 			pst.setLong(1, mobile);
 			rs = pst.executeQuery();

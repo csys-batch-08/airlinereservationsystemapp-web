@@ -30,7 +30,8 @@ public class AddFlightDao implements AddFlightInterface {
 		PreparedStatement stmt = null;
 		try {
 			con = Connectutil.getdbconnect();
-			String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,"
+					+ "Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
 			stmt = con.prepareStatement(sql, returnCols);
 			stmt.setString(1, fly.getFlight_name());
 			stmt.setString(2, fly.getSource());
@@ -65,7 +66,8 @@ public class AddFlightDao implements AddFlightInterface {
 		try {
 
 			con = Connectutil.getdbconnect();
-			String query = "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,business_seats,flight_departure_date,DepartureTime)values(?,?,?,?,?,?,?,?)";
+			String query = "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,"
+					+ "business_seats,flight_departure_date,DepartureTime)values(?,?,?,?,?,?,?,?)";
 
 			stmt = con.prepareStatement(query);
 
@@ -141,7 +143,8 @@ public class AddFlightDao implements AddFlightInterface {
 		ResultSet rs = null;
 		try {
 			con = Connectutil.getdbconnect();
-			String query = "select Names ,Email_id,User_name,Password,Gender,Phone_Number,Registered_Date from register where is_admin != 'yes'";
+			String query = "select Names ,Email_id,User_name,Password,Gender,Phone_Number,Registered_Date "
+					+ "from register where is_admin != 'yes'";
 			// stmt = con.prepareStatement("select * from register where is_admin !=
 			// 'yes'");
 			stmt = con.prepareStatement(query);

@@ -27,7 +27,10 @@ public class FlightSearchDao implements FlightSearchInterface
 		ResultSet rs = null;
 		try {
 			con = Connectutil.getdbconnect();
-		String sql = "SELECT b.flight_id,b.flight_name,b.arrival_date,b.arrivaltime,a.DepartureTime,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class,a.Flight_Status FROM Flight_Seats_availabilty a inner join Flight_details b on a.flight_id = b.flight_id  ";
+		String sql = "SELECT b.flight_id,b.flight_name,b.arrival_date,b.arrivaltime,a.DepartureTime,b.source,b.destination,"
+				+ "a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, "
+				+ "b.Premium_Economy_class, b.Bussiness_class,a.Flight_Status FROM Flight_Seats_availabilty a inner join Flight_details b "
+				+ "on a.flight_id = b.flight_id  ";
 		 stmt = con.prepareStatement(sql);
 		 rs = stmt.executeQuery();
 		while(rs.next())
