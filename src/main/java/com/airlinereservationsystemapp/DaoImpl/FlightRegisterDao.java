@@ -12,7 +12,7 @@ import java.util.List;
 
 import com.airlinereservationsystemapp.Dao.FlightRegisterInterface;
 import com.airlinereservationsystemapp.Models.Flight;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 import com.util.Connectutil;
 
 public class FlightRegisterDao implements FlightRegisterInterface {
@@ -114,8 +114,8 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 		}
 	}
 
-	public List<Passenger_details> CancelTicket(long mobile) {
-		List<Passenger_details> canceldetails = new ArrayList<>();
+	public List<PassengerDetails> CancelTicket(long mobile) {
+		List<PassengerDetails> canceldetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -145,7 +145,7 @@ public class FlightRegisterDao implements FlightRegisterInterface {
 					LocalDate bookdate = bookingdate.toLocalDate();
 					String amountmode = rs.getString(12);
 					int amount = rs.getInt(11);
-					Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2,
+					PassengerDetails passenegr = new PassengerDetails(Class, mobno, source, destination, localDate2,
 							ticketno, seatno, status, bookdate, flightid, amountmode, amount);
 					canceldetails.add(passenegr);
 				}

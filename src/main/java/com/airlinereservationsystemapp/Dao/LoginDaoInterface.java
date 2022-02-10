@@ -2,7 +2,7 @@ package com.airlinereservationsystemapp.Dao;
 
 import java.util.List;
 
-import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
+import com.airlinereservationsystemapp.Models.FlightSeatAvailability;
 
 public interface LoginDaoInterface 
 {

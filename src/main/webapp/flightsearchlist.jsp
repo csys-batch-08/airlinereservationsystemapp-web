@@ -1,5 +1,5 @@
 <%@page
-	import="com.airlinereservationsystemapp.Models.Flight_Seat_Availability"%>
+	import="com.airlinereservationsystemapp.Models.FlightSeatAvailability"%>
 <%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>

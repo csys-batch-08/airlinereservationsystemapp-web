@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 
 /**
  * Servlet implementation class AddPassenger
@@ -71,7 +71,7 @@ public class AddPassengerServlet extends HttpServlet {
 			session.setAttribute("Bussiness", businesseats);
 			session.setAttribute("ClassDetails", class_details);
 			String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-			Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,
+			PassengerDetails passenger = new PassengerDetails(name, class_details, mobileno, Source, Destination,
 					ticketno, flightid, local);
 			Passenger_detailsDao pass = new Passenger_detailsDao();
 			ArrayList<Integer> list = new ArrayList<Integer>();

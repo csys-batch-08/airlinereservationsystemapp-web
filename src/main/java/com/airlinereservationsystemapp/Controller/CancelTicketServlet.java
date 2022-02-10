@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 
 /**
  * Servlet implementation class CancelTicket
@@ -44,7 +44,7 @@ public class CancelTicketServlet extends HttpServlet {
 		Passenger_detailsDao cancellist = new Passenger_detailsDao();
 		try {
 			String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-			List<Passenger_details> cancelinfo = cancellist.CancelTicket(loggedInAsUser);
+			List<PassengerDetails> cancelinfo = cancellist.CancelTicket(loggedInAsUser);
 			request.setAttribute("CancelList", cancelinfo);
 			RequestDispatcher req = request.getRequestDispatcher("cancelticket.jsp");
 			req.forward(request, response);

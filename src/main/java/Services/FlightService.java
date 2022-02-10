@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.airlinereservationsystemapp.DaoImpl.SourceDao;
 import com.airlinereservationsystemapp.DaoImpl.WalletDao;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightList;
 import com.airlinereservationsystemapp.Models.Source;
 
 public class FlightService {

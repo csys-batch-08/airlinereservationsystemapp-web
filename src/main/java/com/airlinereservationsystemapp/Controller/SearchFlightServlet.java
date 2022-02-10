@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.SourceDao;
-import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
+import com.airlinereservationsystemapp.Models.FlightSeatAvailability;
 
 /**
  * Servlet implementation class SearchFlight
@@ -53,7 +53,7 @@ public class SearchFlightServlet extends HttpServlet {
 				local = LocalDate.parse(date);
 			}
 			HttpSession session = request.getSession();
-			List<Flight_Seat_Availability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
+			List<FlightSeatAvailability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
 			request.setAttribute("Flight_List", objavailability);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightsearchlist.jsp");
 			requestDispatcher.forward(request, response);

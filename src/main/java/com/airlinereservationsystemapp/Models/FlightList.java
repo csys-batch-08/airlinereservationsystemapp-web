@@ -2,16 +2,16 @@ package com.airlinereservationsystemapp.Models;
 
 import java.sql.*;
 
-public class Flight_list 
+public class FlightList 
 {
-	private int Flight_id;
-	private String Flight_name;
-	private String Source;
-	private String Destination;
-	private int Economy_class;
-	private int premium_Economy_class;
-	private int Bussiness_class;
-	private Date Arrival_Time;
+	private int flightId;
+	private String flightName;
+	private String source;
+	private String destination;
+	private int economyClass;
+	private int premiumEconomyClass;
+	private int bussinessClass;
+	private Date arrivalTime;
 	private Date Departure_time;
 	private int Economyseats;
 	private int premiumseats;
@@ -36,37 +36,37 @@ public class Flight_list
 	public void setDepartureTime(String departureTime) {
 		DepartureTime = departureTime;
 	}
-		public Flight_list(int flight_id, String flight_name,Date arrival_Time, Date departure_time
+		public FlightList(int flight_id, String flight_name,Date arrival_Time, Date departure_time
 				,String source, String destination, int economy_class,
 			int premium_Economy_class, int bussiness_class) {
 		super();
-		Flight_id = flight_id;
-		Flight_name = flight_name;
-		Source = source;
-		Destination = destination;
-		Economy_class = economy_class;
-		this.premium_Economy_class = premium_Economy_class;
-		Bussiness_class = bussiness_class;
-		Arrival_Time = arrival_Time;
+		flightId = flight_id;
+		flightName = flight_name;
+		this.source = source;
+		this.destination = destination;
+		economyClass = economy_class;
+		this.premiumEconomyClass = premium_Economy_class;
+		bussinessClass = bussiness_class;
+		arrivalTime = arrival_Time;
 		Departure_time = departure_time;
 	}
 		public int getFlight_id() {
-		return Flight_id;
+		return flightId;
 	}
 	public void setFlight_id(int flight_id) {
-		this.Flight_id = flight_id;
+		this.flightId = flight_id;
 	}
 	public String getFlight_name() {
-		return Flight_name;
+		return flightName;
 	}
 	public void setFlight_name(String flight_name) {
-		Flight_name = flight_name;
+		flightName = flight_name;
 	}
 	public Date getArrival_Time() {
-		return Arrival_Time;
+		return arrivalTime;
 	}
 	public void setArrival_Time(Date arrival_Time) {
-		Arrival_Time = arrival_Time;
+		arrivalTime = arrival_Time;
 	}
 	public Date getDeparture_time() {
 		return Departure_time;
@@ -75,54 +75,54 @@ public class Flight_list
 		Departure_time = departure_time;
 	}
 	public String getSource() {
-		return Source;
+		return source;
 	}
 	public void setSource(String source) {
-		Source = source;
+		this.source = source;
 	}
 	public String getDestination() {
-		return Destination;
+		return destination;
 	}
 	public void setDestination(String destination) {
-		Destination = destination;
+		this.destination = destination;
 	}
 	public int getEconomy_class() {
-		return Economy_class;
+		return economyClass;
 	}
 	public void setEconomy_class(int economy_class) {
-		Economy_class = economy_class;
+		economyClass = economy_class;
 	}
 	public int getPremium_Economy_class() {
-		return premium_Economy_class;
+		return premiumEconomyClass;
 	}
 	public void setPremium_Economy_class(int premium_Economy_class) {
-		this.premium_Economy_class = premium_Economy_class;
+		this.premiumEconomyClass = premium_Economy_class;
 	}
 	public int getBussiness_class() {
-		return Bussiness_class;
+		return bussinessClass;
 	}
 	public void setBussiness_class(int bussiness_class) {
-		Bussiness_class = bussiness_class;
+		bussinessClass = bussiness_class;
 	}
-	public Flight_list() {
+	public FlightList() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public int getEconomyseats() {
 		return Economyseats;
 	}
-	public Flight_list(int flight_id, String flight_name, String source, String destination, int economy_class,
+	public FlightList(int flight_id, String flight_name, String source, String destination, int economy_class,
 			int premium_Economy_class, int bussiness_class, Date arrival_Time, Date departure_time, int economyseats,
 			int premiumseats, int businessseats, String arrivaltime, String departureTime, String flightstatus) {
 		super();
-		Flight_id = flight_id;
-		Flight_name = flight_name;
-		Source = source;
-		Destination = destination;
-		Economy_class = economy_class;
-		this.premium_Economy_class = premium_Economy_class;
-		Bussiness_class = bussiness_class;
-		Arrival_Time = arrival_Time;
+		flightId = flight_id;
+		flightName = flight_name;
+		this.source = source;
+		this.destination = destination;
+		economyClass = economy_class;
+		this.premiumEconomyClass = premium_Economy_class;
+		bussinessClass = bussiness_class;
+		arrivalTime = arrival_Time;
 		Departure_time = departure_time;
 		Economyseats = economyseats;
 		this.premiumseats = premiumseats;
@@ -153,15 +153,15 @@ public class Flight_list
 		Arrivaltime = arrivaltime;
 	}
 	
-	public Flight_list(int flight_id, String source, String destination, int economy_class, int premium_Economy_class,
+	public FlightList(int flight_id, String source, String destination, int economy_class, int premium_Economy_class,
 			int bussiness_class, Date departure_time, int economyseats, int premiumseats, int businessseats) {
 		super();
-		Flight_id = flight_id;
-		Source = source;
-		Destination = destination;
-		Economy_class = economy_class;
-		this.premium_Economy_class = premium_Economy_class;
-		Bussiness_class = bussiness_class;
+		flightId = flight_id;
+		this.source = source;
+		this.destination = destination;
+		economyClass = economy_class;
+		this.premiumEconomyClass = premium_Economy_class;
+		bussinessClass = bussiness_class;
 		Departure_time = departure_time;
 		Economyseats = economyseats;
 		this.premiumseats = premiumseats;

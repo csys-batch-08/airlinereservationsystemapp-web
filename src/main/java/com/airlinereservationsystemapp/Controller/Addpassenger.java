@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
+import com.airlinereservationsystemapp.Models.FlightSeatAvailability;
 
 /**
  * Servlet implementation class Addpassenger
@@ -55,7 +55,7 @@ public class Addpassenger extends HttpServlet {
 		int Premium_Economy_class = Integer.parseInt(Premiumrate1);
 		String Businesseat = request.getParameter("Bussiness_class");
 		int Bussiness_class =  Integer.parseInt(Businesseat);
-		Flight_Seat_Availability flight  = new 	Flight_Seat_Availability(flightId, source, destination,  Departure_Date, Economy_class, Premium_Economy_class, Bussiness_class, Economyrate, Premiumrate, Business);
+		FlightSeatAvailability flight  = new 	FlightSeatAvailability(flightId, source, destination,  Departure_Date, Economy_class, Premium_Economy_class, Bussiness_class, Economyrate, Premiumrate, Business);
 		//session.setAttribute("Addlist", flight);
 		request.setAttribute("Addlist", flight);
         RequestDispatcher req = request.getRequestDispatcher("addPassenger.jsp");

@@ -1,8 +1,8 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@page import="com.airlinereservationsystemapp.Models.Flight_list"%>
+<%@page import="com.airlinereservationsystemapp.Models.FlightList"%>
 <%@page import="java.util.List"%>
 <%@page
-	import="com.airlinereservationsystemapp.Models.Flight_Seat_Availability"%>
+	import="com.airlinereservationsystemapp.Models.FlightSeatAvailability"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 

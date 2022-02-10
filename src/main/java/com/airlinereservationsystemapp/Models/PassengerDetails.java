@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.*;
 
 
-public class Passenger_details 
+public class PassengerDetails 
 {
 	private String  Passenger_name;
 	private String Class_details;
@@ -40,7 +40,7 @@ public class Passenger_details
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-	public Passenger_details(String passenger_name, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int ticketNo, int seatno, int economyseat,
 			String status, LocalDate bookingdate) {
 		super();
@@ -72,7 +72,7 @@ public class Passenger_details
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int economyseat, int premiumeconomyseats, int businessseats,
 			int flight_id, int noOfPassengers,int TicketNo,int Amount) {
 		super();
@@ -108,7 +108,7 @@ public class Passenger_details
 	public void setBusinessseats(int businessseats) {
 		this.businessseats = businessseats;
 	}
-	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, int ticketNo, int seatno, int flight_id,LocalDate arrival_date) {
 		super();
 		Passenger_name = passenger_name;
@@ -127,7 +127,7 @@ public class Passenger_details
 	public void setSeatno(int seatno) {
 		this.seatno = seatno;
 	}
-	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, int TicketNo, int flight_id,LocalDate bookingdate) {
 		super();
 		Passenger_name = passenger_name;
@@ -205,7 +205,7 @@ public class Passenger_details
 	public void setFlight_id(int flight_id) {
 		Flight_id = flight_id;
 	}
-	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int TicketNo, int flight_id, int noOfPassengers) {
 		super();
 		Passenger_name = passenger_name;
@@ -220,7 +220,7 @@ public class Passenger_details
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
 	}
-	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+	public PassengerDetails(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate,
 			int flight_id) {
 		super();
@@ -236,7 +236,7 @@ public class Passenger_details
 		Bookingdate = bookingdate;
 		Flight_id = flight_id;
 	}
-	public Passenger_details(String class_details, long mobile_number, String source, String destination,
+	public PassengerDetails(String class_details, long mobile_number, String source, String destination,
 			LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate, int flight_id,
 			String mode , int Amount) {
 		super();

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightList;
 
 /**
  * Servlet implementation class Update
@@ -40,7 +40,7 @@ public class Update extends HttpServlet {
 			int Flight_Id = Integer.parseInt(flightid);
 
 			FlightSearchDao flightDao = new FlightSearchDao();
-			Flight_list flight = flightDao.getRecordById(Flight_Id);
+			FlightList flight = flightDao.getRecordById(Flight_Id);
 			request.setAttribute("Flight_id", flight);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateflight.jsp");
 			requestDispatcher.forward(request, response);

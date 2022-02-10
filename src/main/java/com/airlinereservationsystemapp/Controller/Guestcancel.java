@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightRegisterDao;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 
 /**
  * Servlet implementation class Guestcancel
@@ -47,7 +47,7 @@ public class Guestcancel extends HttpServlet {
 		Long phone = (Long) session.getAttribute("Mobile");
 		FlightRegisterDao listvalue = new FlightRegisterDao();
 		try {
-			List<Passenger_details> Guestcancel = listvalue.CancelTicket(phone);
+			List<PassengerDetails> Guestcancel = listvalue.CancelTicket(phone);
 			request.setAttribute("GuestList", Guestcancel);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestcancelticket.jsp");
 			requestDispatcher.forward(request, response);

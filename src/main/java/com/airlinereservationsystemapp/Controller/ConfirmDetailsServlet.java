@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
-import com.airlinereservationsystemapp.Models.Flight_list;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.FlightList;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 
 /**
  * Servlet implementation class ConfirmDetails
@@ -61,13 +61,13 @@ public class ConfirmDetailsServlet extends HttpServlet {
 			String Price_details = request.getParameter("price");
 			int price = Integer.parseInt(Price_details);
 			int ticketno = generator();
-			Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,
+			PassengerDetails passenger = new PassengerDetails(name, class_details, mobileno, Source, Destination,
 					local, ecoseats, premiumecoseats, bussseats, flightid, noofpass, ticketno, price);
 			request.setAttribute("Passenger_Deatils", passenger);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("confirmdetails.jsp");
 			requestDispatcher.forward(request, response);
 			FlightSearchDao flightDao = new FlightSearchDao();
-			Flight_list flight = flightDao.getRecordById(flightid);
+			FlightList flight = flightDao.getRecordById(flightid);
 			int busrate = flight.getBussiness_class();
 			int prerate = flight.getPremium_Economy_class();
 			int ecorate = flight.getEconomy_class();

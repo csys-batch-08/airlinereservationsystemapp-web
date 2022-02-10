@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ResourceBundle;
 import java.util.ListResourceBundle;
 import com.airlinereservationsystemapp.DaoImpl.Passenger_detailsDao;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 
 /**
  * Servlet implementation class Bookingdetails
@@ -40,7 +40,7 @@ public class BookingdetailsServlet extends HttpServlet {
 		try {
 			Passenger_detailsDao booklist = new Passenger_detailsDao();
 
-			List<Passenger_details> bookinfo = booklist.Bookinglist();
+			List<PassengerDetails> bookinfo = booklist.Bookinglist();
 			request.setAttribute("Bookinglist", bookinfo);
 			RequestDispatcher req = request.getRequestDispatcher("bookinglist.jsp");
 			req.forward(request, response);

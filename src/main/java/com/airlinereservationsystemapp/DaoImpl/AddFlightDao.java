@@ -19,7 +19,7 @@ import com.airlinereservationsystemapp.Controller.UpdateFlightServlet;
 import com.airlinereservationsystemapp.Dao.AddFlightInterface;
 import com.airlinereservationsystemapp.Models.AddFlight;
 import com.airlinereservationsystemapp.Models.Flight;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightList;
 import com.util.Connectutil;
 
 public class AddFlightDao implements AddFlightInterface {
@@ -33,7 +33,7 @@ public class AddFlightDao implements AddFlightInterface {
 			String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,"
 					+ "Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
 			stmt = con.prepareStatement(sql, returnCols);
-			stmt.setString(1, fly.getFlight_name());
+			stmt.setString(1, fly.getflightName());
 			stmt.setString(2, fly.getSource());
 			stmt.setString(3, fly.getDestination());
 			stmt.setInt(4, fly.getEconomy_class());

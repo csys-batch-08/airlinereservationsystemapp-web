@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.TimeZone;
 
 import com.airlinereservationsystemapp.Dao.SourceInterface;
-import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightSeatAvailability;
+import com.airlinereservationsystemapp.Models.FlightList;
 import com.airlinereservationsystemapp.Models.Source;
 import com.util.Connectutil;
 
@@ -24,8 +24,8 @@ import java.text.*;
 import java.time.LocalDate;
 
 public class SourceDao implements SourceInterface {
-	public List<Flight_Seat_Availability> ListSeat(String source, String destination) {
-		List<Flight_Seat_Availability> Seatavailabilitylist = new ArrayList<>();
+	public List<FlightSeatAvailability> ListSeat(String source, String destination) {
+		List<FlightSeatAvailability> Seatavailabilitylist = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs1 = null;
@@ -60,7 +60,7 @@ public class SourceDao implements SourceInterface {
 					java.sql.Timestamp Time = rs1.getTimestamp("DepartureTime");
 					sdf.setTimeZone(TimeZone.getTimeZone("IST"));
 					String Departed = sdf.format(Time);
-					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id, Flight_name,
+					FlightSeatAvailability objFlightseat = new FlightSeatAvailability(Flight_id, Flight_name,
 							Source, flight_destination, Departure_Time, economyClass, premiumeconomyclass,
 							businessClass, Economy_rate, premium_economy_rate, Bussiness_rate, arrived, Departed);
 					Seatavailabilitylist.add(objFlightseat);
@@ -81,8 +81,8 @@ public class SourceDao implements SourceInterface {
 		return new java.sql.Date(today.getTime());
 	}
 
-	public List<Flight_Seat_Availability> Seatvalue(String source, String destination, LocalDate date) {
-		List<Flight_Seat_Availability> Seatavailabilitylist = new ArrayList<>();
+	public List<FlightSeatAvailability> Seatvalue(String source, String destination, LocalDate date) {
+		List<FlightSeatAvailability> Seatavailabilitylist = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs1 = null;
@@ -142,7 +142,7 @@ public class SourceDao implements SourceInterface {
 					java.sql.Timestamp Time = rs1.getTimestamp("DepartureTime");
 					sdf.setTimeZone(TimeZone.getTimeZone("IST"));
 					String Departed = sdf.format(Time);
-					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id, Flight_name,
+					FlightSeatAvailability objFlightseat = new FlightSeatAvailability(Flight_id, Flight_name,
 							Source, flight_destination, Departure_Time, Arrival_Time, economyClass, premiumeconomyclass,
 							businessClass, Economy_rate, premium_economy_rate, Bussiness_rate, arrived, Departed);
 					Seatavailabilitylist.add(objFlightseat);

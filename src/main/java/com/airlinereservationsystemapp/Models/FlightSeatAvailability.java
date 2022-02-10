@@ -2,10 +2,10 @@ package com.airlinereservationsystemapp.Models;
 
 import java.sql.Date;
 
-public class Flight_Seat_Availability 
+public class FlightSeatAvailability 
 {
 	private int flightId;
-	private String flightname;
+	private String flightName;
 	public int getFlightId() {
 		return flightId;
 	}
@@ -13,27 +13,27 @@ public class Flight_Seat_Availability
 		this.flightId = flightId;
 	}
 	public String getFlightname() {
-		return flightname;
+		return flightName;
 	}
 	public void setFlightname(String flightname) {
-		this.flightname = flightname;
+		this.flightName = flightname;
 	}
 	private String source;
 	private String destination;
-	private Date Departure_Date;
-	private Date Arrival_Date;;
+	private Date departureDate;
+	private Date arrivalDate;
 
-	public Flight_Seat_Availability(int flightId, String flightname, String source, String destination,
+	public FlightSeatAvailability(int flightId, String flightname, String source, String destination,
 			Date departure_Date, Date arrival_Date, int economy_class, int premium_Economy_class, int bussiness_class,
 			double economy_rate, double premium_Economy_rate, double bussiness_rate, String arrivalTime,
 			String departureTime) {
 		super();
 		this.flightId = flightId;
-		this.flightname = flightname;
+		this.flightName = flightname;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
-		Arrival_Date = arrival_Date;
+		departureDate = departure_Date;
+		arrivalDate = arrival_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
@@ -44,10 +44,10 @@ public class Flight_Seat_Availability
 		DepartureTime = departureTime;
 	}
 	public Date getArrival_Date() {
-		return Arrival_Date;
+		return arrivalDate;
 	}
 	public void setArrival_Date(Date arrival_Date) {
-		Arrival_Date = arrival_Date;
+		arrivalDate = arrival_Date;
 	}
 	private int Economy_class;
 	private int premium_Economy_class;
@@ -71,15 +71,15 @@ public class Flight_Seat_Availability
 	public void setDepartureTime(String departureTime) {
 		DepartureTime = departureTime;
 	}
-	public Flight_Seat_Availability(int flightId, String flightname, String source, String destination,
+	public FlightSeatAvailability(int flightId, String flightname, String source, String destination,
 			Date departure_Date, int economy_class, int premium_Economy_class, int bussiness_class, double economy_rate,
 			double premium_Economy_rate, double bussiness_rate) {
 		super();
 		this.flightId = flightId;
-		this.flightname = flightname;
+		this.flightName = flightname;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
@@ -105,15 +105,15 @@ public class Flight_Seat_Availability
 	public void setBussiness_rate(double bussiness_rate) {
 		Bussiness_rate = bussiness_rate;
 	}
-	public Flight_Seat_Availability(int flightId, String flightname, String source, String destination,
+	public FlightSeatAvailability(int flightId, String flightname, String source, String destination,
 			Date departure_Date, int economy_class, int premium_Economy_class, int bussiness_class, double economy_rate,
 			double premium_Economy_rate, double bussiness_rate, String arrivalTime, String departureTime) {
 		super();
 		this.flightId = flightId;
-		this.flightname = flightname;
+		this.flightName = flightname;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
@@ -136,10 +136,10 @@ public class Flight_Seat_Availability
 		this.destination = destination;
 	}
 	public Date getDeparture_Date() {
-		return Departure_Date;
+		return departureDate;
 	}
 	public void setDeparture_Date(Date departure_Date) {
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 	}
 	public int getEconomy_class() {
 		return Economy_class;
@@ -159,37 +159,37 @@ public class Flight_Seat_Availability
 	public void setBussiness_class(int bussiness_class) {
 		Bussiness_class = bussiness_class;
 	}
-	public Flight_Seat_Availability(int flightId, String flightname, String source, String destination,
+	public FlightSeatAvailability(int flightId, String flightname, String source, String destination,
 			Date departure_Date, int economy_class, int premium_Economy_class, int bussiness_class) {
 		super();
 		this.flightId = flightId;
-		this.flightname = flightname;
+		this.flightName = flightname;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
 	}
-	public Flight_Seat_Availability(int flightId, String source, String destination, Date departure_Date,
+	public FlightSeatAvailability(int flightId, String source, String destination, Date departure_Date,
 			int economy_class, int premium_Economy_class, int bussiness_class) {
 		super();
 		this.flightId = flightId;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;
 	}
-	public Flight_Seat_Availability(int flightId, String source, String destination, Date departure_Date,
+	public FlightSeatAvailability(int flightId, String source, String destination, Date departure_Date,
 			int economy_class, int premium_Economy_class, int bussiness_class, double economy_rate,
 			double premium_Economy_rate, double bussiness_rate) {
 		super();
 		this.flightId = flightId;
 		this.source = source;
 		this.destination = destination;
-		Departure_Date = departure_Date;
+		departureDate = departure_Date;
 		Economy_class = economy_class;
 		this.premium_Economy_class = premium_Economy_class;
 		Bussiness_class = bussiness_class;

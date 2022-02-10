@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.airlinereservationsystemapp.DaoImpl.FlightSearchDao;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightList;
 
 /**
  * Servlet implementation class FlightSearch
@@ -32,7 +32,7 @@ public class FlightSearchServlet extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			FlightSearchDao flightDao = new FlightSearchDao();
-			List<Flight_list> flightInfo = flightDao.FlightList();
+			List<FlightList> flightInfo = flightDao.FlightList();
 			request.setAttribute("Flight_List", flightInfo);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("flightlist.jsp");
 			requestDispatcher.forward(request, response);

@@ -9,8 +9,8 @@ import java.util.List;
 
 import com.airlinereservationsystemapp.Dao.LoginDaoInterface;
 import com.airlinereservationsystemapp.Models.Flight;
-import com.airlinereservationsystemapp.Models.Flight_Seat_Availability;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightSeatAvailability;
+import com.airlinereservationsystemapp.Models.FlightList;
 import com.util.Connectutil;
 
 public class LoginDao implements LoginDaoInterface {

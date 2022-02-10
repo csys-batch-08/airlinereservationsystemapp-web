@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.airlinereservationsystemapp.Dao.PassengerDetailsInterface;
-import com.airlinereservationsystemapp.Models.Flight_list;
-import com.airlinereservationsystemapp.Models.Passenger_details;
+import com.airlinereservationsystemapp.Models.FlightList;
+import com.airlinereservationsystemapp.Models.PassengerDetails;
 import com.util.Connectutil;
 
 public class Passenger_detailsDao implements PassengerDetailsInterface {
-	public int Setnogenerated(Passenger_details obj, int ticketno, String username) {
+	public int Setnogenerated(PassengerDetails obj, int ticketno, String username) {
 		int seatno = 0;
 		String returnCols[] = { "Seat_no" };
 		Connection con = null;
@@ -61,8 +61,8 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 		return new java.sql.Date(today.getTime());
 	}
 
-	public List<Passenger_details> Bookinglist() {
-		List<Passenger_details> booklist = new ArrayList<>();
+	public List<PassengerDetails> Bookinglist() {
+		List<PassengerDetails> booklist = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -84,7 +84,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 				int ticketno = rs.getInt("TICKET_NO");
 				String status = rs.getString("STATUS");
 				LocalDate Registereddate = rs.getDate("BOOKED_DATE").toLocalDate();
-				Passenger_details passenegr = new Passenger_details(name, classdetails, mobno, Source, destination,
+				PassengerDetails passenegr = new PassengerDetails(name, classdetails, mobno, Source, destination,
 						Bookingdate, ticketno, seatno, status, Registereddate, flightid);
 				booklist.add(passenegr);
 			}
@@ -128,8 +128,8 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 		}
 	}
 
-	public List<Passenger_details> CancelTicket(String Username) {
-		List<Passenger_details> canceldetails = new ArrayList<>();
+	public List<PassengerDetails> CancelTicket(String Username) {
+		List<PassengerDetails> canceldetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -157,7 +157,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 					LocalDate bookdate = bookingdate.toLocalDate();
 					String amountmode = rs.getString(12);
 					int amount = rs.getInt(11);
-					Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2,
+					PassengerDetails passenegr = new PassengerDetails(Class, mobno, source, destination, localDate2,
 							ticketno, seatno, status, bookdate, flightid, amountmode, amount);
 					canceldetails.add(passenegr);
 				}
@@ -264,7 +264,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface {
 	}
 
 	@Override
-	public int PassengerDetails(Passenger_details obj, int ticketno, String username) {
+	public int PassengerDetails(PassengerDetails obj, int ticketno, String username) {
 		return ticketno;
 		// TODO Auto-generated method stub
 

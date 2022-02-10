@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.TimeZone;
 
 import com.airlinereservationsystemapp.Dao.FlightSearchInterface;
-import com.airlinereservationsystemapp.Models.Flight_list;
+import com.airlinereservationsystemapp.Models.FlightList;
 import com.util.Connectutil; 
 
 public class FlightSearchDao implements FlightSearchInterface
 {
-	public List<Flight_list> FlightList()
+	public List<FlightList> FlightList()
 	{
-		List<Flight_list> flightList = new ArrayList<>();
+		List<FlightList> flightList = new ArrayList<>();
 		Connection con =null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -55,7 +55,7 @@ public class FlightSearchDao implements FlightSearchInterface
 			sdf.setTimeZone(TimeZone.getTimeZone("IST"));
 			String departured = sdf.format(Time); 	
 			String flightstatus = rs.getString("Flight_Status");
-			Flight_list objFlight = new Flight_list(flightId, airlines, Source, destination, economyClass, premiumeconomyclass, businessClass, Arrival_Time, Departure_Time, economyseats, premiumseats, bussiness, dateStr,departured,flightstatus);
+			FlightList objFlight = new FlightList(flightId, airlines, Source, destination, economyClass, premiumeconomyclass, businessClass, Arrival_Time, Departure_Time, economyseats, premiumseats, bussiness, dateStr,departured,flightstatus);
 			flightList.add(objFlight);
 		}
 	}
@@ -69,9 +69,9 @@ public class FlightSearchDao implements FlightSearchInterface
 		}
 return flightList;
 	}
-		public Flight_list getRecordById(int flightId) 
+		public FlightList getRecordById(int flightId) 
 		{
-		Flight_list flight = null;
+		FlightList flight = null;
 		Connection con = null;
 	     PreparedStatement pst = null;
           ResultSet rs = null;
@@ -97,7 +97,7 @@ return flightList;
 					int businessClass = rs.getInt("bussiness_class");
 					Date Arrival_Time = rs.getDate("Arrival_Date");
 					Date Departure_Time = rs.getDate("Departure_Date");				
-					flight = new Flight_list(id, airlines,Arrival_Time,Departure_Time,source,destination,firstClass,economyClass,businessClass);
+					flight = new FlightList(id, airlines,Arrival_Time,Departure_Time,source,destination,firstClass,economyClass,businessClass);
 				}
 			}
 		} 

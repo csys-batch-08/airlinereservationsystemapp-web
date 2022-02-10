@@ -1,4 +1,4 @@
-<%@page import="com.airlinereservationsystemapp.Models.Flight_list"%>
+<%@page import="com.airlinereservationsystemapp.Models.FlightList"%>
 <%@page import="com.airlinereservationsystemapp.DaoImpl.FlightSearchDao"%>
 <%@page import="Services.FlightService"%>
 <%@page import="java.time.LocalDate"%>
